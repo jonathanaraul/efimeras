@@ -1,0 +1,24 @@
+{% extends "ProjectFrontBundle:Helpers:body.html.twig" %}
+
+{%block imagenes%}
+
+	var images =  new Array();
+	{%for element in backgrounds%}
+		images[{{loop.index0}}] = "{{ asset(''~ element.getWebPath ~'') }}";
+	{%endfor%}
+
+{%endblock%}
+
+{%block contenido%}
+<div class="middle-right-sub">
+	{{ render(controller('ProjectFrontBundle:Helpers:menuMobile')) }}
+	<div class="main-big-text" style="margin-top: 160px;">
+		<p style="font-family: 'FuturiCondensedExtraBold'">
+			Efimeras
+		</p>
+	</div>
+</div>
+{%endblock%}
+
+{%block celda%} <div class="cell-right-sub"></div>
+{%endblock%} 

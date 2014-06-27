@@ -1,0 +1,23 @@
+{% extends "FOSUserBundle::layout.html.twig" %}
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block fos_user_content %}
+<div class="alert alert-block alert-success">
+	<button type="button" class="close" data-dismiss="alert">
+		<i class="icon-remove"></i>
+	</button>
+
+	<i class="icon-ok green"></i>
+
+	<strong class="green">
+		Confirmacion
+	</strong>
+</br><br>
+	
+	{{ 'registration.check_email'|trans({'%email%': user.email}) }}
+</div>
+{% endblock fos_user_content %}
+
+
+

@@ -1,0 +1,3 @@
+project_front_homepage:
+    pattern:  /
+    defaults: { _controller: ProjectFrontBundle:Default:index }

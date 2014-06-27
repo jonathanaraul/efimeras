@@ -1,0 +1,146 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+<div>
+	<div id="user-profile-1" class="user-profile row-fluid">
+		<div class="span3 center">
+			<div>
+				<span class="profile-picture"> <img alt="{{app.user.username|title}} foto" src="{%if app.user.getPath is not null%}{{ app.user.getWebPath | apply_filter('profile') }}{%endif%}" /> </span>
+
+				<div class="space-4"></div>
+
+				<div class="width-80 label label-info label-large arrowed-in arrowed-in-right">
+					<div class="inline position-relative">
+						<a href="#" class="user-title-label dropdown-toggle" data-toggle="dropdown"> <i class="icon-circle light-green middle"></i> &nbsp; <span class="white middle bigger-120">{{app.user.username|title}}</span> </a>
+
+						<ul class="align-left dropdown-menu dropdown-caret dropdown-lighter">
+							<li class="nav-header">
+								Change Status
+							</li>
+
+							<li>
+								<a href="#"> <i class="icon-circle green"></i> &nbsp; <span class="green">Available</span> </a>
+							</li>
+
+							<li>
+								<a href="#"> <i class="icon-circle red"></i> &nbsp; <span class="red">Busy</span> </a>
+							</li>
+
+							<li>
+								<a href="#"> <i class="icon-circle grey"></i> &nbsp; <span class="grey">Invisible</span> </a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+
+			<div class="space-6"></div>
+
+			<div class="profile-contact-info">
+				<div class="profile-contact-links align-left">
+
+					<span class="btn btn-app btn-small btn-pink no-hover" style="margin: 0px;"> <span class="bigger-175"> 4 </span>
+						<br />
+						<span class="smaller-90"> Proyectos </span> </span>
+
+					<span class="btn btn-app btn-small btn-success no-hover" style="margin: 0px;"> <span class="bigger-175"> 7 </span>
+						<br />
+						<span class="smaller-90"> Actividades </span> </span>
+
+					<span class="btn btn-app btn-small btn-primary no-hover" style="margin: 0px;"> <span class="bigger-175"> 55 </span>
+						<br />
+						<span class="smaller-90"> Contactos </span> </span>
+
+				</div>
+
+				<div class="space-6"></div>
+			</div>
+
+			<div class="hr hr12 dotted"></div>
+
+		</div>
+
+		<div class="span9">
+
+			<div class="space-12"></div>
+
+			<div class="profile-user-info profile-user-info-striped">
+				<div class="profile-info-row">
+					<div class="profile-info-name">
+						{{ 'profile.show.username'|trans }}
+					</div>
+
+					<div class="profile-info-value">
+						<span>{{ user.username }}</span>
+					</div>
+				</div>
+				<div class="profile-info-row">
+					<div class="profile-info-name">
+						{{ 'profile.show.email'|trans }}
+					</div>
+
+					<div class="profile-info-value">
+						<span >{{ user.email }}</span>
+					</div>
+				</div>
+
+				{#
+				<div class="profile-info-row">
+					<div class="profile-info-name">
+						Location
+					</div>
+
+					<div class="profile-info-value">
+						<i class="icon-map-marker light-orange bigger-110"></i>
+						<span class="editable" id="country">Netherlands</span>
+						<span class="editable" id="city">Amsterdam</span>
+					</div>
+				</div>
+
+				<div class="profile-info-row">
+					<div class="profile-info-name">
+						Age
+					</div>
+
+					<div class="profile-info-value">
+						<span class="editable" id="age">38</span>
+					</div>
+				</div>
+				#}
+
+				<div class="profile-info-row">
+					<div class="profile-info-name">
+						Fecha registro
+					</div>
+
+					<div class="profile-info-value">
+						<span >{{ user.lastLogin.format('d/m/Y')}}</span>
+					</div>
+				</div>
+
+				<div class="profile-info-row">
+					<div class="profile-info-name">
+						Ultima vez
+					</div>
+
+					<div class="profile-info-value">
+						<span >{{ user.fechaRegistro.format('d/m/Y')}}</span>
+					</div>
+				</div>
+
+				<div class="profile-info-row">
+					<div class="profile-info-name">
+						Sobre mí
+					</div>
+
+					<div class="profile-info-value">
+						<span >{{ user.descripcion }}</span>
+					</div>
+				</div>
+			</div>
+
+			<div class="space-20"></div>
+			{#actividades recientes#}
+		</div>
+	</div>
+</div>
+<!--PAGE CONTENT ENDS-->

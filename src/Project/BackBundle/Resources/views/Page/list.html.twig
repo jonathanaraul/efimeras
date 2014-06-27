@@ -1,0 +1,157 @@
+{% extends '::base.html.twig' %}
+
+{% block pagesScriptsBottom %}
+<script ></script>
+<script src="{{asset('admin/js/helpers/grafico-torta.js')}}"></script>
+<script src="{{asset('admin/js/helpers/grafico-dominios.js')}}"></script>
+<script src="{{asset('admin/js/helpers/widget-reciente.js')}}"></script>
+<script src="{{asset('admin/js/helpers/widget-comentarios.js')}}"></script>
+{%endblock%}
+
+{% block pageContent  %}
+<div class="main-container container-fluid" id="sinlogin">
+	<a class="menu-toggler" id="menu-toggler" href="#"> <span class="menu-text"></span> </a>
+
+	{% include '::sidebar.html.twig'  with {'clase': 'gris'}  %}
+
+	<div class="main-content">
+
+		{# include 'ProjectBackBundle:Architecture:breadcrumb.html.twig'  with {'clase': 'gris'} #}
+		<div class="page-content">
+
+			{# include 'ProjectBackBundle:Helpers:page-header.html.twig'  with {'titulo': 'Panel de control','subtitulo':'Vista de elementos'}  #}
+
+			<div class="row-fluid">
+				<div class="span12">
+					<!--PAGE CONTENT BEGINS-->
+					<!--PAGE CONTENT BEGINS-->
+					{%if pagination.getTotalItemCount>0%}
+					<div class="row-fluid">
+						<div class="span12">
+
+							<table id="sample-table-1" class="table table-striped table-bordered table-hover">
+								<thead>
+									<tr>
+										<th>{{ knp_pagination_sortable(pagination, 'Id', 'o.id') }}</th>
+										<th>{{ knp_pagination_sortable(pagination, 'Nombre', 'o.name') }}</th>
+										<th class="hidden-480">{{ knp_pagination_sortable(pagination, 'Nombre Amigable', 'o.friendlyName') }}</th>
+										<th class="hidden-480">{{ knp_pagination_sortable(pagination, 'Background', 'o.background') }}</th>
+										<th class="hidden-480">{{ knp_pagination_sortable(pagination, 'Media', 'o.media') }}</th>
+
+										<th class="hidden-phone" style="width: 101px;"><i class="icon-time bigger-110 hidden-phone"></i> {{ knp_pagination_sortable(pagination, 'Creado', 'o.dateCreated') }} </th>
+
+										<th class="hidden-phone" style="width: 101px;"><i class="icon-time bigger-110 hidden-phone"></i> {{ knp_pagination_sortable(pagination, 'Actualizado', 'o.dateUpdated') }} </th>
+
+										<th class="hidden-480">{{ knp_pagination_sortable(pagination, 'Publicado', 'o.published') }}</th>
+										<th></th>
+									</tr>
+								</thead>
+								<tbody>
+									{%for element in pagination %}
+									<tr>
+										<td >{{element.id}}</td>
+										<td >{{element.name}}</td>
+										<td >{{element.friendlyName}}</td>
+
+										<td width="79" height="79"><a href="#">{%if element.background is not null%}<img src="{{ element.background.getWebPath | apply_filter('gestion') }}" width="80" height="80">{%endif%}</a></br>{{element.background.name|title}}</td>
+
+										<td width="79" height="79"><a href="#">{%if element.media is not null%}<img src="{{ element.media.getWebPath | apply_filter('gestion') }}" width="80" height="80">{%endif%}</a></br>{{element.media.name|title}}</td>
+
+										<td class="hidden-phone">{{element.dateCreated.format('d/m/Y H:i:s')}}</td>
+										<td class="hidden-phone">{{element.dateUpdated.format('d/m/Y H:i:s')}}</td>
+
+										<td class="hidden-480"><span class="label label-{%if element.published%}success{%else%}warning{%endif%}">{%if element.published%}Publicado{%else%}Despublicado{%endif%}</span></td>
+
+										<td>
+										<div class="hidden-phone visible-desktop btn-group">
+											<button class="btn btn-mini btn-success">
+												<i class="icon-ok bigger-120"></i>
+											</button>
+
+											<button class="btn btn-mini btn-info">
+												<i class="icon-edit bigger-120"></i>
+											</button>
+
+											<button class="btn btn-mini btn-danger">
+												<i class="icon-trash bigger-120"></i>
+											</button>
+										</div>
+										<div class="hidden-desktop visible-phone">
+											<div class="inline position-relative">
+												<button class="btn btn-minier btn-primary dropdown-toggle" data-toggle="dropdown">
+													<i class="icon-cog icon-only bigger-110"></i>
+												</button>
+												<ul class="dropdown-menu dropdown-icon-only dropdown-yellow pull-right dropdown-caret dropdown-close">
+													<li>
+														<a href="#" class="tooltip-info" data-rel="tooltip" title="View"> <span class="blue"> <i class="icon-zoom-in bigger-120"></i> </span> </a>
+													</li>
+													<li>
+														<a href="#" class="tooltip-success" data-rel="tooltip" title="Edit"> <span class="green"> <i class="icon-edit bigger-120"></i> </span> </a>
+													</li>
+													<li>
+														<a href="#" class="tooltip-error" data-rel="tooltip" title="Delete"> <span class="red"> <i class="icon-trash bigger-120"></i> </span> </a>
+													</li>
+												</ul>
+											</div>
+										</div></td>
+									</tr>
+									{%endfor%}
+								</tbody>
+							</table>
+							<div class="row-fluid">
+								<div class="span6">
+									<div class="dataTables_info" id="sample-table-2_info">
+										{{ pagination.getTotalItemCount }} Resultados
+									</div>
+								</div>
+								<div class="span6">
+									<div class="dataTables_paginate paging_bootstrap pagination" style="margin: 0px;font-size: 18px;">
+										{{ knp_pagination_render(pagination) }}
+										{#
+										<ul>
+											<li class="prev disabled">
+												<a href="#"><i class="icon-double-angle-left"></i></a>
+											</li>
+											<li class="active">
+												<a href="#">1</a>
+											</li>
+											<li>
+												<a href="#">2</a>
+											</li>
+											<li>
+												<a href="#">3</a>
+											</li>
+											<li class="next">
+												<a href="#"><i class="icon-double-angle-right"></i></a>
+											</li>
+										</ul>
+										#}
+									</div>
+								</div>
+							</div>
+
+						</div><!--/span-->
+					</div><!--/row-->
+					<div class="hr hr-18 dotted hr-double"></div>
+					{%else%}
+
+					<div class="alert alert-error">
+						<button type="button" class="close" data-dismiss="alert">
+							<i class="icon-remove"></i>
+						</button>
+
+						<strong> <i class="icon-remove"></i> Lo sentimos... </strong>
+
+						No se han encontrado resultados en esta busqueda.
+						<br>
+					</div>
+					{%endif%}
+
+					<!--PAGE CONTENT ENDS-->
+				</div><!--/.span-->
+			</div><!--/.row-fluid-->
+		</div><!--/.page-content-->
+	</div><!--/.main-content-->
+</div><!--/.main-container-->
+
+{%endblock%}

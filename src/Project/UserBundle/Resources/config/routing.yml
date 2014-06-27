@@ -1,0 +1,6 @@
+project_user_homepage:
+    pattern:  /hello/{name}
+    defaults: { _controller: ProjectUserBundle:Default:index }
+project_user_admin:
+    pattern:  /admin/
+    defaults: { _controller: ProjectUserBundle:Default:admin }

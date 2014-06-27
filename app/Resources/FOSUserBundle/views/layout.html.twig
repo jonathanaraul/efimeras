@@ -1,0 +1,33 @@
+{% extends '::base.html.twig' %}
+
+{% block pageContent  %}
+<div class="main-container container-fluid" id="sinlogin">
+	<a class="menu-toggler" id="menu-toggler" href="#"> <span class="menu-text"></span> </a>
+
+	{% include '::sidebar.html.twig'  with {'clase': 'gris'}  %}
+
+	<div class="main-content">
+
+		{# include 'ProjectBackBundle:Architecture:breadcrumb.html.twig'  with {'clase': 'gris'} #}
+		<div class="page-content">
+
+			{# include 'ProjectBackBundle:Helpers:page-header.html.twig'  with {'titulo': 'Panel de control','subtitulo':'Vista de elementos'}  #}
+
+			<div class="row-fluid">
+				<div class="span12">
+					<!--PAGE CONTENT BEGINS-->
+
+					{% block fos_user_content %}
+					{% endblock fos_user_content %}
+
+					
+
+					<!--PAGE CONTENT ENDS-->
+				</div><!--/.span-->
+			</div><!--/.row-fluid-->
+		</div><!--/.page-content-->
+	</div><!--/.main-content-->
+</div><!--/.main-container-->
+{# include 'ProjectBackBundle:Helpers:users.html.twig'  with {'clase': 'gris'}  #}
+
+{%endblock%}
