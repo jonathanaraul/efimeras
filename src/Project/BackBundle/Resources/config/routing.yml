@@ -41,3 +41,41 @@ project_back_page_status:
     requirements:
       _method: POST
       _locale:  es|en
+
+project_back_background_list:
+    pattern:  /{_locale}/background/list/
+    defaults: { _controller: ProjectBackBundle:Background:list }
+    requirements:
+        _locale:  es|en
+project_back_background_rank:
+    pattern:  /{_locale}/background/rank
+    defaults: { _controller: ProjectBackBundle:Background:rank }
+    requirements:
+        _locale:  es|en
+project_back_background_rank_post:
+    pattern:  /{_locale}/background/rank/post
+    defaults: { _controller: ProjectBackBundle:Background:rankPost }
+    requirements:
+        _locale:  es|en
+project_back_background_create:
+    pattern:  /{_locale}/background/create
+    defaults: { _controller: ProjectBackBundle:Background:create }
+    requirements:
+        _locale:  es|en
+project_back_background_edit:
+    pattern:  /{_locale}/background/edit/{id}
+    defaults: { _controller: ProjectBackBundle:Background:edit, id: '1' }
+    requirements:
+        _locale:  es|en
+project_back_background_delete:
+    pattern:  /{_locale}/background/delete
+    defaults: { _controller: ProjectBackBundle:Background:delete }
+    requirements:
+      _method: POST
+      _locale:  es|en
+project_back_background_status:
+    pattern:  /{_locale}/background/status
+    defaults: { _controller: ProjectBackBundle:Background:status }
+    requirements:
+      _method: POST
+      _locale:  es|en
