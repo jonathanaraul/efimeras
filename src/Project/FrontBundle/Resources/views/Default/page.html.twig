@@ -1,0 +1,61 @@
+{% extends "ProjectFrontBundle:Helpers:body.html.twig" %}
+
+{%block imagenes%}
+var images = ["{{ asset(''~ page.getBackground.getWebPath ~'') }}"];
+{%endblock%}
+
+{%block contenido%}
+<div class="middle-right-sub">
+
+	{{ render(controller('ProjectFrontBundle:Helpers:menuMobile')) }}
+	{#<div class="upper-text" style="background-color: {#{theme.color} !important"></div>#}
+	
+	<div class="news-cont">
+		<hr class="barra-inferior">
+		<p class="content-title">
+			{{page.name|title}}
+		</p>
+		<div class="news-cell">
+				<table cellpadding="12" id="contenido-pagina" style="width: 100%;">
+					<tr width="100%">
+						<td  width="100%" valign="top" colspan="3"> {{page.content|raw}}
+
+						</br>
+						{%if page.path is not null%}
+								<div class="boton-listado boton-reservaciones" style="margin-top: 14px;margin-right: 0px;" >
+									<a href="{{ asset(''~ page.getWebPath ~'') }}" target="_blank">{% trans %}Ver Adjunto{% endtrans %}</a>
+								</div>
+						{%endif%}
+						<p>Tags: {{page.tags}}
+						</p>
+						</br>
+						 </td>
+					</tr>
+				</table>
+		</div>
+		<div class="lower-text"></div>
+		{#<div class="lower-box" style="#right: 200px;"></div>#}
+	</div>
+	{#
+	<div class="main-big-title news-big-title" style="">
+		<div class="theme-sel-10">
+			{{page.name|title}}
+		</div>
+	</div>#}
+	<div class="capa-baja-logo">
+		<div>
+			<span class="copyrighted">Copyrights © Efimeras</span>
+		</div>
+		<div>
+			<p>
+				<a href="http://realego.es/" target="_blank">
+					<img src="{{asset('design.png')}}">
+				</a>
+			</p>
+		</div>
+	</div>
+</div>
+{%endblock%}
+
+{%block celda%} <div class="cell-right-sub"></div>
+{%endblock%} 

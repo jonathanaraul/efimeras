@@ -196,6 +196,7 @@ class BackgroundController extends Controller {
 		$secondArray['id'] = $id;
 
 		$secondArray['data'] = $this -> getDoctrine() -> getRepository('ProjectUserBundle:Background') -> find($id);
+
 		if (!$secondArray['data']) {
 			throw $this -> createNotFoundException('La pagina que intenta e no existe ');
 		}
@@ -208,68 +209,105 @@ class BackgroundController extends Controller {
 			
 		$locale = UtilitiesAPI::getLocale($class);
 		$data = $array['data'];
-		$em = $this->getDoctrine()->getManager();
 		$filtros = array();
-		$filtros['published'] = array(1 => 'Si', 0 => 'No');
+        $userManager = $class->container->get('fos_user.user_manager');
+        $user = $class->getUser();
+        $em = $class->getDoctrine()->getManager();
 
-		/*
-
-		$form = $class -> createFormBuilder($data) -> add('name', 'text', array('required' => true))
-		 -> add('title', 'text', array('required' => true)) 
-		 -> add('descriptionMeta', 'text', array('required' => true)) 
-		 -> add('keywords', 'text', array('required' => true)) 
-		 -> add('content', 'hidden', array('data' => '', ))
-		 -> add('upperText', 'text', array('required' => true)) 
-		 -> add('lowerText', 'text', array('required' => true))
+		$form = $class -> createFormBuilder($data) 
+		 -> add('name', 'text', array('required' => true))
 		 -> add('file', 'file', array('required' => false)) 
-		 -> add('parentPage', 'choice', array('choices' => $filtros['parentPage'], 'required' => false, )) 
-		 -> add('theme', 'choice', array('choices' => $filtros['theme'], 'required' => true, )) 
-		 -> add('media', 'choice', array('choices' => $filtros['media'], 'required' => true, )) 
-		 -> add('background', 'choice', array('choices' => $filtros['background'], 'required' => true, )) 
-		 -> add('published', 'checkbox', array('label' => 'Publicado', 'required' => false, )) 
+		 -> add('home', 'checkbox', array('label' => 'En el inicio', 'required' => false, )) 
 		 -> getForm();
 
-		if ($class -> getRequest() -> isMethod('POST')) {
+        $form->handleRequest($request);
 
-			$contenido = $request -> request -> all();
-			$contenido = $contenido['page']['content'];
+        if ($form->isValid()) {
+        // perform some action, such as saving the task to the database
+        	if ($array['accion'] == 'nuevo') {
+        		$data->setDateCreated(new \DateTime('now'));
+        		$data->setPublished(1);
+        	    $data->setRank(0);
+        	}
 
-			$form -> bind($class -> getRequest());
-			$em = $class -> getDoctrine() -> getManager();
+        	$data->setDateUpdated(new \DateTime('now'));
+        	$data->setUser($user);
+            $data -> setIp($class -> container -> get('request') -> getClientIp());
+        	if ($array['accion'] == 'nuevo')$em -> persist($data);
 
-			if ($array['accion'] == 'nuevo') {
-				$data -> setSpecial(0);
-				$data -> setLang($locale);
-				$data -> setRank(UtilitiesAPI::getRank($locale, $class));
-				$data -> setSuspended(0);
-				$data -> setSpacer(0);
-				$data -> setTemplate(0);
-				$data -> setDescription('');
-				$data -> setDateCreated(new \DateTime());
-				$data -> setFriendlyName(UtilitiesAPI::getFriendlyName($data->getTitle(),$class));
-			} else {
-				$data -> setDateUpdated(new \DateTime());
-			}
-			
-			//$data -> setRemove(1);
-			$data -> setContent($contenido);
-			$data -> setIp($class -> container -> get('request') -> getClientIp());
-			$data -> setUser($array['user'] -> getId());
-			
+        	$em->flush();
 
-			if ($array['accion'] == 'nuevo')
-				$em -> persist($data);
+        	return $class -> redirect($class -> generateUrl('project_back_background_list'));
+        }
 
-			$em -> flush();
-			
-			return $class -> redirect($class -> generateUrl('project_back_background_list'));
-			//if ($form -> isValid()) {}
-		}
 		$array['form'] = $form -> createView();
-		$array['contenido'] = $array['form'] -> getVars();
-		$array['contenido'] = $array['contenido']['value'] -> getContent();
-*/
+		
+
 		return $class -> render('ProjectBackBundle:Background:new-edit.html.twig', $array);
+	}
+
+	public function deleteAction() {
+
+		$peticion = $this -> getRequest();
+		$doctrine = $this -> getDoctrine();
+		$post = $peticion -> request;
+		//INICIALIZAR VARIABLES
+
+		$id = $post -> get("id");
+		$em = $this -> getDoctrine() -> getManager();
+
+
+		//Remover original
+		$object = $em -> getRepository('ProjectUserBundle:Background') -> find($id);
+		$em -> remove($object);
+		$em -> flush();
+
+		$estado = true;
+		$respuesta = new response(json_encode(array('estado' => $estado)));
+		$respuesta -> headers -> set('content_type', 'aplication/json');
+		return $respuesta;
+	}
+
+	public function statusAction() {
+
+		$peticion = $this -> getRequest();
+		$doctrine = $this -> getDoctrine();
+		$post = $peticion -> request;
+		//INICIALIZAR VARIABLES
+
+		$id = $post -> get("id");
+		$tarea = intval($post -> get("tarea"));
+
+		$em = $this -> getDoctrine() -> getManager();
+		$object = $em -> getRepository('ProjectUserBundle:Background') -> find($id);
+		$object -> setPublished($tarea);
+		$em -> flush();
+
+
+		$estado = true;
+		$respuesta = new response(json_encode(array('estado' => $estado)));
+		$respuesta -> headers -> set('content_type', 'aplication/json');
+		return $respuesta;
+	}
+	public function homeAction() {
+
+		$peticion = $this -> getRequest();
+		$doctrine = $this -> getDoctrine();
+		$post = $peticion -> request;
+		//INICIALIZAR VARIABLES
+
+		$id = $post -> get("id");
+		$tarea = intval($post -> get("tarea"));
+
+		$em = $this -> getDoctrine() -> getManager();
+		$object = $em -> getRepository('ProjectUserBundle:Background') -> find($id);
+		$object -> setHome($tarea);
+		$em -> flush();
+
+		$estado = true;
+		$respuesta = new response(json_encode(array('estado' => $estado)));
+		$respuesta -> headers -> set('content_type', 'aplication/json');
+		return $respuesta;
 	}
 
 }

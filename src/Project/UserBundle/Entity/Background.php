@@ -93,12 +93,7 @@ class Background
     private $user;
 
 	
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="lang", type="integer", nullable=false)
-     */
-    private $lang;
+
 
 	private $file;
 	private $temp;
@@ -390,29 +385,6 @@ class Background
     public function getHome()
     {
         return $this->home;
-    }
-
-    /**
-     * Set lang
-     *
-     * @param integer $lang
-     * @return Background
-     */
-    public function setLang($lang)
-    {
-        $this->lang = $lang;
-
-        return $this;
-    }
-
-    /**
-     * Get lang
-     *
-     * @return integer 
-     */
-    public function getLang()
-    {
-        return $this->lang;
     }
 
     /**

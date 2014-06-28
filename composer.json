@@ -32,7 +32,8 @@
         "genemu/form-bundle": "2.2.*",
         "knplabs/knp-paginator-bundle": "~2.4",
         "ob/highcharts-bundle": "1.*",
-        "friendsofsymfony/user-bundle": "~2.0@dev"
+        "friendsofsymfony/user-bundle": "~2.0@dev",
+        "egeloen/ckeditor-bundle": "~2.0"
 
     },
     "scripts": {

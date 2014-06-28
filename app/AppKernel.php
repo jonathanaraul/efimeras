@@ -28,7 +28,7 @@ class AppKernel extends Kernel
             new Vich\UploaderBundle\VichUploaderBundle(),
             new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
             new FOS\UserBundle\FOSUserBundle(),
-
+            new Ivory\CKEditorBundle\IvoryCKEditorBundle(),
             new Project\BackBundle\ProjectBackBundle(),
             new Project\UserBundle\ProjectUserBundle(),
             new Project\FrontBundle\ProjectFrontBundle(),

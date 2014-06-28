@@ -28,11 +28,6 @@
 		document.write("<script src='assets/js/jquery.mobile.custom.min.js'>" + "<" + "/script>");
 </script>
 
-<!--ace scripts-->
-
-<!--inline scripts related to this page-->
-
-
 {%endblock%}
 
 {% block pageContent  %}
@@ -46,29 +41,51 @@
 		{# include 'ProjectBackBundle:Architecture:breadcrumb.html.twig'  with {'clase': 'gris'} #}
 		<div class="page-content">
 			<div class="page-header position-relative">
-				<h1> Páginas <small> <i class="icon-double-angle-right"></i> Crear nueva background </small></h1>
+				<h1> Backgrounds <small> <i class="icon-double-angle-right"></i> {%if accion=='nuevo'%}Subir nuevo{%else%}Editar{%endif%} </small></h1>
 			</div><!--/.page-header-->
 
-			<form class="form-horizontal" >
+			<form action="{{ url }}" {{ form_enctype(form) }} method="POST" class="form-horizontal">
+			{{ form_start(form) }}
+								
 				<div class="control-group">
 					<label class="control-label" for="form-field-1">Nombre</label>
 
 					<div class="controls">
-						<input type="text" id="form-field-1" placeholder="Nombre" />
+						{{ form_widget(form.name, { 'attr': {'placeholder': 'Nombre'} }) }}
 					</div>
 				</div>
 				<div class="control-group">
 					<label class="control-label" for="form-field-1">Archivo</label>
 
 					<div class="controls">
-						<input type="file" id="form-field-1" />
+						{{ form_widget(form.file, { 'attr': {'accept':'image/*'} }) }}
 					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">En el inicio</label>
+					<div class="controls">
+						<div class="row-fluid">
+							<div class="span3">
+								<label>
+									{{ form_widget(form.home, { 'attr': {'class':'ace-switch'} }) }}
+									<span class="lbl"></span>
+								</label>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="form-actions">
+					<input type="submit" class="btn btn-info" value="Guardar" >
+
+					&nbsp; &nbsp; &nbsp;
+					<button class="btn" type="reset">
+						<i class="icon-undo bigger-110"></i>
+						Reset
+					</button>
 				</div>
 
 				<div class="space-4"></div>
-
-
-
+                {{ form_end(form) }}
 			</form>
 		</div><!--/.page-content-->
 

@@ -24,19 +24,6 @@ class Page
      */
     private $id;
 
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="parent_page", type="integer", nullable=true)
-     */
-    private $parentPage;
-
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="media", type="integer", nullable=false)
-     */
-    private $media;
 
     /**
      * @var integer
@@ -69,13 +56,6 @@ class Page
     /**
      * @var integer
      *
-     * @ORM\Column(name="suspended", type="integer", nullable=true)
-     */
-    private $suspended;
-
-    /**
-     * @var integer
-     *
      * @ORM\Column(name="spacer", type="integer", nullable=true)
      */
     private $spacer;
@@ -100,13 +80,6 @@ class Page
      * @ORM\Column(name="description_meta", type="string", length=255, nullable=false)
      */
     private $descriptionMeta;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="title", type="string", length=100, nullable=false)
-     */
-    private $title;
 
     /**
      * @var string
@@ -146,9 +119,9 @@ class Page
     /**
      * @var string
      *
-     * @ORM\Column(name="description", type="text", nullable=false)
+     * @ORM\Column(name="tags", type="text", nullable=false)
      */
-    private $description;
+    private $tags;
 
     /**
      * @var string
@@ -241,52 +214,6 @@ class Page
     public function getRemove()
     {
         return $this->remove;
-    }
-
-    /**
-     * Set parentPage
-     *
-     * @param integer $parentPage
-     * @return Page
-     */
-    public function setParentPage($parentPage)
-    {
-        $this->parentPage = $parentPage;
-    
-        return $this;
-    }
-
-    /**
-     * Get parentPage
-     *
-     * @return integer 
-     */
-    public function getParentPage()
-    {
-        return $this->parentPage;
-    }
-
-    /**
-     * Set media
-     *
-     * @param integer $media
-     * @return Page
-     */
-    public function setMedia($media)
-    {
-        $this->media = $media;
-    
-        return $this;
-    }
-
-    /**
-     * Get media
-     *
-     * @return integer 
-     */
-    public function getMedia()
-    {
-        return $this->media;
     }
 
 
@@ -386,29 +313,6 @@ class Page
 
 
     /**
-     * Set suspended
-     *
-     * @param integer $suspended
-     * @return Page
-     */
-    public function setSuspended($suspended)
-    {
-        $this->suspended = $suspended;
-    
-        return $this;
-    }
-
-    /**
-     * Get suspended
-     *
-     * @return integer 
-     */
-    public function getSuspended()
-    {
-        return $this->suspended;
-    }
-
-    /**
      * Set spacer
      *
      * @param integer $spacer
@@ -498,29 +402,6 @@ class Page
     public function getDescriptionMeta()
     {
         return $this->descriptionMeta;
-    }
-
-    /**
-     * Set title
-     *
-     * @param string $title
-     * @return Page
-     */
-    public function setTitle($title)
-    {
-        $this->title = $title;
-    
-        return $this;
-    }
-
-    /**
-     * Get title
-     *
-     * @return string 
-     */
-    public function getTitle()
-    {
-        return $this->title;
     }
 
     /**
@@ -638,28 +519,6 @@ class Page
         return $this->friendlyName;
     }
 
-    /**
-     * Set description
-     *
-     * @param string $description
-     * @return Page
-     */
-    public function setDescription($description)
-    {
-        $this->description = $description;
-    
-        return $this;
-    }
-
-    /**
-     * Get description
-     *
-     * @return string 
-     */
-    public function getDescription()
-    {
-        return $this->description;
-    }
 
     /**
      * Set content
@@ -910,5 +769,28 @@ class Page
     public function getBackground()
     {
         return $this->background;
+    }
+
+    /**
+     * Set tags
+     *
+     * @param string $tags
+     * @return Page
+     */
+    public function setTags($tags)
+    {
+        $this->tags = $tags;
+
+        return $this;
+    }
+
+    /**
+     * Get tags
+     *
+     * @return string 
+     */
+    public function getTags()
+    {
+        return $this->tags;
     }
 }

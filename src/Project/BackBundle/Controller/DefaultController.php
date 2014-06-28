@@ -16,7 +16,13 @@ class DefaultController extends Controller
         $query = $em->createQuery('SELECT COUNT(u.id) FROM ProjectUserBundle:User u');
         $usuariosRegistrados = $query->getSingleScalarResult();
 
-       return $this->render('ProjectBackBundle:Default:index.html.twig', array('usuariosRegistrados' => $usuariosRegistrados));
+        $query = $em->createQuery('SELECT COUNT(u.id) FROM ProjectUserBundle:Background u');
+        $backgrounds = $query->getSingleScalarResult();
+
+        $query = $em->createQuery('SELECT COUNT(u.id) FROM ProjectUserBundle:Page u');
+        $pages = $query->getSingleScalarResult();
+
+       return $this->render('ProjectBackBundle:Default:index.html.twig', array('usuariosRegistrados' => $usuariosRegistrados,'backgrounds' => $backgrounds,'pages'=>$pages));
     }
     public static function promover(){
 

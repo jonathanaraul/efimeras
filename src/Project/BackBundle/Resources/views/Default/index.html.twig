@@ -77,7 +77,141 @@ for (var i = 0; i < Math.PI * 2; i += 0.5) {
 
 					<div class="row-fluid">
 						<div class="span7 infobox-container">
-						{% include 'ProjectBackBundle:Helpers:infobox.html.twig'  with {'usuariosRegistrados': usuariosRegistrados} %}
+	<div class="infobox infobox-green  ">
+		<div class="infobox-icon">
+			<i class="icon-folder-close"></i>
+		</div>
+
+		<div class="infobox-data">
+			<span class="infobox-data-number">{{pages}}</span>
+			<div class="infobox-content">
+				Paginas
+			</div>
+		</div>
+	</div>
+	<div class="infobox infobox-red  ">
+		<div class="infobox-icon">
+			<i class="icon-camera"></i>
+		</div>
+
+		<div class="infobox-data">
+			<span class="infobox-data-number">{{backgrounds}}</span>
+			<div class="infobox-content">
+				Backgrounds
+			</div>
+		</div>
+	</div>
+	
+	<div class="infobox infobox-pink  ">
+		<div class="infobox-icon">
+			<i class="icon-camera-retro"></i>
+		</div>
+
+		<div class="infobox-data">
+			<span class="infobox-data-number">0</span>
+			<div class="infobox-content">
+				Imagenes
+			</div>
+		</div>
+	</div>
+
+	<div class="infobox infobox-blue  ">
+		<div class="infobox-icon">
+			<i class="icon-download"></i>
+		</div>
+
+		<div class="infobox-data">
+			<span class="infobox-data-number">0</span>
+			<div class="infobox-content">
+				Archivos
+			</div>
+		</div>
+	</div>
+
+
+
+	<div class="infobox infobox-orange2  ">
+		<div class="infobox-icon">
+			<i class="icon-group"></i>
+		</div>
+
+		<div class="infobox-data">
+			<span class="infobox-data-number">{{usuariosRegistrados}}</span>
+			<div class="infobox-content">
+				Usuarios
+			</div>
+		</div>
+	</div>
+{#
+	<div class="infobox infobox-blue2  ">
+		<div class="infobox-progress">
+			<div class="easy-pie-chart percentage" data-percent="42" data-size="46">
+				<span class="percent">42</span>
+				%
+			</div>
+		</div>
+
+		<div class="infobox-data">
+			<span class="infobox-text">traffic used</span>
+
+			<div class="infobox-content">
+				<span class="bigger-110">~</span>
+				58GB remaining
+			</div>
+		</div>
+	</div>
+
+	<div class="space-6"></div>
+
+	<div class="infobox infobox-green infobox-small infobox-dark">
+		<div class="infobox-progress">
+			<div class="easy-pie-chart percentage" data-percent="61" data-size="39">
+				<span class="percent">61</span>
+				%
+			</div>
+		</div>
+
+		<div class="infobox-data">
+			<div class="infobox-content">
+				Tareas
+			</div>
+			<div class="infobox-content">
+				Desarrollo
+			</div>
+		</div>
+	</div>
+
+	<div class="infobox infobox-blue infobox-small infobox-dark">
+		<div class="infobox-chart">
+			<span class="sparkline" data-values="3,4,2,3,4,4,2,2"></span>
+		</div>
+
+		<div class="infobox-data">
+			<div class="infobox-content">
+				Usuarios
+			</div>
+			<div class="infobox-content">
+				5
+			</div>
+		</div>
+	</div>
+
+	<div class="infobox infobox-grey infobox-small infobox-dark">
+		<div class="infobox-icon">
+			<i class="icon-download-alt"></i>
+		</div>
+
+		<div class="infobox-data">
+			<div class="infobox-content">
+				Downloads
+			</div>
+			<div class="infobox-content">
+				1,205
+			</div>
+		</div>
+	</div>
+#}
+
                         </div>
 						
 <div class="vspace"></div>

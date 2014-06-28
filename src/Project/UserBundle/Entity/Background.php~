@@ -93,12 +93,7 @@ class Background
     private $user;
 
 	
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="lang", type="integer", nullable=false)
-     */
-    private $lang;
+
 
 	private $file;
 	private $temp;
@@ -393,25 +388,25 @@ class Background
     }
 
     /**
-     * Set lang
+     * Set user
      *
-     * @param integer $lang
+     * @param \Project\UserBundle\Entity\User $user
      * @return Background
      */
-    public function setLang($lang)
+    public function setUser(\Project\UserBundle\Entity\User $user)
     {
-        $this->lang = $lang;
+        $this->user = $user;
 
         return $this;
     }
 
     /**
-     * Get lang
+     * Get user
      *
-     * @return integer 
+     * @return \Project\UserBundle\Entity\User 
      */
-    public function getLang()
+    public function getUser()
     {
-        return $this->lang;
+        return $this->user;
     }
 }

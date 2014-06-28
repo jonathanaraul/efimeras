@@ -214,90 +214,78 @@ class PageController extends Controller {
 			
 		$locale = UtilitiesAPI::getLocale($class);
 		$data = $array['data'];
-		/*
-		$array['themes'] = $class -> getDoctrine() -> getRepository('ProjectUserBundle:CmsTheme') -> findAll();
-		$array['media']  = $class -> getDoctrine() -> getRepository('ProjectUserBundle:CmsResource') -> findByType(3);
-
+		$em = $class->getDoctrine()->getManager();
+        $userManager = $class->container->get('fos_user.user_manager');
+        $user = $class->getUser();
 		$filtros = array();
-		$filtros['published'] = array(1 => 'Si', 0 => 'No');
-		$filtros['theme'] = UtilitiesAPI::getFilterData($array['themes'],$class);
-		$filtros['parentPage'] = UtilitiesAPI::getFilter('Page',$class);
-		$filtros['media'] = UtilitiesAPI::getFilterData($array['media'],$class);
-		
-		$em = $class -> getDoctrine() -> getEntityManager();	
-		
-		$dql = "SELECT n.id, n.name
-		        FROM ProjectUserBundle:CmsResource n 
-		        WHERE n.path not like :path and
-		              n.type = :type
-		        ORDER by n.name ASC ";
-	
-		$query = $em -> createQuery($dql);
-		$query -> setParameter('path', '%nodisponible.jpg%');
-		$query -> setParameter('type', 4);
-		
-		$filtros['background'] = $query -> getResult();
-		$helper = array();
-		for ($i=0; $i < count($filtros['background']) ; $i++) { 
-			$helper[$filtros['background'][$i]['id']] = $filtros['background'][$i]['name'];
-		}
-		$filtros['background'] = $helper;
+		$filtros['theme']= array(0=>'prueba',1,'Otro');
 
-		$form = $class -> createFormBuilder($data) -> add('name', 'text', array('required' => true))
-		 -> add('title', 'text', array('required' => true)) 
-		 -> add('descriptionMeta', 'text', array('required' => true)) 
+		$data->setPublished(true);
+
+		$form = $class -> createFormBuilder($data) 
+		 -> add('name', 'text', array('required' => true))
+		 -> add('descriptionMeta', 'textarea', array('required' => true)) 
 		 -> add('keywords', 'text', array('required' => true)) 
-		 -> add('content', 'hidden', array('data' => '', ))
+		 -> add('tags', 'text', array('required' => true))
+		 -> add('content', 'ckeditor', array(
+		 	'config' => array(
+		 		'toolbar' => array(
+		 			array(
+		 				'name'  => 'document',
+		 				'items' => array('Source', '-', 'Save', 'NewPage', 'DocProps', 'Preview', 'Print', '-', 'Templates'),
+		 				),
+		 			'/',
+		 			array(
+		 				'name'  => 'basicstyles',
+		 				'items' => array('Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript', '-', 'RemoveFormat'),
+		 				),
+		 			),
+		 		'uiColor' => '#ffffff',
+		 		),
+		 	))
 		 -> add('upperText', 'text', array('required' => true)) 
 		 -> add('lowerText', 'text', array('required' => true))
 		 -> add('file', 'file', array('required' => false)) 
-		 -> add('parentPage', 'choice', array('choices' => $filtros['parentPage'], 'required' => false, )) 
+
 		 -> add('theme', 'choice', array('choices' => $filtros['theme'], 'required' => true, )) 
-		 -> add('media', 'choice', array('choices' => $filtros['media'], 'required' => true, )) 
-		 -> add('background', 'choice', array('choices' => $filtros['background'], 'required' => true, )) 
+         -> add('background', 'entity', array(
+            'class' => 'ProjectUserBundle:Background',
+            'property' => 'name',
+            ))
 		 -> add('published', 'checkbox', array('label' => 'Publicado', 'required' => false, )) 
 		 -> getForm();
 
-		if ($class -> getRequest() -> isMethod('POST')) {
+        $form->handleRequest($request);
 
-			$contenido = $request -> request -> all();
-			$contenido = $contenido['page']['content'];
-
-			$form -> bind($class -> getRequest());
-			$em = $class -> getDoctrine() -> getManager();
-
-			if ($array['accion'] == 'nuevo') {
+        if ($form->isValid()) {
+        // perform some action, such as saving the task to the database
+        	if ($array['accion'] == 'nuevo') {
+        		$data->setDateCreated(new \DateTime('now'));
+        		$data->setPublished(1);
+        	    $data->setRank(0);
 				$data -> setSpecial(0);
-				$data -> setLang($locale);
-				$data -> setRank(UtilitiesAPI::getRank($locale, $class));
-				$data -> setSuspended(0);
 				$data -> setSpacer(0);
 				$data -> setTemplate(0);
-				$data -> setDescription('');
+				
+				$data -> setLang($locale);
+				$data -> setRank(UtilitiesAPI::getRank($locale, $class));
 				$data -> setDateCreated(new \DateTime());
-				$data -> setFriendlyName(UtilitiesAPI::getFriendlyName($data->getTitle(),$class));
-			} else {
-				$data -> setDateUpdated(new \DateTime());
-			}
-			
-			//$data -> setRemove(1);
-			$data -> setContent($contenido);
-			$data -> setIp($class -> container -> get('request') -> getClientIp());
-			$data -> setUser($array['user'] -> getId());
-			
 
-			if ($array['accion'] == 'nuevo')
-				$em -> persist($data);
+        	}
+        	$data -> setFriendlyName(UtilitiesAPI::getFriendlyName($data->getName(),$class));
 
-			$em -> flush();
-			
-			return $class -> redirect($class -> generateUrl('project_back_page_list'));
-			//if ($form -> isValid()) {}
-		}
+        	$data->setDateUpdated(new \DateTime('now'));
+        	$data->setUser($user);
+            $data -> setIp($class -> container -> get('request') -> getClientIp());
+
+        	$em->persist($data);
+        	$em->flush();
+
+        	return $class -> redirect($class -> generateUrl('project_back_page_list'));
+        }
+
 		$array['form'] = $form -> createView();
-		$array['contenido'] = $array['form'] -> getVars();
-		$array['contenido'] = $array['contenido']['value'] -> getContent();
-*/
+
 		return $class -> render('ProjectBackBundle:Page:new-edit.html.twig', $array);
 	}
 

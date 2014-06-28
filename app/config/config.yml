@@ -74,6 +74,13 @@ avalanche_imagine:
         profile:
             type:    thumbnail
             options: { size: [212, 212], mode: outbound }
+        gestion:
+            type:    thumbnail
+            options: { size: [62, 62], mode: outbound }
+        galeria:
+            type:    thumbnail
+            options: { size: [150, 150], mode: outbound }
+
 
 bazinga_geocoder: ~
 

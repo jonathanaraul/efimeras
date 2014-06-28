@@ -118,7 +118,7 @@ a, a:link, a:hover, a:active, a:visited{
 }
 
 .main-tab .main-row .cell-left, .cell-middle .middle-left{
-    background-color: #000;
+    #background-color: #000;
 }
 
 .main-tab .main-row .cell-right-sub, .black-top, .black-bottom, .black-middle-right, .black-top-left, .black-middle{
@@ -229,9 +229,14 @@ a, a:link, a:hover, a:active, a:visited{
 
 .menu{
     position: absolute;
-    top: 270px;
-    right: 70px;
+    top: 20px;
+    right: 0px;
     z-index: 140;
+    width: 152px;
+    background-color: #000;
+    opacity: 0.8;
+    padding: 17px;
+    text-align: left;
     /*margin: 270px 25px 0 0;*/
 }
 
@@ -297,7 +302,13 @@ a, a:link, a:hover, a:active, a:visited{
     width: 160px;
     height: 180px;
 }
-
+.news-cont{
+    background-color: #000;
+opacity: 0.8;
+padding: 17px;
+color: white;
+top: 68px;
+}
 .upper-text{
     width: 140px;
     height: 140px;
@@ -539,7 +550,7 @@ display: none;
     background: url('../images/site/background_txt.png') repeat center center;
 }
 
-.biography-cont, .news-cont{
+.biography-cont, {
     background-color: #e5e5e5;
 }
 

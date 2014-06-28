@@ -79,3 +79,9 @@ project_back_background_status:
     requirements:
       _method: POST
       _locale:  es|en
+project_back_background_home:
+    pattern:  /{_locale}/background/home
+    defaults: { _controller: ProjectBackBundle:Background:home }
+    requirements:
+      _method: POST
+      _locale:  es|en

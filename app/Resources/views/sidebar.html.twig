@@ -1,8 +1,8 @@
 <div class="sidebar" id="sidebar">
 	<div class="sidebar-shortcuts" id="sidebar-shortcuts">
 		<div class="sidebar-shortcuts-large" id="sidebar-shortcuts-large">
-			<button class="btn btn-small btn-success">
-				<i class="icon-signal"></i>
+			<button class="btn btn-small btn-success" onclick="document.location.href='{{path('project_front_homepage')}}';">
+				<i class="icon-home"></i>
 			</button>
 
 			<button class="btn btn-small btn-info">
@@ -40,32 +40,33 @@
 		</li>
 		{%else%}
 		<li {% if app.request.attributes.get('_route') == 'project_back_homepage' %}class="active"{%endif%}>
-			<a href="{{ path('project_back_homepage') }}"> <i class="icon-home"></i> <span class="menu-text"> Inicio </span> </a>
+			<a href="{{ path('project_back_homepage') }}"> <i class="icon-dashboard"></i> <span class="menu-text"> Panel de Control </span> </a>
 		</li>
-		<li>
+		<li {% if app.request.attributes.get('_route') == 'project_back_page_list' or  app.request.attributes.get('_route') == 'project_back_page_create' or  app.request.attributes.get('_route') == 'project_back_page_rank' %}class="open"{%endif%}>
 			<a href="#" class="dropdown-toggle"> <i class="icon-desktop"></i> <span class="menu-text"> Paginas </span> <b class="arrow icon-angle-down"></b> </a>
 
-			<ul class="submenu">
-				<li>
+			<ul class="submenu" {% if app.request.attributes.get('_route') == 'project_back_page_list' or  app.request.attributes.get('_route') == 'project_back_page_create' or  app.request.attributes.get('_route') == 'project_back_page_rank' %}  style="display: block;"{%endif%}>
+				<li {% if app.request.attributes.get('_route') == 'project_back_page_list' %}class="active"{%endif%}>
 					<a href="{{path('project_back_page_list')}}"> <i class="icon-double-angle-right"></i> Ver paginas </a>
 				</li>
-				<li>
+				<li {% if app.request.attributes.get('_route') == 'project_back_page_create' %}class="active"{%endif%}>
 					<a href="{{path('project_back_page_create')}}"> <i class="icon-double-angle-right"></i> Crear pagina</a>
-				</li>
+				</li {% if app.request.attributes.get('_route') == 'project_back_page_rank' %}class="active"{%endif%}>
 				<li>
 					<a href="{{path('project_back_page_rank')}}"> <i class="icon-double-angle-right"></i> Ordenar paginas</a>
 				</li>
 			</ul>
 		</li>
-		<li>
+		<li {% if app.request.attributes.get('_route') == 'project_back_background_list' or  app.request.attributes.get('_route') == 'project_back_background_create' %} class="open"{%endif%}>
 			<a href="#" class="dropdown-toggle"> <i class="icon-camera"></i> <span class="menu-text"> Backgrounds </span> <b class="arrow icon-angle-down"></b> </a>
 
-			<ul class="submenu">
-				<li>
+			<ul class="submenu" {% if app.request.attributes.get('_route') == 'project_back_background_list' or  app.request.attributes.get('_route') == 'project_back_background_create' %} style="display: block;"{%endif%}>
+
+				<li {% if app.request.attributes.get('_route') == 'project_back_background_list' %}class="active"{%endif%}>
 					<a href="{{path('project_back_background_list')}}"> <i class="icon-double-angle-right"></i> Ver backgrounds </a>
 				</li>
 
-				<li>
+				<li {% if app.request.attributes.get('_route') == 'project_back_background_create' %}class="active"{%endif%}>
 					<a href="{{path('project_back_background_create')}}"> <i class="icon-double-angle-right"></i> Subir background </a>
 				</li>
 			</ul>
@@ -82,7 +83,7 @@
 					<a href="form-wizard.html"> <i class="icon-double-angle-right"></i> Subir imagen </a>
 				</li>
 			</ul>
-		</li>#}
+		</li>
 		<li>
 			<a href="#" class="dropdown-toggle"> <i class="icon-download"></i> <span class="menu-text"> Archivos </span> <b class="arrow icon-angle-down"></b> </a>
 
@@ -95,7 +96,7 @@
 					<a href="form-wizard.html"> <i class="icon-double-angle-right"></i> Subir archivo </a>
 				</li>
 			</ul>
-		</li>
+		</li>#}
 		<li {% if app.request.attributes.get('_route') == 'fos_user_profile_show' %}class="active"{%endif%}>
 			<a href="{{ path('fos_user_profile_show') }}"> <i class="icon-eye-open"></i> <span class="menu-text"> Mi Perfil </span> </a>
 		</li>

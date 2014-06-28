@@ -45,7 +45,7 @@ class UtilitiesAPI extends Controller {
         $qbCount = $em
 			->createQueryBuilder()
 			->select('count(g)')
-			->from('ProyectoPrincipalBundle:CmsPage','g')
+			->from('ProjectUserBundle:Page','g')
 			->where("g.lang = '".$locale."'")	
         ;
         

@@ -2,6 +2,12 @@
 
 {% block pagesScriptsBottom %}
 <script ></script>
+<script src="{{asset('admin/js/project/listados.js')}}"></script>
+<script type="text/javascript">
+        var direccionEstatus = "{{path('project_back_page_status')}}";
+        var direccionBorrar = "{{path('project_back_page_delete')}}";
+        var direccionEditar = "{{path('project_back_page_edit')}}";
+</script>
 <script src="{{asset('admin/js/helpers/grafico-torta.js')}}"></script>
 <script src="{{asset('admin/js/helpers/grafico-dominios.js')}}"></script>
 <script src="{{asset('admin/js/helpers/widget-reciente.js')}}"></script>
@@ -20,6 +26,15 @@
 		<div class="page-content">
 
 			{# include 'ProjectBackBundle:Helpers:page-header.html.twig'  with {'titulo': 'Panel de control','subtitulo':'Vista de elementos'}  #}
+			<div class="page-header position-relative">
+				<h1>
+					Páginas
+					<small>
+						<i class="icon-double-angle-right"></i>
+						listado
+					</small>
+				</h1>
+			</div><!--/.page-header-->
 
 			<div class="row-fluid">
 				<div class="span12">
@@ -36,68 +51,85 @@
 										<th>{{ knp_pagination_sortable(pagination, 'Nombre', 'o.name') }}</th>
 										<th class="hidden-480">{{ knp_pagination_sortable(pagination, 'Nombre Amigable', 'o.friendlyName') }}</th>
 										<th class="hidden-480">{{ knp_pagination_sortable(pagination, 'Background', 'o.background') }}</th>
-										<th class="hidden-480">{{ knp_pagination_sortable(pagination, 'Media', 'o.media') }}</th>
+										<th class="hidden-phone" style="width: 136px;"><i class="icon-time bigger-110 hidden-phone"></i> {{ knp_pagination_sortable(pagination, 'Creado', 'o.dateCreated') }} </th>
 
-										<th class="hidden-phone" style="width: 101px;"><i class="icon-time bigger-110 hidden-phone"></i> {{ knp_pagination_sortable(pagination, 'Creado', 'o.dateCreated') }} </th>
+										<th class="hidden-phone" style="width: 136px;"><i class="icon-time bigger-110 hidden-phone"></i> {{ knp_pagination_sortable(pagination, 'Actualizado', 'o.dateUpdated') }} </th>
 
-										<th class="hidden-phone" style="width: 101px;"><i class="icon-time bigger-110 hidden-phone"></i> {{ knp_pagination_sortable(pagination, 'Actualizado', 'o.dateUpdated') }} </th>
-
-										<th class="hidden-480">{{ knp_pagination_sortable(pagination, 'Publicado', 'o.published') }}</th>
+										<th class="hidden-480">{{ knp_pagination_sortable(pagination, 'Estatus', 'o.published') }}</th>
 										<th></th>
 									</tr>
 								</thead>
 								<tbody>
 									{%for element in pagination %}
-									<tr>
+									<tr id="fila_{{element.id}}">
 										<td >{{element.id}}</td>
 										<td >{{element.name}}</td>
 										<td >{{element.friendlyName}}</td>
 
-										<td width="79" height="79"><a href="#">{%if element.background is not null%}<img src="{{ element.background.getWebPath | apply_filter('gestion') }}" width="80" height="80">{%endif%}</a></br>{{element.background.name|title}}</td>
+										<td width="79" height="79">
+											{%if element.background is not null%}
+											<a href="{{asset(''~ element.background.getWebPath ~'')}}">
+												<img src="{{ element.background.getWebPath | apply_filter('gestion') }}" width="80" height="80">
+											</a></br>{{element.background.name|title}}
+											{%endif%}
+										</td>
 
-										<td width="79" height="79"><a href="#">{%if element.media is not null%}<img src="{{ element.media.getWebPath | apply_filter('gestion') }}" width="80" height="80">{%endif%}</a></br>{{element.media.name|title}}</td>
 
 										<td class="hidden-phone">{{element.dateCreated.format('d/m/Y H:i:s')}}</td>
 										<td class="hidden-phone">{{element.dateUpdated.format('d/m/Y H:i:s')}}</td>
 
-										<td class="hidden-480"><span class="label label-{%if element.published%}success{%else%}warning{%endif%}">{%if element.published%}Publicado{%else%}Despublicado{%endif%}</span></td>
+										<td class="hidden-480">
+											<span class="label label-success" {%if element.published==false%}style="display:none"{%endif%} id="publicado_{{element.id}}">Publicado</span>
+
+											<span class="label label-warning" {%if element.published%}style="display:none"{%endif%} id="despublicado_{{element.id}}">Despublicado</span>
+
+										</td>
 
 										<td>
-										<div class="hidden-phone visible-desktop btn-group">
-											<button class="btn btn-mini btn-success">
-												<i class="icon-ok bigger-120"></i>
-											</button>
-
-											<button class="btn btn-mini btn-info">
-												<i class="icon-edit bigger-120"></i>
-											</button>
-
-											<button class="btn btn-mini btn-danger">
-												<i class="icon-trash bigger-120"></i>
-											</button>
-										</div>
-										<div class="hidden-desktop visible-phone">
-											<div class="inline position-relative">
-												<button class="btn btn-minier btn-primary dropdown-toggle" data-toggle="dropdown">
-													<i class="icon-cog icon-only bigger-110"></i>
+											<div class="hidden-phone visible-desktop btn-group" >
+												<button class="btn btn-mini btn-success cambiar-estatus" objeto="{{element.id}}" tarea="{%if element.published%}0{%else%}1{%endif%}">
+													<i class="icon-exchange bigger-120"></i>
 												</button>
-												<ul class="dropdown-menu dropdown-icon-only dropdown-yellow pull-right dropdown-caret dropdown-close">
-													<li>
-														<a href="#" class="tooltip-info" data-rel="tooltip" title="View"> <span class="blue"> <i class="icon-zoom-in bigger-120"></i> </span> </a>
-													</li>
-													<li>
-														<a href="#" class="tooltip-success" data-rel="tooltip" title="Edit"> <span class="green"> <i class="icon-edit bigger-120"></i> </span> </a>
-													</li>
-													<li>
-														<a href="#" class="tooltip-error" data-rel="tooltip" title="Delete"> <span class="red"> <i class="icon-trash bigger-120"></i> </span> </a>
-													</li>
-												</ul>
+
+												<button class="btn btn-mini btn-info editar" objeto="{{element.id}}">
+													<i class="icon-pencil bigger-120"></i>
+												</button>
+
+												<button class="btn btn-mini btn-danger borrar" objeto="{{element.id}}">
+													<i class="icon-remove bigger-120"></i>
+												</button>
 											</div>
-										</div></td>
-									</tr>
-									{%endfor%}
-								</tbody>
-							</table>
+											<div class="hidden-desktop visible-phone">
+												<div class="inline position-relative">
+													<button class="btn btn-minier btn-primary dropdown-toggle" data-toggle="dropdown">
+														<i class="icon-cog icon-only bigger-110"></i>
+													</button>
+													<ul class="dropdown-menu dropdown-icon-only dropdown-yellow pull-right dropdown-caret dropdown-close">
+														<li>
+															<a href="#" class="tooltip-info cambiar-estatus" data-rel="tooltip" title="View" objeto="{{element.id}}" tarea="{%if element.published%}0{%else%}1{%endif%}"
+															> <span class="blue"> <i class="icon-exchange bigger-120"></i> </span> </a>
+														</li>
+														<li>
+															<a href="#" class="tooltip-success editar" data-rel="tooltip" title="Edit" objeto="{{element.id}}"> <span class="green"> <i class="icon-pencil bigger-120"></i> </span> </a>
+														</li>
+														<li>
+															<a href="#" class="tooltip-error borrar" data-rel="tooltip" title="Delete" objeto="{{element.id}}"> <span class="red"> <i class="icon-remove bigger-120"></i> </span> </a>
+														</li>
+
+
+
+
+
+
+
+
+													</ul>
+												</div>
+											</div></td>
+										</tr>
+												{%endfor%}
+											</tbody>
+										</table>
 							<div class="row-fluid">
 								<div class="span6">
 									<div class="dataTables_info" id="sample-table-2_info">
