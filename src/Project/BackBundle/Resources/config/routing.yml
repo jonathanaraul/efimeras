@@ -85,3 +85,20 @@ project_back_background_home:
     requirements:
       _method: POST
       _locale:  es|en
+
+project_back_theme_list:
+    pattern:  /{_locale}/theme/list/
+    defaults: { _controller: ProjectBackBundle:Theme:list }
+    requirements:
+        _locale:  es|en
+project_back_theme_create:
+    pattern:  /{_locale}/theme/create
+    defaults: { _controller: ProjectBackBundle:Theme:create }
+    requirements:
+        _locale:  es|en
+
+project_back_reservation_list:
+    pattern:  /{_locale}/reservation/list/
+    defaults: { _controller: ProjectBackBundle:Reservation:list }
+    requirements:
+        _locale:  es|en

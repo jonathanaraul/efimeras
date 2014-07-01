@@ -1,7 +1,21 @@
 project_front_homepage:
     pattern:  /
     defaults: { _controller: ProjectFrontBundle:Default:index }
-
+project_front_tag:
+    pattern:  /{_locale}/tag/{tag}
+    defaults: { _controller: ProjectFrontBundle:Default:tag }
+    requirements:
+        _locale:  es|en
+project_front_reservation:
+    pattern:  /{_locale}/reservation/{id}
+    defaults: { _controller: ProjectFrontBundle:Default:reservation }
+    requirements:
+        _locale:  es|en
+project_front_search:
+    pattern:  /{_locale}/search/{term}
+    defaults: { _controller: ProjectFrontBundle:Default:search, term: ''}
+    requirements:
+        _locale:  es|en
 project_front_page:
     pattern:  /{_locale}/{id}/{friendlyname}
     defaults: { _controller: ProjectFrontBundle:Default:page }

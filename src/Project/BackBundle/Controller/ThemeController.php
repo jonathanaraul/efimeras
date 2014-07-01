@@ -14,24 +14,24 @@ use JMS\SecurityExtraBundle\Annotation\Secure;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 use Symfony\Component\Security\Core\Util\StringUtils;
 use Project\UserBundle\Entity\Usuario;
-use Project\UserBundle\Entity\Page;
+use Project\UserBundle\Entity\Theme;
 
 
-class PageController extends Controller {
+class ThemeController extends Controller {
 
 	public function listAction(Request $request) {
 		
 		$em = $this->getDoctrine()->getManager();
 
-		$config = UtilitiesAPI::getConfig('pages',$this);
-		$url = $this -> generateUrl('project_back_page_list');
-		$firstArray = UtilitiesAPI::getDefaultContent('PAGINAS', 'Mostrar Información', $this);
+		$config = UtilitiesAPI::getConfig('theme',$this);
+		$url = $this -> generateUrl('project_back_theme_list');
+		$firstArray = UtilitiesAPI::getDefaultContent('Tema', 'Mostrar Información', $this);
 
 		$locale = UtilitiesAPI::getLocale($this);
 		$form = null;		
 		$filtros = null;
 	/*
-		$objects = $this -> getDoctrine() -> getRepository('ProjectUserBundle:Page') -> findAll();
+		$objects = $this -> getDoctrine() -> getRepository('ProjectUserBundle:Background') -> findAll();
 		$themes = $this -> getDoctrine() -> getRepository('ProjectUserBundle:CmsTheme') -> findAll();
 		$filtros['theme'] = array();
 		$filtros['parentPage'] = array();
@@ -41,7 +41,7 @@ class PageController extends Controller {
 		$filtros['parentPage']= UtilitiesAPI::getFilter('Page',$this);
 
 
-		$data = new Page();
+		$data = new Background();
 		$form = $this -> createFormBuilder($data) 
 		-> add('name', 'text', array('required' => false)) 
 		-> add('special','choice', array('choices' => $filtros['published'], 'required' => false, ))
@@ -56,7 +56,7 @@ class PageController extends Controller {
 
 			if ($form -> isValid()) {
 
-				$dql = "SELECT n FROM ProjectUserBundle:Page n ";
+				$dql = "SELECT n FROM ProjectUserBundle:Background n ";
 				$where = false;
 
 				if (is_numeric($data -> getSpecial()))  {
@@ -132,10 +132,8 @@ class PageController extends Controller {
 		}
 		//////////////////////////////////////////////////////////////////////////////////////////////////
 		else {*/
-			$dql = "SELECT n FROM ProjectUserBundle:Page n ";
-			$dql .= 'WHERE n.lang = :lang ';
+			$dql = "SELECT n FROM ProjectUserBundle:Theme n ";
 			$query = $em -> createQuery($dql);
-			$query -> setParameter('lang', $locale);
 		//}
 
 		$paginator = $this -> get('knp_paginator');
@@ -146,169 +144,74 @@ class PageController extends Controller {
 
 		for ($i = 0; $i < count($objects); $i++) {
 			$auxiliar[$i]['id'] = $objects[$i] -> getId();
-			$auxiliar[$i]['spacer'] = $objects[$i] -> getSpacer();
-			$auxiliar[$i]['special'] = $objects[$i] -> getSpecial();
-			$auxiliar[$i]['friendlyName'] = $objects[$i] -> getFriendlyName();
 			$auxiliar[$i]['name'] = $objects[$i] -> getName();
-			$auxiliar[$i]['published'] = $objects[$i] -> getPublished();
-			$auxiliar[$i]['background'] = '-';
-			$auxiliar[$i]['theme'] = $objects[$i] -> getTheme();
-			$auxiliar[$i]['media'] = '-';
-			$auxiliar[$i]['dateCreated'] = $objects[$i] -> getDateCreated();
-			$auxiliar[$i]['dateUpdated'] = $objects[$i] -> getDateUpdated();
+			$auxiliar[$i]['color'] = $objects[$i] -> getColor();
+			$auxiliar[$i]['description'] = $objects[$i] -> getDescription();
 		}
 		$objects = $auxiliar;
 		$secondArray = array('pagination' => $pagination, 'filtros' => $filtros, 'objects' => $objects, 'url' => $url);
 		//$secondArray['form'] =  $form -> createView();
 		
 		$array = array_merge($firstArray, $secondArray);
-		return $this -> render('ProjectBackBundle:Page:list.html.twig', $array);
+		return $this -> render('ProjectBackBundle:Theme:list.html.twig', $array);
 	}
 
 
 	public function createAction(Request $request) {
-		$firstArray = UtilitiesAPI::getDefaultContent('PAGINAS', 'Nueva Pagina', $this);
+		$firstArray = UtilitiesAPI::getDefaultContent('Tema', 'Nueva Pagina', $this);
 		$secondArray = array('accion' => 'nuevo');
-		$secondArray['url'] = $this -> generateUrl('project_back_page_create');
-		$secondArray['data'] = new Page();
+		$secondArray['url'] = $this -> generateUrl('project_back_theme_create');
+		$secondArray['data'] = new Theme();
 
 		$array = array_merge($firstArray, $secondArray);
-		return PageController::procesar($array, $request, $this);
+		return ThemeController::procesar($array, $request, $this);
 	}
 
 	public function editAction($id, Request $request) {
 
 		$firstArray = UtilitiesAPI::getDefaultContent('PAGINAS', 'Editar Información', $this);
 		$secondArray = array('accion' => 'edicion');
-		$secondArray['url'] = $this -> generateUrl('project_back_page_edit', array('id' => $id));
+		$secondArray['url'] = $this -> generateUrl('project_back_theme_edit', array('id' => $id));
 		$secondArray['id'] = $id;
 
-		$secondArray['data'] = $this -> getDoctrine() -> getRepository('ProjectUserBundle:Page') -> find($id);
+		$secondArray['data'] = $this -> getDoctrine() -> getRepository('ProjectUserBundle:Theme') -> find($id);
+
 		if (!$secondArray['data']) {
 			throw $this -> createNotFoundException('La pagina que intenta e no existe ');
 		}
 		
 		$array = array_merge($firstArray, $secondArray);
-		return PageController::procesar($array, $request, $this);
+		return ThemeController::procesar($array, $request, $this);
 	}
 
 	public static function procesar($array, Request $request, $class) {
 			
 		$locale = UtilitiesAPI::getLocale($class);
 		$data = $array['data'];
-		$em = $class->getDoctrine()->getManager();
+		$filtros = array();
         $userManager = $class->container->get('fos_user.user_manager');
         $user = $class->getUser();
-		$filtros = array();
-		$filtros['theme']= array(0=>'prueba',1,'Otro');
-
-		$data->setPublished(true);
+        $em = $class->getDoctrine()->getManager();
 
 		$form = $class -> createFormBuilder($data) 
 		 -> add('name', 'text', array('required' => true))
-		 -> add('descriptionMeta', 'textarea', array('required' => true)) 
-		 -> add('keywords', 'text', array('required' => true)) 
-		 -> add('tags', 'text', array('required' => true))
-		 -> add('content', 'ckeditor', array(
-		 	'config' => array(
-		 		'toolbar' => array(
-		 			array(
-		 				'name'  => 'document',
-		 				'items' => array('Source', '-', 'Save', 'NewPage', 'DocProps', 'Preview', 'Print', '-', 'Templates'),
-		 				),
-		 			'/',
-		 			array(
-		 				'name'  => 'basicstyles',
-		 				'items' => array('Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript', '-', 'RemoveFormat'),
-		 				),
-		 			),
-		 		'uiColor' => '#ffffff',
-		 		),
-		 	))
-		 -> add('upperText', 'text', array('required' => true)) 
-		 -> add('lowerText', 'text', array('required' => true))
-		 -> add('file', 'file', array('required' => false)) 
-         -> add('theme', 'entity', array(
-            'class' => 'ProjectUserBundle:Theme',
-            'property' => 'name',
-            ))
-         -> add('background', 'entity', array(
-            'class' => 'ProjectUserBundle:Background',
-            'property' => 'name',
-            ))
-		 -> add('published', 'checkbox', array('label' => 'Publicado', 'required' => false, )) 
-		 -> add('reservacion', 'checkbox', array('label' => 'Reservas', 'required' => false, )) 
+		 -> add('color', 'text', array('required' => true))
+		 -> add('description', 'textarea', array('required' => true))
 		 -> getForm();
 
         $form->handleRequest($request);
 
         if ($form->isValid()) {
         // perform some action, such as saving the task to the database
-        	if ($array['accion'] == 'nuevo') {
-        		$data->setDateCreated(new \DateTime('now'));
-        		$data->setPublished(1);
-        	    $data->setRank(0);
-				$data -> setSpecial(0);
-				$data -> setSpacer(0);
-				$data -> setTemplate(0);
-				
-				$data -> setLang($locale);
-				$data -> setRank(UtilitiesAPI::getRank($locale, $class));
-				$data -> setDateCreated(new \DateTime());
-
-        	}
-        	$data -> setFriendlyName(UtilitiesAPI::getFriendlyName($data->getName(),$class));
-
-        	$data->setDateUpdated(new \DateTime('now'));
-        	$data->setUser($user);
-            $data -> setIp($class -> container -> get('request') -> getClientIp());
-
-        	$em->persist($data);
+            $em -> persist($data);
         	$em->flush();
 
-        	return $class -> redirect($class -> generateUrl('project_back_page_list'));
+        	return $class -> redirect($class -> generateUrl('project_back_theme_list'));
         }
 
 		$array['form'] = $form -> createView();
 
-		return $class -> render('ProjectBackBundle:Page:new-edit.html.twig', $array);
-	}
-
-	public function rankAction() {
-		$firstArray = UtilitiesAPI::getDefaultContent('PAGINAS', 'Mostrar Información', $this);
-
-		$em = $this -> getDoctrine() -> getManager();
-		$dql = "SELECT n FROM ProjectUserBundle:Page n WHERE n.id != 3 ORDER BY n.rank ASC";
-		
-		$query = $em -> createQuery($dql);
-		$objects = $query -> getResult();
-		$secondArray = array('objects' => $objects);
-		$array = array_merge($firstArray, $secondArray);
-
-		return $this -> render('ProjectBackBundle:Page:Rank.html.twig', $array);
-	}
-
-	public function rankPostAction() {
-
-		$peticion = $this -> getRequest();
-		$doctrine = $this -> getDoctrine();
-		$post = $peticion -> request;
-		//INICIALIZAR VARIABLES
-		$order = $post -> get("order");
-		$em = $this -> getDoctrine() -> getManager();
-		for ($i = 0; $i < count($order); $i++) {
-
-			$id = intval($order[$i]);
-			$object = $em -> getRepository('ProjectUserBundle:Page') -> find($id);
-			$object -> setRank($i);
-			$em -> flush();
-
-		}
-
-		$estado = true;
-		$respuesta = new response(json_encode(array('estado' => $estado)));
-		$respuesta -> headers -> set('content_type', 'aplication/json');
-		return $respuesta;
+		return $class -> render('ProjectBackBundle:Theme:new-edit.html.twig', $array);
 	}
 
 	public function deleteAction() {
@@ -320,7 +223,10 @@ class PageController extends Controller {
 
 		$id = $post -> get("id");
 		$em = $this -> getDoctrine() -> getManager();
-		$object = $em -> getRepository('ProjectUserBundle:Page') -> find($id);
+
+
+		//Remover original
+		$object = $em -> getRepository('ProjectUserBundle:Theme') -> find($id);
 		$em -> remove($object);
 		$em -> flush();
 
@@ -341,9 +247,10 @@ class PageController extends Controller {
 		$tarea = intval($post -> get("tarea"));
 
 		$em = $this -> getDoctrine() -> getManager();
-		$object = $em -> getRepository('ProjectUserBundle:Page') -> find($id);
+		$object = $em -> getRepository('ProjectUserBundle:Theme') -> find($id);
 		$object -> setPublished($tarea);
 		$em -> flush();
+
 
 		$estado = true;
 		$respuesta = new response(json_encode(array('estado' => $estado)));

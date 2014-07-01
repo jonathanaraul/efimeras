@@ -23,11 +23,18 @@
 <script src="{{asset('admin/js/bootstrap-wysiwyg.min.js')}}"></script>
 <script src="{{asset('admin/js/bootbox.min.js')}}"></script>
 
+
+
 <script type="text/javascript">
 	if ("ontouchend" in document)
 		document.write("<script src='assets/js/jquery.mobile.custom.min.js'>" + "<" + "/script>");
 </script>
+<script type="text/javascript">
+				$('#form_color').colorpicker();
+				$('#simple-colorpicker-1').ace_colorpicker();
+</script>
 
+			
 {%endblock%}
 
 {% block pageContent  %}
@@ -41,7 +48,7 @@
 		{# include 'ProjectBackBundle:Architecture:breadcrumb.html.twig'  with {'clase': 'gris'} #}
 		<div class="page-content">
 			<div class="page-header position-relative">
-				<h1> Fondos <small> <i class="icon-double-angle-right"></i> {%if accion=='nuevo'%}Subir nuevo{%else%}Editar{%endif%} </small></h1>
+				<h1> Temas <small> <i class="icon-double-angle-right"></i> {%if accion=='nuevo'%}Crear nuevo{%else%}Editar{%endif%} </small></h1>
 			</div><!--/.page-header-->
 
 			<form action="{{ url }}" {{ form_enctype(form) }} method="POST" class="form-horizontal">
@@ -55,23 +62,17 @@
 					</div>
 				</div>
 				<div class="control-group">
-					<label class="control-label" for="form-field-1">Archivo</label>
+					<label class="control-label" for="form-field-1">Color</label>
 
 					<div class="controls">
-						{{ form_widget(form.file, { 'attr': {'accept':'image/*'} }) }}
+						{{ form_widget(form.color, { 'attr': {'placeholder': 'Color'} }) }}
 					</div>
 				</div>
 				<div class="control-group">
-					<label class="control-label">En el inicio</label>
+					<label class="control-label" for="form-field-1">Descripcion</label>
+
 					<div class="controls">
-						<div class="row-fluid">
-							<div class="span3">
-								<label>
-									{{ form_widget(form.home, { 'attr': {'class':'ace-switch'} }) }}
-									<span class="lbl"></span>
-								</label>
-							</div>
-						</div>
+						{{ form_widget(form.description) }}
 					</div>
 				</div>
 				<div class="form-actions">

@@ -1,0 +1,88 @@
+<?php
+
+namespace Project\UserBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Reservation
+ *
+ * @ORM\Table(name="reservation")
+ * @ORM\Entity
+ */
+class Reservation
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var \Page
+     *
+     * @ORM\ManyToOne(targetEntity="Page")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="page", referencedColumnName="id")
+     * })
+     */
+    private $page;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="name", type="string", length=300, nullable=false)
+     */
+    private $name;
+	
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="phone", type="string", length=255, nullable=false)
+     */
+    private $phone;
+	
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="email", type="string", length=255, nullable=false)
+     */
+    private $email;
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="rdate", type="string", length=255, nullable=false)
+     */
+    private $rdate;
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date", type="datetime", nullable=false)
+     */
+    private $date;
+	
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="checked", type="integer", nullable=false)
+     */
+     private $checked;
+	 
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="lang", type="integer", nullable=false)
+     */
+    private $lang;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="tickets", type="integer", nullable=false)
+     */
+    private $tickets;
+	
+}

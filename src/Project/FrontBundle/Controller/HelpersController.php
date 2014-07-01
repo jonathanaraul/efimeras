@@ -25,7 +25,8 @@ class HelpersController extends Controller
 		$query = $em -> createQuery('SELECT d
     								 FROM ProjectUserBundle:Page d
    	 								 WHERE d.lang      = :locale and
-   	 								       d.published = :published
+   	 								       d.published = :published and
+                                           d.special = 0
     								 ORDER BY d.rank ASC') 
     		   -> setParameter('locale', $locale)
 			   -> setParameter('published', 1);
@@ -43,7 +44,8 @@ class HelpersController extends Controller
 		$query = $em -> createQuery('SELECT d
     								 FROM ProjectUserBundle:Page d
    	 								 WHERE d.lang      = :locale and
-   	 								       d.published = :published
+   	 								       d.published = :published  and
+                                           d.special = 0
     								 ORDER BY d.rank ASC') 
     		   -> setParameter('locale', $locale)
 			   -> setParameter('published', 1);

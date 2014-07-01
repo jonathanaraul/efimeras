@@ -21,12 +21,17 @@ var images = ["{{ asset(''~ page.getBackground.getWebPath ~'') }}"];
 						<td  width="100%" valign="top" colspan="3"> {{page.content|raw}}
 
 						</br>
+						{%if page.reservacion %}
+								<div class="boton-listado boton-reservaciones" style="margin-top: 14px;margin-right: 0px;" >
+									<a href="{{path('project_front_reservation',{'id': page.id})}}" target="_blank">{% trans %}Reservar{% endtrans %}</a>
+								</div>
+						{%endif%}
 						{%if page.path is not null%}
 								<div class="boton-listado boton-reservaciones" style="margin-top: 14px;margin-right: 0px;" >
 									<a href="{{ asset(''~ page.getWebPath ~'') }}" target="_blank">{% trans %}Ver Adjunto{% endtrans %}</a>
 								</div>
 						{%endif%}
-						<p>Tags: {{page.tags}}
+						<p>Tags: {%for element in tags%}<b ><a href="{{path('project_front_tag',{'tag': element})}}" style="color:{{page.theme.color}}">{{element}}</a></b> |{%endfor%}
 						</p>
 						</br>
 						 </td>
@@ -42,18 +47,7 @@ var images = ["{{ asset(''~ page.getBackground.getWebPath ~'') }}"];
 			{{page.name|title}}
 		</div>
 	</div>#}
-	<div class="capa-baja-logo">
-		<div>
-			<span class="copyrighted">Copyrights © Efimeras</span>
-		</div>
-		<div>
-			<p>
-				<a href="http://realego.es/" target="_blank">
-					<img src="{{asset('design.png')}}">
-				</a>
-			</p>
-		</div>
-	</div>
+	{% include 'ProjectFrontBundle:Helpers:inferior.html.twig' %}
 </div>
 {%endblock%}
 

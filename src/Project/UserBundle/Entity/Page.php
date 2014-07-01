@@ -24,14 +24,6 @@ class Page
      */
     private $id;
 
-
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="theme", type="integer", nullable=false)
-     */
-    private $theme;
-
     /**
      * @var integer
      *
@@ -171,6 +163,16 @@ class Page
      * })
      */
     private $background;
+
+    /**
+     * @var \Theme
+     *
+     * @ORM\ManyToOne(targetEntity="Theme")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="theme", referencedColumnName="id", nullable=false)
+     * })
+     */
+    private $theme;
 	
     /**
      * @var integer
@@ -178,6 +180,13 @@ class Page
      * @ORM\Column(name="lang", type="integer", nullable=false)
      */
     private $lang;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="reservacion", type="boolean", nullable=true)
+     */
+    private $reservacion;
 
 	private $file;
 	private $temp;
@@ -214,30 +223,6 @@ class Page
     public function getRemove()
     {
         return $this->remove;
-    }
-
-
-    /**
-     * Set theme
-     *
-     * @param integer $theme
-     * @return Page
-     */
-    public function setTheme($theme)
-    {
-        $this->theme = $theme;
-    
-        return $this;
-    }
-
-    /**
-     * Get theme
-     *
-     * @return integer 
-     */
-    public function getTheme()
-    {
-        return $this->theme;
     }
 
     /**
@@ -792,5 +777,51 @@ class Page
     public function getTags()
     {
         return $this->tags;
+    }
+
+    /**
+     * Set reservacion
+     *
+     * @param boolean $reservacion
+     * @return Page
+     */
+    public function setReservacion($reservacion)
+    {
+        $this->reservacion = $reservacion;
+
+        return $this;
+    }
+
+    /**
+     * Get reservacion
+     *
+     * @return boolean 
+     */
+    public function getReservacion()
+    {
+        return $this->reservacion;
+    }
+
+    /**
+     * Set theme
+     *
+     * @param \Project\UserBundle\Entity\Theme $theme
+     * @return Page
+     */
+    public function setTheme(\Project\UserBundle\Entity\Theme $theme)
+    {
+        $this->theme = $theme;
+
+        return $this;
+    }
+
+    /**
+     * Get theme
+     *
+     * @return \Project\UserBundle\Entity\Theme 
+     */
+    public function getTheme()
+    {
+        return $this->theme;
     }
 }

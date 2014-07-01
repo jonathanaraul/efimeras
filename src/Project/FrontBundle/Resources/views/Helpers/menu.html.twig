@@ -10,7 +10,7 @@
 			<div class="menu-element">
 				<a href="{{path('project_front_page',{'id': object.id, 'friendlyname' : object.friendlyName})}}">{{object.name|upper}}</a>
 				{%if idpage == object.id%}
-					<hr class="men-sel" style="background-color: {{theme}}">
+					<hr class="men-sel" style="background-color: {{object.theme.color}}">
 				{%endif%}
 			</div>
 		{%else%}
@@ -22,6 +22,9 @@
 	
 		<div class="designed-menu">
 			<div class="designed" style="bottom: 0px;">
+				<div style="margin-bottom: 8px;">
+					<span class="search"><input type="text" placeholder="buscar..." style="width: 93px;"  id="termino"><button style="cursor:pointer" id="buscarTermino">Buscar</button></span>
+				</div>
 				<div>
 					<span class="copyrighted">Copyrights © Efimeras</span>
 				</div>

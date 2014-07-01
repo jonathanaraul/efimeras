@@ -51,26 +51,44 @@
 				</li>
 				<li {% if app.request.attributes.get('_route') == 'project_back_page_create' %}class="active"{%endif%}>
 					<a href="{{path('project_back_page_create')}}"> <i class="icon-double-angle-right"></i> Crear pagina</a>
-				</li {% if app.request.attributes.get('_route') == 'project_back_page_rank' %}class="active"{%endif%}>
-				<li>
+				</li>
+				<li  {% if app.request.attributes.get('_route') == 'project_back_page_rank' %}class="active"{%endif%}>
 					<a href="{{path('project_back_page_rank')}}"> <i class="icon-double-angle-right"></i> Ordenar paginas</a>
 				</li>
 			</ul>
 		</li>
 		<li {% if app.request.attributes.get('_route') == 'project_back_background_list' or  app.request.attributes.get('_route') == 'project_back_background_create' %} class="open"{%endif%}>
-			<a href="#" class="dropdown-toggle"> <i class="icon-camera"></i> <span class="menu-text"> Backgrounds </span> <b class="arrow icon-angle-down"></b> </a>
+			<a href="#" class="dropdown-toggle"> <i class="icon-camera"></i> <span class="menu-text"> Fondos </span> <b class="arrow icon-angle-down"></b> </a>
 
 			<ul class="submenu" {% if app.request.attributes.get('_route') == 'project_back_background_list' or  app.request.attributes.get('_route') == 'project_back_background_create' %} style="display: block;"{%endif%}>
 
 				<li {% if app.request.attributes.get('_route') == 'project_back_background_list' %}class="active"{%endif%}>
-					<a href="{{path('project_back_background_list')}}"> <i class="icon-double-angle-right"></i> Ver backgrounds </a>
+					<a href="{{path('project_back_background_list')}}"> <i class="icon-double-angle-right"></i> Ver fondo </a>
 				</li>
 
 				<li {% if app.request.attributes.get('_route') == 'project_back_background_create' %}class="active"{%endif%}>
-					<a href="{{path('project_back_background_create')}}"> <i class="icon-double-angle-right"></i> Subir background </a>
+					<a href="{{path('project_back_background_create')}}"> <i class="icon-double-angle-right"></i> Subir fondo </a>
 				</li>
 			</ul>
 		</li>
+		<li {% if app.request.attributes.get('_route') == 'project_back_theme_list' or  app.request.attributes.get('_route') == 'project_back_theme_create' %} class="open"{%endif%}>
+			<a href="#" class="dropdown-toggle"> <i class="icon-leaf"></i> <span class="menu-text"> Temas </span> <b class="arrow icon-angle-down"></b> </a>
+
+			<ul class="submenu" {% if app.request.attributes.get('_route') == 'project_back_theme_list' or  app.request.attributes.get('_route') == 'project_back_theme_create' %} style="display: block;"{%endif%}>
+
+				<li {% if app.request.attributes.get('_route') == 'project_back_theme_list' %}class="active"{%endif%}>
+					<a href="{{path('project_back_theme_list')}}"> <i class="icon-double-angle-right"></i> Ver temas </a>
+				</li>
+
+				<li {% if app.request.attributes.get('_route') == 'project_back_theme_create' %}class="active"{%endif%}>
+					<a href="{{path('project_back_theme_create')}}"> <i class="icon-double-angle-right"></i> Crear tema </a>
+				</li>
+			</ul>
+		</li>
+		<li {% if app.request.attributes.get('_route') == 'project_back_reservation_list' %}class="active"{%endif%}>
+			<a href="{{ path('project_back_reservation_list') }}" > <i class="icon-heart-empty"></i> <span class="menu-text"> Reservas </span> </a>
+		</li>
+
 		{#<li>
 			<a href="#" class="dropdown-toggle"> <i class="icon-camera-retro"></i> <span class="menu-text"> Imagenes </span> <b class="arrow icon-angle-down"></b> </a>
 
