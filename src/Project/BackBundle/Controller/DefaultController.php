@@ -2,6 +2,7 @@
 
 namespace Project\BackBundle\Controller;
 
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
@@ -9,6 +10,9 @@ use Doctrine\ORM\EntityRepository;
 
 class DefaultController extends Controller
 {
+    /**
+     * @Route("/")
+     */
     public function indexAction(Request $request)
     {
         $user = $this->getUser();
@@ -18,21 +22,20 @@ class DefaultController extends Controller
 
         $firstArray = array();
         
-        $query = $em->createQuery('SELECT COUNT(u.id) FROM ProjectUserBundle:User u');
-        $firstArray['usuariosRegistrados'] = $query->getSingleScalarResult();
+        $firstArray['usuariosRegistrados'] = $em->getRepository('ProjectUserBundle:User')
+               ->getAllLength();
 
-        $query = $em->createQuery('SELECT COUNT(u.id) FROM ProjectUserBundle:Background u');
-        $firstArray['backgrounds'] = $query->getSingleScalarResult();
+        $firstArray['backgrounds'] = $em->getRepository('ProjectUserBundle:Background')
+               ->getAllLength();
 
-        $query = $em->createQuery('SELECT COUNT(u.id) FROM ProjectUserBundle:Page u');
-        $firstArray['pages'] = $query->getSingleScalarResult();
+        $firstArray['pages'] = $em->getRepository('ProjectUserBundle:Page')
+               ->getAllLength();
 
-        $query = $em->createQuery('SELECT COUNT(u.id) FROM ProjectUserBundle:Search u');
-        $firstArray['terminosBuscados'] = $query->getSingleScalarResult();
+        $firstArray['terminosBuscados'] = $em->getRepository('ProjectUserBundle:Search')
+               ->getAllLength();
 
-
-        $query = $em->createQuery('SELECT u.name, COUNT( u.id ) as cantidad FROM ProjectUserBundle:Search u GROUP BY u.name ORDER BY cantidad DESC');
-        $firstArray['terminos'] = $query->getResult();
+        $firstArray['terminos'] = $em->getRepository('ProjectUserBundle:Search')
+               ->getDistinctRankingAll();
 
         for ($i=0; $i < count($firstArray['terminos']); $i++) { 
             $firstArray['terminos'][$i]['color'] = DefaultController::randColor($this);

@@ -2,13 +2,13 @@
 
 namespace Project\BackBundle\Controller;
 
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Doctrine\ORM\EntityRepository;
 
 use Symfony\Component\Security\Core\SecurityContext;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use JMS\SecurityExtraBundle\Annotation\Secure;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
@@ -200,45 +200,10 @@ class PageController extends Controller {
         $userManager = $class->container->get('fos_user.user_manager');
         $user = $class->getUser();
 		$filtros = array();
-		$filtros['theme']= array(0=>'prueba',1,'Otro');
 
 		$data->setPublished(true);
 
-		$form = $class -> createFormBuilder($data) 
-		 -> add('name', 'text', array('required' => true))
-		 -> add('descriptionMeta', 'textarea', array('required' => true)) 
-		 -> add('keywords', 'text', array('required' => true)) 
-		 -> add('tags', 'text', array('required' => true))
-		 -> add('content', 'ckeditor', array(
-		 	'config' => array(
-		 		'toolbar' => array(
-		 			array(
-		 				'name'  => 'document',
-		 				'items' => array('Source', '-', 'Save', 'NewPage', 'DocProps', 'Preview', 'Print', '-', 'Templates'),
-		 				),
-		 			'/',
-		 			array(
-		 				'name'  => 'basicstyles',
-		 				'items' => array('Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript', '-', 'RemoveFormat'),
-		 				),
-		 			),
-		 		'uiColor' => '#ffffff',
-		 		),
-		 	))
-		 -> add('upperText', 'text', array('required' => true)) 
-		 -> add('lowerText', 'text', array('required' => true))
-		 -> add('file', 'file', array('required' => false)) 
-         -> add('theme', 'entity', array(
-            'class' => 'ProjectUserBundle:Theme',
-            'property' => 'name',
-            ))
-         -> add('background', 'entity', array(
-            'class' => 'ProjectUserBundle:Background',
-            'property' => 'name',
-            ))
-		 -> add('published', 'checkbox', array('label' => 'Publicado', 'required' => false, )) 
-		 -> add('reservacion', 'checkbox', array('label' => 'Reservas', 'required' => false, )) 
-		 -> getForm();
+		$form = $class->createForm('page', $data);
 
         $form->handleRequest($request);
 

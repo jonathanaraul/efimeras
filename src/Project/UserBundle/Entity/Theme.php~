@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Theme
  *
  * @ORM\Table(name="theme")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Project\UserBundle\Entity\ThemeRepository")
  */
 class Theme
 {
@@ -42,6 +42,83 @@ class Theme
      */
     private $description;
 
-	
 
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set name
+     *
+     * @param string $name
+     * @return Theme
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string 
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * Set color
+     *
+     * @param string $color
+     * @return Theme
+     */
+    public function setColor($color)
+    {
+        $this->color = $color;
+
+        return $this;
+    }
+
+    /**
+     * Get color
+     *
+     * @return string 
+     */
+    public function getColor()
+    {
+        return $this->color;
+    }
+
+    /**
+     * Set description
+     *
+     * @param string $description
+     * @return Theme
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * Get description
+     *
+     * @return string 
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
 }

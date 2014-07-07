@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Search
  *
  * @ORM\Table(name="search")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Project\UserBundle\Entity\SearchRepository")
  */
 class Search
 {
@@ -41,4 +41,60 @@ class Search
  
 
 
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set name
+     *
+     * @param string $name
+     * @return Search
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string 
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * Set date
+     *
+     * @param \DateTime $date
+     * @return Search
+     */
+    public function setDate($date)
+    {
+        $this->date = $date;
+
+        return $this;
+    }
+
+    /**
+     * Get date
+     *
+     * @return \DateTime 
+     */
+    public function getDate()
+    {
+        return $this->date;
+    }
 }

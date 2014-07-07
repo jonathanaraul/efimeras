@@ -2,13 +2,13 @@
 
 namespace Project\BackBundle\Controller;
 
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Doctrine\ORM\EntityRepository;
 
 use Symfony\Component\Security\Core\SecurityContext;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use JMS\SecurityExtraBundle\Annotation\Secure;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
@@ -214,11 +214,7 @@ class BackgroundController extends Controller {
         $user = $class->getUser();
         $em = $class->getDoctrine()->getManager();
 
-		$form = $class -> createFormBuilder($data) 
-		 -> add('name', 'text', array('required' => true))
-		 -> add('file', 'file', array('required' => false)) 
-		 -> add('home', 'checkbox', array('label' => 'En el inicio', 'required' => false, )) 
-		 -> getForm();
+		$form = $class->createForm('background', $data);
 
         $form->handleRequest($request);
 

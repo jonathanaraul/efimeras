@@ -9,7 +9,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 /**
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Project\UserBundle\Entity\UserRepository")
  * @ORM\Table(name="fos_user")
  */
 class User extends BaseUser

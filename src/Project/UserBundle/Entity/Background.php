@@ -10,7 +10,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * Page
  *
  * @ORM\Table(name="background")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Project\UserBundle\Entity\BackgroundRepository")
  * @ORM\HasLifecycleCallbacks
  */
 class Background

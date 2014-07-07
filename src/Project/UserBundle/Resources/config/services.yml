@@ -24,3 +24,23 @@ services:
         arguments: [%fos_user.model.user.class%]
         tags:
             - { name: form.type, alias: project_user_profile }
+
+    project_user.form.type.theme:
+        class: Project\UserBundle\Form\Type\ThemeType
+        tags:
+            - { name: form.type, alias: theme }
+
+    project_background.form.type.theme:
+        class: Project\UserBundle\Form\Type\BackgroundType
+        tags:
+            - { name: form.type, alias: background }
+
+    project_background.form.type.reservation:
+        class: Project\UserBundle\Form\Type\ReservationType
+        tags:
+            - { name: form.type, alias: reservation }
+
+    project_background.form.type.page:
+        class: Project\UserBundle\Form\Type\PageType
+        tags:
+            - { name: form.type, alias: page }

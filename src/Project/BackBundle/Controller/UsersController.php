@@ -2,6 +2,7 @@
 
 namespace Project\BackBundle\Controller;
 
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class UsersController extends Controller

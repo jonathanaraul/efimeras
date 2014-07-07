@@ -257,40 +257,6 @@ class UtilitiesAPI extends Controller {
 		return $notifications;
 	}
 
-	public static function procesaUsuario($tipo, $nombre, $apellido, $nombreusuario, $contrasenia, $email, $descripcion, $path, $class) {
-
-		$factory = $class -> get('security.encoder_factory');
-		$user = null;
-
-		if ($tipo == 0) {
-			$user = new Usuario();
-			$encoder = $factory -> getEncoder($user);
-			$password = $encoder -> encodePassword($contrasenia, $user -> getSalt());
-			$user -> setPassword($password);
-
-		} else {
-			$user = $class -> getDoctrine() -> getRepository('ProyectoPrincipalBundle:Usuario') -> find( UtilitiesAPI::getActiveUser($class) -> getId());
-			if (!$user) {
-				throw $class -> createNotFoundException('No se encontro el usuario ' . UtilitiesAPI::getActiveUser($class) -> getId());
-			}
-			if (strlen($contrasenia) >= 8) {
-				$encoder = $factory -> getEncoder($user);
-				$password = $encoder -> encodePassword($contrasenia, $user -> getSalt());
-				$user -> setPassword($password);
-			}
-		}
-
-		$user -> setNombre($nombre);
-		$user -> setApellido($apellido);
-		$user -> setUsername($nombreusuario);
-		$user -> setEmail($email);
-		$user -> setPath($path);
-		$user -> setDescripcion($descripcion);
-
-		$em = $class -> getDoctrine() -> getManager();
-		$em -> persist($user);
-		$em -> flush();
-	}
 	 public static function convertirFechaNormal($fechaOriginal, $class) {
 	
 	 $fechaOriginal = trim($fechaOriginal);

@@ -10,7 +10,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * Page
  *
  * @ORM\Table(name="page")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Project\UserBundle\Entity\PageRepository")
  * @ORM\HasLifecycleCallbacks
  */
 class Page

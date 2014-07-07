@@ -1,6 +1,11 @@
 project_front:
-    resource: "@ProjectFrontBundle/Resources/config/routing.yml"
+    resource: "@ProjectFrontBundle/Controller/DefaultController.php"
     prefix:   /
+    type:     annotation
+
+#project_front:
+#    resource: "@ProjectFrontBundle/Resources/config/routing.yml"
+#    prefix:   /
 
 project_user:
     resource: "@ProjectUserBundle/Resources/config/routing.yml"

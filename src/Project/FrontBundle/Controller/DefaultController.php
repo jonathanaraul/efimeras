@@ -2,6 +2,7 @@
 
 namespace Project\FrontBundle\Controller;
 
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
@@ -11,6 +12,9 @@ use Project\UserBundle\Entity\Search;
 
 class DefaultController extends Controller
 {
+	/**
+	 * @Route("/", name="project_front_homepage")
+	 */
 	public function indexAction() {
 
 		$firstArray = UtilitiesAPI::getDefaultContent('inicio', $this);
@@ -23,6 +27,37 @@ class DefaultController extends Controller
 		$array = array_merge($firstArray, $secondArray);
 		return $this -> render('ProjectFrontBundle:Default:inicio.html.twig', $array);
 	}
+	/**
+	 * @Route("/search/{term}", name="project_front_search", defaults={"term" = ""})
+	 */
+	public function searchAction($term) {
+		
+		$firstArray = UtilitiesAPI::getDefaultContent('search', $this);
+		$secondArray = array();
+
+		$em = $this -> getDoctrine() -> getManager();
+		$dql = "SELECT n.id,n.name,n.dateCreated,n.friendlyName,n.descriptionMeta FROM ProjectUserBundle:Page n WHERE n.tags like :term or n.content like :term or n.name like :term or n.descriptionMeta like :term ORDER BY n.dateCreated ASC";
+		
+		$query = $em -> createQuery($dql);
+		$query -> setParameter('term', '%'.$term.'%');
+		$secondArray['objects']  = $query -> getResult();
+		$secondArray['backgrounds'] = $this -> getDoctrine() -> getRepository('ProjectUserBundle:Background') -> findByHome(1);
+		$secondArray['idpage'] = null;    
+        $secondArray['tag'] = $term;
+        $secondArray['search'] = true;
+
+        $data = new Search();
+        $data -> setName($term);
+	    $data -> setDate(new \DateTime());
+		$em -> persist($data);
+		$em -> flush();
+
+		$array = array_merge($firstArray, $secondArray);
+		return $this -> render('ProjectFrontBundle:Default:tags.html.twig', $array);
+	}
+	/**
+	 * @Route("/page/{id}/{friendlyname}", name="project_front_page")
+	 */
 	public function pageAction($id,$friendlyname) {
 		
 		$firstArray = UtilitiesAPI::getDefaultContent('contacto', $this);
@@ -38,6 +73,9 @@ class DefaultController extends Controller
 		$array = array_merge($firstArray, $secondArray);
 		return $this -> render('ProjectFrontBundle:Default:page.html.twig', $array);
 	}
+	/**
+	 * @Route("/tag/{tag}", name="project_front_tag")
+	 */
 	public function tagAction($tag) {
 		
 		$firstArray = UtilitiesAPI::getDefaultContent('tag', $this);
@@ -57,7 +95,9 @@ class DefaultController extends Controller
 		$array = array_merge($firstArray, $secondArray);
 		return $this -> render('ProjectFrontBundle:Default:tags.html.twig', $array);
 	}
-
+	/**
+	 * @Route("/reservation/{id}", name="project_front_reservation")
+	 */
     public function reservationAction($id, Request $request) {
 
 		$firstArray = UtilitiesAPI::getDefaultContent('reservation', $this);
@@ -66,13 +106,7 @@ class DefaultController extends Controller
 		$locale = UtilitiesAPI::getLocale($this);
 		///////////////////////////////////////////////////////////////////////////////////////////////////
 		$data = new Reservation();
-		$form = $this -> createFormBuilder($data) 
-		-> add('name', 'text', array('required' => false))
-		-> add('phone', 'text', array('required' => false)) 
-		-> add('email', 'text', array('required' => false)) 
-		-> add('rdate', 'text', array('required' => false)) 
-		-> add('tickets', 'number', array('required' => false)) 
-		-> getForm();
+		$form = $this->createForm('reservation', $data);
 
 		$em = $this -> getDoctrine() -> getManager();
 		$secondArray['message'] = '';
@@ -124,29 +158,5 @@ class DefaultController extends Controller
 		return $this -> render('ProjectFrontBundle:Default:reservation.html.twig', $array);
 	}
 
-	public function searchAction($term) {
-		
-		$firstArray = UtilitiesAPI::getDefaultContent('search', $this);
-		$secondArray = array();
 
-		$em = $this -> getDoctrine() -> getManager();
-		$dql = "SELECT n.id,n.name,n.dateCreated,n.friendlyName,n.descriptionMeta FROM ProjectUserBundle:Page n WHERE n.tags like :term or n.content like :term or n.name like :term or n.descriptionMeta like :term ORDER BY n.dateCreated ASC";
-		
-		$query = $em -> createQuery($dql);
-		$query -> setParameter('term', '%'.$term.'%');
-		$secondArray['objects']  = $query -> getResult();
-		$secondArray['backgrounds'] = $this -> getDoctrine() -> getRepository('ProjectUserBundle:Background') -> findByHome(1);
-		$secondArray['idpage'] = null;    
-        $secondArray['tag'] = $term;
-        $secondArray['search'] = true;
-
-        $data = new Search();
-        $data -> setName($term);
-	    $data -> setDate(new \DateTime());
-		$em -> persist($data);
-		$em -> flush();
-
-		$array = array_merge($firstArray, $secondArray);
-		return $this -> render('ProjectFrontBundle:Default:tags.html.twig', $array);
-	}
 }

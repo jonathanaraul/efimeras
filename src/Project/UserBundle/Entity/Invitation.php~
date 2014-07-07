@@ -5,7 +5,10 @@ namespace Project\UserBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validation\Constraints AS Assert;
 
-/** @ORM\Entity */
+/**
+ * @ORM\Entity
+ * @ORM\Table(name="invitation")
+ */
 class Invitation
 {
     /** @ORM\Id @ORM\Column(type="string", length=6) */

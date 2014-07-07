@@ -10,7 +10,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * Page
  *
  * @ORM\Table(name="page")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Project\UserBundle\Entity\PageRepository")
  * @ORM\HasLifecycleCallbacks
  */
 class Page
@@ -800,5 +800,28 @@ class Page
     public function getReservacion()
     {
         return $this->reservacion;
+    }
+
+    /**
+     * Set theme
+     *
+     * @param \Project\UserBundle\Entity\Theme $theme
+     * @return Page
+     */
+    public function setTheme(\Project\UserBundle\Entity\Theme $theme)
+    {
+        $this->theme = $theme;
+
+        return $this;
+    }
+
+    /**
+     * Get theme
+     *
+     * @return \Project\UserBundle\Entity\Theme 
+     */
+    public function getTheme()
+    {
+        return $this->theme;
     }
 }

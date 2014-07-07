@@ -26,7 +26,7 @@
 
 <script type="text/javascript">
 	//we could just set the data-provide="tag" of the element inside HTML, but IE8 fails!
-	var tag_input = $('#form_tags');
+	var tag_input = $('#page_tags');
 	if (!( /msie\s*(8|7|6)/.test(navigator.userAgent.toLowerCase())))
 		tag_input.tag({
 			placeholder : tag_input.attr('placeholder')
@@ -599,7 +599,7 @@
 						<!--PAGE CONTENT BEGINS-->
 						
 						<div class="form-actions">
-                          <input type="submit" class="btn btn-info" value="Guardar" >
+							{{ form_widget(form.save) }}
 
 							&nbsp; &nbsp; &nbsp;
 							<button class="btn" type="reset">
