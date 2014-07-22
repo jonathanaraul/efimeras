@@ -1,21 +1,22 @@
 {% extends "ProjectFrontBundle:Helpers:base.html.twig" %}
 {%block body%}
-<body style="">
+<body style="background-color:#a3a3a3">
 	{% include 'ProjectFrontBundle:Helpers:social.html.twig' %}
 	<div class="main-tab">
 		<div class="main-row" style="height: 500px;">
 			{#<div class="cell-left"></div>#}
 			<div class="cell-middle cell-main">
 				<div class="middle-tab">
-					{% include 'ProjectFrontBundle:Helpers:lenguajes.html.twig' %}
+					{# include 'ProjectFrontBundle:Helpers:lenguajes.html.twig' #}
 					<div class="middle-row">
 						
 						<div class="middle-left">
 							<div class="logo">
 								<a title="Home page" href="{{path('project_front_homepage')}}"> </a>
 							</div>
-							<div class="logo-imagen">
-								<p><a title="Home page" href="{{path('project_front_homepage')}}"><img src="{{asset('front/logo.png')}}"> </a></p>
+							<div class="logo-imagen" style="height: 260px;margin-top: 116px;background-color: {{page.theme.color}}">
+								<p><a title="Home page" href="{{path('project_front_homepage')}}"><img src="{{asset('
+									logo.png')}}"> </a></p>
 							</div>
 							{{ render(controller('ProjectFrontBundle:Helpers:menu', { 'idpage': idpage,'theme': 'red' })) }}
 						</div>

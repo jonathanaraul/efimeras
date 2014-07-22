@@ -109,7 +109,6 @@ class BackgroundController extends Controller {
 				else{
 					$dql .= 'AND ';
 					}
-				$dql .= ' n.lang = :lang ';
 		
 				$query = $em -> createQuery($dql);
 
@@ -126,7 +125,6 @@ class BackgroundController extends Controller {
 					$query -> setParameter('published', $data -> getPublished());
 				}
 				
-				$query -> setParameter('lang', $locale);
 
 			}
 		}
@@ -148,8 +146,8 @@ class BackgroundController extends Controller {
 			$auxiliar[$i]['published'] = $objects[$i] -> getPublished();
 			$auxiliar[$i]['home'] = $objects[$i] -> getHome();
 			$auxiliar[$i]['path'] = $objects[$i] -> getPath();
-			$auxiliar[$i]['dateCreated'] = $objects[$i] -> getDateCreated();
-			$auxiliar[$i]['dateUpdated'] = $objects[$i] -> getDateUpdated();
+			$auxiliar[$i]['dateCreated'] = $objects[$i] -> getCreated();
+			$auxiliar[$i]['dateUpdated'] = $objects[$i] -> getUpdated();
 /*
 			if($objects[$i] -> getBackground() != 0){
 				$helper = $this -> getDoctrine() -> getRepository('ProjectUserBundle:CmsResource') -> find($objects[$i] -> getBackground());

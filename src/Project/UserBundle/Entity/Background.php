@@ -4,6 +4,7 @@ namespace Project\UserBundle\Entity;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
@@ -68,18 +69,20 @@ class Background
     private $ip;
 
     /**
-     * @var \DateTime
+     * @var datetime $created
      *
-     * @ORM\Column(name="date_created", type="datetime", nullable=true)
+     * @Gedmo\Timestampable(on="create")
+     * @ORM\Column(type="datetime")
      */
-    private $dateCreated;
+    private $created;
 
     /**
-     * @var \DateTime
+     * @var datetime $updated
      *
-     * @ORM\Column(name="date_updated", type="datetime", nullable=true)
+     * @Gedmo\Timestampable(on="update")
+     * @ORM\Column(type="datetime")
      */
-    private $dateUpdated;
+    private $updated;
 
 
     /**
@@ -108,6 +111,17 @@ class Background
     {
         return $this->id;
     }
+
+    public function getCreated()
+    {
+        return $this->created;
+    }
+
+    public function getUpdated()
+    {
+        return $this->updated;
+    }
+
 
     /**
      * Set rank
@@ -227,41 +241,6 @@ class Background
         return $this->ip;
     }
 
-    /**
-     * Set dateCreated
-     *
-     * @param \DateTime $dateCreated
-     * @return Page
-     */
-    public function setDateCreated($dateCreated)
-    {
-        $this->dateCreated = $dateCreated;
-    
-        return $this;
-    }
-
-    /**
-     * Get dateCreated
-     *
-     * @return \DateTime 
-     */
-    public function getDateCreated()
-    {
-        return $this->dateCreated;
-    }
-
-    /**
-     * Set dateUpdated
-     *
-     * @param \DateTime $dateUpdated
-     * @return Page
-     */
-    public function setDateUpdated($dateUpdated)
-    {
-        $this->dateUpdated = $dateUpdated;
-    
-        return $this;
-    }
 
     /**
      * Get dateUpdated
@@ -408,5 +387,31 @@ class Background
     public function getUser()
     {
         return $this->user;
+    }
+
+    /**
+     * Set created
+     *
+     * @param \DateTime $created
+     * @return Background
+     */
+    public function setCreated($created)
+    {
+        $this->created = $created;
+
+        return $this;
+    }
+
+    /**
+     * Set updated
+     *
+     * @param \DateTime $updated
+     * @return Background
+     */
+    public function setUpdated($updated)
+    {
+        $this->updated = $updated;
+
+        return $this;
     }
 }

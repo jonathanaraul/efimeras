@@ -6,16 +6,14 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Gedmo\Mapping\Annotation as Gedmo;
-
+use Doctrine\Common\Collections\ArrayCollection;
 /**
- * Page
- *
- * @ORM\Table(name="page")
- * @ORM\Entity(repositoryClass="Project\UserBundle\Entity\PageRepository")
+ * @ORM\Table(name="category")
+ * @ORM\Entity(repositoryClass="Project\UserBundle\Entity\CategoryRepository")
  * @ORM\HasLifecycleCallbacks
  */
 
-class Page
+class Category
 {
     /**
      * @var integer
@@ -26,40 +24,20 @@ class Page
      */
     private $id;
 
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="rank", type="integer", nullable=false)
-     */
-    private $rank;
 
     /**
      * @var boolean
      *
      * @ORM\Column(name="published", type="boolean", nullable=true)
      */
-    private $published;
-	
-    /**
-     * @var boolean
-     *
-     * @ORM\Column(name="special", type="boolean", nullable=false)
-     */
-    private $special;
-
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="spacer", type="integer", nullable=true)
-     */
-    private $spacer;
+    private $published= true;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="template", type="integer", nullable=false)
      */
-    private $template;
+    private $template=0;
 
     /**
      * @var string
@@ -168,12 +146,6 @@ class Page
     private $background;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Category", inversedBy="pages")
-     * @ORM\JoinColumn(name="category", referencedColumnName="id", nullable=true)
-     */
-    protected $category;
-
-    /**
      * @var \Theme
      *
      * @ORM\ManyToOne(targetEntity="Theme")
@@ -183,16 +155,21 @@ class Page
      */
     private $theme;
 
-    /**
-     * @var boolean
-     *
-     * @ORM\Column(name="reservacion", type="boolean", nullable=true)
-     */
-    private $reservacion;
 
-	private $file;
-	private $temp;
-	private $remove;
+    /**
+     * @ORM\OneToMany(targetEntity="Page", mappedBy="category")
+     */
+    protected $pages;
+
+    private $file;
+    private $temp;
+    private $remove;
+
+
+    public function __construct()
+    {
+        $this->pages = new ArrayCollection();
+    }
 
     /**
      * Get id
@@ -205,133 +182,38 @@ class Page
     }
 
     /**
-     * Set remove
-     *
-     * @param integer $remove
-     * @return Page
-     */
-    public function setRemove($remove)
-    {
-        $this->remove = $remove;
-    
-        return $this;
-    }
-
-    /**
-     * Get remove
-     *
-     * @return integer 
-     */
-    public function getRemove()
-    {
-        return $this->remove;
-    }
-
-    /**
-     * Set rank
-     *
-     * @param integer $rank
-     * @return Page
-     */
-    public function setRank($rank)
-    {
-        $this->rank = $rank;
-    
-        return $this;
-    }
-
-    /**
-     * Get rank
-     *
-     * @return integer 
-     */
-    public function getRank()
-    {
-        return $this->rank;
-    }
-
-    /**
      * Set published
      *
-     * @param integer $published
-     * @return Page
+     * @param boolean $published
+     * @return Category
      */
     public function setPublished($published)
     {
         $this->published = $published;
-    
+
         return $this;
     }
 
     /**
      * Get published
      *
-     * @return integer 
+     * @return boolean 
      */
     public function getPublished()
     {
         return $this->published;
     }
 
-
-    /**
-     * Set special
-     *
-     * @param integer $special
-     * @return Page
-     */
-    public function setSpecial($special)
-    {
-        $this->special = $special;
-    
-        return $this;
-    }
-
-    /**
-     * Get special
-     *
-     * @return integer 
-     */
-    public function getSpecial()
-    {
-        return $this->special;
-    }
-
-
-
-    /**
-     * Set spacer
-     *
-     * @param integer $spacer
-     * @return Page
-     */
-    public function setSpacer($spacer)
-    {
-        $this->spacer = $spacer;
-    
-        return $this;
-    }
-
-    /**
-     * Get spacer
-     *
-     * @return integer 
-     */
-    public function getSpacer()
-    {
-        return $this->spacer;
-    }
-
     /**
      * Set template
      *
      * @param integer $template
-     * @return Page
+     * @return Category
      */
     public function setTemplate($template)
     {
         $this->template = $template;
-    
+
         return $this;
     }
 
@@ -349,12 +231,12 @@ class Page
      * Set keywords
      *
      * @param string $keywords
-     * @return Page
+     * @return Category
      */
     public function setKeywords($keywords)
     {
         $this->keywords = $keywords;
-    
+
         return $this;
     }
 
@@ -372,12 +254,12 @@ class Page
      * Set descriptionMeta
      *
      * @param string $descriptionMeta
-     * @return Page
+     * @return Category
      */
     public function setDescriptionMeta($descriptionMeta)
     {
         $this->descriptionMeta = $descriptionMeta;
-    
+
         return $this;
     }
 
@@ -395,12 +277,12 @@ class Page
      * Set name
      *
      * @param string $name
-     * @return Page
+     * @return Category
      */
     public function setName($name)
     {
         $this->name = $name;
-    
+
         return $this;
     }
 
@@ -418,12 +300,12 @@ class Page
      * Set upperText
      *
      * @param string $upperText
-     * @return Page
+     * @return Category
      */
     public function setUpperText($upperText)
     {
         $this->upperText = $upperText;
-    
+
         return $this;
     }
 
@@ -441,12 +323,12 @@ class Page
      * Set lowerText
      *
      * @param string $lowerText
-     * @return Page
+     * @return Category
      */
     public function setLowerText($lowerText)
     {
         $this->lowerText = $lowerText;
-    
+
         return $this;
     }
 
@@ -464,12 +346,12 @@ class Page
      * Set path
      *
      * @param string $path
-     * @return Page
+     * @return Category
      */
     public function setPath($path)
     {
         $this->path = $path;
-    
+
         return $this;
     }
 
@@ -487,12 +369,12 @@ class Page
      * Set friendlyName
      *
      * @param string $friendlyName
-     * @return Page
+     * @return Category
      */
     public function setFriendlyName($friendlyName)
     {
         $this->friendlyName = $friendlyName;
-    
+
         return $this;
     }
 
@@ -506,104 +388,11 @@ class Page
         return $this->friendlyName;
     }
 
-
-    /**
-     * Set content
-     *
-     * @param string $content
-     * @return Page
-     */
-    public function setContent($content)
-    {
-        $this->content = $content;
-    
-        return $this;
-    }
-
-    /**
-     * Get content
-     *
-     * @return string 
-     */
-    public function getContent()
-    {
-        return $this->content;
-    }
-
-    /**
-     * Set ip
-     *
-     * @param string $ip
-     * @return Page
-     */
-    public function setIp($ip)
-    {
-        $this->ip = $ip;
-    
-        return $this;
-    }
-
-    /**
-     * Get ip
-     *
-     * @return string 
-     */
-    public function getIp()
-    {
-        return $this->ip;
-    }
-
-    /**
-     * Set user
-     *
-     * @param \Project\UserBundle\Entity\User $user
-     * @return Page
-     */
-    public function setUser(\Project\UserBundle\Entity\User $user)
-    {
-        $this->user = $user;
-
-        return $this;
-    }
-
-    /**
-     * Get user
-     *
-     * @return \Project\UserBundle\Entity\User 
-     */
-    public function getUser()
-    {
-        return $this->user;
-    }
-
-    /**
-     * Set background
-     *
-     * @param \Project\UserBundle\Entity\Background $background
-     * @return Page
-     */
-    public function setBackground(\Project\UserBundle\Entity\Background $background)
-    {
-        $this->background = $background;
-
-        return $this;
-    }
-
-    /**
-     * Get background
-     *
-     * @return \Project\UserBundle\Entity\Background 
-     */
-    public function getBackground()
-    {
-        return $this->background;
-    }
-
     /**
      * Set tags
      *
      * @param string $tags
-     * @return Page
+     * @return Category
      */
     public function setTags($tags)
     {
@@ -623,57 +412,56 @@ class Page
     }
 
     /**
-     * Set reservacion
+     * Set content
      *
-     * @param boolean $reservacion
-     * @return Page
+     * @param string $content
+     * @return Category
      */
-    public function setReservacion($reservacion)
+    public function setContent($content)
     {
-        $this->reservacion = $reservacion;
+        $this->content = $content;
 
         return $this;
     }
 
     /**
-     * Get reservacion
+     * Get content
      *
-     * @return boolean 
+     * @return string 
      */
-    public function getReservacion()
+    public function getContent()
     {
-        return $this->reservacion;
+        return $this->content;
     }
 
     /**
-     * Set theme
+     * Set ip
      *
-     * @param \Project\UserBundle\Entity\Theme $theme
-     * @return Page
+     * @param string $ip
+     * @return Category
      */
-    public function setTheme(\Project\UserBundle\Entity\Theme $theme)
+    public function setIp($ip)
     {
-        $this->theme = $theme;
+        $this->ip = $ip;
 
         return $this;
     }
 
     /**
-     * Get theme
+     * Get ip
      *
-     * @return \Project\UserBundle\Entity\Theme 
+     * @return string 
      */
-    public function getTheme()
+    public function getIp()
     {
-        return $this->theme;
+        return $this->ip;
     }
-
 
     /**
      * Set created
      *
      * @param \DateTime $created
-     * @return Page
+     * @return Category
      */
     public function setCreated($created)
     {
@@ -696,7 +484,7 @@ class Page
      * Set updated
      *
      * @param \DateTime $updated
-     * @return Page
+     * @return Category
      */
     public function setUpdated($updated)
     {
@@ -713,6 +501,98 @@ class Page
     public function getUpdated()
     {
         return $this->updated;
+    }
+
+    /**
+     * Set reservacion
+     *
+     * @param boolean $reservacion
+     * @return Category
+     */
+    public function setReservacion($reservacion)
+    {
+        $this->reservacion = $reservacion;
+
+        return $this;
+    }
+
+    /**
+     * Get reservacion
+     *
+     * @return boolean 
+     */
+    public function getReservacion()
+    {
+        return $this->reservacion;
+    }
+
+    /**
+     * Set user
+     *
+     * @param \Project\UserBundle\Entity\User $user
+     * @return Category
+     */
+    public function setUser(\Project\UserBundle\Entity\User $user)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \Project\UserBundle\Entity\User 
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    /**
+     * Set background
+     *
+     * @param \Project\UserBundle\Entity\Background $background
+     * @return Category
+     */
+    public function setBackground(\Project\UserBundle\Entity\Background $background)
+    {
+        $this->background = $background;
+
+        return $this;
+    }
+
+    /**
+     * Get background
+     *
+     * @return \Project\UserBundle\Entity\Background 
+     */
+    public function getBackground()
+    {
+        return $this->background;
+    }
+
+    /**
+     * Set theme
+     *
+     * @param \Project\UserBundle\Entity\Theme $theme
+     * @return Category
+     */
+    public function setTheme(\Project\UserBundle\Entity\Theme $theme)
+    {
+        $this->theme = $theme;
+
+        return $this;
+    }
+
+    /**
+     * Get theme
+     *
+     * @return \Project\UserBundle\Entity\Theme 
+     */
+    public function getTheme()
+    {
+        return $this->theme;
     }
 
 
@@ -806,25 +686,35 @@ class Page
     }
 
     /**
-     * Set category
+     * Add pages
      *
-     * @param \Project\UserBundle\Entity\Category $category
-     * @return Page
+     * @param \Project\UserBundle\Entity\Page $pages
+     * @return Category
      */
-    public function setCategory(\Project\UserBundle\Entity\Category $category = null)
+    public function addPage(\Project\UserBundle\Entity\Page $pages)
     {
-        $this->category = $category;
+        $this->pages[] = $pages;
 
         return $this;
     }
 
     /**
-     * Get category
+     * Remove pages
      *
-     * @return \Project\UserBundle\Entity\Category 
+     * @param \Project\UserBundle\Entity\Page $pages
      */
-    public function getCategory()
+    public function removePage(\Project\UserBundle\Entity\Page $pages)
     {
-        return $this->category;
+        $this->pages->removeElement($pages);
+    }
+
+    /**
+     * Get pages
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getPages()
+    {
+        return $this->pages;
     }
 }

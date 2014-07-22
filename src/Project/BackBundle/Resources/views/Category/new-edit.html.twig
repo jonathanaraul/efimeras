@@ -26,7 +26,7 @@
 
 <script type="text/javascript">
 	//we could just set the data-provide="tag" of the element inside HTML, but IE8 fails!
-	var tag_input = $('#page_tags');
+	var tag_input = $('#category_tags');
 	if (!( /msie\s*(8|7|6)/.test(navigator.userAgent.toLowerCase())))
 		tag_input.tag({
 			placeholder : tag_input.attr('placeholder')
@@ -488,7 +488,7 @@
 		{# include 'ProjectBackBundle:Architecture:breadcrumb.html.twig'  with {'clase': 'gris'} #}
 		<div class="page-content">
 			<div class="page-header position-relative">
-				<h1> Páginas <small> <i class="icon-double-angle-right"></i> {%if accion=='nuevo'%}Crear nueva{%else%}Editar{%endif%} </small></h1>
+				<h1> Categorías <small> <i class="icon-double-angle-right"></i> {%if accion=='nuevo'%}Crear nueva{%else%}Editar{%endif%} </small></h1>
 			</div><!--/.page-header-->
 
 			<form action="{{ url }}" {{ form_enctype(form) }} method="POST" class="form-horizontal">
@@ -546,19 +546,6 @@
 					</div>
 				</div>
 				<div class="control-group">
-					<label class="control-label">Reservas</label>
-					<div class="controls">
-						<div class="row-fluid">
-							<div class="span3">
-								<label>
-									{{ form_widget(form.reservacion, { 'attr': {'class':'ace-switch'} }) }}
-									<span class="lbl"></span>
-								</label>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="control-group">
 					<label class="control-label">Publicado</label>
 					<div class="controls">
 						<div class="row-fluid">
@@ -591,12 +578,6 @@
 					<label class="control-label" for="form-field-1">Tema</label>
 					<div class="controls">
 						{{ form_widget(form.theme, { 'attr': {'class':'span6'} }) }}
-					</div>
-				</div>
-				<div class="control-group">
-					<label class="control-label" for="form-field-1">Categoria</label>
-					<div class="controls">
-						{{ form_widget(form.category, { 'attr': {'class':'span6'} }) }}
 					</div>
 				</div>
 				<div class="row-fluid">

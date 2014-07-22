@@ -14,15 +14,16 @@
 	{#<div class="upper-text" style="background-color: {#{theme.color} !important"></div>#}
 	
 	<div class="news-cont">
-		<hr class="barra-inferior">
-		<p class="content-title">
-			Reservas
-		</p>
+
 		<div class="news-cell">
 
 				{%if message == ''%}
 				<form action="{{ url }}" method="post" {{ form_enctype(form) }} id="form-reservaciones">
+										<h2 style="color: {{page.theme.color}};">
+						Reservas
+					</h2>
 					<table style ="width: 100%;" id="contenido-pagina" CELLSPACING ="10">
+
 						<tr >
 							<td>
 								{% trans %}Nombre Completo{% endtrans %}:

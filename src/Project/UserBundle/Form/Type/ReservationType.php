@@ -17,7 +17,7 @@ class ReservationType extends AbstractType
         ->add('phone', 'text', array('required' => false)) 
         ->add('email', 'text', array('required' => false)) 
         ->add('rdate', 'text', array('required' => false)) 
-        ->add('tickets', 'number', array('required' => false)) 
+        ->add('tickets', 'number', array('required' => false)) ;
     }
 
     public function setDefaultOptions(OptionsResolverInterface $resolver)

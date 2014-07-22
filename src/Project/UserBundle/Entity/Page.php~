@@ -5,6 +5,7 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * Page
@@ -13,6 +14,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ORM\Entity(repositoryClass="Project\UserBundle\Entity\PageRepository")
  * @ORM\HasLifecycleCallbacks
  */
+
 class Page
 {
     /**
@@ -111,7 +113,7 @@ class Page
     /**
      * @var string
      *
-     * @ORM\Column(name="tags", type="text", nullable=false)
+     * @ORM\Column(name="tags", type="text", nullable=true)
      */
     private $tags;
 
@@ -130,19 +132,20 @@ class Page
     private $ip;
 
     /**
-     * @var \DateTime
+     * @var datetime $created
      *
-     * @ORM\Column(name="date_created", type="datetime", nullable=true)
+     * @Gedmo\Timestampable(on="create")
+     * @ORM\Column(type="datetime")
      */
-    private $dateCreated;
+    private $created;
 
     /**
-     * @var \DateTime
+     * @var datetime $updated
      *
-     * @ORM\Column(name="date_updated", type="datetime", nullable=true)
+     * @Gedmo\Timestampable(on="update")
+     * @ORM\Column(type="datetime")
      */
-    private $dateUpdated;
-
+    private $updated;
 
     /**
      * @var \User
@@ -165,6 +168,12 @@ class Page
     private $background;
 
     /**
+     * @ORM\ManyToOne(targetEntity="Category", inversedBy="pages")
+     * @ORM\JoinColumn(name="category", referencedColumnName="id", nullable=true)
+     */
+    protected $category;
+
+    /**
      * @var \Theme
      *
      * @ORM\ManyToOne(targetEntity="Theme")
@@ -173,13 +182,6 @@ class Page
      * })
      */
     private $theme;
-	
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="lang", type="integer", nullable=false)
-     */
-    private $lang;
 
     /**
      * @var boolean
@@ -552,165 +554,6 @@ class Page
     }
 
     /**
-     * Set dateCreated
-     *
-     * @param \DateTime $dateCreated
-     * @return Page
-     */
-    public function setDateCreated($dateCreated)
-    {
-        $this->dateCreated = $dateCreated;
-    
-        return $this;
-    }
-
-    /**
-     * Get dateCreated
-     *
-     * @return \DateTime 
-     */
-    public function getDateCreated()
-    {
-        return $this->dateCreated;
-    }
-
-    /**
-     * Set dateUpdated
-     *
-     * @param \DateTime $dateUpdated
-     * @return Page
-     */
-    public function setDateUpdated($dateUpdated)
-    {
-        $this->dateUpdated = $dateUpdated;
-    
-        return $this;
-    }
-
-    /**
-     * Get dateUpdated
-     *
-     * @return \DateTime 
-     */
-    public function getDateUpdated()
-    {
-        return $this->dateUpdated;
-    }
-
-
-    /**
-     * Set lang
-     *
-     * @param integer $lang
-     * @return Page
-     */
-    public function setLang($lang)
-    {
-        $this->lang = $lang;
-    
-        return $this;
-    }
-
-    /**
-     * Get lang
-     *
-     * @return integer 
-     */
-    public function getLang()
-    {
-        return $this->lang;
-    }
-	
-	/**
-	 * Sets file.
-	 *
-	 * @param UploadedFile $file
-	 */
-	public function setFile(UploadedFile $file = null) {
-		$this -> file = $file;
-		// check if we have an old image path
-		if (isset($this -> path)) {
-			// store the old name to delete after the update
-			$this -> temp = $this -> path;
-			//$this -> path = null;
-		} else {
-			$this -> path = 'inicial';
-		}
-	}
-
-	/**
-	 * @ORM\PrePersist()
-	 * @ORM\PreUpdate()
-	 */
-	public function preUpload() {
-		if (null !== $this -> getFile()) {
-			// do whatever you want to generate a unique name
-			$filename = sha1(uniqid(mt_rand(), true));
-			$this -> path = $filename . '.' . $this -> getFile() -> guessExtension();
-		}
-	}
-
-	/**
-	 * @ORM\PostPersist()
-	 * @ORM\PostUpdate()
-	 */
-	public function upload() {
-		if (null === $this -> getFile()) {
-			return;
-		}
-
-		// if there is an error when moving the file, an exception will
-		// be automatically thrown by move(). This will properly prevent
-		// the entity from being persisted to the database on error
-		$this -> getFile() -> move($this -> getUploadRootDir(), $this -> path);
-
-		// check if we have an old image
-		if (isset($this -> temp)) {
-			// delete the old image
-			//unlink($this -> getUploadRootDir() . '/' . $this -> temp);
-			// clear the temp image path
-			$this -> temp = null;
-		}
-		$this -> file = null;
-	}
-
-	/**
-	 * @ORM\PostRemove()
-	 */
-	public function removeUpload() {
-		if ($file = $this -> getAbsolutePath()) {
-			unlink($file);
-		}
-	}
-		/**
-	 * Get file.
-	 *
-	 * @return UploadedFile
-	 */
-	public function getFile() {
-		return $this -> file;
-	}
-
-	public function getAbsolutePath() {
-		return null === $this -> path ? null : $this -> getUploadRootDir() . '/' . $this -> path;
-	}
-
-	public function getWebPath() {
-		return null === $this -> path ? null : $this -> getUploadDir() . '/' . $this -> path;
-	}
-
-	protected function getUploadRootDir() {
-		// the absolute directory path where uploaded
-		// documents should be saved
-		return __DIR__ . '/../../../../web/' . $this -> getUploadDir();
-	}
-
-	protected function getUploadDir() {
-		$directorio = 'page';
-		return 'uploads/' . $directorio;
-	}
-
-    /**
      * Set user
      *
      * @param \Project\UserBundle\Entity\User $user
@@ -823,5 +666,165 @@ class Page
     public function getTheme()
     {
         return $this->theme;
+    }
+
+
+    /**
+     * Set created
+     *
+     * @param \DateTime $created
+     * @return Page
+     */
+    public function setCreated($created)
+    {
+        $this->created = $created;
+
+        return $this;
+    }
+
+    /**
+     * Get created
+     *
+     * @return \DateTime 
+     */
+    public function getCreated()
+    {
+        return $this->created;
+    }
+
+    /**
+     * Set updated
+     *
+     * @param \DateTime $updated
+     * @return Page
+     */
+    public function setUpdated($updated)
+    {
+        $this->updated = $updated;
+
+        return $this;
+    }
+
+    /**
+     * Get updated
+     *
+     * @return \DateTime 
+     */
+    public function getUpdated()
+    {
+        return $this->updated;
+    }
+
+
+    /**
+     * Sets file.
+     *
+     * @param UploadedFile $file
+     */
+    public function setFile(UploadedFile $file = null) {
+        $this -> file = $file;
+        // check if we have an old image path
+        if (isset($this -> path)) {
+            // store the old name to delete after the update
+            $this -> temp = $this -> path;
+            //$this -> path = null;
+        } else {
+            $this -> path = 'inicial';
+        }
+    }
+
+    /**
+     * @ORM\PrePersist()
+     * @ORM\PreUpdate()
+     */
+    public function preUpload() {
+        if (null !== $this -> getFile()) {
+            // do whatever you want to generate a unique name
+            $filename = sha1(uniqid(mt_rand(), true));
+            $this -> path = $filename . '.' . $this -> getFile() -> guessExtension();
+        }
+    }
+
+    /**
+     * @ORM\PostPersist()
+     * @ORM\PostUpdate()
+     */
+    public function upload() {
+        if (null === $this -> getFile()) {
+            return;
+        }
+
+        // if there is an error when moving the file, an exception will
+        // be automatically thrown by move(). This will properly prevent
+        // the entity from being persisted to the database on error
+        $this -> getFile() -> move($this -> getUploadRootDir(), $this -> path);
+
+        // check if we have an old image
+        if (isset($this -> temp)) {
+            // delete the old image
+            //unlink($this -> getUploadRootDir() . '/' . $this -> temp);
+            // clear the temp image path
+            $this -> temp = null;
+        }
+        $this -> file = null;
+    }
+
+    /**
+     * @ORM\PostRemove()
+     */
+    public function removeUpload() {
+        if ($file = $this -> getAbsolutePath()) {
+            unlink($file);
+        }
+    }
+        /**
+     * Get file.
+     *
+     * @return UploadedFile
+     */
+    public function getFile() {
+        return $this -> file;
+    }
+
+    public function getAbsolutePath() {
+        return null === $this -> path ? null : $this -> getUploadRootDir() . '/' . $this -> path;
+    }
+
+    public function getWebPath() {
+        return null === $this -> path ? null : $this -> getUploadDir() . '/' . $this -> path;
+    }
+
+    protected function getUploadRootDir() {
+        // the absolute directory path where uploaded
+        // documents should be saved
+        return __DIR__ . '/../../../../web/' . $this -> getUploadDir();
+    }
+
+    protected function getUploadDir() {
+        $directorio = 'page';
+        return 'uploads/' . $directorio;
+    }
+
+    /**
+     * Set category
+     *
+     * @param \Project\UserBundle\Entity\Category $category
+     * @return Page
+     */
+    public function setCategory(\Project\UserBundle\Entity\Category $category = null)
+    {
+        $this->category = $category;
+
+        return $this;
+    }
+
+    /**
+     * Get category
+     *
+     * @return \Project\UserBundle\Entity\Category 
+     */
+    public function getCategory()
+    {
+        return $this->category;
     }
 }

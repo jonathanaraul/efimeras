@@ -1,104 +1,94 @@
 project_back_homepage:
-    pattern:  /{_locale}
+    pattern:  /
     defaults: { _controller: ProjectBackBundle:Default:index }
-    requirements:
-        _locale:  es|en
-
 project_back_page_list:
-    pattern:  /{_locale}/page/list/
+    pattern:  /page/list/
     defaults: { _controller: ProjectBackBundle:Page:list }
-    requirements:
-        _locale:  es|en
 project_back_page_rank:
-    pattern:  /{_locale}/page/rank
+    pattern:  /page/rank
     defaults: { _controller: ProjectBackBundle:Page:rank }
-    requirements:
-        _locale:  es|en
 project_back_page_rank_post:
-    pattern:  /{_locale}/page/rank/post
+    pattern:  /page/rank/post
     defaults: { _controller: ProjectBackBundle:Page:rankPost }
-    requirements:
-        _locale:  es|en
 project_back_page_create:
-    pattern:  /{_locale}/page/create
+    pattern:  /page/create
     defaults: { _controller: ProjectBackBundle:Page:create }
-    requirements:
-        _locale:  es|en
 project_back_page_edit:
-    pattern:  /{_locale}/page/edit/{id}
+    pattern:  /page/edit/{id}
     defaults: { _controller: ProjectBackBundle:Page:edit, id: '1' }
-    requirements:
-        _locale:  es|en
 project_back_page_delete:
-    pattern:  /{_locale}/page/delete
+    pattern:  /page/delete
     defaults: { _controller: ProjectBackBundle:Page:delete }
     requirements:
       _method: POST
-      _locale:  es|en
 project_back_page_status:
-    pattern:  /{_locale}/page/status
+    pattern:  /page/status
     defaults: { _controller: ProjectBackBundle:Page:status }
     requirements:
       _method: POST
-      _locale:  es|en
+
+project_back_category_list:
+    pattern:  /category/list/
+    defaults: { _controller: ProjectBackBundle:Category:list }
+project_back_category_rank:
+    pattern:  /category/rank
+    defaults: { _controller: ProjectBackBundle:Category:rank }
+project_back_category_rank_post:
+    pattern:  /category/rank/post
+    defaults: { _controller: ProjectBackBundle:Category:rankPost }
+project_back_category_create:
+    pattern:  /category/create
+    defaults: { _controller: ProjectBackBundle:Category:create }
+project_back_category_edit:
+    pattern:  /category/edit/{id}
+    defaults: { _controller: ProjectBackBundle:Category:edit, id: '1' }
+project_back_category_delete:
+    pattern:  /category/delete
+    defaults: { _controller: ProjectBackBundle:Category:delete }
+    requirements:
+      _method: POST
+project_back_category_status:
+    pattern:  /category/status
+    defaults: { _controller: ProjectBackBundle:Category:status }
+    requirements:
+      _method: POST
 
 project_back_background_list:
-    pattern:  /{_locale}/background/list/
+    pattern:  /background/list/
     defaults: { _controller: ProjectBackBundle:Background:list }
-    requirements:
-        _locale:  es|en
 project_back_background_rank:
-    pattern:  /{_locale}/background/rank
+    pattern:  /background/rank
     defaults: { _controller: ProjectBackBundle:Background:rank }
-    requirements:
-        _locale:  es|en
 project_back_background_rank_post:
-    pattern:  /{_locale}/background/rank/post
+    pattern:  /background/rank/post
     defaults: { _controller: ProjectBackBundle:Background:rankPost }
-    requirements:
-        _locale:  es|en
 project_back_background_create:
-    pattern:  /{_locale}/background/create
+    pattern:  /background/create
     defaults: { _controller: ProjectBackBundle:Background:create }
-    requirements:
-        _locale:  es|en
 project_back_background_edit:
-    pattern:  /{_locale}/background/edit/{id}
+    pattern:  /background/edit/{id}
     defaults: { _controller: ProjectBackBundle:Background:edit, id: '1' }
-    requirements:
-        _locale:  es|en
 project_back_background_delete:
-    pattern:  /{_locale}/background/delete
+    pattern:  /background/delete
     defaults: { _controller: ProjectBackBundle:Background:delete }
     requirements:
       _method: POST
-      _locale:  es|en
 project_back_background_status:
-    pattern:  /{_locale}/background/status
+    pattern:  /background/status
     defaults: { _controller: ProjectBackBundle:Background:status }
     requirements:
       _method: POST
-      _locale:  es|en
 project_back_background_home:
-    pattern:  /{_locale}/background/home
+    pattern:  /background/home
     defaults: { _controller: ProjectBackBundle:Background:home }
     requirements:
       _method: POST
-      _locale:  es|en
-
 project_back_theme_list:
-    pattern:  /{_locale}/theme/list/
+    pattern:  /theme/list/
     defaults: { _controller: ProjectBackBundle:Theme:list }
-    requirements:
-        _locale:  es|en
 project_back_theme_create:
-    pattern:  /{_locale}/theme/create
+    pattern:  /theme/create
     defaults: { _controller: ProjectBackBundle:Theme:create }
-    requirements:
-        _locale:  es|en
-
 project_back_reservation_list:
-    pattern:  /{_locale}/reservation/list/
+    pattern:  /reservation/list/
     defaults: { _controller: ProjectBackBundle:Reservation:list }
-    requirements:
-        _locale:  es|en

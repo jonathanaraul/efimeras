@@ -46,11 +46,13 @@ class DefaultController extends Controller
         $secondArray['tag'] = $term;
         $secondArray['search'] = true;
 
-        $data = new Search();
-        $data -> setName($term);
-	    $data -> setDate(new \DateTime());
-		$em -> persist($data);
-		$em -> flush();
+        if(trim($term)==''){
+        	$data = new Search();
+        	$data -> setName($term);
+        	$data -> setDate(new \DateTime());
+        	$em -> persist($data);
+        	$em -> flush();       	
+        }
 
 		$array = array_merge($firstArray, $secondArray);
 		return $this -> render('ProjectFrontBundle:Default:tags.html.twig', $array);
@@ -68,10 +70,28 @@ class DefaultController extends Controller
 		$secondArray['listado'] = null;//UtilitiesAPI::esListado($secondArray['idpage'],$this);
 		$secondArray['images'] = array();
 		$secondArray['tags'] = explode(',', $secondArray['page']->getTags());
-
+		if(trim($secondArray['tags'][0])=="")$secondArray['tags'] = null;
 		
 		$array = array_merge($firstArray, $secondArray);
 		return $this -> render('ProjectFrontBundle:Default:page.html.twig', $array);
+	}
+	/**
+	 * @Route("/category/{id}/{friendlyname}", name="project_front_category")
+	 */
+	public function categoryAction($id,$friendlyname) {
+		
+		$firstArray = UtilitiesAPI::getDefaultContent('contacto', $this);
+		$secondArray = array();
+		$secondArray['page'] = $this -> getDoctrine() -> getRepository('ProjectUserBundle:Category') -> find($id);
+		$secondArray['idpage'] = $secondArray['page']->getId();
+		$secondArray['articles'] = null;
+		$secondArray['listado'] = null;
+		$secondArray['images'] = array();
+		$secondArray['tags'] = explode(',', $secondArray['page']->getTags());
+		if(trim($secondArray['tags'][0])=="")$secondArray['tags'] = null;
+
+		$array = array_merge($firstArray, $secondArray);
+		return $this -> render('ProjectFrontBundle:Default:category.html.twig', $array);
 	}
 	/**
 	 * @Route("/tag/{tag}", name="project_front_tag")
@@ -103,7 +123,7 @@ class DefaultController extends Controller
 		$firstArray = UtilitiesAPI::getDefaultContent('reservation', $this);
 		$secondArray = array();
 		$secondArray['page'] = $this -> getDoctrine() -> getRepository('ProjectUserBundle:Page') -> find($id);
-		$locale = UtilitiesAPI::getLocale($this);
+		
 		///////////////////////////////////////////////////////////////////////////////////////////////////
 		$data = new Reservation();
 		$form = $this->createForm('reservation', $data);
@@ -114,7 +134,6 @@ class DefaultController extends Controller
 		if ($this -> getRequest() -> isMethod('POST')) {
 
 			$form -> bind($this -> getRequest());
-			$data -> setLang($locale);
 			$data -> setDate(new \DateTime());
 			$data -> setChecked(false);
 			$data -> setPage($secondArray['page']);
@@ -143,9 +162,7 @@ class DefaultController extends Controller
 		
 			///////////////////////////
 			$secondArray['message'] = 'Estimado(a) '.ucwords($data -> getName()).' su reserva ha sido guardada exitosamente...';
-			if($locale==1){
-				$secondArray['message'] = 'Dear '.ucwords($data -> getName()).' your booking has been saved successfully...';
-			}
+			
 			
 														}
 		

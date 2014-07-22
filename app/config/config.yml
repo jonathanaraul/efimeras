@@ -60,6 +60,12 @@ doctrine:
         auto_generate_proxy_classes: "%kernel.debug%"
         auto_mapping: true
 
+stof_doctrine_extensions:
+    default_locale: es_ES
+    orm:
+        default:
+            timestampable: true # not needed: listeners are not enabled by default
+
 # Swiftmailer Configuration
 swiftmailer:
     transport: gmail
@@ -108,7 +114,7 @@ fos_user:
     user_class: Project\UserBundle\Entity\User
     registration:
         confirmation:
-            enabled:    true
+            enabled:    false
         form:
             type: project_user_registration
     profile:

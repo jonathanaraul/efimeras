@@ -4,9 +4,9 @@
 <script ></script>
 <script src="{{asset('admin/js/project/listados.js')}}"></script>
 <script type="text/javascript">
-	var direccionEstatus = "{{path('project_back_page_status')}}";
-	var direccionBorrar = "{{path('project_back_page_delete')}}";
-	var direccionEditar = "{{path('project_back_page_edit')}}"; 
+	var direccionEstatus = "{{path('project_back_category_status')}}";
+	var direccionBorrar = "{{path('project_back_category_delete')}}";
+	var direccionEditar = "{{path('project_back_category_edit')}}"; 
 </script>
 <script src="{{asset('admin/js/helpers/grafico-torta.js')}}"></script>
 <script src="{{asset('admin/js/helpers/grafico-dominios.js')}}"></script>
@@ -27,7 +27,7 @@
 
 			{# include 'ProjectBackBundle:Helpers:page-header.html.twig'  with {'titulo': 'Panel de control','subtitulo':'Vista de elementos'}  #}
 			<div class="page-header position-relative">
-				<h1> Páginas <small> <i class="icon-double-angle-right"></i> listado </small></h1>
+				<h1> Categorías <small> <i class="icon-double-angle-right"></i> listado </small></h1>
 			</div><!--/.page-header-->
 
 			<div class="row-fluid">

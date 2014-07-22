@@ -109,8 +109,7 @@ class ReservationController extends Controller {
 				else{
 					$dql .= 'AND ';
 					}
-				$dql .= ' n.lang = :lang ';
-		
+					
 				$query = $em -> createQuery($dql);
 
 				if (is_numeric ($data -> getSpecial())) {
@@ -126,7 +125,7 @@ class ReservationController extends Controller {
 					$query -> setParameter('published', $data -> getPublished());
 				}
 				
-				$query -> setParameter('lang', $locale);
+
 
 			}
 		}

@@ -16,14 +16,17 @@
 	{#<div class="upper-text" style="background-color: {#{theme.color} !important"></div>#}
 	
 	<div class="news-cont">
-		<hr class="barra-inferior">
-		<p class="content-title">
-			{{page.name|title}}
-		</p>
+
+
 		<div class="news-cell">
 				<table cellpadding="12" id="contenido-pagina" style="width: 100%;">
 					<tr width="100%">
-						<td  width="100%" valign="top" colspan="3"> {{page.content|raw}}
+						<td  width="100%" valign="top" colspan="3"> 
+					<h2 style="color: {{page.theme.color}};">
+						{{page.name|title}}
+					</h2>
+
+							{{page.content|raw}}
 
 						</br>
 						 </td>

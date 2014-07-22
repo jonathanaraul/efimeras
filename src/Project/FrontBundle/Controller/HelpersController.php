@@ -18,17 +18,15 @@ class HelpersController extends Controller
 {
     public function menuMobileAction()
     {
-    	$locale = UtilitiesAPI::getLocale($this);
+
 	
 		$em = $this->getDoctrine()->getManager();
 		
 		$query = $em -> createQuery('SELECT d
     								 FROM ProjectUserBundle:Page d
-   	 								 WHERE d.lang      = :locale and
-   	 								       d.published = :published and
-                                           d.special = 0
+   	 								 WHERE 
+   	 								       d.published = :published  and d.category is null
     								 ORDER BY d.rank ASC') 
-    		   -> setParameter('locale', $locale)
 			   -> setParameter('published', 1);
 
 		$array['objects'] = $query -> getResult();
@@ -41,16 +39,16 @@ class HelpersController extends Controller
 	
 		$em = $this->getDoctrine()->getManager();
 		
-		$query = $em -> createQuery('SELECT d
-    								 FROM ProjectUserBundle:Page d
-   	 								 WHERE d.lang      = :locale and
-   	 								       d.published = :published  and
-                                           d.special = 0
+		$query = $em -> createQuery('SELECT d ,e
+    								 FROM ProjectUserBundle:Page d,ProjectUserBundle:Category e
+   	 								 WHERE 
+   	 								       d.published = :published  and d.category is null and d.id !=:prohibida
     								 ORDER BY d.rank ASC') 
-    		   -> setParameter('locale', $locale)
-			   -> setParameter('published', 1);
+			   -> setParameter('published', 1)
+         -> setParameter('prohibida', 3);
 
 		$array['objects'] = $query -> getResult();
+
 		$array['idpage'] = $idpage;
 		$array['theme'] = $theme;
 	

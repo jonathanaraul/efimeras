@@ -1,0 +1,108 @@
+{% extends '::base.html.twig' %}
+
+{% block pagesScriptsBottom %}
+<script ></script>
+<script src="{{asset('admin/js/project/listados.js')}}"></script>
+<script type="text/javascript">
+	var direccionEstatus = "{{path('project_back_category_status')}}";
+	var direccionBorrar = "{{path('project_back_category_delete')}}";
+	var direccionEditar = "{{path('project_back_category_edit')}}";
+
+	// Portlets (boxes)
+	$('.widget-container-span').sortable({
+		connectWith : '.widget-container-span',
+		items : '> .widget-box',
+		opacity : 0.8,
+		revert : true,
+		forceHelperSize : true,
+		placeholder : 'widget-placeholder',
+		forcePlaceholderSize : true,
+		tolerance : 'pointer'
+	}); 
+
+	jQuery('.ordenar').mouseup(function() {  
+
+		var id= jQuery(this).attr('objeto');
+
+		jQuery('.ordenar')
+
+		$.each(jQuery('.ordenar')), function(indice, valor) {
+		var auxiliar = $.trim($(valor).val());
+		var id = $(valor).attr('id');
+		data += '&' + id + '=' + auxiliar;
+	     });
+
+
+	});
+
+</script>
+
+{%endblock%}
+
+{% block pageContent  %}
+<div class="main-container container-fluid" id="sinlogin">
+	<a class="menu-toggler" id="menu-toggler" href="#"> <span class="menu-text"></span> </a>
+
+	{% include '::sidebar.html.twig'  with {'clase': 'gris'}  %}
+
+	<div class="main-content">
+
+		{# include 'ProjectBackBundle:Architecture:breadcrumb.html.twig'  with {'clase': 'gris'} #}
+		<div class="page-content">
+
+			{# include 'ProjectBackBundle:Helpers:page-header.html.twig'  with {'titulo': 'Panel de control','subtitulo':'Vista de elementos'}  #}
+			<div class="page-header position-relative">
+				<h1> Categorías <small> <i class="icon-double-angle-right"></i> ordenar </small></h1>
+
+			</div><!--/.page-header-->
+
+			<div class="row-fluid">
+				<div class="span12">
+					<!--PAGE CONTENT BEGINS-->
+					<!--PAGE CONTENT BEGINS-->
+
+					{%if objects|length>0%}
+					<p class="alert alert-success">
+						Puede realizar el ordenamiento haciendo drag and drop
+					</p>
+					{%for element in objects %}
+					<div class="row-fluid ordenar" style="cursor:pointer;" id="elemento_{{element.id}}">
+						<div class="span12 widget-container-span" >
+							<div class="widget-box">
+								<div class="widget-header widget-header-large">
+									<h4>{{element.name}}</h4>
+								</div>
+
+								<div class="widget-body">
+									<div class="widget-main">
+										<p class="alert alert-info">
+											{{element.descriptionMeta}}
+										</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div><!--/row-->
+					{%endfor%}
+
+					<div class="hr hr-18 dotted hr-double"></div>
+					{%else%}
+					<div class="alert alert-error">
+						<button type="button" class="close" data-dismiss="alert">
+							<i class="icon-remove"></i>
+						</button>
+
+						<strong> <i class="icon-remove"></i> Lo sentimos... </strong>
+
+						No se han encontrado resultados en esta busqueda.
+						<br>
+					</div>
+					{%endif%}
+					<!--PAGE CONTENT ENDS-->
+				</div><!--/.span-->
+			</div><!--/.row-fluid-->
+		</div><!--/.page-content-->
+	</div><!--/.main-content-->
+</div><!--/.main-container-->
+
+{%endblock%}

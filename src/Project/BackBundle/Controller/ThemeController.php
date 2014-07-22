@@ -27,7 +27,6 @@ class ThemeController extends Controller {
 		$url = $this -> generateUrl('project_back_theme_list');
 		$firstArray = UtilitiesAPI::getDefaultContent('Tema', 'Mostrar Información', $this);
 
-		$locale = UtilitiesAPI::getLocale($this);
 		$form = null;		
 		$filtros = null;
 	/*
@@ -109,7 +108,6 @@ class ThemeController extends Controller {
 				else{
 					$dql .= 'AND ';
 					}
-				$dql .= ' n.lang = :lang ';
 		
 				$query = $em -> createQuery($dql);
 
@@ -125,8 +123,7 @@ class ThemeController extends Controller {
 				if (is_numeric ($data -> getPublished())) {
 					$query -> setParameter('published', $data -> getPublished());
 				}
-				
-				$query -> setParameter('lang', $locale);
+
 
 			}
 		}

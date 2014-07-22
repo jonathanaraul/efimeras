@@ -7,7 +7,7 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 
-class PageType extends AbstractType
+class CategoryType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
@@ -44,27 +44,19 @@ class PageType extends AbstractType
             'class' => 'ProjectUserBundle:Background',
             'property' => 'name',
             ))
-        -> add('category', 'entity', array(
-            'class' => 'ProjectUserBundle:Category',
-            'empty_value' => 'Opcional',
-            'property' => 'name',
-            'label' => 'Categoria',
-            'required' => false, 
-            ))
         -> add('published', 'checkbox', array('label' => 'Publicado', 'required' => false, )) 
-        -> add('reservacion', 'checkbox', array('label' => 'Reservas', 'required' => false, )) 
         -> add('save', 'submit',array('label' => 'Guardar', 'attr' => array('class' => 'btn btn-info')));
     }
 
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'Project\UserBundle\Entity\Page',
+            'data_class' => 'Project\UserBundle\Entity\Category',
             ));
     }
 
     public function getName()
     {
-        return 'page';
+        return 'category';
     }
 }

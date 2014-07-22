@@ -11,42 +11,74 @@ var images = ["{{ asset(''~ page.getBackground.getWebPath ~'') }}"];
 	{#<div class="upper-text" style="background-color: {#{theme.color} !important"></div>#}
 	
 	<div class="news-cont">
+		<h2 style="padding-left: 44px;color: {{page.theme.color}};">
+			{{page.name|title}}
+		</h2>
 		<div class="news-cell">
 				<table cellpadding="12" id="contenido-pagina" style="width: 100%;">
-
-				
-
-					<td  width="100%" valign="top" colspan="3"> 
-					<h2 style="color: {{page.theme.color}};">
-						{{page.name|title}}
-					</h2>
-                    {%if page.path is not null%}
-					<p>
-						<img src="{{asset(page.getWebPath)}}" style="width:100%;margin-top:20px;margin-bottom:10px;">
-					</p>
-					{%endif%}
-
-
-							{{page.content|raw}}
+					<tr width="100%">
+						<td  width="100%" valign="top" colspan="3"> {{page.content|raw}}
 
 						</br>
-						{%if page.reservacion %}
+						{%if page.path is not null%}
 								<div class="boton-listado boton-reservaciones" style="margin-top: 14px;margin-right: 0px;" >
-									<a href="{{path('project_front_reservation',{'id': page.id})}}" >{% trans %}Reservar{% endtrans %}</a>
+									<a href="{{ asset(''~ page.getWebPath ~'') }}" target="_blank">{% trans %}Ver Adjunto{% endtrans %}</a>
 								</div>
 						{%endif%}
 						{%if tags is not null%}
 						<p>Tags: {%for element in tags%}<b ><a href="{{path('project_front_tag',{'tag': element})}}" style="color:{{page.theme.color}}">{{element}}</a></b> |{%endfor%}
 						</p>
 						{%endif%}
-						</br>
+						
 						 </td>
 					</tr>
+
 				</table>
 		</div>
 		<div class="lower-text"></div>
 		{#<div class="lower-box" style="#right: 200px;"></div>#}
 	</div>
+
+
+{%for element in page.pages%}
+<div class="news-cont">
+
+	<div class="news-cell">
+		<table cellpadding="12" id="contenido-pagina" style="width: 100%;">
+
+			<tr width="100%">
+				<td  width="30%" valign="top" colspan="3"> 
+					<p>
+						<img src="{{asset(element.getWebPath)}}" style="width: 140px;">
+					</p>
+
+				</td>				
+				<td  width="70%" valign="top" colspan="3"> 
+
+					<h2 style="color: {{page.theme.color}};">
+						{{element.name|title}}
+					</h2>
+					<p>
+						{{element.content|raw}}
+					</p>
+					<p style="color: {{page.theme.color}};float:right">
+                      <a href="{{path('project_front_page',{'id': element.id, 'friendlyname' : element.friendlyName})}}">
+                      	Leer más...
+                      </a>
+					</p>
+
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div class="lower-text"></div>
+	{#<div class="lower-box" style="#right: 200px;"></div>#}
+</div>
+{%endfor%}
+
+
+
+
 	{#
 	<div class="main-big-title news-big-title" style="">
 		<div class="theme-sel-10">

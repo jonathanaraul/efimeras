@@ -57,6 +57,18 @@
 				</li>
 			</ul>
 		</li>
+		<li {% if app.request.attributes.get('_route') == 'project_back_category_list' or  app.request.attributes.get('_route') == 'project_back_category_create' or  app.request.attributes.get('_route') == 'project_back_category_rank' %}class="open"{%endif%}>
+			<a href="#" class="dropdown-toggle"> <i class="icon-folder-open"></i> <span class="menu-text"> Categoría </span> <b class="arrow icon-angle-down"></b> </a>
+
+			<ul class="submenu" {% if app.request.attributes.get('_route') == 'project_back_category_list' or  app.request.attributes.get('_route') == 'project_back_category_create' or  app.request.attributes.get('_route') == 'project_back_category_rank' %}  style="display: block;"{%endif%}>
+				<li {% if app.request.attributes.get('_route') == 'project_back_category_list' %}class="active"{%endif%}>
+					<a href="{{path('project_back_category_list')}}"> <i class="icon-double-angle-right"></i> Ver categorías </a>
+				</li>
+				<li {% if app.request.attributes.get('_route') == 'project_back_category_create' %}class="active"{%endif%}>
+					<a href="{{path('project_back_category_create')}}"> <i class="icon-double-angle-right"></i> Crear categoría</a>
+				</li>
+			</ul>
+		</li>
 		<li {% if app.request.attributes.get('_route') == 'project_back_background_list' or  app.request.attributes.get('_route') == 'project_back_background_create' %} class="open"{%endif%}>
 			<a href="#" class="dropdown-toggle"> <i class="icon-camera"></i> <span class="menu-text"> Fondos </span> <b class="arrow icon-angle-down"></b> </a>
 

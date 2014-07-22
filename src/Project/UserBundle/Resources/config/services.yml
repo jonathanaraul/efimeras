@@ -44,3 +44,8 @@ services:
         class: Project\UserBundle\Form\Type\PageType
         tags:
             - { name: form.type, alias: page }
+
+    project_background.form.type.category:
+        class: Project\UserBundle\Form\Type\CategoryType
+        tags:
+            - { name: form.type, alias: category }

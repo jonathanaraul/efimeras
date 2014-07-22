@@ -27,7 +27,7 @@ class PageController extends Controller {
 		$url = $this -> generateUrl('project_back_page_list');
 		$firstArray = UtilitiesAPI::getDefaultContent('PAGINAS', 'Mostrar Información', $this);
 
-		$locale = UtilitiesAPI::getLocale($this);
+
 		$form = null;		
 		$filtros = null;
 	/*
@@ -109,7 +109,7 @@ class PageController extends Controller {
 				else{
 					$dql .= 'AND ';
 					}
-				$dql .= ' n.lang = :lang ';
+		
 		
 				$query = $em -> createQuery($dql);
 
@@ -126,16 +126,15 @@ class PageController extends Controller {
 					$query -> setParameter('published', $data -> getPublished());
 				}
 				
-				$query -> setParameter('lang', $locale);
+
 
 			}
 		}
 		//////////////////////////////////////////////////////////////////////////////////////////////////
 		else {*/
 			$dql = "SELECT n FROM ProjectUserBundle:Page n ";
-			$dql .= 'WHERE n.lang = :lang ';
+
 			$query = $em -> createQuery($dql);
-			$query -> setParameter('lang', $locale);
 		//}
 
 		$paginator = $this -> get('knp_paginator');
@@ -154,8 +153,8 @@ class PageController extends Controller {
 			$auxiliar[$i]['background'] = '-';
 			$auxiliar[$i]['theme'] = $objects[$i] -> getTheme();
 			$auxiliar[$i]['media'] = '-';
-			$auxiliar[$i]['dateCreated'] = $objects[$i] -> getDateCreated();
-			$auxiliar[$i]['dateUpdated'] = $objects[$i] -> getDateUpdated();
+			$auxiliar[$i]['created'] = $objects[$i] -> getCreated();
+			$auxiliar[$i]['updated'] = $objects[$i] -> getUpdated();
 		}
 		$objects = $auxiliar;
 		$secondArray = array('pagination' => $pagination, 'filtros' => $filtros, 'objects' => $objects, 'url' => $url);
@@ -210,21 +209,17 @@ class PageController extends Controller {
         if ($form->isValid()) {
         // perform some action, such as saving the task to the database
         	if ($array['accion'] == 'nuevo') {
-        		$data->setDateCreated(new \DateTime('now'));
-        		$data->setPublished(1);
-        	    $data->setRank(0);
+        		$data -> setPublished(1);
+        	    $data -> setRank(0);
 				$data -> setSpecial(0);
 				$data -> setSpacer(0);
 				$data -> setTemplate(0);
 				
-				$data -> setLang($locale);
 				$data -> setRank(UtilitiesAPI::getRank($locale, $class));
-				$data -> setDateCreated(new \DateTime());
 
         	}
         	$data -> setFriendlyName(UtilitiesAPI::getFriendlyName($data->getName(),$class));
 
-        	$data->setDateUpdated(new \DateTime('now'));
         	$data->setUser($user);
             $data -> setIp($class -> container -> get('request') -> getClientIp());
 
