@@ -213,8 +213,6 @@ class PageController extends Controller {
         	    $data -> setRank(0);
 				$data -> setSpecial(0);
 				$data -> setSpacer(0);
-				$data -> setTemplate(0);
-				
 				$data -> setRank(UtilitiesAPI::getRank($locale, $class));
 
         	}

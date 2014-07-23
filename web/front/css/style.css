@@ -1,4 +1,13 @@
 @font-face {
+    font-family: 'Droid';
+    src: url('../fonts/DroidSans.ttf');
+}
+@font-face {
+    font-family: 'DroidBold';
+    src: url('../fonts/DroidSans-Bold.ttf');
+}
+
+@font-face {
     font-family: 'Calibri';
     src: url('../fonts3/calibri.ttf') format('truetype');
     font-weight: normal;
@@ -59,17 +68,21 @@ html{
     overflow: auto;
 }
 body {
-    font-family: "trebuchet MS", Tahoma, Arial, Helvetica, sans-serif;
+    font-family: "Droid", "trebuchet MS", Tahoma, Arial, Helvetica, sans-serif;
     font-size: 13px;
     color: #000;
     background-color: #FFF;
 }
 
 body, img, p{
-	font-family: "Tahoma";
+	font-family: "Droid";
     margin: 0px;
     padding: 0px;
     border: 0px;
+}
+h2{
+    font-family: "DroidBold";
+    
 }
 
 .error-404, .info{
@@ -256,7 +269,7 @@ a, a:link, a:hover, a:active, a:visited{
 }
 
 .menu a{
-    font-family: "Tahoma";
+font-family: "Droid";
     font-size: 16px;
 }
 

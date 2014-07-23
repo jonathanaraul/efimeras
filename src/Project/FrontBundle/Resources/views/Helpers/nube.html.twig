@@ -1,0 +1,35 @@
+<div class="cell-right-sub" style="padding-left: 32px;">
+	<div class="news-cont" style="width: 66%;float:left;">
+		<div class="news-cell">
+			<table cellpadding="12" id="contenido-pagina" style="width: 100%;">
+				<td  width="100%" valign="top" colspan="3" style="font-size: 1.17em;text-align:center;line-height: 200%;">
+                    {%for element in tags%}
+                    {%set tipo =  random(3)  %}
+
+                    {%if tipo == 0%}
+                    <span>
+                    	<a href="{{path('project_front_tag',{'tag': element})}}" style="color:{{page.theme.color}}">{{element}}</a>
+                    </span>
+                    {%elseif tipo==1%}
+                    <span>
+                    	<a href="{{path('project_front_tag',{'tag': element})}}" style="color:white">{{element}}</a>
+                    </span>
+                    {%elseif tipo==2%}
+                    <span><b>
+                    	<a href="{{path('project_front_tag',{'tag': element})}}" style="color:{{page.theme.color}}">{{element}}</a>
+                         </b>
+                    </span>
+                    {%else%}
+                    <span><b>
+                    	<a href="{{path('project_front_tag',{'tag': element})}}" style="color:white">{{element}}</a>
+                         </b>
+                    </span>
+                    {%endif%}
+                    {%endfor%}
+				</td>
+				</tr>
+			</table>
+		</div>
+		<div class="lower-text"></div>
+	</div>
+</div>

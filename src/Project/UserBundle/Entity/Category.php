@@ -35,9 +35,9 @@ class Category
     /**
      * @var integer
      *
-     * @ORM\Column(name="template", type="integer", nullable=false)
+     * @ORM\Column(name="template", type="boolean", nullable=false)
      */
-    private $template=0;
+    private $template;
 
     /**
      * @var string

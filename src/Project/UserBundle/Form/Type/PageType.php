@@ -52,6 +52,7 @@ class PageType extends AbstractType
             'required' => false, 
             ))
         -> add('published', 'checkbox', array('label' => 'Publicado', 'required' => false, )) 
+        -> add('template', 'checkbox', array('label' => 'Plantilla', 'required' => false, )) 
         -> add('reservacion', 'checkbox', array('label' => 'Reservas', 'required' => false, )) 
         -> add('save', 'submit',array('label' => 'Guardar', 'attr' => array('class' => 'btn btn-info')));
     }

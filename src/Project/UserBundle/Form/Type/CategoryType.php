@@ -44,6 +44,7 @@ class CategoryType extends AbstractType
             'class' => 'ProjectUserBundle:Background',
             'property' => 'name',
             ))
+        -> add('template', 'checkbox', array('label' => 'Plantilla', 'required' => false, )) 
         -> add('published', 'checkbox', array('label' => 'Publicado', 'required' => false, )) 
         -> add('save', 'submit',array('label' => 'Guardar', 'attr' => array('class' => 'btn btn-info')));
     }

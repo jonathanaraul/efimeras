@@ -90,7 +90,6 @@ class CategoryController extends Controller {
         // perform some action, such as saving the task to the database
         	if ($array['accion'] == 'nuevo') {
         		$data -> setPublished(1);
-				$data -> setTemplate(0);
         	}
 
         	$data -> setFriendlyName(UtilitiesAPI::getFriendlyName($data->getName(),$class));

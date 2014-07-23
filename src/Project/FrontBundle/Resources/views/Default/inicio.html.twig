@@ -2,10 +2,10 @@
 
 {%block imagenes%}
 
-	var images =  new Array();
-	{%for element in backgrounds%}
-		images[{{loop.index0}}] = "{{ asset(''~ element.getWebPath ~'') }}";
-	{%endfor%}
+var images =  new Array();
+{%for element in backgrounds%}
+images[{{loop.index0}}] = "{{ asset(''~ element.getWebPath ~'') }}";
+{%endfor%}
 
 {%endblock%}
 
@@ -14,27 +14,20 @@
 
 	{{ render(controller('ProjectFrontBundle:Helpers:menuMobile')) }}
 	{#<div class="upper-text" style="background-color: {#{theme.color} !important"></div>#}
-	
-	<div class="news-cont">
 
-
+	<div class="news-cont"  style="margin-left: 66px;">
 		<div class="news-cell">
-				<table cellpadding="12" id="contenido-pagina" style="width: 100%;">
-					<tr width="100%">
-						<td  width="100%" valign="top" colspan="3"> 
-					<h2 style="color: {{page.theme.color}};">
-						{{page.name|title}}
-					</h2>
+			<table cellpadding="12" id="contenido-pagina" style="width: 100%;">
+				<tr width="100%">
+					<td  width="100%" valign="top" colspan="3"><h2 style="color: {{page.theme.color}};"> {{page.name|title}} </h2></br>  {{page.content|raw}}
 
-							{{page.content|raw}}
-
-						</br>
-						 </td>
-					</tr>
-				</table>
+					</br> </td>
+				</tr>
+			</table>
 		</div>
 		<div class="lower-text"></div>
-		{#<div class="lower-box" style="#right: 200px;"></div>#}
+		{#<div class="lower-box" style="#right: 200px;"></div>
+		#}
 	</div>
 	{#
 	<div class="main-big-title news-big-title" style="">

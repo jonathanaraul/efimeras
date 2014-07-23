@@ -9,75 +9,56 @@ var images = ["{{ asset(''~ page.getBackground.getWebPath ~'') }}"];
 
 	{{ render(controller('ProjectFrontBundle:Helpers:menuMobile')) }}
 	{#<div class="upper-text" style="background-color: {#{theme.color} !important"></div>#}
-	
-	<div class="news-cont">
-		<h2 style="padding-left: 44px;color: {{page.theme.color}};">
-			{{page.name|title}}
-		</h2>
+
+	<div class="news-cont"  style="margin-left: 66px;{%if page.template==0%}width: 800px;{%endif%}">
+		<h2 style="padding-left: 44px;color: {{page.theme.color}};"> {{page.name|title}} </h2>
 		<div class="news-cell">
-				<table cellpadding="12" id="contenido-pagina" style="width: 100%;">
-					<tr width="100%">
-						<td  width="100%" valign="top" colspan="3"> {{page.content|raw}}
+			<table cellpadding="12" id="contenido-pagina" style="width: 100%;">
+				<tr width="100%">
+					<td  width="100%" valign="top" colspan="3"> {{page.content|raw}}
 
-						</br>
-						{%if page.path is not null%}
-								<div class="boton-listado boton-reservaciones" style="margin-top: 14px;margin-right: 0px;" >
-									<a href="{{ asset(''~ page.getWebPath ~'') }}" target="_blank">{% trans %}Ver Adjunto{% endtrans %}</a>
-								</div>
-						{%endif%}
-						{%if tags is not null%}
-						<p>Tags: {%for element in tags%}<b ><a href="{{path('project_front_tag',{'tag': element})}}" style="color:{{page.theme.color}}">{{element}}</a></b> |{%endfor%}
-						</p>
-						{%endif%}
-						
-						 </td>
-					</tr>
+					</br>
+					{%if page.path is not null%}
+					<div class="boton-listado boton-reservaciones" style="margin-top: 14px;margin-right: 0px;" >
+						<a href="{{ asset(''~ page.getWebPath ~'') }}" target="_blank">{% trans %}Ver Adjunto{% endtrans %}</a>
+					</div> {%endif%}
+				
+                   </td>
+				</tr>
 
-				</table>
+			</table>
 		</div>
 		<div class="lower-text"></div>
-		{#<div class="lower-box" style="#right: 200px;"></div>#}
+		{#<div class="lower-box" style="#right: 200px;"></div>
+		#}
 	</div>
 
+	{%for element in page.pages%}
+	<div class="news-cont"  style="margin-left: 66px;{%if page.template==0%}width: 800px;{%endif%}">
 
-{%for element in page.pages%}
-<div class="news-cont">
+		<div class="news-cell">
+			<table cellpadding="12" id="contenido-pagina" style="width: 100%;">
 
-	<div class="news-cell">
-		<table cellpadding="12" id="contenido-pagina" style="width: 100%;">
-
-			<tr width="100%">
-				<td  width="30%" valign="top" colspan="3"> 
+				<tr width="100%">
+					<td  width="30%" valign="top" colspan="3">
 					<p>
 						<img src="{{asset(element.getWebPath)}}" style="width: 140px;">
-					</p>
-
-				</td>				
-				<td  width="70%" valign="top" colspan="3"> 
-
-					<h2 style="color: {{page.theme.color}};">
-						{{element.name|title}}
-					</h2>
+					</p></td>
+					<td  width="70%" valign="top" colspan="3"><h2 style="color: {{page.theme.color}};"> {{element.name|title}} </h2>
 					<p>
 						{{element.content|raw}}
 					</p>
 					<p style="color: {{page.theme.color}};float:right">
-                      <a href="{{path('project_front_page',{'id': element.id, 'friendlyname' : element.friendlyName})}}">
-                      	Leer más...
-                      </a>
-					</p>
-
-				</td>
-			</tr>
-		</table>
+						<a href="{{path('project_front_page',{'id': element.id, 'friendlyname' : element.friendlyName})}}"> Leer más... </a>
+					</p></td>
+				</tr>
+			</table>
+		</div>
+		<div class="lower-text"></div>
+		{#<div class="lower-box" style="#right: 200px;"></div>
+		#}
 	</div>
-	<div class="lower-text"></div>
-	{#<div class="lower-box" style="#right: 200px;"></div>#}
-</div>
-{%endfor%}
-
-
-
+	{%endfor%}
 
 	{#
 	<div class="main-big-title news-big-title" style="">
@@ -89,5 +70,10 @@ var images = ["{{ asset(''~ page.getBackground.getWebPath ~'') }}"];
 </div>
 {%endblock%}
 
-{%block celda%} <div class="cell-right-sub"></div>
+{%block celda%} 
+{%if page.template==1%}
+{% include 'ProjectFrontBundle:Helpers:nube.html.twig' %}
+{%else%}
+<div class="cell-right-sub"></div>
+{%endif%}
 {%endblock%} 
