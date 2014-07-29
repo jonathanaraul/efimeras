@@ -1,0 +1,35 @@
+{% extends '::base.html.twig' %}
+
+{% form_theme form with ['ProjectBackBundle:Form:fields.html.twig',
+'ProjectBackBundle:Form:_menuItem_published_widget.html.twig',
+'ProjectBackBundle:Form:_menuItem_save_widget.html.twig',
+] %}
+
+{% block pagesScriptsBottom %}
+<script type="text/javascript">
+</script>
+{%endblock%}
+
+{% block pageContent  %}
+<div class="main-container container-fluid" id="sinlogin">
+	<a class="menu-toggler" id="menu-toggler" href="#"> <span class="menu-text"></span> </a>
+
+	{% include '::sidebar.html.twig'  with {'clase': 'gris'}  %}
+
+	<div class="main-content">
+
+		{# include 'ProjectBackBundle:Architecture:breadcrumb.html.twig'  with {'clase': 'gris'} #}
+		<div class="page-content">
+			{%set subtitulo = 'Crear nuevo'%}
+			{%if accion!='nuevo'%}{%set subtitulo = 'Editar'%}{%endif%}
+			{% include 'ProjectBackBundle:MenuItem:page-header.html.twig'  with {'subtitulo':subtitulo}  %}
+
+			{{ form(form, {'action': url, 'method': 'POST','attr': {'class':'form-horizontal'}}) }}
+
+
+		</div><!--/.page-content-->
+
+	</div><!--/.main-content-->
+</div><!--/.main-container-->
+
+{%endblock%}

@@ -5,40 +5,28 @@ var images = ["{{ asset(''~ page.getBackground.getWebPath ~'') }}"];
 {%endblock%}
 
 {%block contenido%}
-<div class="middle-right-sub">
+<div class="middle-right-sub" style="float: left;padding-top: 1px;margin-left: 405px;">
+	{% include 'ProjectFrontBundle:Helpers:controller-menuMobile.html.twig' %}
+	<div class="news-cont" style="margin-left: 25px;{%if page.template==0%}width: 800px;{%endif%}">
+		<div class="news-cell" style="padding: 14px;">
+			<h2 style="color: {{page.theme.color}};"> {{page.name|title}} </h2>
+			{%if page.path is not null%}
+			<p>
+				<img src="{{asset(page.getWebPath)}}" style="width:100%;margin-top:20px;margin-bottom:10px;">
+			</p>
+			{%else%}
+			</br>
+			{%endif%}
 
-	{{ render(controller('ProjectFrontBundle:Helpers:menuMobile')) }}
-	{#<div class="upper-text" style="background-color: {#{theme.color} !important"></div>#}
+			{{page.content|raw}}
 
-	<div class="news-cont"  style="margin-left: 66px;{%if page.template==0%}width: 800px;{%endif%}">
-		<h2 style="padding-left: 44px;color: {{page.theme.color}};"> {{page.name|title}} </h2>
-		<div class="news-cell">
-			<table cellpadding="12" id="contenido-pagina" style="width: 100%;">
-				<tr width="100%">
-					<td  width="100%" valign="top" colspan="3"> {{page.content|raw}}
-
-					</br>
-					{%if page.path is not null%}
-					<div class="boton-listado boton-reservaciones" style="margin-top: 14px;margin-right: 0px;" >
-						<a href="{{ asset(''~ page.getWebPath ~'') }}" target="_blank">{% trans %}Ver Adjunto{% endtrans %}</a>
-					</div> {%endif%}
-				
-                   </td>
-				</tr>
-
-			</table>
+			</br>
 		</div>
-		<div class="lower-text"></div>
-		{#<div class="lower-box" style="#right: 200px;"></div>
-		#}
 	</div>
-
 	{%for element in page.pages%}
-	<div class="news-cont"  style="margin-left: 66px;{%if page.template==0%}width: 800px;{%endif%}">
-
-		<div class="news-cell">
+	<div class="news-cont" style="margin-left: 25px;{%if page.template==0%}width: 800px;{%endif%}">
+		<div class="news-cell" style="padding: 14px;">
 			<table cellpadding="12" id="contenido-pagina" style="width: 100%;">
-
 				<tr width="100%">
 					<td  width="30%" valign="top" colspan="3">
 					<p>
@@ -54,26 +42,12 @@ var images = ["{{ asset(''~ page.getBackground.getWebPath ~'') }}"];
 				</tr>
 			</table>
 		</div>
-		<div class="lower-text"></div>
-		{#<div class="lower-box" style="#right: 200px;"></div>
-		#}
 	</div>
 	{%endfor%}
-
-	{#
-	<div class="main-big-title news-big-title" style="">
-		<div class="theme-sel-10">
-			{{page.name|title}}
-		</div>
-	</div>#}
+	<div class="news-cont"  style="margin-left: 25px;height: 0px;padding: 0px;{%if page.template==0%}width: 800px;{%endif%}"></div>
 	{% include 'ProjectFrontBundle:Helpers:inferior.html.twig' %}
 </div>
-{%endblock%}
-
-{%block celda%} 
 {%if page.template==1%}
 {% include 'ProjectFrontBundle:Helpers:nube.html.twig' %}
-{%else%}
-<div class="cell-right-sub"></div>
 {%endif%}
-{%endblock%} 
+{%endblock%}

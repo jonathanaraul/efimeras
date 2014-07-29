@@ -222,7 +222,7 @@ a, a:link, a:hover, a:active, a:visited{
     float: right;
     width: 90px;
     height: 90px;
-    margin-top: 25px;
+    #margin-top: 25px;
     background: url('../images/site/2012_10_17_ciecie_19.png') no-repeat center center;
 }
 
@@ -237,11 +237,11 @@ a, a:link, a:hover, a:active, a:visited{
 }
 
 .menu-cont{
-    position: relative;
+    #position: relative;
 }
 
 .menu{
-    position: absolute;
+    #position: absolute;
     top: 20px;
     right: 0px;
     z-index: 140;
@@ -263,7 +263,7 @@ a, a:link, a:hover, a:active, a:visited{
     margin: 0;
     padding: 0;
     position: absolute;
-    right: 20px;
+    
     width: 100%;
     border: 0;
 }
@@ -320,7 +320,7 @@ font-family: "Droid";
 opacity: 0.8;
 padding: 17px;
 color: white;
-top: 68px;
+top: 9px;
 }
 .upper-text{
     width: 140px;

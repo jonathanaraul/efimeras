@@ -1,17 +1,12 @@
 {% extends '::base.html.twig' %}
 
 {% block pagesScriptsBottom %}
-<script ></script>
 <script src="{{asset('admin/js/project/listados.js')}}"></script>
 <script type="text/javascript">
 	var direccionEstatus = "{{path('project_back_category_status')}}";
 	var direccionBorrar = "{{path('project_back_category_delete')}}";
 	var direccionEditar = "{{path('project_back_category_edit')}}"; 
 </script>
-<script src="{{asset('admin/js/helpers/grafico-torta.js')}}"></script>
-<script src="{{asset('admin/js/helpers/grafico-dominios.js')}}"></script>
-<script src="{{asset('admin/js/helpers/widget-reciente.js')}}"></script>
-<script src="{{asset('admin/js/helpers/widget-comentarios.js')}}"></script>
 {%endblock%}
 
 {% block pageContent  %}
@@ -24,11 +19,7 @@
 
 		{# include 'ProjectBackBundle:Architecture:breadcrumb.html.twig'  with {'clase': 'gris'} #}
 		<div class="page-content">
-
-			{# include 'ProjectBackBundle:Helpers:page-header.html.twig'  with {'titulo': 'Panel de control','subtitulo':'Vista de elementos'}  #}
-			<div class="page-header position-relative">
-				<h1> Categorías <small> <i class="icon-double-angle-right"></i> listado </small></h1>
-			</div><!--/.page-header-->
+			{% include 'ProjectBackBundle:Category:page-header.html.twig' with {'subtitulo':'listado'} %}
 
 			<div class="row-fluid">
 				<div class="span12">
@@ -56,56 +47,7 @@
 								</thead>
 								<tbody>
 									{%for element in pagination %}
-									<tr id="fila_{{element.id}}">
-										<td >{{element.id}}</td>
-										<td >{{element.name}}</td>
-										<td >{{element.friendlyName}}</td>
-
-										<td width="79" height="79"> {%if element.background is not null%} <a href="{{asset(''~ element.background.getWebPath ~'')}}"> <img src="{{ element.background.getWebPath | apply_filter('gestion') }}" width="80" height="80"> </a></br>{{element.background.name|title}}
-										{%endif%} </td>
-										<td width="79" height="79" style="background-color:{{ element.theme.color}}"> {%if element.theme is not null%} {{element.theme.name}}
-										{%endif%} </td>
-
-										<td class="hidden-phone">{{element.created.format('d/m/Y H:i:s')}}</td>
-										<td class="hidden-phone">{{element.updated.format('d/m/Y H:i:s')}}</td>
-
-										<td class="hidden-480"><span class="label label-success" {%if element.published==false%}style="display:none"{%endif%} id="publicado_{{element.id}}">Publicado</span><span class="label label-warning" {%if element.published%}style="display:none"{%endif%} id="despublicado_{{element.id}}">Despublicado</span></td>
-
-										<td>
-										<div class="hidden-phone visible-desktop btn-group" >
-											<button class="btn btn-mini btn-success cambiar-estatus" objeto="{{element.id}}" tarea="{%if element.published%}0{%else%}1{%endif%}">
-												<i class="icon-exchange bigger-120"></i>
-											</button>
-
-											<button class="btn btn-mini btn-info editar" objeto="{{element.id}}">
-												<i class="icon-pencil bigger-120"></i>
-											</button>
-
-											<button class="btn btn-mini btn-danger borrar" objeto="{{element.id}}">
-												<i class="icon-remove bigger-120"></i>
-											</button>
-										</div>
-										<div class="hidden-desktop visible-phone">
-											<div class="inline position-relative">
-												<button class="btn btn-minier btn-primary dropdown-toggle" data-toggle="dropdown">
-													<i class="icon-cog icon-only bigger-110"></i>
-												</button>
-												<ul class="dropdown-menu dropdown-icon-only dropdown-yellow pull-right dropdown-caret dropdown-close">
-													<li>
-														<a href="#" class="tooltip-info cambiar-estatus" data-rel="tooltip" title="View" objeto="{{element.id}}" tarea="{%if element.published%}0{%else%}1{%endif%}"
-														> <span class="blue"> <i class="icon-exchange bigger-120"></i> </span> </a>
-													</li>
-													<li>
-														<a href="#" class="tooltip-success editar" data-rel="tooltip" title="Edit" objeto="{{element.id}}"> <span class="green"> <i class="icon-pencil bigger-120"></i> </span> </a>
-													</li>
-													<li>
-														<a href="#" class="tooltip-error borrar" data-rel="tooltip" title="Delete" objeto="{{element.id}}"> <span class="red"> <i class="icon-remove bigger-120"></i> </span> </a>
-													</li>
-
-												</ul>
-											</div>
-										</div></td>
-									</tr>
+									{% include 'ProjectBackBundle:Category:list-element.html.twig'  with {'element':element}  %}
 									{%endfor%}
 								</tbody>
 							</table>
@@ -118,25 +60,6 @@
 								<div class="span6">
 									<div class="dataTables_paginate paging_bootstrap pagination" style="margin: 0px;font-size: 18px;">
 										{{ knp_pagination_render(pagination) }}
-										{#
-										<ul>
-											<li class="prev disabled">
-												<a href="#"><i class="icon-double-angle-left"></i></a>
-											</li>
-											<li class="active">
-												<a href="#">1</a>
-											</li>
-											<li>
-												<a href="#">2</a>
-											</li>
-											<li>
-												<a href="#">3</a>
-											</li>
-											<li class="next">
-												<a href="#"><i class="icon-double-angle-right"></i></a>
-											</li>
-										</ul>
-										#}
 									</div>
 								</div>
 							</div>
@@ -145,19 +68,8 @@
 					</div><!--/row-->
 					<div class="hr hr-18 dotted hr-double"></div>
 					{%else%}
-
-					<div class="alert alert-error">
-						<button type="button" class="close" data-dismiss="alert">
-							<i class="icon-remove"></i>
-						</button>
-
-						<strong> <i class="icon-remove"></i> Lo sentimos... </strong>
-
-						No se han encontrado resultados en esta busqueda.
-						<br>
-					</div>
+					{% include 'ProjectBackBundle:Helpers:busqueda-fallida.html.twig' %}
 					{%endif%}
-
 					<!--PAGE CONTENT ENDS-->
 				</div><!--/.span-->
 			</div><!--/.row-fluid-->

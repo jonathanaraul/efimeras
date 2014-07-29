@@ -23,144 +23,19 @@ class PageController extends Controller {
 		
 		$em = $this->getDoctrine()->getManager();
 
-		$config = UtilitiesAPI::getConfig('pages',$this);
 		$url = $this -> generateUrl('project_back_page_list');
-		$firstArray = UtilitiesAPI::getDefaultContent('PAGINAS', 'Mostrar Información', $this);
-
-
 		$form = null;		
 		$filtros = null;
-	/*
-		$objects = $this -> getDoctrine() -> getRepository('ProjectUserBundle:Page') -> findAll();
-		$themes = $this -> getDoctrine() -> getRepository('ProjectUserBundle:CmsTheme') -> findAll();
-		$filtros['theme'] = array();
-		$filtros['parentPage'] = array();
-		$filtros['published'] = array(1 => 'Si', 0 => 'No');
 
-		$filtros['theme']= UtilitiesAPI::getFilter('CmsTheme',$this);
-		$filtros['parentPage']= UtilitiesAPI::getFilter('Page',$this);
-
-
-		$data = new Page();
-		$form = $this -> createFormBuilder($data) 
-		-> add('name', 'text', array('required' => false)) 
-		-> add('special','choice', array('choices' => $filtros['published'], 'required' => false, ))
-		-> add('theme', 'choice', array('choices' => $filtros['theme'], 'required' => false, )) 
-		-> add('published', 'choice', array('choices' => $filtros['published'], 'required' => false, ))
-		-> getForm();
-		
-		$em = $this -> getDoctrine() -> getEntityManager();
-				
-		if ($this -> getRequest() -> isMethod('POST')) {
-			$form -> bind($this -> getRequest());
-
-			if ($form -> isValid()) {
-
-				$dql = "SELECT n FROM ProjectUserBundle:Page n ";
-				$where = false;
-
-				if (is_numeric($data -> getSpecial()))  {
-
-					if ($where == false) {
-						$dql .= 'WHERE ';
-						$where = true;
-					}
-					$dql .= ' n.special = :special ';
-
-				}
-				if (is_numeric($data -> getTheme())) {
-
-					if ($where == false) {
-						$dql .= 'WHERE ';
-						$where = true;
-					} else {
-						$dql .= 'AND ';
-					}
-					$dql .= ' n.theme = :theme ';
-
-				}
-				if (!(trim($data -> getName()) == false)) {
-
-					if ($where == false) {
-						$dql .= 'WHERE ';
-						$where = true;
-					} else {
-						$dql .= 'AND ';
-					}
-
-					$dql .= " n.name like :name ";
-
-				}
-				if (is_numeric($data -> getPublished())) {
-
-					if ($where == false) {
-						$dql .= 'WHERE ';
-						$where = true;
-					} else {
-						$dql .= 'AND ';
-					}
-					$dql .= ' n.published = :published ';
-				}
-				
-				if ($where == false) {
-					$dql .= 'WHERE ';
-					$where = true;
-					} 
-				else{
-					$dql .= 'AND ';
-					}
-		
-		
-				$query = $em -> createQuery($dql);
-
-				if (is_numeric ($data -> getSpecial())) {
-					$query -> setParameter('special', $data -> getSpecial());
-				}
-				if (is_numeric ($data -> getTheme()) ) {
-					$query -> setParameter('theme', $data -> getTheme());
-				}
-				if (!(trim($data -> getName()) == false)) {
-					$query -> setParameter('name', '%' . $data -> getName() . '%');
-				}
-				if (is_numeric ($data -> getPublished())) {
-					$query -> setParameter('published', $data -> getPublished());
-				}
-				
-
-
-			}
-		}
-		//////////////////////////////////////////////////////////////////////////////////////////////////
-		else {*/
-			$dql = "SELECT n FROM ProjectUserBundle:Page n ";
-
-			$query = $em -> createQuery($dql);
-		//}
+		$dql = "SELECT o FROM ProjectUserBundle:Page o ";
+		$query = $em -> createQuery($dql);
 
 		$paginator = $this -> get('knp_paginator');
 		$pagination = $paginator -> paginate($query, $this -> getRequest() -> query -> get('page', 1), 10);
 
-		$objects = $pagination -> getItems();
-		$auxiliar = array();
-
-		for ($i = 0; $i < count($objects); $i++) {
-			$auxiliar[$i]['id'] = $objects[$i] -> getId();
-			$auxiliar[$i]['spacer'] = $objects[$i] -> getSpacer();
-			$auxiliar[$i]['special'] = $objects[$i] -> getSpecial();
-			$auxiliar[$i]['friendlyName'] = $objects[$i] -> getFriendlyName();
-			$auxiliar[$i]['name'] = $objects[$i] -> getName();
-			$auxiliar[$i]['published'] = $objects[$i] -> getPublished();
-			$auxiliar[$i]['background'] = '-';
-			$auxiliar[$i]['theme'] = $objects[$i] -> getTheme();
-			$auxiliar[$i]['media'] = '-';
-			$auxiliar[$i]['created'] = $objects[$i] -> getCreated();
-			$auxiliar[$i]['updated'] = $objects[$i] -> getUpdated();
-		}
-		$objects = $auxiliar;
-		$secondArray = array('pagination' => $pagination, 'filtros' => $filtros, 'objects' => $objects, 'url' => $url);
-		//$secondArray['form'] =  $form -> createView();
+		$array = array('pagination' => $pagination, 'filtros' => $filtros, 'url' => $url);
+		//$array['form'] =  $form -> createView();
 		
-		$array = array_merge($firstArray, $secondArray);
 		return $this -> render('ProjectBackBundle:Page:list.html.twig', $array);
 	}
 
@@ -230,43 +105,6 @@ class PageController extends Controller {
 		$array['form'] = $form -> createView();
 
 		return $class -> render('ProjectBackBundle:Page:new-edit.html.twig', $array);
-	}
-
-	public function rankAction() {
-		$firstArray = UtilitiesAPI::getDefaultContent('PAGINAS', 'Mostrar Información', $this);
-
-		$em = $this -> getDoctrine() -> getManager();
-		$dql = "SELECT n FROM ProjectUserBundle:Page n WHERE n.id != 3 ORDER BY n.rank ASC";
-		
-		$query = $em -> createQuery($dql);
-		$objects = $query -> getResult();
-		$secondArray = array('objects' => $objects);
-		$array = array_merge($firstArray, $secondArray);
-
-		return $this -> render('ProjectBackBundle:Page:Rank.html.twig', $array);
-	}
-
-	public function rankPostAction() {
-
-		$peticion = $this -> getRequest();
-		$doctrine = $this -> getDoctrine();
-		$post = $peticion -> request;
-		//INICIALIZAR VARIABLES
-		$order = $post -> get("order");
-		$em = $this -> getDoctrine() -> getManager();
-		for ($i = 0; $i < count($order); $i++) {
-
-			$id = intval($order[$i]);
-			$object = $em -> getRepository('ProjectUserBundle:Page') -> find($id);
-			$object -> setRank($i);
-			$em -> flush();
-
-		}
-
-		$estado = true;
-		$respuesta = new response(json_encode(array('estado' => $estado)));
-		$respuesta -> headers -> set('content_type', 'aplication/json');
-		return $respuesta;
 	}
 
 	public function deleteAction() {

@@ -49,3 +49,12 @@ services:
         class: Project\UserBundle\Form\Type\CategoryType
         tags:
             - { name: form.type, alias: category }
+
+    project_user.form.type.menu:
+        class: Project\UserBundle\Form\Type\MenuType
+        tags:
+            - { name: form.type, alias: menu }
+    project_user.form.type.menuItem:
+        class: Project\UserBundle\Form\Type\MenuItemType
+        tags:
+            - { name: form.type, alias: menuItem }

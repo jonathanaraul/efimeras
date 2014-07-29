@@ -1,0 +1,111 @@
+<div id="modal-form-listado" class="modal hide" tabindex="-1">
+	<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal">
+			&times;
+		</button>
+		<h4 class="blue bigger">Por favor seleccione su menú</h4>
+	</div>
+
+	<div class="modal-body overflow-visible">
+		<div class="row-fluid">
+			<div class="span12">
+				<div class="control-group">
+					{#<label class="control-label" for="form-field-1">Background</label>#}
+					<div class="controls">
+						<select id="listado-item-accion" class="span12">
+							{%for element in objects%}
+							<option value="{{element.id}}">{{element.name}}</option>
+							{%endfor%}
+						</select>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal-footer">
+		<button class="btn btn-small" data-dismiss="modal">
+			<i class="icon-remove"></i>
+			Cancelar
+		</button>
+
+		<button class="btn btn-small btn-primary" id="ver-listado-items">
+			<i class="icon-ok"></i>
+			Continuar
+		</button>
+	</div>
+</div><!--PAGE CONTENT ENDS-->
+<div id="modal-form-crear" class="modal hide" tabindex="-1">
+	<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal">
+			&times;
+		</button>
+		<h4 class="blue bigger">Por favor seleccione su menú</h4>
+	</div>
+
+	<div class="modal-body overflow-visible">
+		<div class="row-fluid">
+			<div class="span12">
+				<div class="control-group">
+					{#<label class="control-label" for="form-field-1">Background</label>#}
+					<div class="controls">
+						<select id="crear-item-accion" class="span12">
+							{%for element in objects%}
+							<option value="{{element.id}}">{{element.name}}</option>
+							{%endfor%}
+						</select>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal-footer">
+		<button class="btn btn-small" data-dismiss="modal">
+			<i class="icon-remove"></i>
+			Cancelar
+		</button>
+
+		<button class="btn btn-small btn-primary" id="crear-items">
+			<i class="icon-ok"></i>
+			Continuar
+		</button>
+	</div>
+</div><!--PAGE CONTENT ENDS-->
+<div id="modal-form-ordenar" class="modal hide" tabindex="-1">
+	<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal">
+			&times;
+		</button>
+		<h4 class="blue bigger">Por favor seleccione su menú</h4>
+	</div>
+
+	<div class="modal-body overflow-visible">
+		<div class="row-fluid">
+			<div class="span12">
+				<div class="control-group">
+					{#<label class="control-label" for="form-field-1">Background</label>#}
+					<div class="controls">
+						<select id="ordenar-item-accion" class="span12">
+							{%for element in objects%}
+							<option value="{{element.id}}">{{element.name}}</option>
+							{%endfor%}
+						</select>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal-footer">
+		<button class="btn btn-small" data-dismiss="modal">
+			<i class="icon-remove"></i>
+			Cancelar
+		</button>
+
+		<button class="btn btn-small btn-primary" id="ordenar-items">
+			<i class="icon-ok"></i>
+			Continuar
+		</button>
+	</div>
+</div><!--PAGE CONTENT ENDS-->

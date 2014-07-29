@@ -83,6 +83,7 @@ project_back_background_home:
     defaults: { _controller: ProjectBackBundle:Background:home }
     requirements:
       _method: POST
+
 project_back_theme_list:
     pattern:  /theme/list/
     defaults: { _controller: ProjectBackBundle:Theme:list }
@@ -92,3 +93,66 @@ project_back_theme_create:
 project_back_reservation_list:
     pattern:  /reservation/list/
     defaults: { _controller: ProjectBackBundle:Reservation:list }
+
+project_back_menu_list:
+    pattern:  /menu/list/
+    defaults: { _controller: ProjectBackBundle:Menu:list }
+project_back_menu_create:
+    pattern:  /menu/create
+    defaults: { _controller: ProjectBackBundle:Menu:create }
+project_back_menu_edit:
+    pattern:  /menu/edit/{id}
+    defaults: { _controller: ProjectBackBundle:Menu:edit, id: '1' }
+project_back_menu_delete:
+    pattern:  /menu/delete
+    defaults: { _controller: ProjectBackBundle:Menu:delete }
+    requirements:
+      _method: POST
+project_back_menu_status:
+    pattern:  /menu/status
+    defaults: { _controller: ProjectBackBundle:Menu:status }
+    requirements:
+      _method: POST
+
+project_back_menu_item_list:
+    pattern:  /menu/{menu}/item/list/
+    defaults: { _controller: ProjectBackBundle:MenuItem:list }
+    options:
+        expose: true
+project_back_menu_item_create:
+    pattern:  /menu/{menu}/item/create
+    defaults: { _controller: ProjectBackBundle:MenuItem:create }
+    options:
+        expose: true
+project_back_menu_item_edit:
+    pattern:  /menu/{menu}/item/edit/{id}
+    defaults: { _controller: ProjectBackBundle:MenuItem:edit, id: '1' }
+    options:
+        expose: true
+project_back_menu_item_delete:
+    pattern:  /menu/{menu}/item/delete
+    defaults: { _controller: ProjectBackBundle:MenuItem:delete }
+    requirements:
+      _method: POST
+    options:
+        expose: true
+project_back_menu_item_status:
+    pattern:  /menu/{menu}/item/status
+    defaults: { _controller: ProjectBackBundle:MenuItem:status }
+    requirements:
+      _method: POST
+    options:
+        expose: true
+
+project_back_menu_item_rank:
+    pattern:  /menu/{menu}/item/rank
+    defaults: { _controller: ProjectBackBundle:MenuItem:rank }
+    options:
+        expose: true
+project_back_menu_item_rank_post:
+    pattern:  /menu/{menu}/item/rank/post
+    defaults: { _controller: ProjectBackBundle:MenuItem:rankPost }
+    requirements:
+      _method: POST
+    options:
+        expose: true

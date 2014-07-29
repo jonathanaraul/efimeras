@@ -4,10 +4,16 @@
 	</div>
 	<div style="text-align: center;padding-top: 105px;" id="menuobligado">
 		<ul id="menu" style="display:none">
-		{%for object in objects%}
-			{%if object.name|upper != 'SPACER'%}
+		{%for object in items%}
+			{%if object.tipo != 2%}
 			<li>
-				<a href="{{path('project_front_page',{'id': object.id, 'friendlyname' : object.friendlyName})}}">{{object.name|upper}}</a>
+			{% if object.tipo == 0 %}
+			   <a href="{{path('project_front_page',{'id': object.page.id, 'friendlyname' : object.page.friendlyName})}}"> {{object.page.name|title}}
+			   </a> 
+			{%else%} 
+			   <a href="{{path('project_front_category',{'id': object.category.id, 'friendlyname' : object.category.friendlyName})}}"> {{object.category.name|title}}
+			   </a> 
+			{%endif%}
 			</li>
 			{%endif%}
 		{%endfor%}

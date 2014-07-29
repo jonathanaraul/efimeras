@@ -55,6 +55,26 @@ class UtilitiesAPI extends Controller {
 		
 		return $recordCount + 1;
 	}
+	public static function getRankItem($menu, $class){
+
+        $em = $class->getDoctrine()->getManager();
+       
+        $qbCount = $em
+			->createQueryBuilder()
+			->select('count(g)')
+			->from('ProjectUserBundle:MenuItem','g')
+			->where('ProjectUserBundle:MenuItem','g')
+            ->where('g.menu = :menu')
+            ->setParameter('menu', $menu);
+        ;
+        
+        $recordCount = $qbCount
+			->getQuery()
+			->getSingleScalarResult()
+        ;
+		
+		return $recordCount + 1;
+	}
 	public static function getLocale($class){
 		
 		$request = $class->getRequest();

@@ -1,44 +1,29 @@
-<div class="menu-cont">
-	<div class="menu" {#style="width: 144px;"#}>
-		
+
+	<div class="menu" style="float:left;width: 324px;margin-top: 45px;">
+		{%for object in items%}
+		{%if object.tipo != 2%}
 		<div class="menu-element">
-				<a href="{{path('project_front_homepage')}}">Inicio</a>
+			{% if object.tipo == 0 %}
+			   <a href="{{path('project_front_page',{'id': object.page.id, 'friendlyname' : object.page.friendlyName})}}"> {{object.page.name|title}}
+			   </a> 
+			   {%if idpage == object.page.id%}
+			   <hr class="men-sel" style="background-color: {{object.page.theme.color}};width: 304px;">
+			   {%endif%}
+			{%else%} 
+			   <a href="{{path('project_front_category',{'id': object.category.id, 'friendlyname' : object.category.friendlyName})}}"> {{object.category.name|title}}
+			   </a> 
+			   {%if idpage == object.category.id%}
+			   <hr class="men-sel" style="background-color: {{object.category.theme.color}};width: 304px;"> 
+			   {%endif%}
+			{%endif%}
 		</div>
-
-	{%for object in objects%}
-		{%if object.name|upper != 'SPACER'%}
-
-			<div class="menu-element">
-                {% if object.category is defined %}
-				<a href="{{path('project_front_page',{'id': object.id, 'friendlyname' : object.friendlyName})}}">
-			    {%else%}
-				<a href="{{path('project_front_category',{'id': object.id, 'friendlyname' : object.friendlyName})}}">
-			    {%endif%}
-
-				{{object.name|title}}</a>
-				{%if idpage == object.id%}
-					<hr class="men-sel" style="background-color: {{object.theme.color}}">
-				{%endif%}
-			</div>
 		{%else%}
-			<div class="menu-element spacer"></div>
+		<div class="menu-element spacer"></div>
 		{%endif%}
-	{%endfor%}
-		
-		
-	{#
-		<div class="designed-menu">
-			<div class="designed" style="bottom: 0px;">
-				<div style="margin-bottom: 0px;">
-					<span class="search"><input type="text" placeholder="buscar..." style="width: 93px;"  id="termino"><button style="cursor:pointer" id="buscarTermino">Buscar</button></span>
-				</div>
-				<div>
-					<span class="copyrighted">Copyrights © Efimeras</span>
-				</div>
-				<div>
-					<p><a href="http://realego.es/" target="_blank"><img src="{{asset('front/design.png')}}"></a></p>
-				</div>
-			</div>
-		</div>#}
+		{%endfor%}
 	</div>
-</div>
+
+
+	<div class="creditos" style="padding-top: 544px;">
+	     <a title="Realego" href="http://realego.es/"> <img src="{{asset('front/images/realego.png')}}" > </a>
+	</div>

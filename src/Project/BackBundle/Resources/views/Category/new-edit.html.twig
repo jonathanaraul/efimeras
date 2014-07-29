@@ -1,8 +1,6 @@
 {% extends '::base.html.twig' %}
 
 {% block pagesScriptsBottom %}
-<script >
-</script>
 <script src="{{asset('admin/js/jquery-ui-1.10.3.custom.min.js')}}"></script>
 <script src="{{asset('admin/js/jquery.ui.touch-punch.min.js')}}"></script>
 <script src="{{asset('admin/js/chosen.jquery.min.js')}}"></script>
@@ -328,7 +326,7 @@
 			no_icon : 'icon-cloud-upload',
 			droppable : true,
 			thumbnail : 'small'
-			//,     icon_remove:null//set null, to hide remove/reset button
+			//,      icon_remove:null//set null, to hide remove/reset button
 			/**,before_change:function(files, dropped) {
 			 //Check an example below
 			 //or examples/file-upload.html
@@ -492,8 +490,8 @@
 			</div><!--/.page-header-->
 
 			<form action="{{ url }}" {{ form_enctype(form) }} method="POST" class="form-horizontal">
-			{{ form_start(form) }}
-								
+				{{ form_start(form) }}
+
 				<div class="control-group">
 					<label class="control-label" for="form-field-1">Nombre</label>
 
@@ -530,7 +528,6 @@
 					</div>
 				</div>
 
-
 				<div class="control-group">
 					<label class="control-label" for="form-field-1">Archivo opcional</label>
 
@@ -550,10 +547,7 @@
 					<div class="controls">
 						<div class="row-fluid">
 							<div class="span3">
-								<label>
-									{{ form_widget(form.template, { 'attr': {'class':'ace-switch'} }) }}
-									<span class="lbl"></span>
-								</label>
+								<label> {{ form_widget(form.template, { 'attr': {'class':'ace-switch'} }) }} <span class="lbl"></span> </label>
 							</div>
 						</div>
 					</div>
@@ -563,10 +557,7 @@
 					<div class="controls">
 						<div class="row-fluid">
 							<div class="span3">
-								<label>
-									{{ form_widget(form.published, { 'attr': {'class':'ace-switch'} }) }}
-									<span class="lbl"></span>
-								</label>
+								<label> {{ form_widget(form.published, { 'attr': {'class':'ace-switch'} }) }} <span class="lbl"></span> </label>
 							</div>
 						</div>
 					</div>
@@ -580,7 +571,6 @@
 				</div>
 
 				<div class="space-4"></div>
-
 
 				<div class="control-group">
 					<label class="control-label" for="form-field-1">Background</label>
@@ -597,7 +587,7 @@
 				<div class="row-fluid">
 					<div class="span12">
 						<!--PAGE CONTENT BEGINS-->
-						
+
 						<div class="form-actions">
 							{{ form_widget(form.save) }}
 

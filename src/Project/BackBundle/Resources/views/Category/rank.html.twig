@@ -1,7 +1,6 @@
 {% extends '::base.html.twig' %}
 
 {% block pagesScriptsBottom %}
-<script ></script>
 <script src="{{asset('admin/js/project/listados.js')}}"></script>
 <script type="text/javascript">
 	var direccionEstatus = "{{path('project_back_category_status')}}";
@@ -18,20 +17,20 @@
 		placeholder : 'widget-placeholder',
 		forcePlaceholderSize : true,
 		tolerance : 'pointer'
-	}); 
+	});
 
-	jQuery('.ordenar').mouseup(function() {  
+	jQuery('.ordenar').mouseup(function() {
 
-		var id= jQuery(this).attr('objeto');
+		var id = jQuery(this).attr('objeto');
 
 		jQuery('.ordenar')
 
-		$.each(jQuery('.ordenar')), function(indice, valor) {
-		var auxiliar = $.trim($(valor).val());
-		var id = $(valor).attr('id');
-		data += '&' + id + '=' + auxiliar;
-	     });
-
+		$.each(jQuery('.ordenar')),
+		function(indice, valor) {
+			var auxiliar = $.trim($(valor).val());
+			var id = $(valor).attr('id');
+			data += '&' + id + '=' + auxiliar;
+		});
 
 	});
 

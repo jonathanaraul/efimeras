@@ -17,15 +17,47 @@ class DefaultController extends Controller
 	 */
 	public function indexAction() {
 
+
 		$firstArray = UtilitiesAPI::getDefaultContent('inicio', $this);
 		$secondArray = array();
-		$secondArray['backgrounds'] = $this -> getDoctrine() -> getRepository('ProjectUserBundle:Background') -> findByHome(1);
-		$secondArray['page'] = $this -> getDoctrine() -> getRepository('ProjectUserBundle:Page') -> find(3);
+
+		$em = $this -> getDoctrine() -> getManager();
+		$dql = "SELECT n FROM ProjectUserBundle:MenuItem n 
+		        WHERE n.menu = :menu and
+		              n.tipo != :tipo
+		 ORDER BY n.rank ASC";
+		$query = $em -> createQuery($dql);
+		$query -> setParameter('menu', 1);
+		$query -> setParameter('tipo', 2);
+		$query ->setMaxResults(1);
+		$secondArray['item']  = $query -> getOneOrNullResult();
+		if($secondArray['item'] ==null){
+         throw $this->createNotFoundException('No se ha configurado correctamente el sitio');
+		}
+		else{
+        $secondArray['page']= null;
+
+        $twig = '';
+
+		if($secondArray['item']->getTipo()==0){
+			$secondArray['page'] = $secondArray['item'] ->getPage();
+			$twig = 'page';
+		} 
+		else{
+			$secondArray['page'] = $secondArray['item'] ->getCategory();
+			$twig = 'category';
+		} 
+		
 		$secondArray['idpage'] = $secondArray['page']->getId();
-		$secondArray['theme'] = array('color'=>'black','id'=>0);
+		$secondArray['articles'] = null;
+		$secondArray['listado'] = null;//UtilitiesAPI::esListado($secondArray['idpage'],$this);
+		$secondArray['images'] = array();
+		$secondArray['tags'] = explode(',', $secondArray['page']->getTags());
+		if(trim($secondArray['tags'][0])=="")$secondArray['tags'] = null;
 		
 		$array = array_merge($firstArray, $secondArray);
-		return $this -> render('ProjectFrontBundle:Default:inicio.html.twig', $array);
+		return $this -> render('ProjectFrontBundle:Default:'.$twig.'.html.twig', $array);
+	    }
 	}
 	/**
 	 * @Route("/search/{term}", name="project_front_search", defaults={"term" = ""})
@@ -102,12 +134,13 @@ class DefaultController extends Controller
 		$secondArray = array();
 
 		$em = $this -> getDoctrine() -> getManager();
-		$dql = "SELECT n.id,n.name,n.dateCreated,n.friendlyName,n.descriptionMeta FROM ProjectUserBundle:Page n WHERE n.tags like :tags ORDER BY n.dateCreated ASC";
+		$dql = "SELECT n.id,n.name,n.created,n.friendlyName,n.descriptionMeta FROM ProjectUserBundle:Page n WHERE n.tags like :tags ORDER BY n.created ASC";
 		
 		$query = $em -> createQuery($dql);
 		$query -> setParameter('tags', '%'.$tag.'%');
 		$secondArray['objects']  = $query -> getResult();
 		$secondArray['backgrounds'] = $this -> getDoctrine() -> getRepository('ProjectUserBundle:Background') -> findByHome(1);
+		$secondArray['page'] = $this -> getDoctrine() -> getRepository('ProjectUserBundle:Page') -> find(1);
 		$secondArray['idpage'] = null;    
         $secondArray['tag'] = $tag;
         $secondArray['search'] = false;
@@ -136,6 +169,7 @@ class DefaultController extends Controller
 			$form -> bind($this -> getRequest());
 			$data -> setDate(new \DateTime());
 			$data -> setChecked(false);
+			$data -> setLang(1);
 			$data -> setPage($secondArray['page']);
 			
 			$em -> persist($data);
@@ -172,7 +206,7 @@ class DefaultController extends Controller
 		$secondArray['idpage'] = null;
 
 		$array = array_merge($firstArray, $secondArray);
-		return $this -> render('ProjectFrontBundle:Default:reservation.html.twig', $array);
+		return $this -> render('ProjectFrontBundle:Default:reservation2.html.twig', $array);
 	}
 
 

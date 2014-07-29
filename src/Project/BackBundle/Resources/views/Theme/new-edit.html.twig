@@ -1,40 +1,12 @@
 {% extends '::base.html.twig' %}
 
 {% block pagesScriptsBottom %}
-
-<script src="{{asset('admin/js/jquery-ui-1.10.3.custom.min.js')}}"></script>
-<script src="{{asset('admin/js/jquery.ui.touch-punch.min.js')}}"></script>
-<script src="{{asset('admin/js/chosen.jquery.min.js')}}"></script>
-<script src="{{asset('admin/js/fuelux/fuelux.spinner.min.js')}}"></script>
-<script src="{{asset('admin/js/date-time/bootstrap-datepicker.min.js')}}"></script>
-<script src="{{asset('admin/js/date-time/bootstrap-timepicker.min.js')}}"></script>
-<script src="{{asset('admin/js/date-time/moment.min.js')}}"></script>
-<script src="{{asset('admin/js/date-time/daterangepicker.min.js')}}"></script>
 <script src="{{asset('admin/js/bootstrap-colorpicker.min.js')}}"></script>
-<script src="{{asset('admin/js/jquery.knob.min.js')}}"></script>
-<script src="{{asset('admin/js/jquery.autosize-min.js')}}"></script>
-<script src="{{asset('admin/js/jquery.inputlimiter.1.3.1.min.js')}}"></script>
-<script src="{{asset('admin/js/jquery.maskedinput.min.js')}}"></script>
-<script src="{{asset('admin/js/bootstrap-tag.min.js')}}"></script>
-
-<script src="{{asset('admin/js/markdown/markdown.min.js')}}"></script>
-<script src="{{asset('admin/js/markdown/bootstrap-markdown.min.js')}}"></script>
-<script src="{{asset('admin/js/jquery.hotkeys.min.js')}}"></script>
-<script src="{{asset('admin/js/bootstrap-wysiwyg.min.js')}}"></script>
-<script src="{{asset('admin/js/bootbox.min.js')}}"></script>
-
-
-
 <script type="text/javascript">
-	if ("ontouchend" in document)
-		document.write("<script src='assets/js/jquery.mobile.custom.min.js'>" + "<" + "/script>");
-</script>
-<script type="text/javascript">
-				$('#theme_color').colorpicker();
-				$('#simple-colorpicker-1').ace_colorpicker();
+	$('#theme_color').colorpicker();
+	$('#simple-colorpicker-1').ace_colorpicker(); 
 </script>
 
-			
 {%endblock%}
 
 {% block pageContent  %}
@@ -52,11 +24,10 @@
 			</div><!--/.page-header-->
 
 			<form action="{{ url }}" {{ form_enctype(form) }} method="POST" class="form-horizontal">
-			{{ form_start(form) }}
-								
+				{{ form_start(form) }}
+
 				<div class="control-group">
 					<label class="control-label" for="form-field-1">Nombre</label>
-
 					<div class="controls">
 						{{ form_widget(form.name, { 'attr': {'placeholder': 'Nombre'} }) }}
 					</div>
@@ -86,7 +57,7 @@
 				</div>
 
 				<div class="space-4"></div>
-                {{ form_end(form) }}
+				{{ form_end(form) }}
 			</form>
 		</div><!--/.page-content-->
 

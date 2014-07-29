@@ -1,0 +1,10 @@
+{% form_theme form _self %}
+
+{% block _menuItem_save_widget %}
+<div  class="form-actions">
+	{{ block('submit_widget') }}
+</div>
+<div class="hr"></div>
+{% endblock %}
+
+{{ form_widget(form.name) }}

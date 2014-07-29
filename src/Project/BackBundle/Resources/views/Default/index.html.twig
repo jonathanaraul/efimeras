@@ -222,13 +222,7 @@
 			</div><!--/.row-fluid-->
 
 			<div class="page-header position-relative">
-				<h1>
-					Usuarios
-					<small>
-						<i class="icon-double-angle-right"></i>
-						listado
-					</small>
-				</h1>
+				<h1> Usuarios <small> <i class="icon-double-angle-right"></i> listado </small></h1>
 			</div><!--/.page-header-->
 
 			<div class="row-fluid">
@@ -245,7 +239,7 @@
 										<th>{{ knp_pagination_sortable(pagination, 'Id', 'o.id') }}</th>
 										<th>{{ knp_pagination_sortable(pagination, 'Usuario', 'o.username') }}</th>
 										<th class="hidden-phone" >{{ knp_pagination_sortable(pagination, 'Email', 'o.email') }}</th>
-										<th class="hidden-phone" >{{ knp_pagination_sortable(pagination, 'Descripcion', 'o.descripcion') }}</th>	
+										<th class="hidden-phone" >{{ knp_pagination_sortable(pagination, 'Descripcion', 'o.descripcion') }}</th>
 										<th class="hidden-phone" style="width: 136px;"><i class="icon-time bigger-110 hidden-phone"></i> {{ knp_pagination_sortable(pagination, 'Ultimo login', 'o.lastLogin') }} </th>
 										<th class="hidden-480">{{ knp_pagination_sortable(pagination, 'Estatus', 'o.enabled') }}</th>
 										<th></th>
@@ -254,46 +248,37 @@
 								<tbody>
 									{%for element in pagination %}
 									<tr id="fila_{{element.id}}">
-										<td >
-										<a href="{{asset(''~ element.getWebPath ~'')}}">
-                                        <img src="{{ element.getWebPath | apply_filter('gestion') }}" width="80" height="80">
-                                        </a>
-										</br>{{element.id}}</td>
+										<td ><a href="{{asset(''~ element.getWebPath ~'')}}"> <img src="{{ element.getWebPath | apply_filter('gestion') }}" width="80" height="80"> </a> </br>{{element.id}}</td>
 										<td >{{element.username}}</td>
 										<td >{{element.email}}</td>
 										<td >{{element.descripcion}}</td>
 										<td class="hidden-phone">{{element.lastLogin.format('d/m/Y H:i:s')}}</td>
-										<td class="hidden-480">
-											<span class="label label-success" {%if element.enabled==false%}style="display:none"{%endif%} id="publicado_{{element.id}}">Habilidado</span>
-
-											<span class="label label-warning" {%if element.enabled%}style="display:none"{%endif%} id="despublicado_{{element.id}}">Bloqueado</span>
-
-										</td>
+										<td class="hidden-480"><span class="label label-success" {%if element.enabled==false%}style="display:none"{%endif%} id="publicado_{{element.id}}">Habilidado</span><span class="label label-warning" {%if element.enabled%}style="display:none"{%endif%} id="despublicado_{{element.id}}">Bloqueado</span></td>
 
 										<td>
-											<div class="hidden-phone visible-desktop btn-group" >
-												<button class="btn btn-mini btn-success cambiar-estatus" objeto="{{element.id}}" tarea="{%if element.enabled%}0{%else%}1{%endif%}">
-													<i class="icon-exchange bigger-120"></i>
-												</button>
+										<div class="hidden-phone visible-desktop btn-group" >
+											<button class="btn btn-mini btn-success cambiar-estatus" objeto="{{element.id}}" tarea="{%if element.enabled%}0{%else%}1{%endif%}">
+												<i class="icon-exchange bigger-120"></i>
+											</button>
 
+										</div>
+										<div class="hidden-desktop visible-phone">
+											<div class="inline position-relative">
+												<button class="btn btn-minier btn-primary dropdown-toggle" data-toggle="dropdown">
+													<i class="icon-cog icon-only bigger-110"></i>
+												</button>
+												<ul class="dropdown-menu dropdown-icon-only dropdown-yellow pull-right dropdown-caret dropdown-close">
+													<li>
+														<a href="#" class="tooltip-info cambiar-estatus" data-rel="tooltip" title="View" objeto="{{element.id}}" tarea="{%if element.enabled%}0{%else%}1{%endif%}"
+														> <span class="blue"> <i class="icon-exchange bigger-120"></i> </span> </a>
+													</li>
+												</ul>
 											</div>
-											<div class="hidden-desktop visible-phone">
-												<div class="inline position-relative">
-													<button class="btn btn-minier btn-primary dropdown-toggle" data-toggle="dropdown">
-														<i class="icon-cog icon-only bigger-110"></i>
-													</button>
-													<ul class="dropdown-menu dropdown-icon-only dropdown-yellow pull-right dropdown-caret dropdown-close">
-														<li>
-															<a href="#" class="tooltip-info cambiar-estatus" data-rel="tooltip" title="View" objeto="{{element.id}}" tarea="{%if element.enabled%}0{%else%}1{%endif%}"
-															> <span class="blue"> <i class="icon-exchange bigger-120"></i> </span> </a>
-														</li>
-													</ul>
-												</div>
-											</div></td>
-										</tr>
-												{%endfor%}
-											</tbody>
-										</table>
+										</div></td>
+									</tr>
+									{%endfor%}
+								</tbody>
+							</table>
 							<div class="row-fluid">
 								<div class="span6">
 									<div class="dataTables_info" id="sample-table-2_info">

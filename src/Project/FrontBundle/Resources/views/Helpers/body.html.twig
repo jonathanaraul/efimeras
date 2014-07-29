@@ -2,48 +2,15 @@
 {%block body%}
 <body style="background-color:#a3a3a3;height:100%;">
 	{% include 'ProjectFrontBundle:Helpers:social.html.twig' %}
-	<div class="main-tab">
-		<div class="main-row" style="height: 500px;">
-			{#<div class="cell-left"></div>#}
-			<div class="cell-middle cell-main">
-				<div class="middle-tab">
-					{# include 'ProjectFrontBundle:Helpers:lenguajes.html.twig' #}
-					<div class="middle-row">
-						
-						<div class="middle-left">
-							<div class="logo">
-								<a title="Home page" href="{{path('project_front_homepage')}}"> </a>
-							</div>
-							<div class="logo-imagen" style="height: 260px;margin-top: 116px;background-color: {{page.theme.color}};opacity: 0.90;">
-								<p><a title="Home page" href="{{path('project_front_homepage')}}"><img src="{{asset('
-									logo.png')}}"> </a></p>
-							</div>
-							{{ render(controller('ProjectFrontBundle:Helpers:menu', { 'idpage': idpage,'theme': 'red' })) }}
-						</div>
-						{%block contenido%}
-						{%endblock%}
-					</div>
-				</div>
-			</div>
-				{%block celda%}
-				{%endblock%}
+	<div class="main-tab" style="width: 1300px;">
+
+		<div class="middle-left" style="padding-top: 1px;float: left;margin-left: 26px;position: fixed;">
+			{% include 'ProjectFrontBundle:Helpers:logobotones.html.twig' %}
+			{{ render(controller('ProjectFrontBundle:Helpers:menu', { 'idpage': idpage,'idmenu': 1,'mobile':'' })) }}
 		</div>
-	</div>
-	<div id="barra" style="background-color:{{page.theme.color}};width:100%;
-
-    position: fixed;
-    z-index: 100; 
-    bottom: 0; 
-    left: 0;
-    width: 100%;  ">
-    <div style="width:50%;float:left;">
-     <p style="text-align:left"><a href="http://realego.es/" target="_blank"><img src="{{asset('realego.png')}}"></a></p>
-    </div>
-	    <div style="width:49%;float:left;">
-     <p style="text-align:right"><img src="{{asset('iconos.png')}}" style="cursor:pointer"></p>
-    </div>
-			
-
+		{%block contenido%}
+		{%endblock%}
+		
 	</div>
 </body>
 {%endblock%}

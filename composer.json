@@ -34,7 +34,6 @@
         "ob/highcharts-bundle": "1.*",
         "friendsofsymfony/user-bundle": "~2.0@dev",
         "egeloen/ckeditor-bundle": "~2.0",
-        "helios-ag/fm-elfinder-bundle": "1.*"
 
     },
     "scripts": {

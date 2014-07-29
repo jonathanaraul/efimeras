@@ -23,24 +23,19 @@ class CategoryController extends Controller {
 		
 		$em = $this->getDoctrine()->getManager();
 
-		$config = UtilitiesAPI::getConfig('categorys',$this);
 		$url = $this -> generateUrl('project_back_category_list');
-		$firstArray = UtilitiesAPI::getDefaultContent('PAGINAS', 'Mostrar Información', $this);
 		$form = null;		
 		$filtros = null;
 
-
-			$dql = "SELECT o FROM ProjectUserBundle:Category o ";
-			$query = $em -> createQuery($dql);
+		$dql = "SELECT o FROM ProjectUserBundle:Category o ";
+		$query = $em -> createQuery($dql);
 
 		$paginator = $this -> get('knp_paginator');
 		$pagination = $paginator -> paginate($query, $this -> getRequest() -> query -> get('page', 1), 10);
 
-
-		$secondArray = array('pagination' => $pagination, 'filtros' => $filtros, 'url' => $url);
-		//$secondArray['form'] =  $form -> createView();
+		$array = array('pagination' => $pagination, 'filtros' => $filtros, 'url' => $url);
+		//$array['form'] =  $form -> createView();
 		
-		$array = array_merge($firstArray, $secondArray);
 		return $this -> render('ProjectBackBundle:Category:list.html.twig', $array);
 	}
 
@@ -105,43 +100,6 @@ class CategoryController extends Controller {
 		$array['form'] = $form -> createView();
 
 		return $class -> render('ProjectBackBundle:Category:new-edit.html.twig', $array);
-	}
-
-	public function rankAction() {
-		$firstArray = UtilitiesAPI::getDefaultContent('PAGINAS', 'Mostrar Información', $this);
-
-		$em = $this -> getDoctrine() -> getManager();
-		$dql = "SELECT n FROM ProjectUserBundle:Category n WHERE n.id != 3 ORDER BY n.rank ASC";
-		
-		$query = $em -> createQuery($dql);
-		$objects = $query -> getResult();
-		$secondArray = array('objects' => $objects);
-		$array = array_merge($firstArray, $secondArray);
-
-		return $this -> render('ProjectBackBundle:Category:Rank.html.twig', $array);
-	}
-
-	public function rankPostAction() {
-
-		$peticion = $this -> getRequest();
-		$doctrine = $this -> getDoctrine();
-		$post = $peticion -> request;
-		//INICIALIZAR VARIABLES
-		$order = $post -> get("order");
-		$em = $this -> getDoctrine() -> getManager();
-		for ($i = 0; $i < count($order); $i++) {
-
-			$id = intval($order[$i]);
-			$object = $em -> getRepository('ProjectUserBundle:Category') -> find($id);
-			$object -> setRank($i);
-			$em -> flush();
-
-		}
-
-		$estado = true;
-		$respuesta = new response(json_encode(array('estado' => $estado)));
-		$respuesta -> headers -> set('content_type', 'aplication/json');
-		return $respuesta;
 	}
 
 	public function deleteAction() {

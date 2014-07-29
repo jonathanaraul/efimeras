@@ -52,9 +52,6 @@
 				<li {% if app.request.attributes.get('_route') == 'project_back_page_create' %}class="active"{%endif%}>
 					<a href="{{path('project_back_page_create')}}"> <i class="icon-double-angle-right"></i> Crear pagina</a>
 				</li>
-				<li  {% if app.request.attributes.get('_route') == 'project_back_page_rank' %}class="active"{%endif%}>
-					<a href="{{path('project_back_page_rank')}}"> <i class="icon-double-angle-right"></i> Ordenar paginas</a>
-				</li>
 			</ul>
 		</li>
 		<li {% if app.request.attributes.get('_route') == 'project_back_category_list' or  app.request.attributes.get('_route') == 'project_back_category_create' or  app.request.attributes.get('_route') == 'project_back_category_rank' %}class="open"{%endif%}>
@@ -101,32 +98,45 @@
 			<a href="{{ path('project_back_reservation_list') }}" > <i class="icon-heart-empty"></i> <span class="menu-text"> Reservas </span> </a>
 		</li>
 
-		{#<li>
-			<a href="#" class="dropdown-toggle"> <i class="icon-camera-retro"></i> <span class="menu-text"> Imagenes </span> <b class="arrow icon-angle-down"></b> </a>
+		<li {% if app.request.attributes.get('_route') == 'project_back_menu_list' or  
+		          app.request.attributes.get('_route') == 'project_back_menu_create' or
+                  app.request.attributes.get('_route') == 'project_back_menu_item_list' or  
+		          app.request.attributes.get('_route') == 'project_back_menu_item_create'
+		     %} class="open"{%endif%}>
 
-			<ul class="submenu">
-				<li>
-					<a href="form-elements.html"> <i class="icon-double-angle-right"></i> Ver imagenes </a>
+			<a href="#" class="dropdown-toggle"> <i class="icon-exchange"></i> <span class="menu-text"> Menus </span> <b class="arrow icon-angle-down"></b> </a>
+
+			<ul class="submenu" {% if 
+			app.request.attributes.get('_route') == 'project_back_menu_list' or  
+			app.request.attributes.get('_route') == 'project_back_menu_create' or
+			app.request.attributes.get('_route') == 'project_back_menu_item_list' or  
+			app.request.attributes.get('_route') == 'project_back_menu_item_create' or
+            app.request.attributes.get('_route') == 'project_back_menu_item_rank'
+			 %} style="display: block;"{%endif%}>
+
+				<li {% if app.request.attributes.get('_route') == 'project_back_menu_list' %}class="active"{%endif%}>
+					<a href="{{path('project_back_menu_list')}}"> <i class="icon-double-angle-right"></i> Ver Menus </a>
 				</li>
 
-				<li>
-					<a href="form-wizard.html"> <i class="icon-double-angle-right"></i> Subir imagen </a>
+				<li {% if app.request.attributes.get('_route') == 'project_back_menu_create' %}class="active"{%endif%}>
+					<a href="{{path('project_back_menu_create')}}"> <i class="icon-double-angle-right"></i> Crear menu </a>
 				</li>
+
+				<li {% if app.request.attributes.get('_route') == 'project_back_menu_item_list' %}class="active"{%endif%}>
+					<a href="#modal-form-listado" data-toggle="modal"> <i class="icon-double-angle-right"></i> Ver Items </a>
+				</li>
+
+				<li {% if app.request.attributes.get('_route') == 'project_back_menu_item_create' %}class="active"{%endif%}>
+					<a href="#modal-form-crear" data-toggle="modal"> <i class="icon-double-angle-right"></i> Crear Item </a>
+				</li>
+
+				<li  {% if app.request.attributes.get('_route') == 'project_back_menu_item_rank' %}class="active"{%endif%}>
+					<a href="#modal-form-ordenar" data-toggle="modal"> <i class="icon-double-angle-right"></i> Ordenar Items</a>
+				</li>
+
 			</ul>
 		</li>
-		<li>
-			<a href="#" class="dropdown-toggle"> <i class="icon-download"></i> <span class="menu-text"> Archivos </span> <b class="arrow icon-angle-down"></b> </a>
 
-			<ul class="submenu">
-				<li>
-					<a href="form-elements.html"> <i class="icon-double-angle-right"></i> Ver archivos </a>
-				</li>
-
-				<li>
-					<a href="form-wizard.html"> <i class="icon-double-angle-right"></i> Subir archivo </a>
-				</li>
-			</ul>
-		</li>#}
 		<li {% if app.request.attributes.get('_route') == 'fos_user_profile_show' %}class="active"{%endif%}>
 			<a href="{{ path('fos_user_profile_show') }}"> <i class="icon-eye-open"></i> <span class="menu-text"> Mi Perfil </span> </a>
 		</li>

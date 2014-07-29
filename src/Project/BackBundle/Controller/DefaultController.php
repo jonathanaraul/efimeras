@@ -49,131 +49,14 @@ class DefaultController extends Controller
         $locale = UtilitiesAPI::getLocale($this);
         $form = null;       
         $filtros = null;
-    /*
-        $objects = $this -> getDoctrine() -> getRepository('ProjectUserBundle:Page') -> findAll();
-        $themes = $this -> getDoctrine() -> getRepository('ProjectUserBundle:CmsTheme') -> findAll();
-        $filtros['theme'] = array();
-        $filtros['parentPage'] = array();
-        $filtros['published'] = array(1 => 'Si', 0 => 'No');
 
-        $filtros['theme']= UtilitiesAPI::getFilter('CmsTheme',$this);
-        $filtros['parentPage']= UtilitiesAPI::getFilter('Page',$this);
-
-
-        $data = new Page();
-        $form = $this -> createFormBuilder($data) 
-        -> add('name', 'text', array('required' => false)) 
-        -> add('special','choice', array('choices' => $filtros['published'], 'required' => false, ))
-        -> add('theme', 'choice', array('choices' => $filtros['theme'], 'required' => false, )) 
-        -> add('published', 'choice', array('choices' => $filtros['published'], 'required' => false, ))
-        -> getForm();
-        
-        $em = $this -> getDoctrine() -> getEntityManager();
-                
-        if ($this -> getRequest() -> isMethod('POST')) {
-            $form -> bind($this -> getRequest());
-
-            if ($form -> isValid()) {
-
-                $dql = "SELECT n FROM ProjectUserBundle:Page n ";
-                $where = false;
-
-                if (is_numeric($data -> getSpecial()))  {
-
-                    if ($where == false) {
-                        $dql .= 'WHERE ';
-                        $where = true;
-                    }
-                    $dql .= ' n.special = :special ';
-
-                }
-                if (is_numeric($data -> getTheme())) {
-
-                    if ($where == false) {
-                        $dql .= 'WHERE ';
-                        $where = true;
-                    } else {
-                        $dql .= 'AND ';
-                    }
-                    $dql .= ' n.theme = :theme ';
-
-                }
-                if (!(trim($data -> getName()) == false)) {
-
-                    if ($where == false) {
-                        $dql .= 'WHERE ';
-                        $where = true;
-                    } else {
-                        $dql .= 'AND ';
-                    }
-
-                    $dql .= " n.name like :name ";
-
-                }
-                if (is_numeric($data -> getPublished())) {
-
-                    if ($where == false) {
-                        $dql .= 'WHERE ';
-                        $where = true;
-                    } else {
-                        $dql .= 'AND ';
-                    }
-                    $dql .= ' n.published = :published ';
-                }
-                
-                if ($where == false) {
-                    $dql .= 'WHERE ';
-                    $where = true;
-                    } 
-                else{
-                    $dql .= 'AND ';
-                    }
-                $dql .= ' n.lang = :lang ';
-        
-                $query = $em -> createQuery($dql);
-
-                if (is_numeric ($data -> getSpecial())) {
-                    $query -> setParameter('special', $data -> getSpecial());
-                }
-                if (is_numeric ($data -> getTheme()) ) {
-                    $query -> setParameter('theme', $data -> getTheme());
-                }
-                if (!(trim($data -> getName()) == false)) {
-                    $query -> setParameter('name', '%' . $data -> getName() . '%');
-                }
-                if (is_numeric ($data -> getPublished())) {
-                    $query -> setParameter('published', $data -> getPublished());
-                }
-                
-                $query -> setParameter('lang', $locale);
-
-            }
-        }
-        //////////////////////////////////////////////////////////////////////////////////////////////////
-        else {*/
-            $dql = "SELECT n FROM ProjectUserBundle:User n ";
-            //$dql .= 'WHERE n.lang = :lang ';
-            $query = $em -> createQuery($dql);
-            //$query -> setParameter('lang', $locale);
-        //}
+        $dql = "SELECT o FROM ProjectUserBundle:User o ";
+        $query = $em -> createQuery($dql);
 
         $paginator = $this -> get('knp_paginator');
         $pagination = $paginator -> paginate($query, $this -> getRequest() -> query -> get('page', 1), 10);
 
-        $objects = $pagination -> getItems();
-        $auxiliar = array();
-
-        for ($i = 0; $i < count($objects); $i++) {
-            $auxiliar[$i]['id'] = $objects[$i] -> getId();
-            $auxiliar[$i]['username'] = $objects[$i] -> getUsername();
-            $auxiliar[$i]['email'] = $objects[$i] -> getEmail();
-            $auxiliar[$i]['enabled'] = $objects[$i] -> isEnabled();
-            $auxiliar[$i]['lastLogin'] = $objects[$i] -> getLastLogin();
-            $auxiliar[$i]['descripcion'] = $objects[$i] -> getDescripcion();
-        }
-        $objects = $auxiliar;
-        $secondArray = array('pagination' => $pagination, 'filtros' => $filtros, 'objects' => $objects, 'url' => $url);
-        //$secondArray['form'] =  $form -> createView();
+        $secondArray = array('pagination' => $pagination, 'filtros' => $filtros, 'url' => $url);
         
         $array = array_merge($firstArray, $secondArray);
   

@@ -3,9 +3,7 @@
 {% block pagesScriptsBottom %}
 <script ></script>
 <script src="{{asset('admin/js/project/listados.js')}}"></script>
-<script type="text/javascript">
-	var direccionResponder = "{{path('project_back_page_edit')}}"; 
-</script>
+<script type="text/javascript">var direccionResponder = "{{path('project_back_page_edit')}}";</script>
 {%endblock%}
 
 {% block pageContent  %}
@@ -18,11 +16,7 @@
 
 		{# include 'ProjectBackBundle:Architecture:breadcrumb.html.twig'  with {'clase': 'gris'} #}
 		<div class="page-content">
-
-			{# include 'ProjectBackBundle:Helpers:page-header.html.twig'  with {'titulo': 'Panel de control','subtitulo':'Vista de elementos'}  #}
-			<div class="page-header position-relative">
-				<h1> Temas <small> <i class="icon-double-angle-right"></i> listado </small></h1>
-			</div><!--/.page-header-->
+			{% include 'ProjectBackBundle:Theme:page-header.html.twig' with {'subtitulo':'listado'} %}
 
 			<div class="row-fluid">
 				<div class="span12">
@@ -42,12 +36,7 @@
 								</thead>
 								<tbody>
 									{%for element in pagination %}
-									<tr id="fila_{{element.id}}">
-										<td >{{element.id}}</td>
-										<td style="background-color:{{element.color}}">{{element.color}}</td>
-										<td >{{element.name}}</td>
-										<td class="hidden-phone">{{element.description}}</td>
-									</tr>
+									{% include 'ProjectBackBundle:Theme:list-element.html.twig'  with {'element':element}  %}
 									{%endfor%}
 								</tbody>
 							</table>
@@ -60,25 +49,6 @@
 								<div class="span6">
 									<div class="dataTables_paginate paging_bootstrap pagination" style="margin: 0px;font-size: 18px;">
 										{{ knp_pagination_render(pagination) }}
-										{#
-										<ul>
-											<li class="prev disabled">
-												<a href="#"><i class="icon-double-angle-left"></i></a>
-											</li>
-											<li class="active">
-												<a href="#">1</a>
-											</li>
-											<li>
-												<a href="#">2</a>
-											</li>
-											<li>
-												<a href="#">3</a>
-											</li>
-											<li class="next">
-												<a href="#"><i class="icon-double-angle-right"></i></a>
-											</li>
-										</ul>
-										#}
 									</div>
 								</div>
 							</div>
@@ -87,19 +57,8 @@
 					</div><!--/row-->
 					<div class="hr hr-18 dotted hr-double"></div>
 					{%else%}
-
-					<div class="alert alert-error">
-						<button type="button" class="close" data-dismiss="alert">
-							<i class="icon-remove"></i>
-						</button>
-
-						<strong> <i class="icon-remove"></i> Lo sentimos... </strong>
-
-						No se han encontrado resultados en esta busqueda.
-						<br>
-					</div>
+					{% include 'ProjectBackBundle:Helpers:busqueda-fallida.html.twig' %}
 					{%endif%}
-
 					<!--PAGE CONTENT ENDS-->
 				</div><!--/.span-->
 			</div><!--/.row-fluid-->

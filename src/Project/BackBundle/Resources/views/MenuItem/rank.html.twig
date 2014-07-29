@@ -1,0 +1,84 @@
+{% extends '::base.html.twig' %}
+
+{% block pagesScriptsBottom %}
+<script type="text/javascript">
+	var direccionRank = "{{path('project_back_menu_item_rank_post', {'menu': menu})}}";
+
+	$('.widget-container-span').sortable({
+		connectWith : '.widget-container-span',
+		items : '> .widget-box',
+		opacity : 0.8,
+		revert : true,
+		forceHelperSize : true,
+		placeholder : 'widget-placeholder',
+		forcePlaceholderSize : true,
+		tolerance : 'pointer'
+	}); 
+</script>
+<script src="{{asset('admin/js/project/listados.js')}}"></script>
+
+{%endblock%}
+
+{% block pageContent  %}
+<div class="main-container container-fluid" id="sinlogin">
+	<a class="menu-toggler" id="menu-toggler" href="#"> <span class="menu-text"></span> </a>
+
+	{% include '::sidebar.html.twig'  with {'clase': 'gris'}  %}
+
+	<div class="main-content">
+
+		{# include 'ProjectBackBundle:Architecture:breadcrumb.html.twig'  with {'clase': 'gris'} #}
+		<div class="page-content">
+			{% include 'ProjectBackBundle:MenuItem:page-header.html.twig' with {'subtitulo':'ordenar'} %}
+
+			<div class="row-fluid">
+				<div class="span12 probando1">
+					<!--PAGE CONTENT BEGINS-->
+					<!--PAGE CONTENT BEGINS-->
+
+					{%if objects|length>0%}
+					<p class="alert alert-success">
+						Puede realizar el ordenamiento haciendo drag and drop
+					</p>
+
+					<div class="row-fluid " style="cursor:pointer;">
+						<div class="span12 widget-container-span" >
+							{%for element in objects %}
+							<div class="widget-box ordenar"  id="elemento_{{loop.index}}" atributo="{{element.id}}" >
+								<div class="widget-header widget-header-large">
+									<h4>{{element.name}}</h4>
+								</div>
+
+								<div class="widget-body">
+									<div class="widget-main">
+										<p class="alert alert-info">
+											{{element.description}}
+										</p>
+									</div>
+								</div>
+							</div>
+							{%endfor%}
+						</div>
+					</div><!--/row-->
+
+					<div class="hr hr-18 dotted hr-double"></div>
+					{%else%}
+					<div class="alert alert-error">
+						<button type="button" class="close" data-dismiss="alert">
+							<i class="icon-remove"></i>
+						</button>
+
+						<strong> <i class="icon-remove"></i> Lo sentimos... </strong>
+
+						No se han encontrado resultados en esta busqueda.
+						<br>
+					</div>
+					{%endif%}
+					<!--PAGE CONTENT ENDS-->
+				</div><!--/.span-->
+			</div><!--/.row-fluid-->
+		</div><!--/.page-content-->
+	</div><!--/.main-content-->
+</div><!--/.main-container-->
+
+{%endblock%}

@@ -5,44 +5,32 @@ var images = ["{{ asset(''~ page.getBackground.getWebPath ~'') }}"];
 {%endblock%}
 
 {%block contenido%}
-<div class="middle-right-sub">
-
-	{{ render(controller('ProjectFrontBundle:Helpers:menuMobile')) }}
-	{#<div class="upper-text" style="background-color: {#{theme.color} !important"></div>#}
-
-	<div class="news-cont" style="margin-left: 66px;{%if page.template==0%}width: 800px;{%endif%}">
-		<div class="news-cell">
-			<table cellpadding="12" id="contenido-pagina" style="width: 100%;">
-				<td  width="100%" valign="top" colspan="3"><h2 style="color: {{page.theme.color}};"> {{page.name|title}} </h2> {%if page.path is not null%}
-				<p>
-					<img src="{{asset(page.getWebPath)}}" style="width:100%;margin-top:20px;margin-bottom:10px;">
-				</p> 
-				{%else%}
+<div class="middle-right-sub" style="float: left;padding-top: 1px;margin-left: 405px;">
+	{% include 'ProjectFrontBundle:Helpers:controller-menuMobile.html.twig' %}
+	<div class="news-cont" style="margin-left: 25px;{%if page.template==0%}width: 800px;{%endif%}">
+		<div class="news-cell" style="padding: 14px;">
+			<h2 style="color: {{page.theme.color}};"> {{page.name|title}} </h2>
+			{%if page.path is not null%}
+			<p>
+				<img src="{{asset(page.getWebPath)}}" style="width:100%;margin-top:20px;margin-bottom:10px;">
+			</p>
+			{%else%}
 			</br>
+			{%endif%}
 
-				{%endif%}
+			{{page.content|raw}}
 
-				{{page.content|raw}}
-
-				</br>
-				{%if page.reservacion %}
-				<div class="boton-listado boton-reservaciones" style="margin-top: 14px;margin-right: 0px;" >
-					<a href="{{path('project_front_reservation',{'id': page.id})}}" >{% trans %}Reservar{% endtrans %}</a>
-				</div> {%endif%}
-				 </td>
-				</tr>
-			</table>
+			</br>
+			{%if page.reservacion %}
+			<div class="boton-listado boton-reservaciones" style="margin-top: 14px;margin-right: 0px;" >
+				<a href="{{path('project_front_reservation',{'id': page.id})}}" >{% trans %}Reservar{% endtrans %}</a>
+			</div>
+			{%endif%}
 		</div>
-		<div class="lower-text"></div>
 	</div>
 	{% include 'ProjectFrontBundle:Helpers:inferior.html.twig' %}
 </div>
-{%endblock%}
-
-{%block celda%}
 {%if page.template==1%}
 {% include 'ProjectFrontBundle:Helpers:nube.html.twig' %}
-{%else%}
-<div class="cell-right-sub"></div>
 {%endif%}
-{%endblock%} 
+{%endblock%}

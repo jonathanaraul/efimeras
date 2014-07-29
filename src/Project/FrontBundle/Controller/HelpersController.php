@@ -16,42 +16,24 @@ use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 
 class HelpersController extends Controller
 {
-    public function menuMobileAction()
+    public function menuAction($idpage,$idmenu,$mobile)
     {
 
-	
+      
+
 		$em = $this->getDoctrine()->getManager();
 		
 		$query = $em -> createQuery('SELECT d
-    								 FROM ProjectUserBundle:Page d
+    								 FROM ProjectUserBundle:MenuItem d
    	 								 WHERE 
-   	 								       d.published = :published  and d.category is null
-    								 ORDER BY d.rank ASC') 
-			   -> setParameter('published', 1);
-
-		$array['objects'] = $query -> getResult();
-	
-        return $this->render('ProjectFrontBundle:Helpers:menu-mobile.html.twig', $array);
-    }
-    public function menuAction($idpage,$theme)
-    {
-    	$locale = UtilitiesAPI::getLocale($this);
-	
-		$em = $this->getDoctrine()->getManager();
-		
-		$query = $em -> createQuery('SELECT d ,e
-    								 FROM ProjectUserBundle:Page d,ProjectUserBundle:Category e
-   	 								 WHERE 
-   	 								       d.published = :published  and d.category is null and d.id !=:prohibida
+   	 								       d.published = :published  and d.menu = :menu
     								 ORDER BY d.rank ASC') 
 			   -> setParameter('published', 1)
-         -> setParameter('prohibida', 3);
+         -> setParameter('menu', $idmenu);
 
-		$array['objects'] = $query -> getResult();
-
+		$array['items'] = $query -> getResult();
 		$array['idpage'] = $idpage;
-		$array['theme'] = $theme;
-	
-        return $this->render('ProjectFrontBundle:Helpers:menu.html.twig', $array);
+
+        return $this->render('ProjectFrontBundle:Helpers:menu'.$mobile.'.html.twig', $array);
     }
 }

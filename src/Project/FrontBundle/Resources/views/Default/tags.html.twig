@@ -1,49 +1,29 @@
 {% extends "ProjectFrontBundle:Helpers:body.html.twig" %}
 
 {%block imagenes%}
-
-var images =  new Array();
-{%for element in backgrounds%}
-images[{{loop.index0}}] = "{{ asset(''~ element.getWebPath ~'') }}";
-{%endfor%}
-
+var images = ["{{ asset(''~ page.getBackground.getWebPath ~'') }}"];
 {%endblock%}
 
 {%block contenido%}
-<div class="middle-right-sub">
-
-	{{ render(controller('ProjectFrontBundle:Helpers:menuMobile')) }}
-	{#<div class="upper-text" style="background-color: {#{theme.color} !important"></div>#}
-
-	<div class="news-cont"  style="margin-left: 66px;">
-		<hr class="barra-inferior">
-		<p class="content-title">
-			Resultados para {%if search==false%}Tag{%else%}el termino{%endif%}: {{tag}}
-		</p>
-		<div class="news-cell">
-			<table cellpadding="12" id="contenido-pagina" style="width: 100%;">
-				{%for element in objects%}
-				<tr width="100%">
-					<td  width="10%" valign="top" ><b> <a href="{{path('project_front_page',{'id': element.id, 'friendlyname' : element.friendlyName})}}"> {{element.name}} </a> </b></td>
-					<td  width="70%" valign="top" > {{element.descriptionMeta}} </td>
-					<td  width="20%" valign="top" > {{element.dateCreated.format('Y-m-d')}} </td>
-				</tr>
-				{%endfor%}
-			</table>
+<div class="middle-right-sub" style="float: left;padding-top: 1px;margin-left: 405px;">
+	{% include 'ProjectFrontBundle:Helpers:controller-menuMobile.html.twig' %}
+	<div class="news-cont" style="margin-left: 25px;width: 800px;">
+		<div class="news-cell" style="padding: 14px;">
+			<h2 style="color: {{page.theme.color}};"> Resultados para {%if search==false%}Tag{%else%}el termino{%endif%}: {{tag}} </h2>
+			</br>
+			<div class="news-cell" style="margin-top: 31px;">
+				<table cellpadding="12" id="contenido-pagina" style="width: 100%;">
+					{%for element in objects%}
+					<tr width="100%">
+						<td  width="10%" valign="top" ><b> <a href="{{path('project_front_page',{'id': element.id, 'friendlyname' : element.friendlyName})}}"> {{element.name}} </a> </b></td>
+						<td  width="70%" valign="top" > {{element.descriptionMeta}} </td>
+						<td  width="20%" valign="top" > {{element.created.format('Y-m-d')}} </td>
+					</tr>
+					{%endfor%}
+				</table>
+			</div>
 		</div>
-		<div class="lower-text"></div>
-		{#<div class="lower-box" style="#right: 200px;"></div>
-		#}
 	</div>
-	{#
-	<div class="main-big-title news-big-title" style="">
-		<div class="theme-sel-10">
-			{{page.name|title}}
-		</div>
-	</div>#}
 	{% include 'ProjectFrontBundle:Helpers:inferior.html.twig' %}
 </div>
 {%endblock%}
-
-{%block celda%} <div class="cell-right-sub"></div>
-{%endblock%} 

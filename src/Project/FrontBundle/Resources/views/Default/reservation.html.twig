@@ -9,17 +9,14 @@ images[{{loop.index0}}] = "{{ asset(''~ element.getWebPath ~'') }}";
 
 {%block contenido%}
 <div class="middle-right-sub">
-
-	{{ render(controller('ProjectFrontBundle:Helpers:menuMobile')) }}
-	{#<div class="upper-text" style="background-color: {#{theme.color} !important"></div>#}
-
-	<div class="news-cont"  style="margin-left: 66px;">
+	{% include 'ProjectFrontBundle:Helpers:controller-menuMobile.html.twig' %}
+	<div class="news-cont"  style="margin-left: 25px;">
 
 		<div class="news-cell">
 
 			{%if message == ''%}
 			<form action="{{ url }}" method="post" {{ form_enctype(form) }} id="form-reservaciones">
-				<h2 style="color: {{page.theme.color}};"> Reservas </h2>
+
 				<table style ="width: 100%;" id="contenido-pagina" CELLSPACING ="10">
 
 					<tr >
@@ -59,15 +56,7 @@ images[{{loop.index0}}] = "{{ asset(''~ element.getWebPath ~'') }}";
 
 		</div>
 		<div class="lower-text"></div>
-		{#<div class="lower-box" style="#right: 200px;"></div>
-		#}
 	</div>
-	{#
-	<div class="main-big-title news-big-title" style="">
-		<div class="theme-sel-10">
-			{{page.name|title}}
-		</div>
-	</div>#}
 	{% include 'ProjectFrontBundle:Helpers:inferior.html.twig' %}
 </div>
 {%endblock%}

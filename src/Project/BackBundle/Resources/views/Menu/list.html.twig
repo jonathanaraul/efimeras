@@ -1,0 +1,78 @@
+{% extends '::base.html.twig' %}
+
+{% block pagesScriptsBottom %}
+<script src="{{asset('admin/js/project/listados.js')}}"></script>
+<script type="text/javascript">
+	var direccionEstatus = "{{path('project_back_category_status')}}";
+	var direccionBorrar = "{{path('project_back_category_delete')}}";
+	var direccionEditar = "{{path('project_back_category_edit')}}"; 
+</script>
+{%endblock%}
+
+{% block pageContent  %}
+<div class="main-container container-fluid" id="sinlogin">
+	<a class="menu-toggler" id="menu-toggler" href="#"> <span class="menu-text"></span> </a>
+
+	{% include '::sidebar.html.twig'  with {'clase': 'gris'}  %}
+
+	<div class="main-content">
+		<div class="page-content">
+			{% include 'ProjectBackBundle:Menu:page-header.html.twig' with {'subtitulo':'listado'} %}
+
+			<div class="row-fluid">
+				<div class="span12">
+					<!--PAGE CONTENT BEGINS-->
+					<!--PAGE CONTENT BEGINS-->
+					{%if pagination.getTotalItemCount>0%}
+					<div class="row-fluid">
+						<div class="span12">
+
+							<table id="sample-table-1" class="table table-striped table-bordered table-hover">
+								<thead>
+									<tr>
+										<th>{{ knp_pagination_sortable(pagination, 'Id', 'o.id') }}</th>
+										<th>{{ knp_pagination_sortable(pagination, 'Nombre', 'o.name') }}</th>
+										<th>{{ knp_pagination_sortable(pagination, 'Descripcion', 'o.description') }}</th>
+										<th class="hidden-480">Items</th>
+
+										<th class="hidden-phone" style="width: 136px;"><i class="icon-time bigger-110 hidden-phone"></i> {{ knp_pagination_sortable(pagination, 'Creado', 'o.Created') }} </th>
+
+										<th class="hidden-phone" style="width: 136px;"><i class="icon-time bigger-110 hidden-phone"></i> {{ knp_pagination_sortable(pagination, 'Actualizado', 'o.Updated') }} </th>
+
+										<th class="hidden-480">{{ knp_pagination_sortable(pagination, 'Estatus', 'o.published') }}</th>
+										<th></th>
+									</tr>
+								</thead>
+								<tbody>
+									{%for element in pagination %}
+									{% include 'ProjectBackBundle:Menu:list-element.html.twig'  with {'element':element}  %}
+									{%endfor%}
+								</tbody>
+							</table>
+							<div class="row-fluid">
+								<div class="span6">
+									<div class="dataTables_info" id="sample-table-2_info">
+										{{ pagination.getTotalItemCount }} Resultados
+									</div>
+								</div>
+								<div class="span6">
+									<div class="dataTables_paginate paging_bootstrap pagination" style="margin: 0px;font-size: 18px;">
+										{{ knp_pagination_render(pagination) }}
+									</div>
+								</div>
+							</div>
+
+						</div><!--/span-->
+					</div><!--/row-->
+					<div class="hr hr-18 dotted hr-double"></div>
+					{%else%}
+					{% include 'ProjectBackBundle:Helpers:busqueda-fallida.html.twig' %}
+					{%endif%}
+					<!--PAGE CONTENT ENDS-->
+				</div><!--/.span-->
+			</div><!--/.row-fluid-->
+		</div><!--/.page-content-->
+	</div><!--/.main-content-->
+</div><!--/.main-container-->
+
+{%endblock%}
