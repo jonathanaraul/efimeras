@@ -88,45 +88,4 @@ class CategoryController extends Controller {
 
 		return $class-> render('ProjectBackBundle:Category:new-edit.html.twig', $array);
 	}
-
-	public function deleteAction() {
-
-		$peticion = $this -> getRequest();
-		$doctrine = $this -> getDoctrine();
-		$post = $peticion -> request;
-		//INICIALIZAR VARIABLES
-
-		$id = $post -> get("id");
-		$em = $this -> getDoctrine() -> getManager();
-		$object = $em -> getRepository('ProjectUserBundle:Category') -> find($id);
-		$em -> remove($object);
-		$em -> flush();
-
-		$estado = true;
-		$respuesta = new response(json_encode(array('estado' => $estado)));
-		$respuesta -> headers -> set('content_type', 'aplication/json');
-		return $respuesta;
-	}
-
-	public function statusAction() {
-
-		$peticion = $this -> getRequest();
-		$doctrine = $this -> getDoctrine();
-		$post = $peticion -> request;
-		//INICIALIZAR VARIABLES
-
-		$id = $post -> get("id");
-		$tarea = intval($post -> get("tarea"));
-
-		$em = $this -> getDoctrine() -> getManager();
-		$object = $em -> getRepository('ProjectUserBundle:Category') -> find($id);
-		$object -> setPublished($tarea);
-		$em -> flush();
-
-		$estado = true;
-		$respuesta = new response(json_encode(array('estado' => $estado)));
-		$respuesta -> headers -> set('content_type', 'aplication/json');
-		return $respuesta;
-	}
-
 }

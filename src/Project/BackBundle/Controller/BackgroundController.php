@@ -88,47 +88,4 @@ class BackgroundController extends Controller {
 		return $class -> render('ProjectBackBundle:Background:new-edit.html.twig', $array);
 	}
 
-	public function deleteAction() {
-
-		$em = $this -> getDoctrine() -> getManager();
-		$peticion = $this -> getRequest();
-		$doctrine = $this -> getDoctrine();
-		$post = $peticion -> request;
-
-		// Obtener variables del post en el ajax
-		$id = $post -> get("id");
-
-        // Procesa accion en base de datos
-		$object = $em -> getRepository('ProjectUserBundle:Background') -> find($id);
-		$em -> remove($object);
-		$em -> flush();
-
-		$estado = true;
-		$respuesta = new response(json_encode(array('estado' => $estado)));
-		$respuesta -> headers -> set('content_type', 'aplication/json');
-		return $respuesta;
-	}
-
-	public function statusAction() {
-
-		$em = $this-> getDoctrine()-> getManager();
-		$peticion = $this-> getRequest();
-		$doctrine = $this-> getDoctrine();
-		$post = $peticion-> request;
-
-		// Obtener variables del post en el ajax
-		$id = $post-> get("id");
-		$tarea = intval($post-> get("tarea"));
-
-        // Procesa accion en base de datos
-		$object = $em-> getRepository('ProjectUserBundle:Background')-> find($id);
-		$object-> setPublished($tarea);
-		$em-> flush();
-
-		$estado = true;
-		$respuesta = new response(json_encode(array('estado'=> $estado)));
-		$respuesta-> headers-> set('content_type', 'aplication/json');
-		return $respuesta;
-	}
-
 }

@@ -38,16 +38,6 @@ project_back_page_create:
 project_back_page_edit:
     pattern:  /page/edit/{id}
     defaults: { _controller: ProjectBackBundle:Page:edit, id: '1' }
-project_back_page_delete:
-    pattern:  /page/delete
-    defaults: { _controller: ProjectBackBundle:Page:delete }
-    requirements:
-      _method: POST
-project_back_page_status:
-    pattern:  /page/status
-    defaults: { _controller: ProjectBackBundle:Page:status }
-    requirements:
-      _method: POST
 
 project_back_category_list:
     pattern:  /category/list/
@@ -64,16 +54,6 @@ project_back_category_create:
 project_back_category_edit:
     pattern:  /category/edit/{id}
     defaults: { _controller: ProjectBackBundle:Category:edit, id: '1' }
-project_back_category_delete:
-    pattern:  /category/delete
-    defaults: { _controller: ProjectBackBundle:Category:delete }
-    requirements:
-      _method: POST
-project_back_category_status:
-    pattern:  /category/status
-    defaults: { _controller: ProjectBackBundle:Category:status }
-    requirements:
-      _method: POST
 
 project_back_background_list:
     pattern:  /background/list/
@@ -100,16 +80,6 @@ project_back_theme_create:
 project_back_theme_edit:
     pattern:  /theme/edit/{id}
     defaults: { _controller: ProjectBackBundle:Theme:edit, id: '1' }
-project_back_theme_delete:
-    pattern:  /theme/delete
-    defaults: { _controller: ProjectBackBundle:Theme:delete }
-    requirements:
-      _method: POST
-project_back_theme_status:
-    pattern:  /theme/status
-    defaults: { _controller: ProjectBackBundle:Theme:status }
-    requirements:
-      _method: POST
 
 project_back_reservation_list:
     pattern:  /reservation/list/
@@ -124,16 +94,6 @@ project_back_menu_create:
 project_back_menu_edit:
     pattern:  /menu/edit/{id}
     defaults: { _controller: ProjectBackBundle:Menu:edit, id: '1' }
-project_back_menu_delete:
-    pattern:  /menu/delete
-    defaults: { _controller: ProjectBackBundle:Menu:delete }
-    requirements:
-      _method: POST
-project_back_menu_status:
-    pattern:  /menu/status
-    defaults: { _controller: ProjectBackBundle:Menu:status }
-    requirements:
-      _method: POST
 
 project_back_menu_item_list:
     pattern:  /menu/{menu}/item/list/
@@ -150,21 +110,6 @@ project_back_menu_item_edit:
     defaults: { _controller: ProjectBackBundle:MenuItem:edit, id: '1', menu:'1' }
     options:
         expose: true
-project_back_menu_item_delete:
-    pattern:  /menu/{menu}/item/delete
-    defaults: { _controller: ProjectBackBundle:MenuItem:delete }
-    requirements:
-      _method: POST
-    options:
-        expose: true
-project_back_menu_item_status:
-    pattern:  /menu/{menu}/item/status
-    defaults: { _controller: ProjectBackBundle:MenuItem:status }
-    requirements:
-      _method: POST
-    options:
-        expose: true
-
 project_back_menu_item_rank:
     pattern:  /menu/{menu}/item/rank
     defaults: { _controller: ProjectBackBundle:MenuItem:rank }
