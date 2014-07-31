@@ -3,4 +3,5 @@
 	<td style="background-color:{{element.color}}">{{element.color}}</td>
 	<td >{{element.name}}</td>
 	<td class="hidden-phone">{{element.description}}</td>
+    {% include 'ProjectBackBundle:Helpers:listado-status-edit-delete.html.twig'  with {'tipo':'Theme','rutaEditar':'project_back_theme_edit'}  %}
 </tr>

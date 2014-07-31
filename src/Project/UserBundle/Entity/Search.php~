@@ -36,7 +36,12 @@ class Search
      */
     private $date;
 	
-
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="published", type="boolean", nullable=true)
+     */
+    private $published = true;
 
  
 

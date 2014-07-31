@@ -26,18 +26,11 @@ class Background
     private $id;
 
     /**
-     * @var integer
-     *
-     * @ORM\Column(name="rank", type="integer", nullable=false)
-     */
-    private $rank;
-
-    /**
      * @var boolean
      *
      * @ORM\Column(name="published", type="boolean", nullable=true)
      */
-    private $published;
+    private $published = true;
 
     /**
      * @var boolean

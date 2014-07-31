@@ -36,7 +36,12 @@ class Search
      */
     private $date;
 	
-
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="published", type="boolean", nullable=true)
+     */
+    private $published = true;
 
  
 
@@ -96,5 +101,28 @@ class Search
     public function getDate()
     {
         return $this->date;
+    }
+
+    /**
+     * Set published
+     *
+     * @param boolean $published
+     * @return Search
+     */
+    public function setPublished($published)
+    {
+        $this->published = $published;
+
+        return $this;
+    }
+
+    /**
+     * Get published
+     *
+     * @return boolean 
+     */
+    public function getPublished()
+    {
+        return $this->published;
     }
 }

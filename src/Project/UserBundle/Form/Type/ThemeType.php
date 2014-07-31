@@ -12,11 +12,11 @@ class ThemeType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-
-        ->add('name', 'text', array('required' => true))
-        ->add('color', 'text', array('required' => true))
-        ->add('description', 'textarea', array('required' => true))
-        ->add('save', 'submit');
+       
+        ->add('name', 'text', array('label' => 'Nombre','required' => true))
+        ->add('color', 'text', array('label' => 'Color','required' => true))
+        ->add('description', 'textarea', array('label' => 'Descripcion','required' => true))
+        ->add('save', 'submit',array('label' => 'Guardar', 'attr' => array('class' => 'btn btn-info')));
     }
 
     public function setDefaultOptions(OptionsResolverInterface $resolver)

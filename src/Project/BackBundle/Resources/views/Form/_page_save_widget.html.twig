@@ -1,10 +1,10 @@
 {% form_theme form _self %}
 
-{% block _menuItem_save_widget %}
+{% block _page_save_widget %}
 <div  class="form-actions">
 	{{ block('submit_widget') }}
 	&nbsp;&nbsp;&nbsp;
-	<button type="button" class="btn btn-danger" onclick="document.location.href = '{{path('project_back_theme_list')}}'">Cancelar</button>
+	<button type="button" class="btn btn-danger" onclick="document.location.href = '{{path('project_back_page_list')}}'">Cancelar</button>
 </div>
 <div class="hr"></div>
 {% endblock %}

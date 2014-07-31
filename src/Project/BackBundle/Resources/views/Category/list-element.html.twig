@@ -11,40 +11,5 @@
 	<td class="hidden-phone">{{element.created.format('d/m/Y H:i:s')}}</td>
 	<td class="hidden-phone">{{element.updated.format('d/m/Y H:i:s')}}</td>
 
-	<td class="hidden-480"><span class="label label-success" {%if element.published==false%}style="display:none"{%endif%} id="publicado_{{element.id}}">Publicado</span><span class="label label-warning" {%if element.published%}style="display:none"{%endif%} id="despublicado_{{element.id}}">Despublicado</span></td>
-
-	<td>
-	<div class="hidden-phone visible-desktop btn-group" >
-		<button class="btn btn-mini btn-success cambiar-estatus" objeto="{{element.id}}" tarea="{%if element.published%}0{%else%}1{%endif%}">
-			<i class="icon-exchange bigger-120"></i>
-		</button>
-
-		<button class="btn btn-mini btn-info editar" objeto="{{element.id}}">
-			<i class="icon-pencil bigger-120"></i>
-		</button>
-
-		<button class="btn btn-mini btn-danger borrar" objeto="{{element.id}}">
-			<i class="icon-remove bigger-120"></i>
-		</button>
-	</div>
-	<div class="hidden-desktop visible-phone">
-		<div class="inline position-relative">
-			<button class="btn btn-minier btn-primary dropdown-toggle" data-toggle="dropdown">
-				<i class="icon-cog icon-only bigger-110"></i>
-			</button>
-			<ul class="dropdown-menu dropdown-icon-only dropdown-yellow pull-right dropdown-caret dropdown-close">
-				<li>
-					<a href="#" class="tooltip-info cambiar-estatus" data-rel="tooltip" title="View" objeto="{{element.id}}" tarea="{%if element.published%}0{%else%}1{%endif%}"
-					> <span class="blue"> <i class="icon-exchange bigger-120"></i> </span> </a>
-				</li>
-				<li>
-					<a href="#" class="tooltip-success editar" data-rel="tooltip" title="Edit" objeto="{{element.id}}"> <span class="green"> <i class="icon-pencil bigger-120"></i> </span> </a>
-				</li>
-				<li>
-					<a href="#" class="tooltip-error borrar" data-rel="tooltip" title="Delete" objeto="{{element.id}}"> <span class="red"> <i class="icon-remove bigger-120"></i> </span> </a>
-				</li>
-
-			</ul>
-		</div>
-	</div></td>
+	{% include 'ProjectBackBundle:Helpers:listado-status-edit-delete.html.twig'  with {'tipo':'Category','rutaEditar':'project_back_category_edit'}  %}
 </tr>

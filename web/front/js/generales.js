@@ -78,6 +78,7 @@ $( window ).resize(function() {
 // 261 borra cinco
 // 271 borra seis
 	var dimension = $( window ).width();
+	console.log('nueva dimension'+dimension);
 	if(dimension <= 453){
 		if($('.paginacion-especial:not(.celdanovisible)').length==6){
 			$('.paginacion-especial:not(.celdanovisible)').last().addClass('celdanovisible');

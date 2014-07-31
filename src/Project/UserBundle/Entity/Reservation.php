@@ -85,7 +85,13 @@ class Reservation
      */
     private $tickets;
 	
-
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="published", type="boolean", nullable=true)
+     */
+    private $published = true;
+    
     /**
      * Get id
      *
@@ -301,5 +307,28 @@ class Reservation
     public function getPage()
     {
         return $this->page;
+    }
+
+    /**
+     * Set published
+     *
+     * @param boolean $published
+     * @return Reservation
+     */
+    public function setPublished($published)
+    {
+        $this->published = $published;
+
+        return $this;
+    }
+
+    /**
+     * Get published
+     *
+     * @return boolean 
+     */
+    public function getPublished()
+    {
+        return $this->published;
     }
 }

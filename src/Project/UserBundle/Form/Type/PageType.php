@@ -13,11 +13,18 @@ class PageType extends AbstractType
     {
         $builder
 
-        -> add('name', 'text', array('required' => true))
-        -> add('descriptionMeta', 'textarea', array('required' => true)) 
-        -> add('keywords', 'text', array('required' => true)) 
-        -> add('tags', 'text', array('required' => true))
+        -> add('name', 'text', array('label' => 'Nombre','required' => true, 'attr' => array('class' => 'span6')))
+        -> add('descriptionMeta', 'textarea', array('label' => 'Descripcion meta','required' => true, 'attr' => array('class' => 'span6'))) 
+        -> add('keywords', 'text', array('label' => 'Palabras claves','required' => true, 'attr' => array('class' => 'span6'))) 
+        -> add('upperText', 'text', array('label'=> 'Texto cabecera','required' => true, 'attr' => array('class' => 'span6'))) 
+        -> add('lowerText', 'text', array('label'=> 'Texto inferior','required' => true, 'attr' => array('class' => 'span6')))   
+        -> add('file', 'file', array('label'=> 'Archivo opcional','required' => false))      
+        -> add('tags', 'text', array('label' => 'Etiquetas','required' => true))
+        -> add('reservacion', 'checkbox', array('label' => 'Reservas', 'required' => false, 'attr' => array('class' => 'ace-switch') ))
+        -> add('template', 'checkbox', array('label' => 'Plantilla Tags', 'required' => false, 'attr' => array('class' => 'ace-switch') )) 
+        -> add('published', 'checkbox', array('label' => 'Publicado', 'required' => false, 'attr' => array('class' => 'ace-switch') )) 
         -> add('content', 'ckeditor', array(
+            'label' => 'Nombre',
             'config' => array(
                 'toolbar' => array(
                     array(
@@ -33,16 +40,17 @@ class PageType extends AbstractType
                 'uiColor' => '#ffffff',
                 ),
             ))
-        -> add('upperText', 'text', array('required' => true)) 
-        -> add('lowerText', 'text', array('required' => true))
-        -> add('file', 'file', array('required' => false)) 
-        -> add('theme', 'entity', array(
-            'class' => 'ProjectUserBundle:Theme',
-            'property' => 'name',
-            ))
         -> add('background', 'entity', array(
             'class' => 'ProjectUserBundle:Background',
             'property' => 'name',
+            'label' => 'Fondo',
+            'required' => true, 
+            ))
+        -> add('theme', 'entity', array(
+            'class' => 'ProjectUserBundle:Theme',
+            'property' => 'name',
+            'label' => 'Tema',
+            'required' => true, 
             ))
         -> add('category', 'entity', array(
             'class' => 'ProjectUserBundle:Category',
@@ -51,9 +59,6 @@ class PageType extends AbstractType
             'label' => 'Categoria',
             'required' => false, 
             ))
-        -> add('published', 'checkbox', array('label' => 'Publicado', 'required' => false, )) 
-        -> add('template', 'checkbox', array('label' => 'Plantilla', 'required' => false, )) 
-        -> add('reservacion', 'checkbox', array('label' => 'Reservas', 'required' => false, )) 
         -> add('save', 'submit',array('label' => 'Guardar', 'attr' => array('class' => 'btn btn-info')));
     }
 

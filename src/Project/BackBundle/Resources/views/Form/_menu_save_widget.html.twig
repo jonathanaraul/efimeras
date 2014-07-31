@@ -3,6 +3,8 @@
 {% block _menu_save_widget %}
 <div  class="form-actions">
 	{{ block('submit_widget') }}
+	&nbsp;&nbsp;&nbsp;
+	<button type="button" class="btn btn-danger" onclick="document.location.href = '{{path('project_back_menu_list')}}'">Cancelar</button>
 </div>
 <div class="hr"></div>
 {% endblock %}

@@ -6,15 +6,15 @@
 			{% if object.tipo == 0 %}
 			   <a href="{{path('project_front_page',{'id': object.page.id, 'friendlyname' : object.page.friendlyName})}}"> {{object.page.name|title}}
 			   </a> 
-			   {%if idpage == object.page.id%}
+			   {#{%if idpage == object.page.id%}
 			   <hr class="men-sel" style="background-color: {{object.page.theme.color}};width: 304px;">
-			   {%endif%}
+			   {%endif%}#}
 			{%else%} 
 			   <a href="{{path('project_front_category',{'id': object.category.id, 'friendlyname' : object.category.friendlyName})}}"> {{object.category.name|title}}
 			   </a> 
-			   {%if idpage == object.category.id%}
+			   {#{%if idpage == object.category.id%}
 			   <hr class="men-sel" style="background-color: {{object.category.theme.color}};width: 304px;"> 
-			   {%endif%}
+			   {%endif%}#}
 			{%endif%}
 		</div>
 		{%else%}

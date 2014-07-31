@@ -13,9 +13,9 @@ class BackgroundType extends AbstractType
     {
         $builder
 
-        ->add('name', 'text', array('required' => true))
-        ->add('file', 'file', array('required' => false)) 
-        ->add('home', 'checkbox', array('label' => 'En el inicio', 'required' => false, )) 
+        ->add('name', 'text', array('label' => 'Nombre','required' => true))
+        ->add('file', 'file', array('label' => 'Imagen','required' => false, 'attr' => array('accept' => 'image/*'))) 
+        ->add('home', 'checkbox', array('label' => 'En el inicio', 'required' => false, 'attr' => array('class' => 'ace-switch') )) 
         ->add('save', 'submit',array('label' => 'Guardar', 'attr' => array('class' => 'btn btn-info')));
     }
 

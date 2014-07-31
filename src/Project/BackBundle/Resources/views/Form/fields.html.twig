@@ -5,9 +5,11 @@
 	<div class="controls">
 		{{ form_widget(form) }}
 	</div>
+	{%if form_errors(form)%}
 	<div class="formErrors">
-		{{ form_errors(form) }}
+		<p style="margin-left: 180px;color: red;">{{ form_errors(form) }}</p>
 	</div>
+	{%endif%}
 </div>
 {% endspaceless %}
 {% endblock form_row %}

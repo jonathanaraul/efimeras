@@ -17,7 +17,6 @@ class DefaultController extends Controller
 	 */
 	public function indexAction() {
 
-
 		$firstArray = UtilitiesAPI::getDefaultContent('inicio', $this);
 		$secondArray = array();
 

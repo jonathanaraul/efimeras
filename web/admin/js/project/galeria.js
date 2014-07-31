@@ -1,9 +1,9 @@
-jQuery('.home').click(function() {  
+jQuery('.home-galeria').click(function() {  
 
-	var id= jQuery(this).attr('objeto');
+	var objeto= jQuery(this).parent().attr('objeto');
 	var tarea = jQuery(this).attr('tarea');
-
-	var data = 'id='+id+'&tarea='+tarea;
+	var tipo= jQuery(this).parent().attr('tipo');
+	var data = 'objeto='+objeto+'&tarea='+tarea+'&tipo='+tipo;
 
 	if(tarea==0){
         jQuery(this).attr('tarea',1);
@@ -14,23 +14,19 @@ jQuery('.home').click(function() {
         jQuery(this).parent().prev().find('.label-info').css('display','');
 	} 
 
-	$.post(direccionHome, data, function(respuesta) {
+	$.post(Routing.generate('project_back_set_home'), data, function(respuesta) {
 		var respuesta = JSON.parse(respuesta);
-
-		/*$("#loader-widget-" + color).css('display', 'none');
-		$("#elementos-" + tipo + "-" + color).append(respuesta.htmlElementos);
-		$(".paginacion-" + color).append(respuesta.htmlPaginacion);*/
 	});
 
     return false;
   });
 
-jQuery('.cambiar-estatus').click(function() {  
+jQuery('.cambiar-estatus-galeria').click(function() {  
 
-	var id= jQuery(this).attr('objeto');
+	var objeto= jQuery(this).parent().attr('objeto');
+	var tipo= jQuery(this).parent().attr('tipo');
 	var tarea = jQuery(this).attr('tarea');
-
-	var data = 'id='+id+'&tarea='+tarea;
+	var data = 'objeto='+objeto+'&tipo='+tipo+'&tarea='+tarea;
 
 	if(tarea==0){
         jQuery(this).attr('tarea',1);
@@ -43,40 +39,24 @@ jQuery('.cambiar-estatus').click(function() {
         jQuery(this).parent().prev().find('.label-important').css('display','none');
 	} 
 
-	$.post(direccionEstatus, data, function(respuesta) {
+	$.post(Routing.generate('project_back_status'), data, function(respuesta) {
 		var respuesta = JSON.parse(respuesta);
-
-		/*$("#loader-widget-" + color).css('display', 'none');
-		$("#elementos-" + tipo + "-" + color).append(respuesta.htmlElementos);
-		$(".paginacion-" + color).append(respuesta.htmlPaginacion);*/
 	});
 
     return false;
   });
 
-jQuery('.borrar').click(function() {  
+jQuery('.borrar-galeria').click(function() {  
 
-	var id= jQuery(this).attr('objeto');
-	var data = 'id='+id;
+	var objeto= jQuery(this).parent().attr('objeto');
+	var tipo= jQuery(this).parent().attr('tipo');
+	var data = 'objeto='+objeto+'&tipo='+tipo;
 
     jQuery(this).parent().parent().remove();
 
-	$.post(direccionBorrar, data, function(respuesta) {
+	$.post(Routing.generate('project_back_delete'), data, function(respuesta) {
 		var respuesta = JSON.parse(respuesta);
-
-		/*$("#loader-widget-" + color).css('display', 'none');
-		$("#elementos-" + tipo + "-" + color).append(respuesta.htmlElementos);
-		$(".paginacion-" + color).append(respuesta.htmlPaginacion);*/
 	});
 
     return false;
   });
-
-jQuery('.editar').click(function() {  
-
-	var id= jQuery(this).attr('objeto');
-	document.location.href = direccionEditar + '/' + id;
-
-    return false;
-  });
-

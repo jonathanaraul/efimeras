@@ -1,5 +1,10 @@
 {% extends '::base.html.twig' %}
 
+{% form_theme form with ['ProjectBackBundle:Form:fields.html.twig',
+'ProjectBackBundle:Form:_background_home_widget.html.twig',
+'ProjectBackBundle:Form:_background_save_widget.html.twig',
+] %}
+
 {% block pagesScriptsBottom %}
 {%endblock%}
 
@@ -10,55 +15,13 @@
 	{% include '::sidebar.html.twig'  with {'clase': 'gris'}  %}
 
 	<div class="main-content">
-
-		{# include 'ProjectBackBundle:Architecture:breadcrumb.html.twig'  with {'clase': 'gris'} #}
 		<div class="page-content">
-			<div class="page-header position-relative">
-				<h1> Fondos <small> <i class="icon-double-angle-right"></i> {%if accion=='nuevo'%}Subir nuevo{%else%}Editar{%endif%} </small></h1>
-			</div><!--/.page-header-->
+			{%set subtitulo = 'Subir nuevo'%}
+			{%if accion!='nuevo'%}{%set subtitulo = 'Editar'%}{%endif%}
+			{% include 'ProjectBackBundle:Background:page-header.html.twig'  with {'subtitulo':subtitulo}  %}
 
-			<form action="{{ url }}" {{ form_enctype(form) }} method="POST" class="form-horizontal">
-				{{ form_start(form) }}
-
-				<div class="control-group">
-					<label class="control-label" for="form-field-1">Nombre</label>
-
-					<div class="controls">
-						{{ form_widget(form.name, { 'attr': {'placeholder': 'Nombre'} }) }}
-					</div>
-				</div>
-				<div class="control-group">
-					<label class="control-label" for="form-field-1">Archivo</label>
-
-					<div class="controls">
-						{{ form_widget(form.file, { 'attr': {'accept':'image/*'} }) }}
-					</div>
-				</div>
-				<div class="control-group">
-					<label class="control-label">En el inicio</label>
-					<div class="controls">
-						<div class="row-fluid">
-							<div class="span3">
-								<label> {{ form_widget(form.home, { 'attr': {'class':'ace-switch'} }) }} <span class="lbl"></span> </label>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="form-actions">
-					{{ form_widget(form.save) }}
-
-					&nbsp; &nbsp; &nbsp;
-					<button class="btn" type="reset">
-						<i class="icon-undo bigger-110"></i>
-						Reset
-					</button>
-				</div>
-
-				<div class="space-4"></div>
-				{{ form_end(form) }}
-			</form>
-		</div><!--/.page-content-->
-
+			{{ form(form, {'action': url, 'method': 'POST','attr': {'class':'form-horizontal'}}) }}
+		</div><!--/.page-content-->s
 	</div><!--/.main-content-->
 </div><!--/.main-container-->
 

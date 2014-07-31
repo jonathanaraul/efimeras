@@ -1,5 +1,9 @@
 {% extends '::base.html.twig' %}
 
+{% form_theme form with ['ProjectBackBundle:Form:fields.html.twig',
+'ProjectBackBundle:Form:_theme_save_widget.html.twig',
+] %}
+
 {% block pagesScriptsBottom %}
 <script src="{{asset('admin/js/bootstrap-colorpicker.min.js')}}"></script>
 <script type="text/javascript">
@@ -14,54 +18,14 @@
 	<a class="menu-toggler" id="menu-toggler" href="#"> <span class="menu-text"></span> </a>
 
 	{% include '::sidebar.html.twig'  with {'clase': 'gris'}  %}
-
 	<div class="main-content">
-
-		{# include 'ProjectBackBundle:Architecture:breadcrumb.html.twig'  with {'clase': 'gris'} #}
 		<div class="page-content">
-			<div class="page-header position-relative">
-				<h1> Temas <small> <i class="icon-double-angle-right"></i> {%if accion=='nuevo'%}Crear nuevo{%else%}Editar{%endif%} </small></h1>
-			</div><!--/.page-header-->
+			{%set subtitulo = 'Crear nuevo'%}
+			{%if accion!='nuevo'%}{%set subtitulo = 'Editar'%}{%endif%}
+			{% include 'ProjectBackBundle:Theme:page-header.html.twig'  with {'subtitulo':subtitulo}  %}
 
-			<form action="{{ url }}" {{ form_enctype(form) }} method="POST" class="form-horizontal">
-				{{ form_start(form) }}
-
-				<div class="control-group">
-					<label class="control-label" for="form-field-1">Nombre</label>
-					<div class="controls">
-						{{ form_widget(form.name, { 'attr': {'placeholder': 'Nombre'} }) }}
-					</div>
-				</div>
-				<div class="control-group">
-					<label class="control-label" for="form-field-1">Color</label>
-
-					<div class="controls">
-						{{ form_widget(form.color, { 'attr': {'placeholder': 'Color'} }) }}
-					</div>
-				</div>
-				<div class="control-group">
-					<label class="control-label" for="form-field-1">Descripcion</label>
-
-					<div class="controls">
-						{{ form_widget(form.description) }}
-					</div>
-				</div>
-				<div class="form-actions">
-					{{ form_widget(form.save) }}
-
-					&nbsp; &nbsp; &nbsp;
-					<button class="btn" type="reset">
-						<i class="icon-undo bigger-110"></i>
-						Reset
-					</button>
-				</div>
-
-				<div class="space-4"></div>
-				{{ form_end(form) }}
-			</form>
+			{{ form(form, {'action': url, 'method': 'POST','attr': {'class':'form-horizontal'}}) }}
 		</div><!--/.page-content-->
-
 	</div><!--/.main-content-->
 </div><!--/.main-container-->
-
 {%endblock%}

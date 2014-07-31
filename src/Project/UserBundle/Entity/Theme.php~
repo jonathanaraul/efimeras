@@ -42,7 +42,13 @@ class Theme
      */
     private $description;
 
-
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="published", type="boolean", nullable=true)
+     */
+    private $published = true;
+    
     /**
      * Get id
      *

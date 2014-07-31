@@ -13,50 +13,13 @@
     font-weight: normal;
     font-style: normal;
 }
-@font-face {
-    font-family: 'FuturiCondensed';
-    src: url('../fonts/Futuri_condensed/FuturiCondensedRegularSWFTE.eot');
-    src: url('../fonts/Futuri_condensed/FuturiCondensedRegularSWFTE.eot?#iefix') format('embedded-opentype'),
-         url('../fonts/Futuri_condensed/FuturiCondensedRegularSWFTE.woff') format('woff'),
-         url('../fonts/Futuri_condensed/FuturiCondensedRegularSWFTE.ttf') format('truetype'),
-         url('../fonts/Futuri_condensed/FuturiCondensedRegularSWFTE.svg#FuturiCondensedRegularSWFTE') format('svg');
-    font-weight: normal;
-    font-style: normal;
-}
-@font-face {
-    font-family: 'FuturaBkAt';
-    src: url('../fonts/Futura_Bk_At/FuturaBkAT.eot');
-    src: url('../fonts/Futura_Bk_At/FuturaBkAT.eot?#iefix') format('embedded-opentype'),
-         url('../fonts/Futura_Bk_At/FuturaBkAT.woff') format('woff'),
-         url('../fonts/Futura_Bk_At/FuturaBkAT.ttf') format('truetype'),
-         url('../fonts/Futura_Bk_At/FuturaBkAT.svg#FuturaBkAT') format('svg');
-    font-weight: normal;
-    font-style: normal;
-}
-@font-face {
-    font-family: 'FuturiCondensedExtraBold';
-    src: url('../fonts/Futuri_condensed_extra_bold/FuturiCondensedExtraBoldSWFTE.eot');
-    src: url('../fonts/Futuri_condensed_extra_bold/FuturiCondensedExtraBoldSWFTE.eot?#iefix') format('embedded-opentype'),
-         url('../fonts/Futuri_condensed_extra_bold/FuturiCondensedExtraBoldSWFTE.woff') format('woff'),
-         url('../fonts/Futuri_condensed_extra_bold/FuturiCondensedExtraBoldSWFTE.ttf') format('truetype'),
-         url('../fonts/Futuri_condensed_extra_bold/FuturiCondensedExtraBoldSWFTE.svg#FuturiCondensedExtraBoldSWFTE') format('svg');
-    font-weight: normal;
-    font-style: normal;
-}
+
+
 .calibri {
     font-family: 'Tahoma';
 }
-.futura {
-    font-family: 'FuturaBkAt';
-}
 
-.futuri {
-    font-family: 'FuturiCondensed';
-}
 
-.futuri-extra, .main-big-text, .main-big-title, .lower-text, .biography-big-text {
-    font-family: 'FuturiCondensedExtraBold';
-}
 
 *{
 	margin: 0;
@@ -355,7 +318,7 @@ top: 9px;
     display: table-cell;
     vertical-align: middle;
     text-align: center;
-    background: url('../images/site/languages_background.png') repeat center center;
+    #background: url('../images/site/languages_background.png') repeat center center;
 }
 
 .lang-cont a{
@@ -424,17 +387,6 @@ top: 9px;
     padding-top: 54px;
 }
 
-.theme-sel-1{    background-image: url('../images/site/selection/biblioteca.png'); }
-.theme-sel-2{    background-image: url('../images/site/selection/cafeteria.png'); }
-.theme-sel-3{    background-image: url('../images/site/selection/filmoteca.png'); }
-.theme-sel-5{    background-image: url('../images/site/selection/musica.png'); }
-.theme-sel-6{    background-image: url('../images/site/selection/programacion.png'); }
-.theme-sel-7{    background-image: url('../images/site/selection/teatro.png'); }
-.theme-sel-8{    background-image: url('../images/site/selection/contacto.png'); }
-.theme-sel-9{    background-image: url('../images/site/selection/links.png'); }
-.theme-sel-10{    background-image: url('../images/site/selection/noticias.png'); }
-.theme-sel-11{    background-image: url('../images/site/selection/eventos.png'); }
-.theme-sel-12{    background-image: url('../images/site/selection/talleres.png'); }
 
 .theme-1{    background-color: #98bf0e; }
 .theme-2{    background-color: #cca675; }
@@ -471,7 +423,7 @@ top: 9px;
     top: 35%;
     right: 0px;
     z-index: 120;
-    background: url('../images/site/languages_background.png') repeat center center;
+    #background: url('../images/site/languages_background.png') repeat center center;
 }
 
 .share-cont div{
@@ -489,29 +441,7 @@ top: 9px;
     display: block;
 }
 
-.share-cont .share-fb:hover{
-    background: url('../images/site/social/social_fb.png') no-repeat center center;
-}
 
-.share-cont .share-fb{
-    background: url('../images/site/social/social_fb_grey.png') no-repeat center center;
-}
-
-.share-cont .share-tw:hover{
-    background: url('../images/site/social/social_tweeter.png') no-repeat center center;
-}
-
-.share-cont .share-tw{
-    background: url('../images/site/social/social_tweeter_grey.png') no-repeat center center;
-}
-
-.share-cont .share-in:hover{
-    background: url('../images/site/social/social_in.png') no-repeat center center;
-}
-
-.share-cont .share-in{
-    background: url('../images/site/social/social_in_grey.png') no-repeat center center;
-}
 
 .content-cont, .biography-cont, .news-cont{
     position: relative;
@@ -1158,6 +1088,21 @@ padding-bottom: 25px;
 }
 .contenedor2-fechas{
     padding-bottom: 25px;
+}
+.logobotones{
+    width:385px;
+    margin-top: 60px;
+    opacity: 0.90;
+}
+.logobotones-responsive{
+    width:385px;
+    #margin-top: 60px;
+    opacity: 0.90;
+}
+.cuadro-contenido{
+    float: left;
+    padding-top: 1px;
+    margin-left: 405px;
 }
 @media screen and (max-width:970px){
 .content-title{

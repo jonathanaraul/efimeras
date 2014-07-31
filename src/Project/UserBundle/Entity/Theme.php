@@ -42,7 +42,13 @@ class Theme
      */
     private $description;
 
-
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="published", type="boolean", nullable=true)
+     */
+    private $published = true;
+    
     /**
      * Get id
      *
@@ -120,5 +126,28 @@ class Theme
     public function getDescription()
     {
         return $this->description;
+    }
+
+    /**
+     * Set published
+     *
+     * @param boolean $published
+     * @return Theme
+     */
+    public function setPublished($published)
+    {
+        $this->published = $published;
+
+        return $this;
+    }
+
+    /**
+     * Get published
+     *
+     * @return boolean 
+     */
+    public function getPublished()
+    {
+        return $this->published;
     }
 }

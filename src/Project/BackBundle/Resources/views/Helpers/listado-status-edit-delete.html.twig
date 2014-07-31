@@ -1,0 +1,40 @@
+	<td class="hidden-480" style="width: 127px;">
+		<span class="label label-success" {%if element.published==false%}style="display:none"{%endif%} id="publicado_{{element.id}}">
+			Publicado
+		</span>
+		<span class="label label-warning" {%if element.published%}style="display:none"{%endif%} id="despublicado_{{element.id}}">
+			Despublicado
+		</span>
+	</td>
+	<td>
+	<div class="hidden-phone visible-desktop btn-group" tipo="{{tipo}}" objeto="{{element.id}}" >
+		<button class="btn btn-mini btn-success cambiar-estatus-listado" tarea="{%if element.published%}0{%else%}1{%endif%}">
+			<i class="icon-exchange bigger-120"></i>
+		</button>
+		<button class="btn btn-mini btn-info" onclick="document.location.href = '{{path(rutaEditar,{'id':element.id})}}'">
+			<i class="icon-pencil bigger-120"></i>
+		</button>
+		<button class="btn btn-mini btn-danger borrar-listado">
+			<i class="icon-remove bigger-120"></i>
+		</button>
+	</div>
+	<div class="hidden-desktop visible-phone">
+		<div class="inline position-relative">
+			<button class="btn btn-minier btn-primary dropdown-toggle" data-toggle="dropdown">
+				<i class="icon-cog icon-only bigger-110"></i>
+			</button>
+			<ul class="dropdown-menu dropdown-icon-only dropdown-yellow pull-right dropdown-caret dropdown-close" tipo="{{tipo}}" objeto="{{element.id}}" >
+				<li class="cambiar-estatus-listado" tarea="{%if element.published%}0{%else%}1{%endif%}">
+					<a href="javascript:void(0)" class="tooltip-info " data-rel="tooltip" title="View" objeto="{{element.id}}" tarea="{%if element.published%}0{%else%}1{%endif%}"
+					> <span class="blue"> <i class="icon-exchange bigger-120"></i> </span> </a>
+				</li>
+				<li onclick="document.location.href = '{{path(rutaEditar,{'id':element.id})}}'">
+					<a href="javascript:void(0)" class="tooltip-success editar" data-rel="tooltip" title="Edit" objeto="{{element.id}}"> <span class="green"> <i class="icon-pencil bigger-120"></i> </span> </a>
+				</li>
+				<li class="borrar-listado">
+					<a href="javascript:void(0)" class="tooltip-error borrar" data-rel="tooltip" title="Delete" objeto="{{element.id}}"> <span class="red"> <i class="icon-remove bigger-120"></i> </span> </a>
+				</li>
+			</ul>
+		</div>
+	</div>
+    </td>

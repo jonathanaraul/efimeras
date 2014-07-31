@@ -17,7 +17,7 @@ use Project\UserBundle\Entity\Usuario;
 use Project\UserBundle\Entity\Page;
 use Project\UserBundle\Entity\Category;
 use Project\UserBundle\Entity\Menu;
-
+use Project\UserBundle\Entity\Background;
 class MenuController extends Controller {
 
 	public function listAction(Request $request) {
@@ -51,39 +51,35 @@ class MenuController extends Controller {
 
 	public function editAction($id, Request $request) {
 
-		$firstArray = UtilitiesAPI::getDefaultContent('PAGINAS', 'Editar Información', $this);
-		$secondArray = array('accion' => 'edicion');
-		$secondArray['url'] = $this -> generateUrl('project_back_menu_edit', array('id' => $id));
-		$secondArray['id'] = $id;
+        $array = array('accion' => 'edicion');
+		$array['url'] = $this -> generateUrl('project_back_menu_edit', array('id' => $id));
+		$array['id'] = $id;
 
-		$secondArray['data'] = $this -> getDoctrine() -> getRepository('ProjectUserBundle:Menu') -> find($id);
-		if (!$secondArray['data']) {
-			throw $this -> createNotFoundException('La pagina que intenta e no existe ');
+		$array['data'] = $this -> getDoctrine() -> getRepository('ProjectUserBundle:Menu') -> find($id);
+		if (!$array['data']) {
+			throw $this -> createNotFoundException('La pagina que intenta acceder no existe');
 		}
-		
-		$array = array_merge($firstArray, $secondArray);
+
 		return MenuController::procesar($array, $request, $this);
 	}
 
 	public static function procesar($array, Request $request, $class) {
-			
-		$locale = UtilitiesAPI::getLocale($class);
+		
+		$em = $class-> getDoctrine()-> getManager();
 		$data = $array['data'];
-		$em = $class->getDoctrine()->getManager();
-        $user = $class->getUser();
+        $user = $class-> getUser();
 
-		$filtros = array();
-
-		$form = $class->createForm('menu', $data);
+		$form = $class-> createForm('menu', $data);
 
         $form->handleRequest($request);
 
-        if ($form->isValid()) {
-        	$data -> setUser($user);
-        	$em->persist($data);
-        	$em->flush();
+        if ($form-> isValid()) {
+        // Procesa accion en base de datos
+        	$data-> setUser($user);
+        	$em-> persist($data);
+        	$em-> flush();
 
-        	return $class -> redirect($class -> generateUrl('project_back_menu_list'));
+        	return $class-> redirect($class-> generateUrl('project_back_menu_list'));
         }
 
 		$array['form'] = $form -> createView();
@@ -91,52 +87,17 @@ class MenuController extends Controller {
 		return $class -> render('ProjectBackBundle:Menu:new-edit.html.twig', $array);
 	}
 
-	public function rankAction() {
-		$firstArray = UtilitiesAPI::getDefaultContent('PAGINAS', 'Mostrar Información', $this);
-
-		$em = $this -> getDoctrine() -> getManager();
-		$dql = "SELECT n FROM ProjectUserBundle:Menu n WHERE n.id != 3 ORDER BY n.rank ASC";
-		
-		$query = $em -> createQuery($dql);
-		$objects = $query -> getResult();
-		$secondArray = array('objects' => $objects);
-		$array = array_merge($firstArray, $secondArray);
-
-		return $this -> render('ProjectBackBundle:Menu:Rank.html.twig', $array);
-	}
-
-	public function rankPostAction() {
-
-		$peticion = $this -> getRequest();
-		$doctrine = $this -> getDoctrine();
-		$post = $peticion -> request;
-		//INICIALIZAR VARIABLES
-		$order = $post -> get("order");
-		$em = $this -> getDoctrine() -> getManager();
-		for ($i = 0; $i < count($order); $i++) {
-
-			$id = intval($order[$i]);
-			$object = $em -> getRepository('ProjectUserBundle:Menu') -> find($id);
-			$object -> setRank($i);
-			$em -> flush();
-
-		}
-
-		$estado = true;
-		$respuesta = new response(json_encode(array('estado' => $estado)));
-		$respuesta -> headers -> set('content_type', 'aplication/json');
-		return $respuesta;
-	}
-
 	public function deleteAction() {
 
+		$em = $this -> getDoctrine() -> getManager();
 		$peticion = $this -> getRequest();
 		$doctrine = $this -> getDoctrine();
 		$post = $peticion -> request;
-		//INICIALIZAR VARIABLES
 
+		// Obtener variables del post en el ajax
 		$id = $post -> get("id");
-		$em = $this -> getDoctrine() -> getManager();
+
+		// Procesa accion en base de datos
 		$object = $em -> getRepository('ProjectUserBundle:Menu') -> find($id);
 		$em -> remove($object);
 		$em -> flush();
@@ -149,15 +110,16 @@ class MenuController extends Controller {
 
 	public function statusAction() {
 
+		$em = $this -> getDoctrine() -> getManager();
 		$peticion = $this -> getRequest();
 		$doctrine = $this -> getDoctrine();
 		$post = $peticion -> request;
-		//INICIALIZAR VARIABLES
 
+		// Obtener variables del post en el ajax
 		$id = $post -> get("id");
 		$tarea = intval($post -> get("tarea"));
 
-		$em = $this -> getDoctrine() -> getManager();
+		// Procesa accion en base de datos
 		$object = $em -> getRepository('ProjectUserBundle:Menu') -> find($id);
 		$object -> setPublished($tarea);
 		$em -> flush();

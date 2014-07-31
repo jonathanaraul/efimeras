@@ -21,21 +21,21 @@ class ReservationController extends Controller {
 
 	public function listAction(Request $request) {
 		
-		$em = $this->getDoctrine()->getManager();
+		$em = $this-> getDoctrine()-> getManager();
 
-		$url = $this -> generateUrl('project_back_reservation_list');
+		$url = $this-> generateUrl('project_back_reservation_list');
 		$form = null;		
 		$filtros = null;
 
 		$dql = "SELECT o FROM ProjectUserBundle:Reservation o ";
-		$query = $em -> createQuery($dql);
+		$query = $em-> createQuery($dql);
 
-		$paginator = $this -> get('knp_paginator');
-		$pagination = $paginator -> paginate($query, $this -> getRequest() -> query -> get('page', 1), 10);
+		$paginator = $this-> get('knp_paginator');
+		$pagination = $paginator-> paginate($query, $this-> getRequest()-> query-> get('page', 1), 10);
 
-		$array = array('pagination' => $pagination, 'filtros' => $filtros, 'url' => $url);
+		$array = array('pagination'=> $pagination, 'filtros'=> $filtros, 'url'=> $url);
 		//$array['form'] =  $form -> createView();
 		
-		return $this -> render('ProjectBackBundle:Reservation:list.html.twig', $array);
+		return $this-> render('ProjectBackBundle:Reservation:list.html.twig', $array);
 	}
 }

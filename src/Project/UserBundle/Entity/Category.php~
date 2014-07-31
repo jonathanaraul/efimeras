@@ -504,29 +504,6 @@ class Category
     }
 
     /**
-     * Set reservacion
-     *
-     * @param boolean $reservacion
-     * @return Category
-     */
-    public function setReservacion($reservacion)
-    {
-        $this->reservacion = $reservacion;
-
-        return $this;
-    }
-
-    /**
-     * Get reservacion
-     *
-     * @return boolean 
-     */
-    public function getReservacion()
-    {
-        return $this->reservacion;
-    }
-
-    /**
      * Set user
      *
      * @param \Project\UserBundle\Entity\User $user

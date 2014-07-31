@@ -27,33 +27,12 @@ class Page
     private $id;
 
     /**
-     * @var integer
-     *
-     * @ORM\Column(name="rank", type="integer", nullable=false)
-     */
-    private $rank;
-
-    /**
      * @var boolean
      *
      * @ORM\Column(name="published", type="boolean", nullable=true)
      */
-    private $published;
+    private $published = true;
 	
-    /**
-     * @var boolean
-     *
-     * @ORM\Column(name="special", type="boolean", nullable=false)
-     */
-    private $special;
-
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="spacer", type="integer", nullable=true)
-     */
-    private $spacer;
-
     /**
      * @var integer
      *
@@ -227,28 +206,6 @@ class Page
         return $this->remove;
     }
 
-    /**
-     * Set rank
-     *
-     * @param integer $rank
-     * @return Page
-     */
-    public function setRank($rank)
-    {
-        $this->rank = $rank;
-    
-        return $this;
-    }
-
-    /**
-     * Get rank
-     *
-     * @return integer 
-     */
-    public function getRank()
-    {
-        return $this->rank;
-    }
 
     /**
      * Set published
@@ -271,55 +228,6 @@ class Page
     public function getPublished()
     {
         return $this->published;
-    }
-
-
-    /**
-     * Set special
-     *
-     * @param integer $special
-     * @return Page
-     */
-    public function setSpecial($special)
-    {
-        $this->special = $special;
-    
-        return $this;
-    }
-
-    /**
-     * Get special
-     *
-     * @return integer 
-     */
-    public function getSpecial()
-    {
-        return $this->special;
-    }
-
-
-
-    /**
-     * Set spacer
-     *
-     * @param integer $spacer
-     * @return Page
-     */
-    public function setSpacer($spacer)
-    {
-        $this->spacer = $spacer;
-    
-        return $this;
-    }
-
-    /**
-     * Get spacer
-     *
-     * @return integer 
-     */
-    public function getSpacer()
-    {
-        return $this->spacer;
     }
 
     /**

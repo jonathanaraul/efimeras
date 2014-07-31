@@ -83,77 +83,6 @@ class UtilitiesAPI extends Controller {
 		else return 1;
 		
 	}
-	public static function getConfig($type,$class){
-
-		$array =  array( );
-		if($type == 'pages'){
-			//$array['idtype'] = 0;
-			$array['list'] = 'Mostrar Páginas';
-			$array['create'] = 'Añadir Página';
-			$array['edit'] = 'Editar Pagina';
-			$array['translate'] = 'Traducción de Página';
-			$array['type'] = $type;
-		}
-		if($type == 'news'){
-			$array['idtype'] = 0;
-			$array['list'] = 'Mostrar Noticias';
-			$array['create'] = 'Añadir Noticia';
-			$array['edit'] = 'Editar Noticia';
-			$array['translate'] = 'Traducir Noticia';
-			$array['type'] = $type;
-		}
-		else if($type == 'events'){
-			$array['idtype'] = 1;
-			$array['list'] = 'Mostrar Espéctaculos';
-			$array['create'] = 'Añadir Espéctaculo';
-			$array['edit'] = 'Editar Espéctaculo';
-			$array['translate'] = 'Traducir Espéctaculo';
-			$array['type'] = $type;
-		}
-		else if($type == 'programs'){
-			$array['idtype'] = 2;
-			$array['list'] = 'Mostrar Talleres';
-			$array['create'] = 'Añadir Taller';
-			$array['edit'] = 'Editar Taller';
-			$array['translate'] = 'Traducir Taller';
-			$array['type'] = $type;
-		}
-		else if($type == 'images'){
-			$array['idtype'] = 3;
-			$array['list'] = 'Mostrar Imágenes';
-			$array['create'] = 'Añadir Imagen';
-			$array['edit'] = 'Editar Imagen';
-			$array['translate'] = 'Traducir Imagen';
-			$array['type'] = $type;
-		}
-		else if($type == 'backgrounds'){
-			$array['idtype'] = 4;
-			$array['list'] = 'Mostrar Fondos';
-			$array['create'] = 'Añadir Fondo';
-			$array['edit'] = 'Editar Fondo';
-			$array['translate'] = 'Traducir Fondo';
-			$array['type'] = $type;
-		}
-		else if($type == 'links'){
-			$array['list'] = 'Mostrar Enlaces';
-			$array['create'] = 'Añadir Enlace';
-			$array['edit'] = 'Editar Enlace';
-			$array['translate'] = 'Traducir Enlace';
-			$array['type'] = $type;
-		}
-		else if($type == 'setting'){
-			$array['list'] = 'Mostrar Opciones';
-			$array['create'] = 'Añadir Opcion';
-			$array['edit'] = 'Editar Opción';
-			$array['translate'] = 'Traducir Opcion';
-			$array['type'] = $type;
-		}
-		else if($type == 'reservation'){
-			$array['list'] = 'Mostrar Reservas';
-			$array['type'] = $type;
-		}
-		return $array;
-	}
 	public static function generaTrans($class){
 		echo"<div>\n";
 		for ($i=43; $i < 300; $i++) { 
@@ -163,7 +92,7 @@ class UtilitiesAPI extends Controller {
 		exit;
 	}
 	public static function getFilter($clase,$class) {
-		$data = $class -> getDoctrine() -> getRepository('ProyectoPrincipalBundle:'.$clase) -> findAll();
+		$data = $class -> getDoctrine() -> getRepository('ProjectUserBundle:'.$clase) -> findAll();
 
 		$array = array();
 		for ($i = 0; $i < count($data); $i++) {
@@ -177,79 +106,6 @@ class UtilitiesAPI extends Controller {
 			$array[$data[$i] -> getId()] = $data[$i] -> getName();
 		}
 		return $array;
-	}
-
-	public static function removeData($id,$class){
-			
-		$object = $class -> getDoctrine() -> getRepository('ProyectoPrincipalBundle:Data') -> find($id);
-		$em = $class -> getDoctrine() -> getManager();
-		$em->remove($object);
-		$em->flush();
-	}
-
-	
-	
-	public static function getDefaultContent($seccion,$subseccion,$class){
-
-		//$parameters = UtilitiesAPI::getParameters($class);
-		$menu = UtilitiesAPI::getMenu($seccion,$subseccion,$class);
-		$user = UtilitiesAPI::getActiveUser($class);
-		//$notifications = UtilitiesAPI::getNotifications($user);
-		
-		$array = array('menu' => $menu,'user' => $user);
-		
-		return $array;
-	}
-
-	public static function getAutors($class) {
-		$autors = $class -> getDoctrine() -> getRepository('ProyectoPrincipalBundle:Autores') -> findAll();
-		$users = array();
-		for ($i = 0; $i < count($autors); $i++) {
-			$users[$i] = $autors[$i] -> getUsuario();
-			
-		}
-
-		/*
-		 * Añadir exception de no encontrar parameters
-		 if (!$product) {
-		 throw $this->createNotFoundException(
-		 'No product found for id '.$id
-		 );
-		 }
-		 *
-		 */
-		return $users;
-	}
-
-	public static function getParameters($class) {
-		$parameters = $class -> getDoctrine() -> getRepository('ProyectoPrincipalBundle:Sistema') -> find(1);
-
-		/*
-		 * Añadir exception de no encontrar parameters
-		 if (!$product) {
-		 throw $this->createNotFoundException(
-		 'No product found for id '.$id
-		 );
-		 }
-		 *
-		 */
-		return $parameters;
-	}
-
-	public static function getMenu($seccion,$subseccion, $this) {
-		$menu = array('seccion' => $seccion,'subseccion' => $subseccion );
-		// = $this->getDoctrine()->getRepository('ProyectoPrincipalBundle:Sistema')->find(1);
-
-		/*
-		 * Añadir exception de no encontrar parameters
-		 if (!$product) {
-		 throw $this->createNotFoundException(
-		 'No product found for id '.$id
-		 );
-		 }
-		 *
-		 */
-		return $menu;
 	}
 
 	public static function getActiveUser($class) {
@@ -276,18 +132,18 @@ class UtilitiesAPI extends Controller {
 		return $notifications;
 	}
 
-	 public static function convertirFechaNormal($fechaOriginal, $class) {
-	
-	 $fechaOriginal = trim($fechaOriginal);
-	 $arreglo1 = explode(" ", $fechaOriginal);
-	 $arreglo = explode("-", $arreglo1[0]);
-	 $fecha = new \DateTime();
-	 $fecha -> setDate($arreglo[2], $arreglo[1], $arreglo[0]);
-	 $arreglo = explode(":", $arreglo1[1]);
-	 $fecha -> setTime ( $arreglo[0], $arreglo[1], $arreglo[2] );
-	 
-	 return $fecha;
-	 }
+	public static function convertirFechaNormal($fechaOriginal, $class) {
+		
+		$fechaOriginal = trim($fechaOriginal);
+		$arreglo1 = explode(" ", $fechaOriginal);
+		$arreglo = explode("-", $arreglo1[0]);
+		$fecha = new \DateTime();
+		$fecha -> setDate($arreglo[2], $arreglo[1], $arreglo[0]);
+		$arreglo = explode(":", $arreglo1[1]);
+		$fecha -> setTime ( $arreglo[0], $arreglo[1], $arreglo[2] );
+		
+		return $fecha;
+	}
 
 	 public static function convertirAFechaNormal($fechaOriginal, $class) {
 

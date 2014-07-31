@@ -7,12 +7,15 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Doctrine\ORM\EntityRepository;
-
+use Project\UserBundle\Entity\Usuario;
+use Project\UserBundle\Entity\Page;
+use Project\UserBundle\Entity\Category;
+use Project\UserBundle\Entity\Menu;
+use Project\UserBundle\Entity\Background;
+use Project\UserBundle\Entity\Theme;
+use Project\UserBundle\Entity\MenuItem;
 class DefaultController extends Controller
 {
-    /**
-     * @Route("/")
-     */
     public function indexAction(Request $request)
     {
         $user = $this->getUser();
@@ -41,10 +44,7 @@ class DefaultController extends Controller
             $firstArray['terminos'][$i]['color'] = DefaultController::randColor($this);
         }
 
-
-        //config = UtilitiesAPI::getConfig('pages',$this);
         $url = $this -> generateUrl('project_back_homepage');
-        //$firstArray = UtilitiesAPI::getDefaultContent('PAGINAS', 'Mostrar Información', $this);
 
         $locale = UtilitiesAPI::getLocale($this);
         $form = null;       
@@ -60,9 +60,88 @@ class DefaultController extends Controller
         
         $array = array_merge($firstArray, $secondArray);
   
-
        return $this->render('ProjectBackBundle:Default:index.html.twig', $array);
     }
+    public function deleteAction() {
+
+        $em = $this -> getDoctrine() -> getManager();
+        
+
+        $peticion = $this -> getRequest();
+        $doctrine = $this -> getDoctrine();
+        $post = $peticion -> request;
+
+        // Obtener variables del post en el ajax
+        $id = $post -> get("objeto");
+        $tipo = $post -> get("tipo");
+        // Procesa accion en base de datos
+        $estado = false;
+        $codigo = '';
+        $em->getConnection()->beginTransaction();
+        try {
+            $object = $em -> getRepository('ProjectUserBundle:'.$tipo) -> find($id);
+            $em -> remove($object);
+            $em -> flush();
+            $em->getConnection()->commit();
+            $estado = true;
+            
+        } 
+        catch (\Exception $e) {
+            $codigo= $e->getCode();
+            //$em->getConnection()->rollback();
+            //throw $e;
+        }
+        
+        $respuesta = new response(json_encode(array('estado'=> $estado,'codigo'=> $codigo)));
+        $respuesta -> headers -> set('content_type', 'aplication/json');
+        return $respuesta;
+    }
+
+    public function statusAction() {
+
+        $em = $this-> getDoctrine()-> getManager();
+        $peticion = $this-> getRequest();
+        $doctrine = $this-> getDoctrine();
+        $post = $peticion-> request;
+
+        // Obtener variables del post en el ajax
+        $id = $post -> get("objeto");
+        $tipo = $post -> get("tipo");
+        $tarea = intval($post-> get("tarea"));
+
+        // Procesa accion en base de datos
+        $object = $em-> getRepository('ProjectUserBundle:'.$tipo)-> find($id);
+        $object-> setPublished($tarea);
+        $em-> flush();
+
+        $estado = true;
+        $respuesta = new response(json_encode(array('estado'=> $estado)));
+        $respuesta-> headers-> set('content_type', 'aplication/json');
+        return $respuesta;
+    }
+    public function setHomeAction() {
+
+        $em = $this-> getDoctrine()-> getManager();
+        $peticion = $this-> getRequest();
+        $doctrine = $this-> getDoctrine();
+        $post = $peticion-> request;
+
+        // Obtener variables del post en el ajax
+        $id = $post -> get("objeto");
+        $tipo = $post -> get("tipo");
+        $tarea = intval($post-> get("tarea"));
+
+        // Procesa accion en base de datos
+        $object = $em-> getRepository('ProjectUserBundle:'.$tipo)-> find($id);
+        $object-> setHome($tarea);
+        $em-> flush();
+
+        $estado = true;
+        $respuesta = new response(json_encode(array('estado'=> $estado)));
+        $respuesta -> headers -> set('content_type', 'aplication/json');
+        return $respuesta;
+    }
+
     public static function promover(){
 
     	$userManager = $this->container->get('fos_user.user_manager');

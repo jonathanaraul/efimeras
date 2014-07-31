@@ -1,8 +1,6 @@
 {% extends '::base.html.twig' %}
 
 {% block pagesScriptsBottom %}
-<script ></script>
-<script src="{{asset('admin/js/project/listados.js')}}"></script>
 <script type="text/javascript">var direccionResponder = "{{path('project_back_page_edit')}}";</script>
 {%endblock%}
 
@@ -32,6 +30,8 @@
 										<th>{{ knp_pagination_sortable(pagination, 'Color', 'o.color') }}</th>
 										<th>{{ knp_pagination_sortable(pagination, 'Nombre', 'o.name') }}</th>
 										<th lass="hidden-phone">{{ knp_pagination_sortable(pagination, 'Descripcion', 'o.description') }}</th>
+										<th class="hidden-480">{{ knp_pagination_sortable(pagination, 'Estatus', 'o.published') }}</th>
+										<th></th>
 									</tr>
 								</thead>
 								<tbody>

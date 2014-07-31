@@ -13,8 +13,8 @@ class MenuType extends AbstractType
     {
         $builder
 
-        -> add('name', 'text', array('required' => true))
-        -> add('description', 'textarea', array('required' => true)) 
+        -> add('name', 'text', array('label' => 'Nombre','required' => true))
+        -> add('description', 'textarea', array('label' => 'Descripcion','required' => true)) 
         -> add('published', 'checkbox', array('label' => 'Publicado', 'required' => false, 'attr' => array('class' => 'ace-switch') )) 
         -> add('save', 'submit',array('label' => 'Guardar', 'attr' => array('class' => 'btn btn-info')))
         ;

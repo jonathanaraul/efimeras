@@ -1,145 +1,108 @@
 jQuery('.ordenar').mouseup(function() {  
-
-setTimeout (ordenaRank, 1000); 
-			
-
-
-	});
-
-function ordenaRank(){
-			var data= "cantidad="+jQuery('.ordenar').length;
-		var posicion=0;
-        
-		$.each(jQuery('.ordenar'), function(indice, valor) {
-		   var id = $(valor).attr('id');
-		   var atributo = $(valor).attr('atributo');
-		   data += '&elemento_' + indice + '=' + atributo;
-	     });
-		console.log(data);
-	    $.post(direccionRank, data, function(respuesta) {
-		   var respuesta = JSON.parse(respuesta);
-	    });
-}
+	setTimeout (ordenaRank, 1000); 		
+});
 
 jQuery('#menuItem_tipo').click(function() {  
 	var tipo = jQuery(this).val();
 	if(tipo==0){
-	   $('#menuItem_category').val($("#menuItem_category option:first").val());
-       $('#menuItem_category').prop('disabled', 'disabled');
-       $('#menuItem_page').prop('disabled', false);
+		$('#menuItem_category').val($("#menuItem_category option:first").val());
+		$('#menuItem_category').prop('disabled', 'disabled');
+		$('#menuItem_page').prop('disabled', false);
 	}
 	else if(tipo==1){
-	   $('#menuItem_page').val($("#menuItem_page option:first").val());
-       $('#menuItem_page').prop('disabled', 'disabled');
-       $('#menuItem_category').prop('disabled', false);
+		$('#menuItem_page').val($("#menuItem_page option:first").val());
+		$('#menuItem_page').prop('disabled', 'disabled');
+		$('#menuItem_category').prop('disabled', false);
 	}
 	else if(tipo==2){
-	   $('#menuItem_category').val($("#menuItem_category option:first").val());
-	   $('#menuItem_page').val($("#menuItem_page option:first").val());
-       $('#menuItem_page').prop('disabled', 'disabled');
-       $('#menuItem_category').prop('disabled', 'disabled');
+		$('#menuItem_category').val($("#menuItem_category option:first").val());
+		$('#menuItem_page').val($("#menuItem_page option:first").val());
+		$('#menuItem_page').prop('disabled', 'disabled');
+		$('#menuItem_category').prop('disabled', 'disabled');
 	}	
-    return false;
-  });
+	return false;
+});
+
 jQuery('#ver-listado-items').click(function() {  
 	var menu = jQuery('#listado-item-accion').val();
 	document.location.href = Routing.generate('project_back_menu_item_list', { menu: menu });
-    return false;
-  });
+	return false;
+});
+
 jQuery('#crear-items').click(function() {  
 	var menu = jQuery('#crear-item-accion').val();
 	document.location.href = Routing.generate('project_back_menu_item_create', { menu: menu });
-    return false;
-  });
+	return false;
+});
+
 jQuery('#ordenar-items').click(function() {  
 	var menu = jQuery('#ordenar-item-accion').val();
 	document.location.href = Routing.generate('project_back_menu_item_rank', { menu: menu });
-    return false;
-  });
-jQuery('.cambiar-estatus').click(function() {  
+	return false;
+});
 
-	var id= jQuery(this).attr('objeto');
+jQuery('.cambiar-estatus-listado').click(function() {  
+
 	var tarea = jQuery(this).attr('tarea');
+	var objeto= jQuery(this).parent().attr('objeto');
+	var tipo= jQuery(this).parent().attr('tipo');
 
-	var data = 'id='+id+'&tarea='+tarea;
+	var data = 'objeto='+objeto+'&tarea='+tarea+'&tipo='+tipo;
 
 	if(tarea==0){
-        jQuery(this).attr('tarea',1);
-        jQuery('#publicado_'+id).css('display','none');
-        jQuery('#despublicado_'+id).css('display','');
+		jQuery(this).attr('tarea',1);
+		jQuery('#publicado_'+objeto).css('display','none');
+		jQuery('#despublicado_'+objeto).css('display','');
 	}
 	else{
-        jQuery(this).attr('tarea',0);
-        jQuery('#publicado_'+id).css('display','');
-        jQuery('#despublicado_'+id).css('display','none');
-
+		jQuery(this).attr('tarea',0);
+		jQuery('#publicado_'+objeto).css('display','');
+		jQuery('#despublicado_'+objeto).css('display','none')
 	} 
 
-	$.post(direccionEstatus, data, function(respuesta) {
+	$.post(Routing.generate('project_back_status'), data, function(respuesta) {
 		var respuesta = JSON.parse(respuesta);
-
-		/*$("#loader-widget-" + color).css('display', 'none');
-		$("#elementos-" + tipo + "-" + color).append(respuesta.htmlElementos);
-		$(".paginacion-" + color).append(respuesta.htmlPaginacion);*/
 	});
 
-    return false;
-  });
+	return false;
+});
 
+jQuery('.borrar-listado').click(function() {  
 
-jQuery('.cambiar-estatus').click(function() {  
+	var objeto= jQuery(this).parent().attr('objeto');
+	var tipo= jQuery(this).parent().attr('tipo');
 
-	var id= jQuery(this).attr('objeto');
-	var tarea = jQuery(this).attr('tarea');
+	var data = 'objeto='+objeto+'&tipo='+tipo;
 
-	var data = 'id='+id+'&tarea='+tarea;
-
-	if(tarea==0){
-        jQuery(this).attr('tarea',1);
-        jQuery('#publicado_'+id).css('display','none');
-        jQuery('#despublicado_'+id).css('display','');
-	}
-	else{
-        jQuery(this).attr('tarea',0);
-        jQuery('#publicado_'+id).css('display','');
-        jQuery('#despublicado_'+id).css('display','none');
-
-	} 
-
-	$.post(direccionEstatus, data, function(respuesta) {
+	$.post(Routing.generate('project_back_delete'), data, function(respuesta) {
 		var respuesta = JSON.parse(respuesta);
-
-		/*$("#loader-widget-" + color).css('display', 'none');
-		$("#elementos-" + tipo + "-" + color).append(respuesta.htmlElementos);
-		$(".paginacion-" + color).append(respuesta.htmlPaginacion);*/
+		console.log('el estado es '+respuesta.estado);
+		if(respuesta.estado){
+	        jQuery('#fila_'+objeto).remove();
+		}
+		else{
+		    $.gritter.add({
+						title: 'Eliminación fallida',
+						text: 'No se puedo borrar el objeto deseado porque tiene elementos asociados, por favor intente borrar estos elementos antes de realizar esta acción.',
+						class_name: 'gritter-error'
+					});
+		}
 	});
 
-    return false;
-  });
+	return false;
+});
 
+function ordenaRank(){
+	var data= "cantidad="+jQuery('.ordenar').length;
+	var posicion=0;
 
-jQuery('.borrar').click(function() {  
-
-	var id= jQuery(this).attr('objeto');
-	var data = 'id='+id;
-
-    jQuery('#fila_'+id).remove();
-
-	$.post(direccionBorrar, data, function(respuesta) {
-		var respuesta = JSON.parse(respuesta);
-
-		/*$("#loader-widget-" + color).css('display', 'none');
-		$("#elementos-" + tipo + "-" + color).append(respuesta.htmlElementos);
-		$(".paginacion-" + color).append(respuesta.htmlPaginacion);*/
+	$.each(jQuery('.ordenar'), function(indice, valor) {
+		var id = $(valor).attr('id');
+		var atributo = $(valor).attr('atributo');
+		data += '&elemento_' + indice + '=' + atributo;
 	});
-
-    return false;
-  });
-
-jQuery('.editar').click(function() {  
-
-	var id= jQuery(this).attr('objeto');
-	document.location.href = direccionEditar + '/' + id;
-
-    return false;
-  });
+	console.log(data);
+	$.post(direccionRank, data, function(respuesta) {
+		var respuesta = JSON.parse(respuesta);
+	});
+}

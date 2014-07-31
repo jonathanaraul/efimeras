@@ -1,12 +1,6 @@
 {% extends '::base.html.twig' %}
 
 {% block pagesScriptsBottom %}
-<script src="{{asset('admin/js/project/listados.js')}}"></script>
-<script type="text/javascript">
-	var direccionEstatus = "{{path('project_back_category_status')}}";
-	var direccionBorrar = "{{path('project_back_category_delete')}}";
-	var direccionEditar = "{{path('project_back_category_edit')}}"; 
-</script>
 {%endblock%}
 
 {% block pageContent  %}
