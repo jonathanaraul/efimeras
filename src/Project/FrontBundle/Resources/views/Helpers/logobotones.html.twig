@@ -1,27 +1,107 @@
 <div class="{{clase}}" style="background-color: {{page.theme.color}};">
-	<div class="minibotones" style="float:left;width:60px;background-color: {{page.theme.color}};opacity: 0.90;height: 177px;padding-top: 83px;" >
+	<div class="minibotones" style="float:left;width:60px;background-color: {{page.theme.color}};opacity: 0.90;height: 216px;padding-top: 44px;" >
 		<div class="botonlogo">
 			<p style="text-align:center">
-				<a title="Home page" href="javascript:void(0)"> <img src="{{asset('front/images/mensaje.png')}}" style="width:35px;"> </a>
+				<a title="Home page" href="javascript:void(0)" id="logoBotonMensaje"> <img src="{{asset('front/images/mensaje.png')}}" style="width:35px;"> </a>
 			</p>
 		</div>
 		<div class="botonlogo">
 			<p style="text-align:center">
-				<a title="Home page" href="javascript:void(0)"> <img src="{{asset('front/images/usuario.png')}}" style="width:35px;"> </a>
+				<a title="Home page" href="javascript:void(0)" id="logoBotonUsuario"> <img src="{{asset('front/images/usuario.png')}}" style="width:35px;"> </a>
 			</p>
 		</div>
 		<div class="botonlogo">
 			<p style="text-align:center">
-				<a title="Home page" href="javascript:void(0)"> <img src="{{asset('front/images/buscar.png')}}" style="width:35px;"> </a>
+				<a title="Home page" href="javascript:void(0)" id="logoBotonBusqueda"> <img src="{{asset('front/images/buscar.png')}}" style="width:35px;"> </a>
 			</p>
 		</div>
 		<div class="botonlogo">
 			<p style="text-align:center">
-				<a title="Home page" href="javascript:void(0)"> <img src="{{asset('front/images/listado.png')}}" style="width:35px;"> </a>
+				<a title="Home page" href="javascript:void(0)"  id="logoBotonNewsletter"> <img src="{{asset('front/images/listado.png')}}" style="width:35px;"> </a>
 			</p>
 		</div>
 	</div>
-	<div class="logo-imagen" style="float:left;background-color: {{page.theme.color}};opacity: 0.90;" >
-		<a title="Home page" href="{{path('project_front_homepage')}}"> <img src="{{asset('front/images/logo.png')}}" style="padding: 15px;"> </a>
+	<div class="logo-imagen" style="float:left;background-color: {{page.theme.color}};opacity: 0.90;width: 298px;height:260px;" >
+		<div id="logo-imagen">
+			<a title="Home page" href="{{path('project_front_homepage')}}"> <img src="{{asset('front/images/logo.png')}}" style="padding: 15px;"> 
+			</a>
+		</div>
+		<div id="contenidoBoton" style="display:none">
+			<div id="redesSociales" style="with:100%;margin-top: -66px;float: right;margin-right: 9px;">
+				<div style="float:left">
+					<a href="https://www.facebook.com/"><img src="{{asset('front/images/facebook.png')}}"></a>
+				</div>
+				<div style="float:left">
+					<a href="https://www.twitter.com/"><img src="{{asset('front/images/twitter.png')}}"></a>
+				</div>
+				<div style="float:left">
+					<a href="https://www.tuenti.com/"><img src="{{asset('front/images/tuenti.png')}}"></a>
+				</div>
+				<div style="float:left">
+					<a href="https://www.pinterest.com/"><img src="{{asset('front/images/pinterest.png')}}"></a>
+				</div>
+			</div>
+			<div id="contenidoBotonUsuario" style="margin-top:75px;">
+				<form>
+					<div style="margin-top: 12px;font-weight: bold;">
+					<p>Usuario</p>
+					<input type="text" id="reservation_name" name="reservation[name]" style="width: 95%;border: none;" class="form-reservacion">
+					</div>
+					<div style="margin-top: 12px;font-weight: bold;">
+					<p>Contraseña</p>
+					<input type="text" id="reservation_name" name="reservation[name]" style="width: 95%;border: none;" class="form-reservacion">
+					</div>
+					<div style="margin-top: 12px;">
+					<input type="button" value="Enviar" style="background: #000000;border: none;color: {{page.theme.color}};float: right;margin-right: 15px;font-weight: bolder;">
+					</div>
+				    <div style="margin-top: 35px;">
+				    <p style="font-size:0.8em;float:right;margin-right: 15px;">¿No tiene cuenta? Registrate ahora</p>
+				    </div>
+			    </form>
+		    </div>
+			<div id="contenidoBotonMensaje" style="margin-top:75px;">
+				<form>
+					<div style="margin-top: 12px;font-weight: bold;">
+					<p>Mensaje</p>
+					<input type="text" id="reservation_name" name="reservation[name]" style="width: 95%;border: none;" class="form-reservacion">
+					</div>
+					<div style="margin-top: 12px;font-weight: bold;">
+					<p>E-mail</p>
+					<input type="text" id="reservation_name" name="reservation[name]" style="width: 95%;border: none;" class="form-reservacion">
+					</div>
+					<div style="margin-top: 12px;font-weight: bold;">
+					<p>Mensaje</p>
+					<textarea  style="width: 95%;border: none;"></textarea>
+					</div>
+					<div style="margin-top: 12px;">
+					<input type="button" value="Enviar" style="background: #000000;border: none;color: {{page.theme.color}};float: right;margin-right: 15px;font-weight: bolder;">
+					</div>
+			    </form>
+		    </div>
+			<div id="contenidoBotonNewsletter" style="margin-top:75px;">
+				<form>
+					<div style="margin-top: 12px;font-weight: bold;">
+					<p>Mantente al dia con nuestro newsletter</p>
+					<input type="text" id="reservation_name" name="reservation[name]" style="width: 95%;border: none;" class="form-reservacion">
+					</div>
+					<div style="margin-top: 12px;">
+					<input type="button" value="Suscribete" style="background: #000000;border: none;color: {{page.theme.color}};float: right;margin-right: 15px;font-weight: bolder;">
+					</div>
+					<div style="font-weight: bold;margin-top: 41px;">
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt</p>
+					</div>
+			    </form>
+		    </div>
+			<div id="contenidoBotonBusqueda" style="margin-top:75px;">
+				<form>
+					<div style="margin-top: 40px;font-weight: bold;padding-top: 28px;">
+					<input type="text" id="reservation_name" name="reservation[name]" style="width: 95%;border: none;" class="form-reservacion">
+					</div>
+					<div style="margin-top: 12px;">
+					<input type="button" value="Buscar" style="background: #000000;border: none;color: {{page.theme.color}};float: right;margin-right: 15px;font-weight: bolder;">
+					</div>
+			    </form>
+		    </div>
+		</div>
 	</div>
 </div>

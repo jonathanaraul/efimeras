@@ -14,6 +14,50 @@ $( document ).ready(function() {
   	paginadorEspecial();
   }
 });
+$('#logoBotonUsuario').live("click", function() {
+
+	$('#logo-imagen').css('display','none');
+	$('#contenidoBoton').css('display','block');
+    $('#contenidoBotonUsuario').css('display','block');
+    $('#contenidoBotonMensaje').css('display','none');
+    $('#contenidoBotonNewsletter').css('display','none');
+    $('#contenidoBotonBusqueda').css('display','none');
+	return false;
+});
+$('#logoBotonMensaje').live("click", function() {
+
+	$('#logo-imagen').css('display','none');
+	$('#contenidoBoton').css('display','block');
+    $('#contenidoBotonUsuario').css('display','none');
+    $('#contenidoBotonMensaje').css('display','block');
+    $('#contenidoBotonNewsletter').css('display','none');
+    $('#contenidoBotonBusqueda').css('display','none');
+	return false;
+});
+$('#logoBotonNewsletter').live("click", function() {
+
+	$('#logo-imagen').css('display','none');
+	$('#contenidoBoton').css('display','block');
+    $('#contenidoBotonUsuario').css('display','none');
+    $('#contenidoBotonMensaje').css('display','none');
+    $('#contenidoBotonNewsletter').css('display','block');
+    $('#contenidoBotonBusqueda').css('display','none');
+	return false;
+});
+
+$('#logoBotonBusqueda').live("click", function() {
+
+	$('#logo-imagen').css('display','none');
+	$('#contenidoBoton').css('display','block');
+    $('#contenidoBotonUsuario').css('display','none');
+    $('#contenidoBotonMensaje').css('display','none');
+    $('#contenidoBotonNewsletter').css('display','none');
+    $('#contenidoBotonBusqueda').css('display','block');
+
+	return false;
+});
+
+
 
 $('#botonReservaciones').live("click", function() {
 	var prueba = true;
