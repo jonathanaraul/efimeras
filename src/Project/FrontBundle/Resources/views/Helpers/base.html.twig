@@ -17,7 +17,11 @@
 	<script type="text/javascript" src="{{ asset('front/js/generales.js') }}"></script>
     <script type="text/javascript" src="{{ asset('front/js/busqueda.js') }}"></script>
 	<script src="{{ asset('front/SlickNav/jquery.slicknav.min.js') }}"></script>
-	<script type="text/javascript">var direccionBuscar = "{{path('project_front_search')}}";</script>
+	<script type="text/javascript">
+	var direccionBuscar = "{{path('project_front_search')}}";
+	var direccionBotonesMensaje = "{{path('project_front_botones_mensaje')}}";
+	var direccionBotonesNewsletter = "{{path('project_front_botones_newsletter')}}";
+	</script>
 
 	<meta name="description" content="El equipo de Efímeras está formado por un grupo de profesionales procedentes de diferentes disciplinas de la Escuela Técnica Superior de Arquitectura de Madrid, como son: arquitectos, diseñadores gráficos e industriales, artistas plásticos y de audiovisuales, técnicos de luz y proyecciones, psicólogos, escenógrafos, especialistas en gestión y nuevos medios de comunicación, paisajistas e historiadores.">
 	<meta name="keywords" content="Efimeras, madrid, realego">

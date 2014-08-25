@@ -1,0 +1,25 @@
+{% extends '::base.html.twig' %}
+
+{% form_theme form with ['ProjectBackBundle:Form:fields.html.twig',
+'ProjectBackBundle:Form:_'~nombreRuta~'_save_widget.html.twig',
+] %}
+
+{% block pagesScriptsBottom %}
+{%endblock%}
+
+{% block pageContent  %}
+<div class="main-container container-fluid" id="sinlogin">
+	<a class="menu-toggler" id="menu-toggler" href="#"> <span class="menu-text"></span> </a>
+
+	{% include '::sidebar.html.twig'  with {'clase': 'gris'}  %}
+	<div class="main-content">
+		<div class="page-content">
+			{%set subtitulo = 'Crear nueva'%}
+			{%if accion!='nuevo'%}{%set subtitulo = 'Editar'%}{%endif%}
+			{% include 'ProjectBackBundle:'~nombreClase~':page-header.html.twig'  with {'subtitulo':subtitulo}  %}
+
+			{{ form(form, {'action': url, 'method': 'POST','attr': {'class':'form-horizontal'}}) }}
+		</div><!--/.page-content-->
+	</div><!--/.main-content-->
+</div><!--/.main-container-->
+{%endblock%}

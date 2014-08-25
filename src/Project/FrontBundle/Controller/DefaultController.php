@@ -8,10 +8,71 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Doctrine\ORM\EntityRepository;
 use Project\UserBundle\Entity\Reservation;
+use Project\UserBundle\Entity\Mensaje;
+use Project\UserBundle\Entity\Email;
 use Project\UserBundle\Entity\Search;
 
 class DefaultController extends Controller
 {
+
+	/**
+	 * @Route("/botones/newsletter", name="project_front_botones_newsletter")
+	 */
+    public function botonesNewsletterAction() {
+
+        $em = $this-> getDoctrine()-> getManager();
+        $peticion = $this-> getRequest();
+        $doctrine = $this-> getDoctrine();
+        $post = $peticion-> request;
+        
+        $email = trim($post -> get("email"));
+        $elemento = $this -> getDoctrine() -> getRepository('ProjectUserBundle:Email') -> findByEmail($email);
+        if(!$elemento){
+        	$object = new Email();
+        	$object-> setEmail($email);
+        	$em -> persist($object);
+        	$em-> flush();
+        	$respuesta = 'Te has suscrito exitosamente';        	
+        }
+        else{
+            $respuesta = 'Tu email ya se encontraba registrado en nuestro newsletter';
+        }
+
+        $respuesta = new response(json_encode(array('respuesta'=> $respuesta)));
+        $respuesta-> headers-> set('content_type', 'aplication/json');
+        return $respuesta;
+    }
+	/**
+	 * @Route("/botones/mensaje", name="project_front_botones_mensaje")
+	 */
+    public function botonesMensajeAction() {
+
+        $em = $this-> getDoctrine()-> getManager();
+        $peticion = $this-> getRequest();
+        $doctrine = $this-> getDoctrine();
+        $post = $peticion-> request;
+
+        // Obtener variables del post en el ajax
+        $asunto = trim($post -> get("asunto"));
+        $email = trim($post -> get("email"));
+        $mensaje = trim($post -> get("mensaje"));
+        //$tarea = intval($post-> get("tarea"));
+
+        // Procesa accion en base de datos
+        $object = new Mensaje();
+        $object-> setAsunto($asunto);
+        $object-> setDestinatario('jonathan.araul@gmail.com');
+        $object-> setRedactor($email);
+        $object-> setContenido($mensaje);
+        $em -> persist($object);
+        $em-> flush();
+
+        $estado = true;
+        $respuesta = new response(json_encode(array('estado'=> $estado)));
+        $respuesta-> headers-> set('content_type', 'aplication/json');
+        return $respuesta;
+    }
+
 	/**
 	 * @Route("/", name="project_front_homepage")
 	 */
@@ -67,20 +128,20 @@ class DefaultController extends Controller
 		$secondArray = array();
 
 		$em = $this -> getDoctrine() -> getManager();
-		$dql = "SELECT n.id,n.name,n.dateCreated,n.friendlyName,n.descriptionMeta FROM ProjectUserBundle:Page n WHERE n.tags like :term or n.content like :term or n.name like :term or n.descriptionMeta like :term ORDER BY n.dateCreated ASC";
+		$dql = "SELECT n.id,n.name,n.created,n.friendlyName,n.descriptionMeta FROM ProjectUserBundle:Page n WHERE n.tags like :term or n.content like :term or n.name like :term or n.descriptionMeta like :term ORDER BY n.created ASC";
 		
 		$query = $em -> createQuery($dql);
 		$query -> setParameter('term', '%'.$term.'%');
 		$secondArray['objects']  = $query -> getResult();
 		$secondArray['backgrounds'] = $this -> getDoctrine() -> getRepository('ProjectUserBundle:Background') -> findByHome(1);
 		$secondArray['idpage'] = null;    
+		$secondArray['page'] = $this -> getDoctrine() -> getRepository('ProjectUserBundle:Page') -> find(1);   
         $secondArray['tag'] = $term;
         $secondArray['search'] = true;
 
-        if(trim($term)==''){
+        if(trim($term)!=''){
         	$data = new Search();
         	$data -> setName($term);
-        	$data -> setDate(new \DateTime());
         	$em -> persist($data);
         	$em -> flush();       	
         }

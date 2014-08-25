@@ -1,16 +1,19 @@
 <?php
 
 namespace Project\UserBundle\Entity;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 use Gedmo\Mapping\Annotation as Gedmo;
+use Doctrine\Common\Collections\ArrayCollection;
 /**
- * Search
- *
- * @ORM\Table(name="search")
- * @ORM\Entity(repositoryClass="Project\UserBundle\Entity\SearchRepository")
+ * @ORM\Table(name="email")
+ * @ORM\Entity(repositoryClass="Project\UserBundle\Entity\EmailRepository")
+ * @ORM\HasLifecycleCallbacks
  */
-class Search
+
+class Email
 {
     /**
      * @var integer
@@ -24,9 +27,9 @@ class Search
     /**
      * @var string
      *
-     * @ORM\Column(name="name", type="string", length=300, nullable=false)
+     * @ORM\Column(name="email", type="string", length=255, nullable=false)
      */
-    private $name;
+    private $email;
 
     /**
      * @var datetime $created
@@ -44,6 +47,7 @@ class Search
      */
     private $updated;
 
+
     /**
      * Get id
      *
@@ -55,57 +59,33 @@ class Search
     }
 
     /**
-     * Set name
+     * Set email
      *
-     * @param string $name
-     * @return Search
+     * @param string $email
+     * @return Email
      */
-    public function setName($name)
+    public function setEmail($email)
     {
-        $this->name = $name;
+        $this->email = $email;
 
         return $this;
     }
 
     /**
-     * Get name
+     * Get email
      *
      * @return string 
      */
-    public function getName()
+    public function getEmail()
     {
-        return $this->name;
+        return $this->email;
     }
-
-    /**
-     * Set date
-     *
-     * @param \DateTime $date
-     * @return Search
-     */
-    public function setDate($date)
-    {
-        $this->date = $date;
-
-        return $this;
-    }
-
-    /**
-     * Get date
-     *
-     * @return \DateTime 
-     */
-    public function getDate()
-    {
-        return $this->date;
-    }
-
 
     /**
      * Set created
      *
      * @param \DateTime $created
-     * @return Search
+     * @return Email
      */
     public function setCreated($created)
     {
@@ -128,7 +108,7 @@ class Search
      * Set updated
      *
      * @param \DateTime $updated
-     * @return Search
+     * @return Email
      */
     public function setUpdated($updated)
     {

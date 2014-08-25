@@ -3,6 +3,7 @@
 namespace Project\UserBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * Setting
@@ -22,9 +23,9 @@ class Setting
     private $id;
 
     /**
-     * @var integer
+     * @var boolean
      *
-     * @ORM\Column(name="published", type="integer", nullable=true)
+     * @ORM\Column(name="published", type="boolean", nullable=true)
      */
     private $published;
 
@@ -43,40 +44,31 @@ class Setting
     private $value;
 
     /**
-     * @var string
+     * @var datetime $created
      *
-     * @ORM\Column(name="ip", type="string", length=15, nullable=false)
+     * @Gedmo\Timestampable(on="create")
+     * @ORM\Column(type="datetime")
      */
-    private $ip;
+    private $created;
 
     /**
-     * @var \DateTime
+     * @var datetime $updated
      *
-     * @ORM\Column(name="date_created", type="datetime", nullable=true)
+     * @Gedmo\Timestampable(on="update")
+     * @ORM\Column(type="datetime")
      */
-    private $dateCreated;
+    private $updated;
 
     /**
-     * @var \DateTime
+     * @var \User
      *
-     * @ORM\Column(name="date_updated", type="datetime", nullable=true)
-     */
-    private $dateUpdated;
-
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="user", type="integer", nullable=false)
+     * @ORM\ManyToOne(targetEntity="User")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="user", referencedColumnName="id", nullable=false)
+     * })
      */
     private $user;
-
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="lang", type="integer", nullable=false)
-     */
-    private $lang;
-	
+    
 
     /**
      * Get id
@@ -158,75 +150,6 @@ class Setting
     }
 
     /**
-     * Set ip
-     *
-     * @param string $ip
-     * @return Setting
-     */
-    public function setIp($ip)
-    {
-        $this->ip = $ip;
-
-        return $this;
-    }
-
-    /**
-     * Get ip
-     *
-     * @return string 
-     */
-    public function getIp()
-    {
-        return $this->ip;
-    }
-
-    /**
-     * Set dateCreated
-     *
-     * @param \DateTime $dateCreated
-     * @return Setting
-     */
-    public function setDateCreated($dateCreated)
-    {
-        $this->dateCreated = $dateCreated;
-
-        return $this;
-    }
-
-    /**
-     * Get dateCreated
-     *
-     * @return \DateTime 
-     */
-    public function getDateCreated()
-    {
-        return $this->dateCreated;
-    }
-
-    /**
-     * Set dateUpdated
-     *
-     * @param \DateTime $dateUpdated
-     * @return Setting
-     */
-    public function setDateUpdated($dateUpdated)
-    {
-        $this->dateUpdated = $dateUpdated;
-
-        return $this;
-    }
-
-    /**
-     * Get dateUpdated
-     *
-     * @return \DateTime 
-     */
-    public function getDateUpdated()
-    {
-        return $this->dateUpdated;
-    }
-
-    /**
      * Set user
      *
      * @param integer $user
@@ -249,26 +172,50 @@ class Setting
         return $this->user;
     }
 
+
     /**
-     * Set lang
+     * Set created
      *
-     * @param integer $lang
+     * @param \DateTime $created
      * @return Setting
      */
-    public function setLang($lang)
+    public function setCreated($created)
     {
-        $this->lang = $lang;
+        $this->created = $created;
 
         return $this;
     }
 
     /**
-     * Get lang
+     * Get created
      *
-     * @return integer 
+     * @return \DateTime 
      */
-    public function getLang()
+    public function getCreated()
     {
-        return $this->lang;
+        return $this->created;
+    }
+
+    /**
+     * Set updated
+     *
+     * @param \DateTime $updated
+     * @return Setting
+     */
+    public function setUpdated($updated)
+    {
+        $this->updated = $updated;
+
+        return $this;
+    }
+
+    /**
+     * Get updated
+     *
+     * @return \DateTime 
+     */
+    public function getUpdated()
+    {
+        return $this->updated;
     }
 }

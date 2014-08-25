@@ -11,17 +11,14 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use JMS\SecurityExtraBundle\Annotation\Secure;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
-
-
+use Project\UserBundle\Entity\Setting;
 
 class HelpersController extends Controller
 {
     public function menuAction($idpage,$idmenu,$mobile)
     {
 
-      
-
-		$em = $this->getDoctrine()->getManager();
+    $em = $this->getDoctrine()->getManager();
 		
 		$query = $em -> createQuery('SELECT d
     								 FROM ProjectUserBundle:MenuItem d
@@ -35,5 +32,22 @@ class HelpersController extends Controller
 		$array['idpage'] = $idpage;
 
         return $this->render('ProjectFrontBundle:Helpers:menu'.$mobile.'.html.twig', $array);
+    }
+    public function socialesAction()
+    {
+        $array['facebook'] = $this-> getDoctrine()-> getRepository('ProjectUserBundle:Setting')-> find(2);
+        $array['twitter'] = $this-> getDoctrine()-> getRepository('ProjectUserBundle:Setting')-> find(3);
+        $array['pinterest'] = $this-> getDoctrine()-> getRepository('ProjectUserBundle:Setting')-> find(5);
+        $array['tuenti'] = $this-> getDoctrine()-> getRepository('ProjectUserBundle:Setting')-> find(4);
+
+        return $this->render('ProjectFrontBundle:Helpers:sociales.html.twig', $array);
+    }
+    public function lugarAction()
+    {
+        $array['lugar'] = $this-> getDoctrine()-> getRepository('ProjectUserBundle:Setting')-> find(6);
+        $array['email'] = $this-> getDoctrine()-> getRepository('ProjectUserBundle:Setting')-> find(8);
+        $array['telefono'] = $this-> getDoctrine()-> getRepository('ProjectUserBundle:Setting')-> find(7);
+
+        return $this->render('ProjectFrontBundle:Helpers:lugar.html.twig', $array);
     }
 }

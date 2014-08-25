@@ -3,7 +3,7 @@
 namespace Project\UserBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-
+use Gedmo\Mapping\Annotation as Gedmo;
 /**
  * Search
  *
@@ -27,25 +27,22 @@ class Search
      * @ORM\Column(name="name", type="string", length=300, nullable=false)
      */
     private $name;
-	
 
     /**
-     * @var \DateTime
+     * @var datetime $created
      *
-     * @ORM\Column(name="date", type="datetime", nullable=false)
+     * @Gedmo\Timestampable(on="create")
+     * @ORM\Column(type="datetime")
      */
-    private $date;
-	
+    private $created;
+
     /**
-     * @var boolean
+     * @var datetime $updated
      *
-     * @ORM\Column(name="published", type="boolean", nullable=true)
+     * @Gedmo\Timestampable(on="update")
+     * @ORM\Column(type="datetime")
      */
-    private $published = true;
-
- 
-
-
+    private $updated;
 
     /**
      * Get id
@@ -101,5 +98,52 @@ class Search
     public function getDate()
     {
         return $this->date;
+    }
+
+
+    /**
+     * Set created
+     *
+     * @param \DateTime $created
+     * @return Search
+     */
+    public function setCreated($created)
+    {
+        $this->created = $created;
+
+        return $this;
+    }
+
+    /**
+     * Get created
+     *
+     * @return \DateTime 
+     */
+    public function getCreated()
+    {
+        return $this->created;
+    }
+
+    /**
+     * Set updated
+     *
+     * @param \DateTime $updated
+     * @return Search
+     */
+    public function setUpdated($updated)
+    {
+        $this->updated = $updated;
+
+        return $this;
+    }
+
+    /**
+     * Get updated
+     *
+     * @return \DateTime 
+     */
+    public function getUpdated()
+    {
+        return $this->updated;
     }
 }

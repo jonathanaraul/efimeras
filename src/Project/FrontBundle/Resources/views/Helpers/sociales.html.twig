@@ -1,0 +1,20 @@
+{%if facebook is not null %}
+<div style="float:left">
+	<a href="{{facebook.value}}" target="_blank" ><img src="{{asset('front/images/facebook.png')}}"></a>
+</div>
+{%endif%}
+{%if twitter is not null %}
+<div style="float:left">
+	<a href="{{twitter.value}}" target="_blank"><img src="{{asset('front/images/twitter.png')}}"></a>
+</div>
+{%endif%}
+{%if tuenti is not null%}
+<div style="float:left">
+	<a href="{{tuenti.value}}" target="_blank"><img src="{{asset('front/images/tuenti.png')}}"></a>
+</div>
+{%endif%}
+{%if pinterest is not null%}
+<div style="float:left">
+	<a href="{{pinterest.value}}" target="_blank"><img src="{{asset('front/images/pinterest.png')}}"></a>
+</div>
+{%endif%}

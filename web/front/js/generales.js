@@ -14,6 +14,113 @@ $( document ).ready(function() {
   	paginadorEspecial();
   }
 });
+///////////FUNCIONALIDADES BOTONES
+
+function validateEmail(email) { 
+    var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(email);
+} 
+$('#botonBusqueda_submit').live("click", function() {
+	var prueba = true;
+	var data = '';
+	var valor = $.trim($(".botonBusqueda_campo").val());
+	valor = valor.toLowerCase();
+
+	$.each($(".botonBusqueda_campo"), function(indice, valor) {
+
+		var auxiliar = $(valor).val();
+		var id =  $(valor).attr('id');
+		id = id.split("_");
+		id = id[1];
+		if(indice !=0)data += '&';
+		data += id+'='+auxiliar;
+	
+		if($.trim(auxiliar)==''){
+			$(valor).css('border','1px solid red');
+			prueba = false;
+		}
+		else $(valor).css('border','none');
+	});
+	if(!prueba) return false;
+
+	$('.botonBusqueda_elemento').css('display','none');
+	$('#botonBusqueda_loader').css('display','block');
+
+    document.location.href = direccionBuscar + '/' + valor;
+	
+	return false;
+});
+
+
+$('#botonNewsletter_submit').live("click", function() {
+	var prueba = true;
+	var data = '';
+	$.each($(".botonNewsletter_campo"), function(indice, valor) {
+
+		var auxiliar = $(valor).val();
+		var id =  $(valor).attr('id');
+		id = id.split("_");
+		id = id[1];
+		if(indice !=0)data += '&';
+		data += id+'='+auxiliar;
+	
+		if($.trim(auxiliar)==''){
+			$(valor).css('border','1px solid red');
+			prueba = false;
+		}
+		else $(valor).css('border','none');
+	});
+	if(!validateEmail($('#botonNewsletter_email').val())){
+        $('#botonNewsletter_email').css('border','1px solid red');
+		prueba = false;
+	}
+	if(!prueba) return false;
+
+
+	$('.botonNewsletter_elemento').css('display','none');
+	$('#botonNewsletter_loader').css('display','block');
+
+	$.post(direccionBotonesNewsletter, data, function(data) {
+		var obj = JSON.parse(data);
+	    $('#contenidoBotonNewsletter').html('<br><h2>'+obj.respuesta+'</h2>');
+	});
+	return false;
+});
+
+$('#botonMensaje_submit').live("click", function() {
+	var prueba = true;
+	var data = '';
+	$.each($(".botonMensaje_campo"), function(indice, valor) {
+
+		var auxiliar = $(valor).val();
+		var id =  $(valor).attr('id');
+		id = id.split("_");
+		id = id[1];
+		if(indice !=0)data += '&';
+		data += id+'='+auxiliar;
+			
+		if($.trim(auxiliar)==''){
+			$(valor).css('border','1px solid red');
+			prueba = false;
+		}
+		else $(valor).css('border','none');
+	});
+	if(!validateEmail($('#botonMensaje_email').val())){
+        $('#botonMensaje_email').css('border','1px solid red');
+		prueba = false;
+	}
+	if(!prueba) return false;
+
+	$('.botonMensaje_elemento').css('display','none');
+	$('#botonMensaje_loader').css('display','block');
+
+	$.post(direccionBotonesMensaje, data, function(data) {
+		var obj = JSON.parse(data);
+	    $('#contenidoBotonMensaje').html('<br><h2>Tu mensaje ha sido enviado exitosamente</h2>');
+	});
+	return false;
+});
+
 $('#logoBotonUsuario').live("click", function() {
 
 	$('#logo-imagen').css('display','none');
@@ -22,6 +129,7 @@ $('#logoBotonUsuario').live("click", function() {
     $('#contenidoBotonMensaje').css('display','none');
     $('#contenidoBotonNewsletter').css('display','none');
     $('#contenidoBotonBusqueda').css('display','none');
+    $('#contenidoBotonLugar').css('display','none');
 	return false;
 });
 $('#logoBotonMensaje').live("click", function() {
@@ -32,6 +140,7 @@ $('#logoBotonMensaje').live("click", function() {
     $('#contenidoBotonMensaje').css('display','block');
     $('#contenidoBotonNewsletter').css('display','none');
     $('#contenidoBotonBusqueda').css('display','none');
+    $('#contenidoBotonLugar').css('display','none');
 	return false;
 });
 $('#logoBotonNewsletter').live("click", function() {
@@ -42,6 +151,7 @@ $('#logoBotonNewsletter').live("click", function() {
     $('#contenidoBotonMensaje').css('display','none');
     $('#contenidoBotonNewsletter').css('display','block');
     $('#contenidoBotonBusqueda').css('display','none');
+    $('#contenidoBotonLugar').css('display','none');
 	return false;
 });
 
@@ -53,10 +163,22 @@ $('#logoBotonBusqueda').live("click", function() {
     $('#contenidoBotonMensaje').css('display','none');
     $('#contenidoBotonNewsletter').css('display','none');
     $('#contenidoBotonBusqueda').css('display','block');
+    $('#contenidoBotonLugar').css('display','none');
 
 	return false;
 });
+$('#logoBotonLugar').live("click", function() {
 
+	$('#logo-imagen').css('display','none');
+	$('#contenidoBoton').css('display','block');
+    $('#contenidoBotonUsuario').css('display','none');
+    $('#contenidoBotonMensaje').css('display','none');
+    $('#contenidoBotonNewsletter').css('display','none');
+    $('#contenidoBotonBusqueda').css('display','none');
+    $('#contenidoBotonLugar').css('display','block');
+
+	return false;
+});
 
 
 $('#botonReservaciones').live("click", function() {

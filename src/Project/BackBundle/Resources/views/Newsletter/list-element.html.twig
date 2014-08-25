@@ -1,0 +1,12 @@
+<tr id="fila_{{element.id}}">
+  <td >{{element.id}}</td>
+  <td >{{element.asunto}}</td>
+  <td >
+  	<ul>
+  		{%for object in element.emails%}
+  		<li>{{object.email}}</li>
+  		{%endfor%}
+  	</ul>
+  </td>
+  {% include 'ProjectBackBundle:Helpers:listado-edit-delete.html.twig'  with {'tipo':nombreClase,'rutaEditar':'project_back_'~nombreRuta~'_edit'}  %}
+</tr>

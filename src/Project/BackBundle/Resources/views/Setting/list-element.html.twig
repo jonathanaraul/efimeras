@@ -1,0 +1,6 @@
+<tr id="fila_{{element.id}}">
+	<td >{{element.id}}</td>
+  <td >{{element.name}}</td>
+  <td >{{element.value}}</td>
+  {% include 'ProjectBackBundle:Helpers:listado-status-edit-delete.html.twig'  with {'tipo':nombreClase,'rutaEditar':'project_back_'~nombreRuta~'_edit'}  %}
+</tr>

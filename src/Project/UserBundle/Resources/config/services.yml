@@ -58,3 +58,28 @@ services:
         class: Project\UserBundle\Form\Type\MenuItemType
         tags:
             - { name: form.type, alias: menuItem }
+
+    project_user.form.filtros.setting:
+        class: Project\UserBundle\Form\Filtros\SettingType
+        tags:
+            - { name: form.type, alias: setting_filtro }
+    project_user.form.setting:
+        class: Project\UserBundle\Form\Type\SettingType
+        tags:
+            - { name: form.type, alias: setting }
+
+    project_user.form.filtros.newsletter:
+        class: Project\UserBundle\Form\Filtros\NewsletterType
+        tags:
+            - { name: form.type, alias: newsletter_filtro }
+    project_user.form.newsletter:
+        class: Project\UserBundle\Form\Type\NewsletterType
+        tags:
+            - { name: form.type, alias: newsletter }
+
+    my.listener:
+        class: Project\UserBundle\EventListener\EnviadorCorreos
+        arguments: [ '@service_container']
+        tags:
+            - { name: doctrine.event_listener, event: postPersist, method: postPersist   }
+            - { name: doctrine.event_listener, event: postUpdate , method: postUpdate    }

@@ -122,3 +122,33 @@ project_back_menu_item_rank_post:
       _method: POST
     options:
         expose: true
+
+project_back_setting_list:
+    pattern:  /setting/list/
+    defaults: { _controller: ProjectBackBundle:Setting:list }
+project_back_setting_create:
+    pattern:  /setting/create
+    defaults: { _controller: ProjectBackBundle:Setting:create }
+project_back_setting_edit:
+    pattern:  /setting/edit/{id}
+    defaults: { _controller: ProjectBackBundle:Setting:edit, id: '1' }
+
+project_back_setting_list:
+    pattern:  /setting/list/
+    defaults: { _controller: ProjectBackBundle:Setting:list }
+project_back_setting_create:
+    pattern:  /setting/create
+    defaults: { _controller: ProjectBackBundle:Setting:create }
+project_back_setting_edit:
+    pattern:  /setting/edit/{id}
+    defaults: { _controller: ProjectBackBundle:Setting:edit, id: '1' }
+
+project_back_newsletter_list:
+    pattern:  /newsletter/list/
+    defaults: { _controller: ProjectBackBundle:Newsletter:list }
+project_back_newsletter_create:
+    pattern:  /newsletter/create
+    defaults: { _controller: ProjectBackBundle:Newsletter:create }
+project_back_newsletter_edit:
+    pattern:  /newsletter/edit/{id}
+    defaults: { _controller: ProjectBackBundle:Newsletter:edit, id: '1' }

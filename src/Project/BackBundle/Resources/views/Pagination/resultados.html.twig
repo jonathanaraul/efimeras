@@ -1,0 +1,4 @@
+{%set inicio = pagination.getCurrentPageNumber() * pagination.getItemNumberPerPage() - 10%}
+{%set fin = inicio + pagination.getItems()|length %}
+{%set total = pagination.getTotalItemCount() %}
+Mostrando de {{inicio}} a {{fin}} de {{total}} resultados

@@ -137,6 +137,54 @@
 			</ul>
 		</li>
 
+
+
+		<li {% if app.request.attributes.get('_route') == 'project_back_setting_list' or  
+		          app.request.attributes.get('_route') == 'project_back_setting_create'
+		     %} class="open"{%endif%}>
+
+			<a href="#" class="dropdown-toggle"> <i class="icon-cogs"></i> <span class="menu-text"> Configuraciones </span> <b class="arrow icon-angle-down"></b> </a>
+
+			<ul class="submenu" {% if 
+			app.request.attributes.get('_route') == 'project_back_setting_list' or  
+			app.request.attributes.get('_route') == 'project_back_setting_create' 
+			 %} style="display: block;"{%endif%}>
+
+				<li {% if app.request.attributes.get('_route') == 'project_back_setting_list' %}class="active"{%endif%}>
+					<a href="{{path('project_back_setting_list')}}"> <i class="icon-double-angle-right"></i> Ver Configuraciones </a>
+				</li>
+
+				<li {% if app.request.attributes.get('_route') == 'project_back_setting_create' %}class="active"{%endif%}>
+					<a href="{{path('project_back_setting_create')}}"> <i class="icon-double-angle-right"></i> Crear Configuracion </a>
+				</li>
+			</ul>
+		</li>
+
+		<li {% if app.request.attributes.get('_route') == 'project_back_newsletter_list' or  
+		          app.request.attributes.get('_route') == 'project_back_newsletter_create'
+		     %} class="open"{%endif%}>
+
+			<a href="#" class="dropdown-toggle"> <i class="icon-book"></i> <span class="menu-text"> Newsletters </span> <b class="arrow icon-angle-down"></b> </a>
+
+			<ul class="submenu" {% if 
+			app.request.attributes.get('_route') == 'project_back_newsletter_list' or  
+			app.request.attributes.get('_route') == 'project_back_newsletter_create' 
+			 %} style="display: block;"{%endif%}>
+
+				<li {% if app.request.attributes.get('_route') == 'project_back_newsletter_list' %}class="active"{%endif%}>
+					<a href="{{path('project_back_newsletter_list')}}"> <i class="icon-double-angle-right"></i> Ver Newsletters </a>
+				</li>
+
+				<li {% if app.request.attributes.get('_route') == 'project_back_newsletter_create' %}class="active"{%endif%}>
+					<a href="{{path('project_back_newsletter_create')}}"> <i class="icon-double-angle-right"></i> Crear Newsletter </a>
+				</li>
+			</ul>
+		</li>
+
+
+
+
+
 		<li {% if app.request.attributes.get('_route') == 'fos_user_profile_show' %}class="active"{%endif%}>
 			<a href="{{ path('fos_user_profile_show') }}"> <i class="icon-eye-open"></i> <span class="menu-text"> Mi Perfil </span> </a>
 		</li>
