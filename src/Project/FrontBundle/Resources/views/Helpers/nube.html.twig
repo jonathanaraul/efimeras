@@ -12,6 +12,7 @@ line-height: 200%;
 position: fixed;
 margin-left: 1106px;
 ">
+{%if page.template==1 %}
      {%for element in tags%}
         {%set tipo =  random(3)  %}
         {%if tipo == 0%}
@@ -34,4 +35,13 @@ margin-left: 1106px;
          </span>
          {%endif%}
      {%endfor%}
+{%else%}
+<div class="menu" style="width: 130px;">
+   {%for element in tags%}
+  <div class="menu-element">
+      <a href="{{path('project_front_tag',{'tag': element})}}"> {{element}}</a>
+  </div> 
+   {%endfor%}
+</div>
+{%endif%}
 </div>

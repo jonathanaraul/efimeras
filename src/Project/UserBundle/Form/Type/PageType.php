@@ -22,6 +22,7 @@ class PageType extends AbstractType
         -> add('tags', 'text', array('label' => 'Etiquetas','required' => true))
         -> add('reservacion', 'checkbox', array('label' => 'Reservas', 'required' => false, 'attr' => array('class' => 'ace-switch') ))
         -> add('template', 'checkbox', array('label' => 'Plantilla Tags', 'required' => false, 'attr' => array('class' => 'ace-switch') )) 
+        -> add('templateMenu', 'checkbox', array('label' => 'Plantilla Menus', 'required' => false, 'attr' => array('class' => 'ace-switch') )) 
         -> add('published', 'checkbox', array('label' => 'Publicado', 'required' => false, 'attr' => array('class' => 'ace-switch') )) 
         -> add('content', 'ckeditor', array(
             'label' => 'Nombre',

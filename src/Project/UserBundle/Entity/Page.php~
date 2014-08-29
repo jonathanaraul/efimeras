@@ -41,6 +41,13 @@ class Page
     private $template;
 
     /**
+     * @var integer
+     *
+     * @ORM\Column(name="templateMenu", type="boolean", nullable=false)
+     */
+    private $templateMenu;
+
+    /**
      * @var string
      *
      * @ORM\Column(name="keywords", type="string", length=255, nullable=false)

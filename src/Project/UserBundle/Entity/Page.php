@@ -41,6 +41,13 @@ class Page
     private $template;
 
     /**
+     * @var integer
+     *
+     * @ORM\Column(name="templateMenu", type="boolean", nullable=false)
+     */
+    private $templateMenu;
+
+    /**
      * @var string
      *
      * @ORM\Column(name="keywords", type="string", length=255, nullable=false)
@@ -734,5 +741,28 @@ class Page
     public function getCategory()
     {
         return $this->category;
+    }
+
+    /**
+     * Set templateMenu
+     *
+     * @param boolean $templateMenu
+     * @return Page
+     */
+    public function setTemplateMenu($templateMenu)
+    {
+        $this->templateMenu = $templateMenu;
+
+        return $this;
+    }
+
+    /**
+     * Get templateMenu
+     *
+     * @return boolean 
+     */
+    public function getTemplateMenu()
+    {
+        return $this->templateMenu;
     }
 }

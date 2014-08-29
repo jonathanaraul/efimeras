@@ -1,0 +1,11 @@
+{% form_theme form _self %}
+
+{% block _page_templateMenu_widget %}
+<div class="row-fluid">
+	<div class="span3">
+		<label> {{ block('checkbox_widget') }} <span class="lbl"></span> </label>
+	</div>
+</div>
+{% endblock %}
+
+{{ form_widget(form.name) }}
