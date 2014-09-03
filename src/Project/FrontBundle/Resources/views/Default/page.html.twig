@@ -30,7 +30,10 @@ var images = ["{{ asset(''~ page.getBackground.getWebPath ~'') }}"];
 	</div>
 	{% include 'ProjectFrontBundle:Helpers:inferior.html.twig' %}
 </div>
-{%if page.template==1 or page.templateMenu==1%}
+{%if page.template==1 and  page.templateMenu==0%}
 {% include 'ProjectFrontBundle:Helpers:nube.html.twig' %}
+{%endif%}
+{%if page.templateMenu==1 and page.menu is not null%}
+{% include 'ProjectFrontBundle:Helpers:menu-lateral.html.twig' %}
 {%endif%}
 {%endblock%}

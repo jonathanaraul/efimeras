@@ -1,0 +1,38 @@
+<div class="tags" style="float: left;padding-top: 1px;
+background-color: #000;
+opacity: 0.8;
+padding: 17px;
+color: white;
+top: 9px;
+width: 150px;
+margin-top: 51px;
+font-size: 1.2em;
+text-align: center;
+line-height: 200%;
+position: fixed;
+margin-left: 1106px;
+">
+
+    {%for object in page.menu.menuItems%}
+    {%if object.tipo != 2%}
+    <div class="menu-element">
+      {% if object.tipo == 0 %}
+         <b><a href="{{path('project_front_page',{'id': object.page.id, 'friendlyname' : object.page.friendlyName})}}" style="color:{{page.theme.color}}"> {{object.page.name|title}}
+         </a> </b>
+         {#{%if idpage == object.page.id%}
+         <hr class="men-sel" style="background-color: {{object.page.theme.color}};width: 304px;">
+         {%endif%}#}
+      {%else%} 
+         <a href="{{path('project_front_category',{'id': object.category.id, 'friendlyname' : object.category.friendlyName})}}" style="color:white"> {{object.category.name|title}}
+         </a> 
+         {#{%if idpage == object.category.id%}
+         <hr class="men-sel" style="background-color: {{object.category.theme.color}};width: 304px;"> 
+         {%endif%}#}
+      {%endif%}
+    </div>
+    {%else%}
+    <div class="menu-element spacer"></div>
+    {%endif%}
+    {%endfor%}
+    
+</div>

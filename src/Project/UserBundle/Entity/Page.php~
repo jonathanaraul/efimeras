@@ -170,6 +170,16 @@ class Page
     private $theme;
 
     /**
+     * @var \Menu
+     *
+     * @ORM\ManyToOne(targetEntity="Menu")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="menu", referencedColumnName="id", nullable=true)
+     * })
+     */
+    private $menu;
+
+    /**
      * @var boolean
      *
      * @ORM\Column(name="reservacion", type="boolean", nullable=true)
@@ -742,4 +752,28 @@ class Page
     {
         return $this->category;
     }
+
+    /**
+     * Set templateMenu
+     *
+     * @param boolean $templateMenu
+     * @return Page
+     */
+    public function setTemplateMenu($templateMenu)
+    {
+        $this->templateMenu = $templateMenu;
+
+        return $this;
+    }
+
+    /**
+     * Get templateMenu
+     *
+     * @return boolean 
+     */
+    public function getTemplateMenu()
+    {
+        return $this->templateMenu;
+    }
+
 }
