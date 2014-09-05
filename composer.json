@@ -4,7 +4,9 @@
     "type": "project",
     "description": "The \"Symfony Standard Edition\" distribution",
     "autoload": {
-        "psr-0": { "": "src/" }
+        "psr-0": {
+            "": "src/"
+        }
     },
     "require": {
         "php": ">=5.3.3",
@@ -33,8 +35,7 @@
         "knplabs/knp-paginator-bundle": "~2.4",
         "ob/highcharts-bundle": "1.*",
         "friendsofsymfony/user-bundle": "~2.0@dev",
-        "egeloen/ckeditor-bundle": "~2.0",
-
+        "egeloen/ckeditor-bundle": "~2.0"
     },
     "scripts": {
         "post-install-cmd": [
