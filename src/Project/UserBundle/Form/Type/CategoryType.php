@@ -20,6 +20,14 @@ class CategoryType extends AbstractType
         -> add('file', 'file', array('label'=> 'Archivo opcional','required' => false))      
         -> add('tags', 'text', array('label' => 'Etiquetas','required' => true))
         -> add('template', 'checkbox', array('label' => 'Plantilla Tags', 'required' => false, 'attr' => array('class' => 'ace-switch') )) 
+        -> add('templateMenu', 'checkbox', array('label' => 'Plantilla Menus', 'required' => false, 'attr' => array('class' => 'ace-switch') ))        
+        -> add('menu', 'entity', array(
+            'class' => 'ProjectUserBundle:Menu',
+            'empty_value' => 'Ninguno',
+            'property' => 'name',
+            'label' => 'Menu',
+            'required' => false, 
+            ))    
         -> add('published', 'checkbox', array('label' => 'Publicado', 'required' => false, 'attr' => array('class' => 'ace-switch') )) 
         -> add('content', 'ckeditor', array(
             'label' => 'Nombre',

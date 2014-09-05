@@ -40,6 +40,13 @@ class Category
     private $template;
 
     /**
+     * @var integer
+     *
+     * @ORM\Column(name="templateMenu", type="boolean", nullable=false)
+     */
+    private $templateMenu;
+
+    /**
      * @var string
      *
      * @ORM\Column(name="keywords", type="string", length=255, nullable=false)
@@ -160,6 +167,16 @@ class Category
      * @ORM\OneToMany(targetEntity="Page", mappedBy="category")
      */
     protected $pages;
+
+    /**
+     * @var \Menu
+     *
+     * @ORM\ManyToOne(targetEntity="Menu")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="menu", referencedColumnName="id", nullable=true)
+     * })
+     */
+    private $menu;
 
     private $file;
     private $temp;
@@ -693,5 +710,28 @@ class Category
     public function getPages()
     {
         return $this->pages;
+    }
+
+    /**
+     * Set menu
+     *
+     * @param \Project\UserBundle\Entity\Menu $menu
+     * @return Category
+     */
+    public function setMenu(\Project\UserBundle\Entity\Menu $menu = null)
+    {
+        $this->menu = $menu;
+
+        return $this;
+    }
+
+    /**
+     * Get menu
+     *
+     * @return \Project\UserBundle\Entity\Menu 
+     */
+    public function getMenu()
+    {
+        return $this->menu;
     }
 }

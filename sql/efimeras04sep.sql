@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 03-09-2014 a las 22:38:13
+-- Tiempo de generación: 05-09-2014 a las 03:36:54
 -- Versión del servidor: 5.6.12-log
 -- Versión de PHP: 5.4.12
 
@@ -82,18 +82,21 @@ CREATE TABLE IF NOT EXISTS `category` (
   `ip` varchar(15) COLLATE utf8_unicode_ci NOT NULL,
   `created` datetime NOT NULL,
   `updated` datetime NOT NULL,
+  `menu` int(11) DEFAULT NULL,
+  `templateMenu` tinyint(1) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `IDX_64C19C18D93D649` (`user`),
   KEY `IDX_64C19C1BC68B450` (`background`),
-  KEY `IDX_64C19C19775E708` (`theme`)
+  KEY `IDX_64C19C19775E708` (`theme`),
+  KEY `IDX_64C19C17D053A93` (`menu`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=2 ;
 
 --
 -- Volcado de datos para la tabla `category`
 --
 
-INSERT INTO `category` (`id`, `user`, `background`, `theme`, `published`, `template`, `keywords`, `description_meta`, `name`, `upper_text`, `lower_text`, `path`, `friendly_name`, `tags`, `content`, `ip`, `created`, `updated`) VALUES
-(1, 1, 6, 6, 1, 1, 'noticias', 'noticias', 'Noticias', 'noticias', 'noticias', NULL, 'noticias', 'tagnoticia1, tagnoticia2, tagnoticia3', '<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur?</p>\r\n\r\n<p>Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</p>', '2.138.45.162', '2014-07-22 05:44:51', '2014-07-31 18:31:09');
+INSERT INTO `category` (`id`, `user`, `background`, `theme`, `published`, `template`, `keywords`, `description_meta`, `name`, `upper_text`, `lower_text`, `path`, `friendly_name`, `tags`, `content`, `ip`, `created`, `updated`, `menu`, `templateMenu`) VALUES
+(1, 1, 6, 6, 1, 1, 'noticias', 'noticias', 'Noticias', 'noticias', 'noticias', NULL, 'noticias', 'tagnoticia1, tagnoticia2, tagnoticia3', '<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur?</p>\r\n\r\n<p>Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</p>', '::1', '2014-07-22 05:44:51', '2014-09-05 03:28:54', 2, 1);
 
 -- --------------------------------------------------------
 
@@ -155,7 +158,7 @@ CREATE TABLE IF NOT EXISTS `fos_user` (
 --
 
 INSERT INTO `fos_user` (`id`, `username`, `username_canonical`, `email`, `email_canonical`, `enabled`, `salt`, `password`, `last_login`, `locked`, `expired`, `expires_at`, `confirmation_token`, `password_requested_at`, `roles`, `credentials_expired`, `credentials_expire_at`, `name`, `path`, `fechaRegistro`, `descripcion`) VALUES
-(1, 'jonathan.araul', 'jonathan.araul', 'jonathan.araul@gmail.com', 'jonathan.araul@gmail.com', 1, 'hxphtd1ox14w0csosog0kc0g4wsoko0', '0xBgpAyww2D9amSwbBo0PtsvsCoDX2cQ65X4aOZ5CLDH3Y3B5apeCWi/kqHW8dJ5OLPnyDrOu4nl5iT8DybPRA==', '2014-09-03 06:35:08', 0, 0, NULL, NULL, NULL, 'a:1:{i:0;s:9:"ROLE_USER";}', 0, NULL, 'Jonathan Araul', '1012871_817926508225412_2461521584647138733_n.jpg', '2014-06-27 02:11:43', 'web developer'),
+(1, 'jonathan.araul', 'jonathan.araul', 'jonathan.araul@gmail.com', 'jonathan.araul@gmail.com', 1, 'hxphtd1ox14w0csosog0kc0g4wsoko0', '0xBgpAyww2D9amSwbBo0PtsvsCoDX2cQ65X4aOZ5CLDH3Y3B5apeCWi/kqHW8dJ5OLPnyDrOu4nl5iT8DybPRA==', '2014-09-05 03:25:33', 0, 0, NULL, NULL, NULL, 'a:1:{i:0;s:9:"ROLE_USER";}', 0, NULL, 'Jonathan Araul', '1012871_817926508225412_2461521584647138733_n.jpg', '2014-06-27 02:11:43', 'web developer'),
 (2, 'R_Francos', 'r_francos', 'info@ramonfrancos.es', 'info@ramonfrancos.es', 1, 'dl8em23gup4oggo0ckg48ggcscgwwws', '9KQAy6ZR2VWeXplfJZ4fWHIjdCkOP4S4vgmhM3ZCnPtmJoGEdXLDkMyMdiZKoT6a/davigBZ+u5iH5p5zAQuZA==', '2014-07-15 19:50:46', 0, 0, NULL, NULL, NULL, 'a:1:{i:0;s:9:"ROLE_USER";}', 0, NULL, 'Ramón', 'photo.jpg', '2014-07-15 19:50:45', 'Profesor'),
 (3, 'REALEGO', 'realego', 'info@realego.es', 'info@realego.es', 1, 'jpsfl4lprrkc4044g8o0o48kowk0ggc', 'cokt+2bl2c2R4SA78AzWLYvUyQegl86jqc94RIYWb7oKDfipVg/6h+Fr4hGw6zCQHXUbgSI9NwhVtSkPZqmDRA==', '2014-08-14 13:43:30', 0, 0, NULL, NULL, NULL, 'a:1:{i:0;s:9:"ROLE_USER";}', 0, NULL, 'Realego', '1622859_1375356429405551_897463730_n.jpg', '2014-07-31 12:55:46', 'REALEGO Oficina Creativa');
 
@@ -512,6 +515,7 @@ ALTER TABLE `background`
 -- Filtros para la tabla `category`
 --
 ALTER TABLE `category`
+  ADD CONSTRAINT `FK_64C19C17D053A93` FOREIGN KEY (`menu`) REFERENCES `menu` (`id`),
   ADD CONSTRAINT `FK_64C19C18D93D649` FOREIGN KEY (`user`) REFERENCES `fos_user` (`id`),
   ADD CONSTRAINT `FK_64C19C19775E708` FOREIGN KEY (`theme`) REFERENCES `theme` (`id`),
   ADD CONSTRAINT `FK_64C19C1BC68B450` FOREIGN KEY (`background`) REFERENCES `background` (`id`);

@@ -47,7 +47,10 @@ var images = ["{{ asset(''~ page.getBackground.getWebPath ~'') }}"];
 	<div class="news-cont"  style="margin-left: 25px;height: 0px;padding: 0px;{%if page.template==0%}width: 800px;{%endif%}"></div>
 	{% include 'ProjectFrontBundle:Helpers:inferior.html.twig' %}
 </div>
-{%if page.template==1%}
+{%if page.template==1 and page.templateMenu==0%}
 {% include 'ProjectFrontBundle:Helpers:nube.html.twig' %}
+{%endif%}
+{%if page.templateMenu==1 and page.menu is not null%}
+{% include 'ProjectFrontBundle:Helpers:menu-lateral.html.twig' %}
 {%endif%}
 {%endblock%}
