@@ -17,7 +17,7 @@ use Symfony\Component\Security\Core\SecurityContextInterface;
 
 class SecurityController extends ContainerAware
 {
-    public function loginAction($reducido,Request $request)
+    public function loginAction(Request $request)
     {
         /** @var $session \Symfony\Component\HttpFoundation\Session\Session */
         $session = $request->getSession();
@@ -47,8 +47,8 @@ class SecurityController extends ContainerAware
         return $this->renderLogin(array(
             'last_username' => $lastUsername,
             'error'         => $error,
-            'csrf_token' => $csrfToken,
-            'reducido' => $reducido
+            'csrf_token' => $csrfToken
+            //'reducido' => $reducido
         ));
     }
 
@@ -63,8 +63,8 @@ class SecurityController extends ContainerAware
     protected function renderLogin(array $data)
     {
         $variable ='';
-        if($data['reducido']==true)  $ruta = 'FOSUserBundle:Security:login.html.%s';
-        else $ruta = 'FOSUserBundle:Security:login2.html.%s';
+          $ruta = 'FOSUserBundle:Security:login.html.%s';
+        //$ruta = 'FOSUserBundle:Security:login2.html.%s';
 
 
         $template = sprintf($ruta, $this->container->getParameter('fos_user.template.engine'));

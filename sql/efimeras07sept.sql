@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 05-09-2014 a las 03:36:54
+-- Tiempo de generación: 07-09-2014 a las 22:14:32
 -- Versión del servidor: 5.6.12-log
 -- Versión de PHP: 5.4.12
 
@@ -158,7 +158,7 @@ CREATE TABLE IF NOT EXISTS `fos_user` (
 --
 
 INSERT INTO `fos_user` (`id`, `username`, `username_canonical`, `email`, `email_canonical`, `enabled`, `salt`, `password`, `last_login`, `locked`, `expired`, `expires_at`, `confirmation_token`, `password_requested_at`, `roles`, `credentials_expired`, `credentials_expire_at`, `name`, `path`, `fechaRegistro`, `descripcion`) VALUES
-(1, 'jonathan.araul', 'jonathan.araul', 'jonathan.araul@gmail.com', 'jonathan.araul@gmail.com', 1, 'hxphtd1ox14w0csosog0kc0g4wsoko0', '0xBgpAyww2D9amSwbBo0PtsvsCoDX2cQ65X4aOZ5CLDH3Y3B5apeCWi/kqHW8dJ5OLPnyDrOu4nl5iT8DybPRA==', '2014-09-05 03:25:33', 0, 0, NULL, NULL, NULL, 'a:1:{i:0;s:9:"ROLE_USER";}', 0, NULL, 'Jonathan Araul', '1012871_817926508225412_2461521584647138733_n.jpg', '2014-06-27 02:11:43', 'web developer'),
+(1, 'jonathan.araul', 'jonathan.araul', 'jonathan.araul@gmail.com', 'jonathan.araul@gmail.com', 1, 'hxphtd1ox14w0csosog0kc0g4wsoko0', '0xBgpAyww2D9amSwbBo0PtsvsCoDX2cQ65X4aOZ5CLDH3Y3B5apeCWi/kqHW8dJ5OLPnyDrOu4nl5iT8DybPRA==', '2014-09-07 05:43:27', 0, 0, NULL, NULL, NULL, 'a:1:{i:0;s:9:"ROLE_USER";}', 0, NULL, 'Jonathan Araul', '1012871_817926508225412_2461521584647138733_n.jpg', '2014-06-27 02:11:43', 'web developer'),
 (2, 'R_Francos', 'r_francos', 'info@ramonfrancos.es', 'info@ramonfrancos.es', 1, 'dl8em23gup4oggo0ckg48ggcscgwwws', '9KQAy6ZR2VWeXplfJZ4fWHIjdCkOP4S4vgmhM3ZCnPtmJoGEdXLDkMyMdiZKoT6a/davigBZ+u5iH5p5zAQuZA==', '2014-07-15 19:50:46', 0, 0, NULL, NULL, NULL, 'a:1:{i:0;s:9:"ROLE_USER";}', 0, NULL, 'Ramón', 'photo.jpg', '2014-07-15 19:50:45', 'Profesor'),
 (3, 'REALEGO', 'realego', 'info@realego.es', 'info@realego.es', 1, 'jpsfl4lprrkc4044g8o0o48kowk0ggc', 'cokt+2bl2c2R4SA78AzWLYvUyQegl86jqc94RIYWb7oKDfipVg/6h+Fr4hGw6zCQHXUbgSI9NwhVtSkPZqmDRA==', '2014-08-14 13:43:30', 0, 0, NULL, NULL, NULL, 'a:1:{i:0;s:9:"ROLE_USER";}', 0, NULL, 'Realego', '1622859_1375356429405551_897463730_n.jpg', '2014-07-31 12:55:46', 'REALEGO Oficina Creativa');
 
