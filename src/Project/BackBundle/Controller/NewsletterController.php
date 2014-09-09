@@ -23,49 +23,62 @@ const NOMBRE_RUTA = 'newsletter';
 
 	public function listAction(Request $request) {
 		
-		$em = $this->getDoctrine()->getManager();
+		if ($this->get('security.context')->isGranted(new Expression('("ROLE_USER" in roles) or ("ROLE_DIRECTOR" in roles)'))) 
+		{
+			$em = $this->getDoctrine()->getManager();
 
-		$url = $this -> generateUrl('project_back_'.self::NOMBRE_RUTA.'_list');	
+			$url = $this -> generateUrl('project_back_'.self::NOMBRE_RUTA.'_list');	
 
-		$data = new Newsletter();		
-		$form = $this-> createForm(self::NOMBRE_RUTA.'_filtro', $data);
-     
-		if ($this -> getRequest() -> isMethod('POST')) {
-			$form -> bind($this -> getRequest());
+			$data = new Newsletter();		
+			$form = $this-> createForm(self::NOMBRE_RUTA.'_filtro', $data);
+	     
+			if ($this -> getRequest() -> isMethod('POST')) {
+				$form -> bind($this -> getRequest());
 
-			if ($form -> isValid()) {
-				$filtro = new Filtro(self::NOMBRE_CLASE,$em);
-				$filtro->setDQLInicial();
-				$filtro->setDataTexto('asunto',$data -> getAsunto());
-				$filtro->setOrder();
-				$filtro->setQuery();
-				$filtro->setParametroTexto('asunto',$data -> getAsunto());
-				$query = $filtro->getQuery();
+				if ($form -> isValid()) {
+					$filtro = new Filtro(self::NOMBRE_CLASE,$em);
+					$filtro->setDQLInicial();
+					$filtro->setDataTexto('asunto',$data -> getAsunto());
+					$filtro->setOrder();
+					$filtro->setQuery();
+					$filtro->setParametroTexto('asunto',$data -> getAsunto());
+					$query = $filtro->getQuery();
+				}
 			}
-		}
-		else {
-			$dql = "SELECT o FROM ProjectUserBundle:".self::NOMBRE_CLASE." o order by o.id DESC ";
-			$query = $em -> createQuery($dql);
-		}
+			else {
+				$dql = "SELECT o FROM ProjectUserBundle:".self::NOMBRE_CLASE." o order by o.id DESC ";
+				$query = $em -> createQuery($dql);
+			}
 
-		$paginator = $this -> get('knp_paginator');
-		$pagination = $paginator-> paginate($query, $this-> getRequest()-> query-> get('page', 1), 10);
+			$paginator = $this -> get('knp_paginator');
+			$pagination = $paginator-> paginate($query, $this-> getRequest()-> query-> get('page', 1), 10);
 
-		$array = array('pagination'=> $pagination,'url'=> $url);
-		$array['nombreClase'] =  self::NOMBRE_CLASE;
-		$array['nombreRuta'] =  self::NOMBRE_RUTA;
-	    $array['form'] = $form -> createView();
-		
-		return $this -> render('ProjectBackBundle:'.self::NOMBRE_CLASE.':list.html.twig', $array);
+			$array = array('pagination'=> $pagination,'url'=> $url);
+			$array['nombreClase'] =  self::NOMBRE_CLASE;
+			$array['nombreRuta'] =  self::NOMBRE_RUTA;
+		    $array['form'] = $form -> createView();
+			
+			return $this -> render('ProjectBackBundle:'.self::NOMBRE_CLASE.':list.html.twig', $array);
+		}
+		else if (!$this->get('security.context')->isGranted(new Expression('("ROLE_USER" in roles) or ("ROLE_DIRECTOR" in roles)'))) {
+        	throw new AccessDeniedException();
+    	}
+
 	}
 
 	public function createAction(Request $request) {
 
-		$array = array('accion' => 'nuevo');
-		$array['url'] = $this-> generateUrl('project_back_'.self::NOMBRE_RUTA.'_create');
-		$array['data'] = new Newsletter();
+		if ($this->get('security.context')->isGranted(new Expression('("ROLE_USER" in roles) or ("ROLE_DIRECTOR" in roles)'))) 
+		{
+			$array = array('accion' => 'nuevo');
+			$array['url'] = $this-> generateUrl('project_back_'.self::NOMBRE_RUTA.'_create');
+			$array['data'] = new Newsletter();
 
-		return self::procesar($array, $request, $this);
+			return self::procesar($array, $request, $this);
+		}
+		else if (!$this->get('security.context')->isGranted(new Expression('("ROLE_USER" in roles) or ("ROLE_DIRECTOR" in roles)'))) {
+        	throw new AccessDeniedException();
+    	}
 	}
 
 	public function editAction($id, Request $request) {
