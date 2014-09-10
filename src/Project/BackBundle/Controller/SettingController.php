@@ -12,6 +12,7 @@ use Symfony\Component\Security\Core\SecurityContext;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use JMS\SecurityExtraBundle\Annotation\Secure;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
+use Symfony\Component\ExpressionLanguage\Expression;
 use Symfony\Component\Security\Core\Util\StringUtils;
 
 use Project\UserBundle\Entity\Setting;
@@ -23,53 +24,65 @@ const NOMBRE_RUTA = 'setting';
 
 	public function listAction(Request $request) {
 		
-		$em = $this->getDoctrine()->getManager();
+		if ($this->get('security.context')->isGranted(new Expression('"ROLE_USER" in roles'))) 
+		{
+			$em = $this->getDoctrine()->getManager();
 
-		$url = $this -> generateUrl('project_back_'.self::NOMBRE_RUTA.'_list');	
+			$url = $this -> generateUrl('project_back_'.self::NOMBRE_RUTA.'_list');	
 
-		$data = new Setting();		
-		$form = $this-> createForm(self::NOMBRE_RUTA.'_filtro', $data);
-     
-		if ($this -> getRequest() -> isMethod('POST')) {
-			$form -> bind($this -> getRequest());
+			$data = new Setting();		
+			$form = $this-> createForm(self::NOMBRE_RUTA.'_filtro', $data);
+	     
+			if ($this -> getRequest() -> isMethod('POST')) {
+				$form -> bind($this -> getRequest());
 
-			if ($form -> isValid()) {
-				$filtro = new Filtro(self::NOMBRE_CLASE,$em);
-				$filtro->setDQLInicial();
-				$filtro->setDataTexto('name',$data -> getName());
-				$filtro->setDataTexto('value',$data -> getValue());
-				$filtro->setDataBoolean('published',$data -> getPublished());
-				$filtro->setOrder();
-				$filtro->setQuery();
-				$filtro->setParametroTexto('name',$data -> getName());
-				$filtro->setParametroTexto('value',$data -> getValue());
-				$filtro->setParametroBoolean('published',$data -> getPublished());
-				$query = $filtro->getQuery();
+				if ($form -> isValid()) {
+					$filtro = new Filtro(self::NOMBRE_CLASE,$em);
+					$filtro->setDQLInicial();
+					$filtro->setDataTexto('name',$data -> getName());
+					$filtro->setDataTexto('value',$data -> getValue());
+					$filtro->setDataBoolean('published',$data -> getPublished());
+					$filtro->setOrder();
+					$filtro->setQuery();
+					$filtro->setParametroTexto('name',$data -> getName());
+					$filtro->setParametroTexto('value',$data -> getValue());
+					$filtro->setParametroBoolean('published',$data -> getPublished());
+					$query = $filtro->getQuery();
+				}
 			}
-		}
-		else {
-			$dql = "SELECT o FROM ProjectUserBundle:".self::NOMBRE_CLASE." o order by o.id DESC ";
-			$query = $em -> createQuery($dql);
-		}
+			else {
+				$dql = "SELECT o FROM ProjectUserBundle:".self::NOMBRE_CLASE." o order by o.id DESC ";
+				$query = $em -> createQuery($dql);
+			}
 
-		$paginator = $this -> get('knp_paginator');
-		$pagination = $paginator-> paginate($query, $this-> getRequest()-> query-> get('page', 1), 10);
+			$paginator = $this -> get('knp_paginator');
+			$pagination = $paginator-> paginate($query, $this-> getRequest()-> query-> get('page', 1), 10);
 
-		$array = array('pagination'=> $pagination,'url'=> $url);
-		$array['nombreClase'] =  self::NOMBRE_CLASE;
-		$array['nombreRuta'] =  self::NOMBRE_RUTA;
-	    $array['form'] = $form -> createView();
-		
-		return $this -> render('ProjectBackBundle:'.self::NOMBRE_CLASE.':list.html.twig', $array);
+			$array = array('pagination'=> $pagination,'url'=> $url);
+			$array['nombreClase'] =  self::NOMBRE_CLASE;
+			$array['nombreRuta'] =  self::NOMBRE_RUTA;
+		    $array['form'] = $form -> createView();
+			
+			return $this -> render('ProjectBackBundle:'.self::NOMBRE_CLASE.':list.html.twig', $array);
+		}
+		else if (!$this->get('security.context')->isGranted(new Expression('"ROLE_USER" in roles'))) {
+        	throw new AccessDeniedException();
+    	}
 	}
 
 	public function createAction(Request $request) {
 
-		$array = array('accion' => 'nuevo');
-		$array['url'] = $this-> generateUrl('project_back_'.self::NOMBRE_RUTA.'_create');
-		$array['data'] = new Setting();
+		if ($this->get('security.context')->isGranted(new Expression('"ROLE_USER" in roles'))) 
+		{
+			$array = array('accion' => 'nuevo');
+			$array['url'] = $this-> generateUrl('project_back_'.self::NOMBRE_RUTA.'_create');
+			$array['data'] = new Setting();
 
-		return self::procesar($array, $request, $this);
+			return self::procesar($array, $request, $this);
+		}
+		else if (!$this->get('security.context')->isGranted(new Expression('"ROLE_USER" in roles'))) {
+        	throw new AccessDeniedException();
+    	}
 	}
 
 	public function editAction($id, Request $request) {
