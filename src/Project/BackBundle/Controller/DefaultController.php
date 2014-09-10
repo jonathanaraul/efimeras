@@ -22,6 +22,11 @@ class DefaultController extends Controller
         if($user==null) return $this->redirect($this->generateUrl('fos_user_security_login'));
  
         $em = $this->getDoctrine()->getManager();
+        /*
+        $object = $em -> getRepository('ProjectUserBundle:User') -> find(1);
+        $object-> addRole( 1 );
+        $em-> persist($object);
+        $em-> flush();  */     
 
         $firstArray = array();
         

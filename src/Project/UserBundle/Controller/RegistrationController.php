@@ -50,6 +50,7 @@ class RegistrationController extends BaseController
                 $dispatcher->dispatch(FOSUserEvents::REGISTRATION_SUCCESS, $event);
 
                 $user-> addRole( 2 );
+
                 $user->upload();
 
                 $userManager->updateUser($user);

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 09-09-2014 a las 19:22:28
+-- Tiempo de generación: 10-09-2014 a las 01:27:39
 -- Versión del servidor: 5.6.12-log
 -- Versión de PHP: 5.4.12
 
@@ -151,14 +151,17 @@ CREATE TABLE IF NOT EXISTS `fos_user` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `UNIQ_957A647992FC23A8` (`username_canonical`),
   UNIQUE KEY `UNIQ_957A6479A0D96FBF` (`email_canonical`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=9 ;
 
 --
 -- Volcado de datos para la tabla `fos_user`
 --
 
 INSERT INTO `fos_user` (`id`, `username`, `username_canonical`, `email`, `email_canonical`, `enabled`, `salt`, `password`, `last_login`, `locked`, `expired`, `expires_at`, `confirmation_token`, `password_requested_at`, `roles`, `credentials_expired`, `credentials_expire_at`, `name`, `path`, `fechaRegistro`, `descripcion`) VALUES
-(1, 'jonathan.araul', 'jonathan.araul', 'jonathan.araul@gmail.com', 'jonathan.araul@gmail.com', 1, 'hxphtd1ox14w0csosog0kc0g4wsoko0', '0xBgpAyww2D9amSwbBo0PtsvsCoDX2cQ65X4aOZ5CLDH3Y3B5apeCWi/kqHW8dJ5OLPnyDrOu4nl5iT8DybPRA==', '2014-09-07 05:43:27', 0, 0, NULL, NULL, NULL, 'a:1:{i:0;s:9:"ROLE_USER";}', 0, NULL, 'Jonathan Araul', '1012871_817926508225412_2461521584647138733_n.jpg', '2014-06-27 02:11:43', 'web developer');
+(1, 'jonathan.araul', 'jonathan.araul', 'jonathan.araul@gmail.com', 'jonathan.araul@gmail.com', 1, 'hxphtd1ox14w0csosog0kc0g4wsoko0', '0xBgpAyww2D9amSwbBo0PtsvsCoDX2cQ65X4aOZ5CLDH3Y3B5apeCWi/kqHW8dJ5OLPnyDrOu4nl5iT8DybPRA==', '2014-09-07 05:43:27', 0, 0, NULL, NULL, NULL, 'a:2:{i:0;s:9:"ROLE_USER";i:1;s:10:"ROLE_ADMIN";}', 0, NULL, 'Jonathan Araul', '1012871_817926508225412_2461521584647138733_n.jpg', '2014-06-27 02:11:43', 'web developer'),
+(6, 'director', 'director', 'director@gmail.com', 'director@gmail.com', 1, 'iydremlitkow8c04csskkgw4wwoock4', '/XFFRSVEx30VsNutLLpRt9gMjKGiKbDjZr176XkSKcKmDd2oc869QQq/R3JxnyEiKoFjuY1tl3MDNwlZHA/jQA==', '2014-09-10 01:04:44', 0, 0, NULL, NULL, NULL, 'a:2:{i:0;s:9:"ROLE_USER";i:1;s:13:"ROLE_DIRECTOR";}', 0, NULL, 'director', '8875a62414b7961d9a3e51e783abc57ef1c01e2e.png', '2014-09-10 01:04:41', 'Director'),
+(7, 'profesor', 'profesor', 'profesor@gmail.com', 'profesor@gmail.com', 1, 'j0vh3hj9w2ogocw80g4kkoog4cgw8wo', '4VsIBu85F2jb9FWKXQ9gjCzmUp6xiQ5N0gk6GzO7zW251ieAWmj8P33yySsSczG6fxPF6ngKFVMHyDRI7MXqfA==', '2014-09-10 01:09:01', 0, 0, NULL, NULL, NULL, 'a:2:{i:0;s:9:"ROLE_USER";i:1;s:13:"ROLE_PROFESOR";}', 0, NULL, 'profesor', '27e4413e361d9fc0be5bd4c80c26b61b3ef68564.png', '2014-09-10 01:09:01', 'Profesor'),
+(8, 'administrador', 'administrador', 'administrador@gmail.com', 'administrador@gmail.com', 1, 'k9794439h34400kwgs4gkco0o0k4cwk', 'O8+vz0rDd59B/UHlB3KNccX2MZpIIN8hH6LSRTwJGY8WcD4ptGRB9WlXJeYs2NW48q9HAyGw+3EK6DJV5zqxtA==', '2014-09-10 01:11:06', 0, 0, NULL, NULL, NULL, 'a:2:{i:0;s:9:"ROLE_USER";i:1;s:10:"ROLE_ADMIN";}', 0, NULL, 'administrador', '7eac4560e1b00f7def04109dc4943f701e529fd5.png', '2014-09-10 01:11:03', 'Administrador');
 
 -- --------------------------------------------------------
 
