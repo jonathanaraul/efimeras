@@ -19,9 +19,11 @@ use Project\UserBundle\Entity\Theme;
 
 class ThemeController extends Controller {
 
+	/**
+  * @Secure(roles="ROLE_ADMIN")
+  */
 	public function listAction(Request $request) {
 		
-		if ($this->get('security.context')->isGranted(new Expression('"ROLE_USER" in roles'))) {
 			$em = $this-> getDoctrine()-> getManager();
 
 			$url = $this-> generateUrl('project_back_theme_list');
@@ -38,24 +40,18 @@ class ThemeController extends Controller {
 			//$array['form'] =  $form-> createView();
 			
 			return $this-> render('ProjectBackBundle:Theme:list.html.twig', $array);
-		}
-		else if (!$this->get('security.context')->isGranted(new Expression('"ROLE_USER" in roles'))) {
-        	throw new AccessDeniedException();
-    	}
 	}
 
+	/**
+  * @Secure(roles="ROLE_ADMIN")
+  */
 	public function createAction(Request $request) {
 
-		if ($this->get('security.context')->isGranted(new Expression('"ROLE_USER" in roles'))) {
 			$array = array('accion' => 'nuevo');
 			$array['url'] = $this -> generateUrl('project_back_theme_create');
 			$array['data'] = new Theme();
 
 			return ThemeController::procesar($array, $request, $this);
-		}
-		else if (!$this->get('security.context')->isGranted(new Expression('"ROLE_USER" in roles'))) {
-        	throw new AccessDeniedException();
-    	}
 	}
 
 	public function editAction($id, Request $request) {

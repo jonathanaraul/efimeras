@@ -21,9 +21,11 @@ use Project\UserBundle\Entity\Menu;
 use Project\UserBundle\Entity\Background;
 class MenuController extends Controller {
 
+/**
+  * @Secure(roles="ROLE_ADMIN")
+  */
 	public function listAction(Request $request) {
 		
-		if ($this->get('security.context')->isGranted(new Expression('"ROLE_USER" in roles'))) {
 			$em = $this->getDoctrine()->getManager();
 
 			$url = $this -> generateUrl('project_back_menu_list');
@@ -40,24 +42,18 @@ class MenuController extends Controller {
 			//$array['form'] =  $form -> createView();
 			
 			return $this -> render('ProjectBackBundle:Menu:list.html.twig', $array);
-		}
-		else if (!$this->get('security.context')->isGranted(new Expression('"ROLE_USER" in roles'))) {
-        	throw new AccessDeniedException();
-    	}
 	}
 
+/**
+  * @Secure(roles="ROLE_ADMIN")
+  */
 	public function createAction(Request $request) {
 
-		if ($this->get('security.context')->isGranted(new Expression('"ROLE_USER" in roles'))) {
 			$array = array('accion' => 'nuevo');
 			$array['url'] = $this -> generateUrl('project_back_menu_create');
 			$array['data'] = new Menu();
 
 			return MenuController::procesar($array, $request, $this);
-		}
-		else if (!$this->get('security.context')->isGranted(new Expression('"ROLE_USER" in roles'))) {
-        	throw new AccessDeniedException();
-    	}
 	}
 
 	public function editAction($id, Request $request) {

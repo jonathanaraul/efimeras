@@ -20,9 +20,11 @@ use Project\UserBundle\Entity\Category;
 
 class CategoryController extends Controller {
 
+/**
+  * @Secure(roles="ROLE_ADMIN")
+  */
 	public function listAction(Request $request) {
 		
-		if ($this->get('security.context')->isGranted(new Expression('"ROLE_USER" in roles'))) {
 			$em = $this-> getDoctrine()-> getManager();
 
 			$url = $this -> generateUrl('project_back_category_list');
@@ -39,27 +41,21 @@ class CategoryController extends Controller {
 			//$array['form'] =  $form -> createView();
 			
 			return $this -> render('ProjectBackBundle:Category:list.html.twig', $array);
-		}
-
-		else if (!$this->get('security.context')->isGranted(new Expression('"ROLE_USER" in roles'))) {
-        	throw new AccessDeniedException();
-    	}
+		
 	}
 
 
 	public function createAction(Request $request) {
 
-		if ($this->get('security.context')->isGranted(new Expression('"ROLE_USER" in roles'))) {
+/**
+  * @Secure(roles="ROLE_ADMIN")
+  */
 			$array = array('accion' => 'nuevo');
 			$array['url'] = $this -> generateUrl('project_back_category_create');
 			$array['data'] = new Category();
 
 			return CategoryController::procesar($array, $request, $this);
-		}
 		
-		else if (!$this->get('security.context')->isGranted(new Expression('"ROLE_USER" in roles'))) {
-        	throw new AccessDeniedException();
-    	}
 
 	}
 

@@ -21,10 +21,12 @@ class NewsletterController extends Controller {
 const NOMBRE_CLASE = 'Newsletter';
 const NOMBRE_RUTA = 'newsletter';
 
+/**
+  * @Secure(roles="ROLE_ADMIN, ROLE_DIRECTOR")
+  */
 	public function listAction(Request $request) {
 		
-		if ($this->get('security.context')->isGranted(new Expression('("ROLE_USER" in roles) or ("ROLE_DIRECTOR" in roles)'))) 
-		{
+		
 			$em = $this->getDoctrine()->getManager();
 
 			$url = $this -> generateUrl('project_back_'.self::NOMBRE_RUTA.'_list');	
@@ -59,26 +61,20 @@ const NOMBRE_RUTA = 'newsletter';
 		    $array['form'] = $form -> createView();
 			
 			return $this -> render('ProjectBackBundle:'.self::NOMBRE_CLASE.':list.html.twig', $array);
-		}
-		else if (!$this->get('security.context')->isGranted(new Expression('("ROLE_USER" in roles) or ("ROLE_DIRECTOR" in roles)'))) {
-        	throw new AccessDeniedException();
-    	}
 
 	}
 
+/**
+  * @Secure(roles="ROLE_ADMIN, ROLE_DIRECTOR")
+  */
 	public function createAction(Request $request) {
 
-		if ($this->get('security.context')->isGranted(new Expression('("ROLE_USER" in roles) or ("ROLE_DIRECTOR" in roles)'))) 
-		{
+		
 			$array = array('accion' => 'nuevo');
 			$array['url'] = $this-> generateUrl('project_back_'.self::NOMBRE_RUTA.'_create');
 			$array['data'] = new Newsletter();
 
 			return self::procesar($array, $request, $this);
-		}
-		else if (!$this->get('security.context')->isGranted(new Expression('("ROLE_USER" in roles) or ("ROLE_DIRECTOR" in roles)'))) {
-        	throw new AccessDeniedException();
-    	}
 	}
 
 	public function editAction($id, Request $request) {

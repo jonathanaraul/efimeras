@@ -35,9 +35,11 @@ class MenuItemController extends Controller {
 		return $this-> render('ProjectBackBundle:Helpers:modal-menu-item.html.twig', $array);
 	}
 
+/**
+  * @Secure(roles="ROLE_ADMIN")
+  */
 	public function listAction($menu,Request $request) {
 
-		if ($this->get('security.context')->isGranted(new Expression('"ROLE_USER" in roles'))) {
 			$em = $this-> getDoctrine()-> getManager();
 
 			$url = $this-> generateUrl('project_back_menu_item_list', array('menu'=> $menu));
@@ -56,24 +58,18 @@ class MenuItemController extends Controller {
 			//$array['form'] =  $form-> createView();
 			
 			return $this-> render('ProjectBackBundle:MenuItem:list.html.twig', $array);
-		}
-		else if (!$this->get('security.context')->isGranted(new Expression('"ROLE_USER" in roles'))) {
-        	throw new AccessDeniedException();
-    	}
 	}
-
+/**
+  * @Secure(roles="ROLE_ADMIN")
+  */
 	public function createAction($menu,Request $request) {
 
-		if ($this->get('security.context')->isGranted(new Expression('"ROLE_USER" in roles'))) {
 			$array = array('accion'=> 'nuevo','menu'=> $menu);
 			$array['url'] = $this-> generateUrl('project_back_menu_item_create', array('menu' => $menu));
 			$array['data'] = new MenuItem();
 
 			return MenuItemController::procesar($array, $request, $this);
-		}
-		else if (!$this->get('security.context')->isGranted(new Expression('"ROLE_USER" in roles'))) {
-        	throw new AccessDeniedException();
-    	}
+		
 	}
 
 	public function editAction($menu,$id, Request $request) {

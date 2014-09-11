@@ -22,10 +22,11 @@ class SettingController extends Controller {
 const NOMBRE_CLASE = 'Setting';
 const NOMBRE_RUTA = 'setting';
 
+/**
+  * @Secure(roles="ROLE_ADMIN")
+  */
 	public function listAction(Request $request) {
 		
-		if ($this->get('security.context')->isGranted(new Expression('"ROLE_USER" in roles'))) 
-		{
 			$em = $this->getDoctrine()->getManager();
 
 			$url = $this -> generateUrl('project_back_'.self::NOMBRE_RUTA.'_list');	
@@ -64,25 +65,19 @@ const NOMBRE_RUTA = 'setting';
 		    $array['form'] = $form -> createView();
 			
 			return $this -> render('ProjectBackBundle:'.self::NOMBRE_CLASE.':list.html.twig', $array);
-		}
-		else if (!$this->get('security.context')->isGranted(new Expression('"ROLE_USER" in roles'))) {
-        	throw new AccessDeniedException();
-    	}
 	}
 
 	public function createAction(Request $request) {
 
-		if ($this->get('security.context')->isGranted(new Expression('"ROLE_USER" in roles'))) 
-		{
+		/**
+  * @Secure(roles="ROLE_ADMIN")
+  */
 			$array = array('accion' => 'nuevo');
 			$array['url'] = $this-> generateUrl('project_back_'.self::NOMBRE_RUTA.'_create');
 			$array['data'] = new Setting();
 
 			return self::procesar($array, $request, $this);
-		}
-		else if (!$this->get('security.context')->isGranted(new Expression('"ROLE_USER" in roles'))) {
-        	throw new AccessDeniedException();
-    	}
+		
 	}
 
 	public function editAction($id, Request $request) {

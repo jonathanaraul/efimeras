@@ -15,7 +15,7 @@ use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 use Symfony\Component\Security\Core\Util\StringUtils;
 use Project\UserBundle\Entity\Usuario;
 use Project\UserBundle\Entity\Page;
-
+use Project\UserBundle\Entity\User;
 
 class PageController extends Controller {
 
@@ -27,9 +27,22 @@ class PageController extends Controller {
 		$form = null;		
 		$filtros = null;
 
-		$dql = "SELECT o FROM ProjectUserBundle:Page o ";
-		$query = $em -> createQuery($dql);
+		if ($this->get('security.context')->isGranted(new Expression('"ROLE_PROFESOR" in roles')))
+		//if(is_granted('ROLE_PROFESOR'))
+		{
+			$dql = "SELECT o FROM ProjectUserBundle:Page WHERE u.user = :user o ";
+			$query = $em -> createQuery($dql);
+			$query>setParameter(':user', $entity->getId());
+		}
 
+		else
+		{
+			$dql = "SELECT o FROM ProjectUserBundle:Page o ";
+			$query = $em -> createQuery($dql);
+		}
+		
+		//$query = $em -> createQuery($dql);
+		//$query>setParameter(':user', $entity->getId());
 		$paginator = $this -> get('knp_paginator');
 		$pagination = $paginator-> paginate($query, $this-> getRequest()-> query-> get('page', 1), 10);
 

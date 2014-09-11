@@ -53,7 +53,7 @@
 				</li>
 			</ul>
 		</li>
-		{% if is_granted('ROLE_USER') %}
+		{% if is_granted('ROLE_ADMIN') %}
 		<li {% if app.request.attributes.get('_route') == 'project_back_category_list' or  app.request.attributes.get('_route') == 'project_back_category_create' or  app.request.attributes.get('_route') == 'project_back_category_rank' %}class="open"{%endif%}>
 			<a href="#" class="dropdown-toggle"> <i class="icon-folder-open"></i> <span class="menu-text"> Categoría </span> <b class="arrow icon-angle-down"></b> </a>
 
@@ -71,7 +71,7 @@
 			<a href="#" class="dropdown-toggle"> <i class="icon-camera"></i> <span class="menu-text"> Fondos </span> <b class="arrow icon-angle-down"></b> </a>
 
 			<ul class="submenu" {% if app.request.attributes.get('_route') == 'project_back_background_list' or  app.request.attributes.get('_route') == 'project_back_background_create' %} style="display: block;"{%endif%}>
-				{% if is_granted('ROLE_USER') or is_granted('ROLE_DIRECTOR')%}
+				{% if is_granted('ROLE_ADMIN') or is_granted('ROLE_DIRECTOR')%}
 				<li {% if app.request.attributes.get('_route') == 'project_back_background_list' %}class="active"{%endif%}>
 					<a href="{{path('project_back_background_list')}}"> <i class="icon-double-angle-right"></i> Ver fondo </a>
 				</li>
@@ -81,7 +81,7 @@
 				</li>
 			</ul>
 		</li>
-		{% if is_granted('ROLE_USER') %}
+		{% if is_granted('ROLE_ADMIN') %}
 		<li {% if app.request.attributes.get('_route') == 'project_back_theme_list' or  app.request.attributes.get('_route') == 'project_back_theme_create' %} class="open"{%endif%}>
 			<a href="#" class="dropdown-toggle"> <i class="icon-leaf"></i> <span class="menu-text"> Temas </span> <b class="arrow icon-angle-down"></b> </a>
 
@@ -97,12 +97,12 @@
 			</ul>
 		</li>
 		{% endif %}
-		{% if is_granted('ROLE_USER') or is_granted('ROLE_DIRECTOR')%}
+		{% if is_granted('ROLE_ADMIN') or is_granted('ROLE_DIRECTOR')%}
 		<li {% if app.request.attributes.get('_route') == 'project_back_reservation_list' %}class="active"{%endif%}>
 			<a href="{{ path('project_back_reservation_list') }}" > <i class="icon-heart-empty"></i> <span class="menu-text"> Reservas </span> </a>
 		</li>
 		{% endif %}
-		{% if is_granted('ROLE_USER')%}
+		{% if is_granted('ROLE_ADMIN')%}
 		<li {% if app.request.attributes.get('_route') == 'project_back_menu_list' or  
 		          app.request.attributes.get('_route') == 'project_back_menu_create' or
                   app.request.attributes.get('_route') == 'project_back_menu_item_list' or  
@@ -142,7 +142,7 @@
 			</ul>
 		</li>
 		{% endif %}
-		{% if is_granted('ROLE_USER')%}
+		{% if is_granted('ROLE_ADMIN')%}
 
 		<li {% if app.request.attributes.get('_route') == 'project_back_setting_list' or  
 		          app.request.attributes.get('_route') == 'project_back_setting_create'
@@ -165,7 +165,7 @@
 			</ul>
 		</li>
 		{% endif %}
-		{% if is_granted('ROLE_USER') or is_granted('ROLE_DIRECTOR')%}
+		{% if is_granted('ROLE_ADMIN') or is_granted('ROLE_DIRECTOR')%}
 		<li {% if app.request.attributes.get('_route') == 'project_back_newsletter_list' or  
 		          app.request.attributes.get('_route') == 'project_back_newsletter_create'
 		     %} class="open"{%endif%}>
