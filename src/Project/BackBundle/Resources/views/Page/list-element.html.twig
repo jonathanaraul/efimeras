@@ -1,7 +1,7 @@
 <tr id="fila_{{element.id}}">
 	<td >{{element.id}}</td>
 	<td >{{element.name}}</td>
-	<td class="hidden-phone">{{element.friendlyName}}</td>
+	<td class="hidden-phone">{{element.user.name}}</td>
 
 	<td width="79" height="79" class="hidden-480"> {%if element.background is not null%} <a href="{{asset(''~ element.background.getWebPath ~'')}}"> <img src="{{ element.background.getWebPath | apply_filter('gestion') }}" width="80" height="80"> </a></br>{{element.background.name|title}}
 	{%endif%} </td>

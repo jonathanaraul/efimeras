@@ -26,13 +26,16 @@ class PageController extends Controller {
 		$url = $this -> generateUrl('project_back_page_list');
 		$form = null;		
 		$filtros = null;
+		$user = $this-> getUser();
 
-		if ($this->get('security.context')->isGranted(new Expression('"ROLE_PROFESOR" in roles')))
-		//if(is_granted('ROLE_PROFESOR'))
+		//if ($this->get('security.context')->isGranted(new \Expression('"ROLE_PROFESOR" in roles')))
+		if(true === $this->get('security.context')->isGranted('ROLE_PROFESOR'))
 		{
-			$dql = "SELECT o FROM ProjectUserBundle:Page WHERE u.user = :user o ";
+			$dql = "SELECT o FROM ProjectUserBundle:Page o WHERE o.user = :user ";
+			
 			$query = $em -> createQuery($dql);
-			$query>setParameter(':user', $entity->getId());
+			$query->setParameter('user', $user->getId());
+			
 		}
 
 		else

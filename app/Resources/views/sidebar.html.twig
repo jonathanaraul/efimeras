@@ -71,11 +71,11 @@
 			<a href="#" class="dropdown-toggle"> <i class="icon-camera"></i> <span class="menu-text"> Fondos </span> <b class="arrow icon-angle-down"></b> </a>
 
 			<ul class="submenu" {% if app.request.attributes.get('_route') == 'project_back_background_list' or  app.request.attributes.get('_route') == 'project_back_background_create' %} style="display: block;"{%endif%}>
-				{% if is_granted('ROLE_ADMIN') or is_granted('ROLE_DIRECTOR')%}
+				{#{% if is_granted('ROLE_ADMIN') or is_granted('ROLE_DIRECTOR')%}#}
 				<li {% if app.request.attributes.get('_route') == 'project_back_background_list' %}class="active"{%endif%}>
 					<a href="{{path('project_back_background_list')}}"> <i class="icon-double-angle-right"></i> Ver fondo </a>
 				</li>
-				{% endif %}
+				{#{% endif %}#}
 				<li {% if app.request.attributes.get('_route') == 'project_back_background_create' %}class="active"{%endif%}>
 					<a href="{{path('project_back_background_create')}}"> <i class="icon-double-angle-right"></i> Subir fondo </a>
 				</li>
