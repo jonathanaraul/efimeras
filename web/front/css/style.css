@@ -42,12 +42,19 @@ body, img, p{
     margin: 0px;
     padding: 0px;
     border: 0px;
+	text-align:justify; 
 }
 h2{
     font-family: "DroidBold";
+	font-size: 2em;
     
 }
-
+h4{
+    font-family: "Droid";
+	font-size: 1.2em;
+	margin:4px 0px ;
+    
+}
 .error-404, .info{
     width: inherit;
     height: 300px;
@@ -57,9 +64,16 @@ h2{
     font-size: 40px;
 }
 
-a, a:link, a:hover, a:active, a:visited{
+a, a:link{
     text-decoration: none;
     color: #FFF;
+	font-weight:normal;
+}
+
+a:hover, a:active, a:visited{
+    text-decoration: none;
+    color: #cccccc;
+	
 }
 
 .page-holder{
@@ -94,11 +108,11 @@ a, a:link, a:hover, a:active, a:visited{
 }
 
 .main-tab .main-row .cell-left, .cell-middle .middle-left{
-    /*#background-color: #000;*/
+    #background-color: #000;
 }
 
 .main-tab .main-row .cell-right-sub, .black-top, .black-bottom, .black-middle-right, .black-top-left, .black-middle{
-   /*#background: url('../images/site/background_black.png') repeat center center;*/
+   #background: url('../images/site/background_black.png') repeat center center;
 }
 
 .black-top, .black-middle{
@@ -157,11 +171,11 @@ a, a:link, a:hover, a:active, a:visited{
 }
 
 .main-tab .main-row .cell-right, .main-tab .main-row .cell-middle, .cell-middle .middle-right{
-   /*#background-color: #FFF;*/
+   #background-color: #FFF;
 }
 
 .cell-main{
-    /*#background: url('../images/site/background_black.png') repeat center center !important;*/
+    #background: url('../images/site/background_black.png') repeat center center !important;
 }
 
 .cell-sub{
@@ -185,7 +199,7 @@ a, a:link, a:hover, a:active, a:visited{
     float: right;
     width: 90px;
     height: 90px;
-    /*#margin-top: 25px;*/
+    #margin-top: 25px;
     background: url('../images/site/2012_10_17_ciecie_19.png') no-repeat center center;
 }
 
@@ -200,25 +214,40 @@ a, a:link, a:hover, a:active, a:visited{
 }
 
 .menu-cont{
-    /*#position: relative;*/
+    #position: relative;
 }
 
+
 .menu{
-    /*#position: absolute;*/
+    #position: absolute;
     top: 20px;
     right: 0px;
     z-index: 140;
     width: 152px;
-    background-color: #000;
-    opacity: 0.8;
-    padding: 17px;
+   margin-bottom: 8.5px;
+    position: relative;
     text-align: left;
     /*margin: 270px 25px 0 0;*/
 }
 
-.menu .menu-element {
-    margin-bottom: 8.5px;
+ .menu-element {
+   
     position: relative;
+	 background: url(../../images/black.png) repeat; 
+    padding: 8px 13px;
+	  font-size: 1.2em;
+}
+ .menu-element1 a{
+	 text-transform:uppercase;
+	 font-weight:bold;
+	 font-size: 1.4em;
+   
+}
+.menu-element1 {
+    margin-bottom: 5px;
+    position: relative;
+	 background: url(../../images/black.png) repeat; 
+    padding: 13px;
 }
 
 .menu .menu-element hr{
@@ -233,7 +262,7 @@ a, a:link, a:hover, a:active, a:visited{
 
 .menu a{
 font-family: "Droid";
-    font-size: 16px;
+  
 }
 
 .menu a:hover{
@@ -279,12 +308,37 @@ font-family: "Droid";
     height: 180px;
 }
 .news-cont{
-    background-color: #000;
-opacity: 0.8;
+   background: url(../../images/black.png) repeat; 
 padding: 17px;
 color: white;
 top: 9px;
+
 }
+.news-cont1{
+   
+padding: 17px;
+color: white;
+top: 9px;
+
+}
+
+.tags{
+ background: url(../../images/black.png) repeat; 
+ float: left;padding-top: 1px;
+
+padding: 5px;
+color: white;
+top: 9px;
+width: 220px;
+margin-top: 31px;
+font-size: 1.4em;
+text-align: center;
+line-height: 200%;
+position: fixed;
+margin-left: 985px;
+}
+
+
 .upper-text{
     width: 140px;
     height: 140px;
@@ -318,7 +372,7 @@ top: 9px;
     display: table-cell;
     vertical-align: middle;
     text-align: center;
-    /*#background: url('../images/site/languages_background.png') repeat center center;*/
+    #background: url('../images/site/languages_background.png') repeat center center;
 }
 
 .lang-cont a{
@@ -341,7 +395,7 @@ top: 9px;
 }
 
 .news-big-title{
-    /*#top: 1000px !important;*/
+    #top: 1000px !important;
     padding-bottom: 30px !important;
 }
 
@@ -423,7 +477,7 @@ top: 9px;
     top: 35%;
     right: 0px;
     z-index: 120;
-    /*#background: url('../images/site/languages_background.png') repeat center center;*/
+    #background: url('../images/site/languages_background.png') repeat center center;
 }
 
 .share-cont div{
@@ -445,7 +499,7 @@ top: 9px;
 
 .content-cont, .biography-cont, .news-cont{
     position: relative;
-    margin: 50px 0 0 90px;
+    margin: 30px 0 0 90px;
 }
 
 .content-cont, .biography-cont{
@@ -453,7 +507,7 @@ top: 9px;
 }
 
 .news-cont{
-    padding: 25px 0 25px;
+    padding: 15px 0 15px;
 }
 
 .news-cont hr, #program-list hr{
@@ -466,8 +520,9 @@ top: 9px;
     margin-top: 5px;
 }
 
-.news-cont{
-    width: 634px;
+.news-cont, .news-cont1{
+    width: 540px;
+	margin-bottom:30px;
 }
 .capa-baja-logo{
 
@@ -487,14 +542,13 @@ display: none;
 .content-cont{
     width: 410px;
 }
-   
+    
 .content-cont{
     height: 220px;
     background: url('../images/site/background_txt.png') repeat center center;
 }
 
-//Eliminar Coma
-.biography-cont {
+.biography-cont, {
     background-color: #e5e5e5;
 }
 
@@ -503,8 +557,8 @@ display: none;
     height: 360px;
 }
 
-.news-cont{
-    /*#height: 500px;*/
+.news-cont, .news-cont1{
+    #height: 500px;
 }
 
 #scroll-me{
@@ -548,7 +602,7 @@ display: none;
 }
 
 .content-news{
-    /*#height: 590px;*/
+    #height: 590px;
 }
 
 .biography-content{
@@ -582,7 +636,7 @@ display: none;
 
 .news-cont .content-title, .content-news{
    margin-left: 12%;
-   /*#margin-left: 8px;*/
+   #margin-left: 8px;
 }
 
 .content-title{
@@ -670,6 +724,17 @@ display: none;
     margin: 0 auto;
 }
 
+img.scale-with-grid {
+max-width: 100%;
+height: auto;
+margin:12px 0px ;
+
+box-shadow: 1px 1px 2px #999;
+-webkit-box-shadow: 1px 1px 2px #999;
+-moz-box-shadow:1px 1px 2px #999;
+-o-box-shadow: 1px 1px 2px #999;
+}
+
 #culture{
     display: none;
 }
@@ -683,6 +748,7 @@ display: none;
     margin-bottom: 5px;
 }
 
+
 .link-name a{
     font-family: FuturaBkAt;
     color: #000;
@@ -690,8 +756,15 @@ display: none;
 
 .news-cell{
     margin-bottom: 35px;
-	margin-left: 5%;
-	margin-right: 5%;
+	margin-left: 3%;
+	margin-right: 3%;
+}
+
+.news-cell1{
+     background: url(../../images/black.png) repeat; 
+	margin-left: 0;
+	margin-right: 0;
+	 margin-bottom: 15px;
 }
 
 .news-left, .news-title, .news-title-more{
@@ -729,7 +802,7 @@ display: none;
     z-index: 500;
 }
 
-.news-cont .previous-news, .news-cont .next-news{
+.news-cont  .previous-news, .news-cont .next-news{
     position: absolute;
     bottom: 10px;
     width: 14px;
@@ -1068,9 +1141,18 @@ display: none;
     padding-bottom: 14px;
 }
 .boton-listado{
-    background-color: #1a1a1c;
+   
 padding: 5px 6px 8px 5px;
 text-align: center;
+font-family: "Droid";
+font-size:1.2em;
+margin-bottom:20px;
+
+}
+
+.boton-listado a{
+	color:#000;
+
 }
 .boton-reservaciones{
     width: 95px;
@@ -1091,13 +1173,14 @@ padding-bottom: 25px;
     padding-bottom: 25px;
 }
 .logobotones{
-    width:385px;
-    margin-top: 60px;
+    width:412px;
+    margin-top: 40px;
     opacity: 0.90;
+	
 }
 .logobotones-responsive{
     width:385px;
-    /*#margin-top: 60px;*/
+    #margin-top: 60px;
     opacity: 0.90;
 }
 .cuadro-contenido{
@@ -1136,7 +1219,7 @@ padding-bottom: 25px;
 #backstretch{
 	display: none;
 }*/
-.news-cont {
+.news-cont, .news-cont1 {
 		width: 94%;
 		margin: 7px 5px 0px 4px;
 	}
@@ -1159,8 +1242,8 @@ p{
 
 @media screen and (max-width:370px){
 	.top-main-text{
-		/*#width: 20%;
-		#font-size: 10px;*/
+		#width: 20%;
+		#font-size: 10px;
 		padding-left: 12px;
 	}
 	.upper-text{

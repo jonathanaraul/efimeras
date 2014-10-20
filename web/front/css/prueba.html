@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta property="og:image" content="http://master-arquitectura-efimera.com/efimera.png"/>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta name="robots" content="INDEX, FOLLOW">
+	<title>Efímeras</title>
+	<link rel="shortcut icon" href="/favicon_negro.ico">
+	<script type="text/javascript" src="/front/js/jquery-1.7.2.min.js"></script><style type="text/css"></style>
+	<script type="text/javascript" src="/front/js/jquery.mousewheel-3.0.4.pack.js"></script>
+	<script type="text/javascript" src="/front/js/jquery.jscrollpane.min.js"></script>
+	<script type="text/javascript" src="/front/js/jquery.backstretch.min.js"></script>
+	<script type="text/javascript" src="/front/js/scrollable.min.js"></script>
+	<script type="text/javascript" src="/front/js/jquery.nivo.slider.pack.js"></script>
+	<script type="text/javascript" src="/front/js/page_function.js"></script>
+		<script type="text/javascript" src="/front/js/generales.js"></script>
+    <script type="text/javascript" src="/front/js/busqueda.js"></script>
+	<script src="/front/SlickNav/jquery.slicknav.min.js"></script>
+	<script type="text/javascript">
+	var direccionBuscar = "/search";
+	var direccionBotonesMensaje = "/botones/mensaje";
+	var direccionBotonesNewsletter = "/botones/newsletter";
+	</script>
+
+	<meta name="description" content="El equipo de Efímeras está formado por un grupo de profesionales procedentes de diferentes disciplinas de la Escuela Técnica Superior de Arquitectura de Madrid, como son: arquitectos, diseñadores gráficos e industriales, artistas plásticos y de audiovisuales, técnicos de luz y proyecciones, psicólogos, escenógrafos, especialistas en gestión y nuevos medios de comunicación, paisajistas e historiadores.">
+	<meta name="keywords" content="Efimeras, madrid, realego">
+	<meta name="author" content="Realego">
+
+	<script>
+	var images = ["/uploads/backgrounds/853795ce12735e8e29be52e69be73c9723ad337d.jpeg"];
+
+	</script>
+	<meta name="viewport" content="width=device-width" />
+	<link rel="stylesheet" type="text/css" media="screen" href="/front/css/style.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="/front/css/jquery.jscrollpane.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="/front/css/lightbox.css">
+	<link rel="stylesheet" href="/front/SlickNav/slicknav.css" />
+</head>
+
+	<body style="background-color:#a3a3a3;height:100%;">
+		<div class="main-tab" style="width: 1300px;">
+		<div class="middle-left" style="padding-top: 1px;float: left;margin-left: 26px;position: fixed;">
+			<div class="logobotones" style="background-color: #dcaccb;">
+	<div class="minibotones" style="float:left;width:60px;background-color: #dcaccb;opacity: 0.90;height: 231px;padding-top: 29px;" >
+		<div class="botonlogo">
+			<p style="text-align:center">
+				<a title="Home page" href="javascript:void(0)" id="logoBotonMensaje"> <img src="/front/images/mensaje.png" style="width:35px;"> </a>
+			</p>
+		</div>
+		<div class="botonlogo">
+			<p style="text-align:center">
+				<a title="Home page" href="javascript:void(0)" id="logoBotonUsuario"> <img src="/front/images/usuario.png" style="width:35px;"> </a>
+			</p>
+		</div>
+		<div class="botonlogo">
+			<p style="text-align:center">
+				<a title="Home page" href="javascript:void(0)" id="logoBotonBusqueda"> <img src="/front/images/buscar.png" style="width:35px;"> </a>
+			</p>
+		</div>
+		<div class="botonlogo">
+			<p style="text-align:center">
+				<a title="Home page" href="javascript:void(0)"  id="logoBotonNewsletter"> <img src="/front/images/listado.png" style="width:35px;"> </a>
+			</p>
+		</div>
+		<div class="botonlogo">
+			<p style="text-align:center">
+				<a title="Home page" href="javascript:void(0)"  id="logoBotonLugar"> <img src="/front/images/lugar.png" style="width:35px;"> </a>
+			</p>
+		</div>
+	</div>
+	<div class="logo-imagen" style="float:left;background-color: #dcaccb;opacity: 0.90;width: 298px;height:260px;" >
+		<div id="logo-imagen">
+			<a title="Home page" href="/"> <img src="/front/images/logo.png" style="padding: 15px;"> 
+			</a>
+		</div>
+		<div id="contenidoBoton" style="display:none">
+			<div id="redesSociales" style="with:100%;margin-top: -66px;float: right;margin-right: 9px;">
+				<div style="float:left">
+	<a href="https://www.facebook.com/realego.realego?fref=ts" target="_blank" ><img src="/front/images/facebook.png"></a>
+</div>
+<div style="float:left">
+	<a href="https://twitter.com/" target="_blank"><img src="/front/images/twitter.png"></a>
+</div>
+<div style="float:left">
+	<a href="https://www.tuenti.com/" target="_blank"><img src="/front/images/tuenti.png"></a>
+</div>
+<div style="float:left">
+	<a href="https://es.pinterest.com/" target="_blank"><img src="/front/images/pinterest.png"></a>
+</div>
+
+			</div>
+			<div id="contenidoBotonUsuario" style="margin-top:75px;">
+				
+<form  action="/login_check" method="post"/>
+<input type="hidden" name="_csrf_token" value="Ffbgwsa51dIDIibkdjkav7RwikIA_N7Jb9yvNIEAlJo" />
+<div style="margin-top: 12px;font-weight: bold;">
+	<p>Usuario</p>
+	<input type="text"  name="_username" value="" placeholder="" required="required"  style="width: 95%;border: none;" class="form-reservacion" />
+</div>
+<div style="margin-top: 12px;font-weight: bold;">
+	<p>Contraseña</p>
+	<input type="password" id="password" name="_password" required="required" style="width: 95%;border: none;" class="form-reservacion"/>
+</div>
+<div style="margin-top: 12px;">
+	<input type="submit" value="Acceder" style="background: #000000;border: none;color: white;float: right;margin-right: 15px;font-weight: bolder;">
+	<input type="hidden" name="_target_path" value="/dashboard"  />
+</div>
+</form>
+
+
+		    </div>
+		    <div id="contenidoBotonMensaje" style="margin-top:75px;">
+		    	<div style="margin-top: 12px;font-weight: bold;" class="botonMensaje_elemento">
+		    		<p>Asunto</p>
+		    		<input type="text" id="botonMensaje_asunto"  style="width: 95%;border: none;" class="botonMensaje_campo form-reservacion">
+		    	</div>
+		    	<div style="margin-top: 12px;font-weight: bold;" class="botonMensaje_elemento">
+		    		<p>E-mail</p>
+		    		<input type="text" id="botonMensaje_email" style="width: 95%;border: none;" class="botonMensaje_campo form-reservacion">
+		    	</div>
+		    	<div style="margin-top: 12px;font-weight: bold;" class="botonMensaje_elemento">
+		    		<p>Mensaje</p>
+		    		<textarea  style="width: 95%;border: none;" id="botonMensaje_mensaje" class="botonMensaje_campo"></textarea>
+		    	</div>
+		    	<div style="margin-top: 12px;" class="botonMensaje_elemento">
+		    		<input type="button" value="Enviar" id="botonMensaje_submit" style="background: #000000;border: none;color: #dcaccb;float: right;margin-right: 15px;font-weight: bolder;cursor:pointer">
+		    	</div>
+		    	<div id="botonMensaje_loader" style="display:none;margin-right: 54px;">
+                     <p style="text-align:center;"><img src="/front/images/loader.gif"></p>
+		    	</div>
+		    </div>
+		    <div id="contenidoBotonNewsletter" style="margin-top:75px;">
+		    	<div style="margin-top: 12px;font-weight: bold;" class="botonNewsletter_elemento">
+		    		<p>Mantente al dia con nuestro newsletter</p>
+		    		<input type="text" id="botonNewsletter_email" style="width: 95%;border: none;" class="form-reservacion botonNewsletter_campo">
+		    	</div>
+		    	<div style="margin-top: 12px;" class="botonNewsletter_elemento">
+		    		<input type="button" value="Suscribete" id="botonNewsletter_submit" style="background: #000000;border: none;color: #dcaccb;float: right;margin-right: 15px;font-weight: bolder;">
+		    	</div>
+		    	<div style="font-weight: bold;margin-top: 41px;" class="botonNewsletter_elemento">
+		    		<p>Suscribete y recibirás periódicamente </br>todas nuestras actualizaciones</p>
+		    	</div>
+		    	<div id="botonNewsletter_loader" style="display:none;margin-right: 54px;">
+                     <p style="text-align:center;"><img src="/front/images/loader.gif"></p>
+		    	</div>
+		    </div>
+		    <div id="contenidoBotonBusqueda" style="margin-top:75px;">
+		    	<div style="margin-top: 40px;font-weight: bold;padding-top: 28px;" class="botonBusqueda_elemento">
+		    		<input type="text" id="botonBusqueda_termino" style="width: 95%;border: none;" class="form-reservacion botonBusqueda_campo">
+		    	</div>
+		    	<div style="margin-top: 12px;" class="botonBusqueda_elemento">
+		    		<input type="button"  id="botonBusqueda_submit"  value="Buscar" style="background: #000000;border: none;color: #dcaccb;float: right;margin-right: 15px;font-weight: bolder;">
+		    	</div>
+		    	<div id="botonBusqueda_loader" style="display:none;margin-right: 54px;">
+                     <p style="text-align:center;"><img src="/front/images/loader.gif"></p>
+		    	</div>
+		    </div>
+			<div id="contenidoBotonLugar" style="margin-top:75px;">
+				<div style="margin-top: 12px;font-weight: bold;" class="botonLugar_elemento">
+    <h3>Escuela Tecnica Superior de Arquitectura de Madrid</h3>
+    <br>
+    <p style="font-size: 0.8em;">Telefono: 913366497 / 913365272</p>
+    <br>
+    <p style="font-size: 0.8em;">Email: efimeras.arquitecturas@upm.es</p>
+   
+</div>
+<div style="margin-top: 12px;" class="botonLugar_elemento">
+    <input type="button" value="Como llegar" id="botonLugar_submit" style="background: #000000;border: none;color: white;float: right;margin-right: 15px;font-weight: bolder;cursor:pointer" onclick="document.location.href = 'https://maps.google.es/maps/ms?ie=UTF8&amp;t=h&amp;oe=UTF8&amp;msa=0&amp;msid=213942746742807131548.00045a3cf2f7558f27c89&amp;dg=feature'">
+</div>
+
+
+
+
+		    </div>
+		</div>
+	</div>
+</div>			
+	<div class="menu" style="float:left;width: 324px;margin-top: 45px;">
+						<div class="menu-element">
+						   <a href="/page/1/ef%C3%8Dmeras-master"> Efímeras Master
+			   </a> 
+			   					</div>
+								<div class="menu-element spacer"></div>
+								<div class="menu-element">
+						   <a href="/page/2/experto-en-arquitecturas-interactivas"> Experto En Arquitecturas Interactivas
+			   </a> 
+			   					</div>
+								<div class="menu-element">
+						   <a href="/page/3/experto-en-arquitectura-ef"> Experto En Arquitectura Efímera Social Y Participativa
+			   </a> 
+			   					</div>
+								<div class="menu-element">
+						   <a href="/page/4/especialista-en-instalaciones-efimeras"> Especialista En Instalaciones Efímeras
+			   </a> 
+			   					</div>
+								<div class="menu-element spacer"></div>
+								<div class="menu-element">
+			 
+			   <a href="/category/1/noticias"> Noticias
+			   </a> 
+			   					</div>
+					</div>
+
+
+	<div class="creditos" style="padding-top: 544px;">
+	     <a title="Realego" href="http://realego.es/"> <img src="/front/images/realego.png" > </a>
+	</div>
+		</div>
+		<div class="middle-right-sub" style="float: left;padding-top: 1px;margin-left: 405px;">
+	<div class="menu-hidden">
+	<div class="logo" style="margin-top: 0px;">
+		<a title="Home page" href="/"> </a>
+	</div>
+	<div style="text-align: center;padding-top: 105px;" id="menuobligado">
+		<ul id="menu" style="display:none">
+								<li>
+						   <a href="/page/1/ef%C3%8Dmeras-master"> Efímeras Master
+			   </a> 
+						</li>
+																<li>
+						   <a href="/page/2/experto-en-arquitecturas-interactivas"> Experto En Arquitecturas Interactivas
+			   </a> 
+						</li>
+											<li>
+						   <a href="/page/3/experto-en-arquitectura-ef"> Experto En Arquitectura Efímera Social Y Participativa
+			   </a> 
+						</li>
+											<li>
+						   <a href="/page/4/especialista-en-instalaciones-efimeras"> Especialista En Instalaciones Efímeras
+			   </a> 
+						</li>
+																<li>
+			 
+			   <a href="/category/1/noticias"> Noticias
+			   </a> 
+						</li>
+							</ul>
+	</div>
+</div>
+
+	<div class="news-cont" style="margin-left: 25px;">
+		<div class="news-cell" style="padding: 14px;">
+			<h2 style="color: #dcaccb;"> Experto En Arquitecturas Interactivas </h2>
+						</br>
+			
+			<p>T&iacute;tulo de Experto en Arquitecturas Interactivas</p>
+
+<p><strong>T&iacute;tulo perteneciente al M&aacute;ster Ef&iacute;meras</strong></p>
+
+<p><em>&ldquo;Actualmente la tecnolog&iacute;a se ha democratizado<br />
+considerablemente y su sencillez facilita que personas<br />
+antes ajenas puedan hacer uso de ella de manera muy diversa,<br />
+permitiendo realizar en muy poco tiempo<br />
+creaciones sorprendentes.&rdquo;</em></p>
+
+<p><em>Chema D&iacute;ez del Corral. Arquitecto</em></p>
+
+<p>&nbsp;</p>
+
+<p>En la actualidad las instalaciones interactivas se desenvuelven en un amplio campo de acci&oacute;n, museos; macro-eventos de todo tipo; montajes ef&iacute;meros en la calle; exposiciones art&iacute;sticas, en escenograf&iacute;as, en el mundo de la publicidad o en acontecimientos de muy diversa &iacute;ndole. A partir de ahora tienes la oportunidad de formarte acad&eacute;micamente en este campo emergente.<br />
+<br />
+En este nuevo t&iacute;tulo de postgrado, formamos expertos capaces de dirigir y realizar proyectos creativos y art&iacute;sticos utilizando las nuevas tecnolog&iacute;as. Estas herramientas ofrecen infinitas posibilidades espaciales, formales y tecnol&oacute;gicas que a&uacute;n se encuentran por desarrollar.<br />
+<br />
+El objetivo principal es abrir el campo de visi&oacute;n y los recursos expresivos al aportar al alumno de los conocimientos necesarios, para comprender el funcionamiento y el uso de estas nuevas tecnolog&iacute;as para dise&ntilde;ar, realizar y dirigir multitud de proyectos tecnol&oacute;gicos diferentes : Smart home, impresi&oacute;n 3d, video-mapping, realidad aumentada, aplicaciones m&oacute;viles art&iacute;sticas, serious games, Instalaciones interactivas en exposiciones y en el espacio p&uacute;blico&hellip;, ya que gracias a las diferentes tecnolog&iacute;as aparecidas en estos &uacute;ltimos a&ntilde;os es posible comunicar conceptos e ideas, y crear sensaciones y experiencias espaciales que de otra manera ser&iacute;a imposible.<br />
+<br />
+Adem&aacute;s el T&iacute;tulo ofrece 100 horas de pr&aacute;cticas con empresas y estudios del sector, facilitando a los alumnos la incorporaci&oacute;n a la experiencia del mundo laboral.</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p><strong>Contenidos Acad&eacute;micos </strong></p>
+
+<p><strong>M&Oacute;DULO 1 - </strong><strong>Teor&iacute;a</strong></p>
+
+<p><strong>Introducci&oacute;n a las Nuevas Tecnolog&iacute;as</strong></p>
+
+<p>&nbsp;</p>
+
+<p>Se le presenta al alumno una visi&oacute;n global del panorama, dando a conocer: las nuevas posibilidades que estas tecnolog&iacute;as nos permiten y las herramientas que tenemos a nuestra disposici&oacute;n, as&iacute; como un recorrido por las mejores creaciones.</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p><strong>M&Oacute;DULO 3 - Arduino<br />
+Electr&oacute;nica &ldquo;<em>DO IT YOUR SELF&rdquo;</em></strong></p>
+
+<p>&nbsp;</p>
+
+<p>Arduino es una plataforma que tiene como fin acercar la electr&oacute;nica al p&uacute;blico en general haci&eacute;ndola m&aacute;s sencilla y accesible, cuando ves que unos amigos han creado un robot o unos estudiantes han mandado un sat&eacute;lite, muy seguramente est&aacute;n jugando con Arduino.</p>
+
+<p>&nbsp;</p>
+
+<p><strong>Workshop 2:<br />
+Interactuando con objetos cotidianos</strong></p>
+
+<p>&nbsp;</p>
+
+<p>Utilizando arduino hackeamos objetos del d&iacute;a a d&iacute;a para hacerlos que respondan ante distintos inputs</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p><strong>M&Oacute;DULO 2 - </strong><strong>Processing</strong></p>
+
+<p><strong>Programaci&oacute;n Creativa</strong></p>
+
+<p>&nbsp;</p>
+
+<p>Se introduce al alumno en el mundo de la programaci&oacute;n utilizando la herramienta Processing ya que es un lenguaje de programaci&oacute;n muy sencillo enfocado para dise&ntilde;adores gr&aacute;ficos, artistas y arquitectos</p>
+
+<p>&nbsp;</p>
+
+<p><strong>Workshop 1:</strong><br />
+<strong>Dibujo Generativo. Interactividad, orden y caos</strong></p>
+
+<p>&nbsp;</p>
+
+<p>Workshop en el que utilizaremos processing para aprender a programar creando distintos dise&ntilde;os generativos que respondan a &ldquo;est&iacute;mulos&rdquo; externos, patrones de crecimiento y aletoreidad.</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p><strong>M&Oacute;DULO 4 &ndash; Grasshopper<br />
+Herramientas de Generaci&oacute;n Visual</strong></p>
+
+<p>&nbsp;</p>
+
+<p>Es un programa de dibujo con herramientas de programaci&oacute;n visual que permite<br />
+representar elementos complejos gracias a reglas sencillas.</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p><strong>Workshop 3:<br />
+Interactuando con el espacio tridimensional</strong></p>
+
+<p>&nbsp;</p>
+
+<p>Elaboraci&oacute;n de un modelo interactivo de generaci&oacute;n de formas din&aacute;micas. Asociar un comportamiento a un efecto visual digital.</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p><strong>M&Oacute;DULO 5 - Instalaciones Interactivas</strong></p>
+
+<p>&nbsp;</p>
+
+<p>En este m&oacute;dulo estudiaremos c&oacute;mo realizar una instalaci&oacute;n interactiva aplicando lo aprendido en los anteriores m&oacute;dulos</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p><strong>Workshop 4: Videomapping interactivo. </strong></p>
+
+<p>&nbsp;</p>
+
+<p>Dise&ntilde;o y creaci&oacute;n de una instalaci&oacute;n de videomapping, trabajando dicha t&eacute;cnica as&iacute; como dando valor al montaje</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p><strong>Workshop 5: Escenograf&iacute;a interactiva. </strong></p>
+
+<p>&nbsp;</p>
+
+<p>Utilizaremos lo aprendido para crear un espacio cambiante e interactivo, todo un espect&aacute;culo inmersivo.</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p><strong>Workshop 6: Visualizando la ciudad.</strong></p>
+
+<p>&nbsp;</p>
+
+<p>Utilizando las nuevas tecnolog&iacute;as tenemos dos misiones: leer la ciudad de una manera nueva y mostrarla al mundo con visualizaciones y gr&aacute;ficos interactivos.</p>
+
+<p><strong>Pr&aacute;cticas </strong></p>
+
+<p>&nbsp;</p>
+
+<p>Adem&aacute;s el T&iacute;tulo ofrece 100 horas de pr&aacute;cticas empresas del sector facilitando a los alumnos la incorporaci&oacute;n a la experiencia del mundo pr&aacute;ctico y social.</p>
+
+<p><strong>Plazo: Matr&iacute;cula, Pagos y Desarrollo</strong></p>
+
+<p>&nbsp;</p>
+
+<p><strong>Preinscripci&oacute;n:</strong> desde 25 de junio hasta 25 Septiembre (www.upm.es/atenea)</p>
+
+<p>&nbsp;</p>
+
+<p><strong>Inscripci&oacute;n </strong><strong>y reserva de plaza:</strong> Hasta el 1 de octubre del 2014. 350 Euros</p>
+
+<p>&nbsp;</p>
+
+<p><strong>Matr&iacute;cula</strong>:A partir del 15 de septiembre hasta el 1 de octubre para hacer efectiva la matr&iacute;cula, se tendr&aacute; que abonar un &uacute;nico pago de 2.500 euros restantes, o bien si se prefiere en 2 plazos a lo largo del curso.</p>
+
+<p>&nbsp;</p>
+
+<p><strong>Pago fraccionado: </strong></p>
+
+<p>&nbsp;</p>
+
+<p>1&ordm; Pago: 1.500 euros antes del 1 de octubre de 2014</p>
+
+<p>2&ordm; Pago: 1.000 euros antes del 1 de diciembre de 2014</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>* Se otorgar&aacute;n becas parciales internas sobre el importe de la matr&iacute;cula. Las becas no se otorgar&aacute;n sobre el importe de la Inscripci&oacute;n.</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p><strong>Inicio del Curso</strong>: 2-3 octubre de 2014</p>
+
+<p>&nbsp;</p>
+
+<p><strong>Desarrollo del Curso</strong>: Del 6 de octubre al 20 de diciembre</p>
+
+<p>&nbsp;</p>
+
+<p><strong>Presentaci&oacute;n Oral</strong>: 8,9,10 de enero 2015</p>
+
+<p>&nbsp;</p>
+
+<p><strong>Pr&aacute;cticas en empresas y estudios</strong>: Del 12 de enero al 12 de febrero de 2015</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>Este T&iacute;tulo de Experto se puede realizar independientemente o como parte del M&aacute;ster en Ef&iacute;meras.</p>
+
+<p>&nbsp;</p>
+
+<p>Los antiguos alumnos que ya han cursado el t&iacute;tulo de Especializaci&oacute;n en Instalaciones Ef&iacute;meras de 30ects, tienen la posibilidad de obtener el m&aacute;ster con la realizaci&oacute;n de los dos nuevos cursos de Experto y el Proyecto Fin de M&aacute;ster.</p>
+
+<p>&nbsp;</p>
+
+<p>Todas las clases son presenciales y se realizar&aacute;n en la Escuela T&eacute;cnica Superior de Arquitectura de Madrid en horario de tarde de lunes a viernes desde las 15:30h hasta las 20:45.</p>
+
+<p>&nbsp;</p>
+
+<p>INCRIBETE YA!!!</p>
+
+<p>&nbsp;</p>
+
+<p>Porque formamos profesionales en el campo de las Instalaciones Ef&iacute;meras, un &aacute;mbito de trabajo emergente que tiene una formaci&oacute;n espec&iacute;fica oficial y acad&eacute;mica universitaria.</p>
+
+<p>&nbsp;</p>
+
+<p>Si quieres m&aacute;s informaci&oacute;n sobre el M&aacute;ster en Ef&iacute;meras o los diferentes T&iacute;tulos que lo componen, escr&iacute;benos a efimeras.arquitectura@upm.es.</p>
+
+<p>&nbsp;</p>
+
+<p>FacebookTumblrTwitterPinterest<strong>Informacion de contacto:</strong><strong>www.instalacionesefimeras.com</strong><br />
+efimeras.arquitectura@upm.es<br />
+Escuela T&eacute;cnica Superior de Arquitectura de Madrid</p>
+
+<p>&nbsp;</p>
+
+<p>Avenida Juan de Herrera, 4</p>
+
+<p>28040 MADRID<br />
+Pabell&oacute;n Nuevo, Tercera Planta</p>
+
+<p>Tel&eacute;fono: 913364402/ 913365272.</p>
+
+			</br>
+						<div class="boton-listado boton-reservaciones" style="margin-top: 14px;margin-right: 0px;" >
+				<a href="/reservation/2" >Reservar</a>
+			</div>
+					</div>
+	</div>
+		</div>
+<div class="tags" style="float: left;padding-top: 1px;
+background-color: #000;
+opacity: 0.8;
+padding: 17px;
+color: white;
+top: 9px;
+width: 150px;
+margin-top: 51px;
+font-size: 1.2em;
+text-align: center;
+line-height: 200%;
+position: fixed;
+margin-left: 1106px;
+">
+                              <span><b>
+         <a href="/tag/arquitectura" style="color:white">arquitectura</a>
+         </b>
+         </span>
+                                       <span><b>
+         <a href="/tag/%20interactiva" style="color:white"> interactiva</a>
+         </b>
+         </span>
+                                       <span>
+              <a href="/tag/%20efimera" style="color:white"> efimera</a>
+         </span>
+                                       <span>
+              <a href="/tag/%20tecn%C3%B3logia" style="color:#dcaccb"> tecnólogia</a>
+         </span>
+                                      <span><b>
+              <a href="/tag/%20robotica" style="color:#dcaccb"> robotica</a>
+              </b>
+         </span>
+             </div>		
+	</div>
+</body>
+</html>

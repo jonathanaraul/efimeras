@@ -9,3 +9,4 @@
 /bin/
 /composer.phar
 /nbproject/
+/app/bootstrap.php.cache
