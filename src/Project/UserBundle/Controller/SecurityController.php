@@ -11,6 +11,16 @@
 
 namespace Project\UserBundle\Controller;
 
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\Security\Core\SecurityContext;
+use Symfony\Component\HttpFoundation\Response;
+
+use FOS\UserBundle\FOSUserEvents;
+use FOS\UserBundle\Event\FormEvent;
+use FOS\UserBundle\Event\GetResponseUserEvent;
+use FOS\UserBundle\Event\UserEvent;
+use FOS\UserBundle\Event\FilterUserResponseEvent;
+
 use Symfony\Component\DependencyInjection\ContainerAware;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\SecurityContextInterface;
@@ -67,7 +77,8 @@ class SecurityController extends ContainerAware
         //$ruta = 'FOSUserBundle:Security:login2.html.%s';
 
 
-        $template = sprintf($ruta, $this->container->getParameter('fos_user.template.engine'));
+        //$template = sprintf($ruta, $this->container->getParameter('fos_user.template.engine'));
+        $template = sprintf($ruta);
 
         return $this->container->get('templating')->renderResponse($template, $data);
     }
