@@ -77,8 +77,8 @@ class SecurityController extends ContainerAware
         //$ruta = 'FOSUserBundle:Security:login2.html.%s';
 
 
-        //$template = sprintf($ruta, $this->container->getParameter('fos_user.template.engine'));
-        $template = sprintf($ruta);
+        $template = sprintf($ruta, $this->container->getParameter('fos_user.template.engine'));
+        //$template = sprintf($ruta);
 
         return $this->container->get('templating')->renderResponse($template, $data);
     }

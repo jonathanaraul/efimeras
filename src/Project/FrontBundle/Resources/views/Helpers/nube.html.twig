@@ -3,9 +3,9 @@
      {%for element in tags%}
         {%set tipo =  random(3)  %}
         {%if tipo == 0%}
-          <span>
+            <span>
               <a href="{{path('project_front_tag',{'tag': element})}}" style="color:{{page.theme.color}}">{{element}}</a>
-         </span>
+            </span>
         {%elseif tipo==1%}
          <span>
               <a href="{{path('project_front_tag',{'tag': element})}}" style="color:white">{{element}}</a>

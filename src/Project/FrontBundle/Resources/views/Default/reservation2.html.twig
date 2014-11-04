@@ -8,10 +8,10 @@ images[{{loop.index0}}] = "{{ asset(''~ element.getWebPath ~'') }}";
 {%endblock%}
 
 {%block contenido%}
-<div class="middle-right-sub" style="float: left;padding-top: 1px;margin-left: 405px;">
+<div class="middle-right-sub" style="float: left;padding-top: 1px;margin-left: 402px;">
 	{% include 'ProjectFrontBundle:Helpers:controller-menuMobile.html.twig' %}
-	<div class="news-cont" style="margin-left: 25px;{%if page.template==0%}width: 800px;{%endif%}">
-		<div class="news-cell" style="padding: 14px;">
+	<div class="news-cont" style="margin-left: 20px;{%if page.template==0%}width: 800px;{%endif%}">
+		<div class="news-cell" style="padding: 0px;">
 			<h2 style="color: {{page.theme.color}};"> Reservas </h2>
 			{%if message == ''%}
 			<form action="{{ url }}" method="post" {{ form_enctype(form) }} id="form-reservaciones">

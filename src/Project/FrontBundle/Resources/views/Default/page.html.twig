@@ -5,10 +5,10 @@ var images = ["{{ asset(''~ page.getBackground.getWebPath ~'') }}"];
 {%endblock%}
 
 {%block contenido%}
-<div class="middle-right-sub" style="float: left;padding-top: 1px;margin-left: 405px;">
+<div class="middle-right-sub" style="float: left;padding-top: 1px;margin-left: 402px;">
 	{% include 'ProjectFrontBundle:Helpers:controller-menuMobile.html.twig' %}
-	<div class="news-cont" style="margin-left: 25px;{%if page.template==0 and page.templateMenu==0 %}width: 800px;{%endif%}">
-		<div class="news-cell" style="padding: 14px;">
+	<div class="news-cont" style="margin-left: 20px;{%if page.template==0 and page.templateMenu==0 %}width: 800px;{%endif%}">
+		<div class="news-cell" style="padding: 0px;">
 			<h2 style="color: {{page.theme.color}};"> {{page.name|title}} </h2>
 			{%if page.path is not null%}
 			<p>

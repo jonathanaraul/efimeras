@@ -3,12 +3,12 @@
 <body style="background-color:#a3a3a3;height:100%;">
 	{% include 'ProjectFrontBundle:Helpers:social.html.twig' %}
 	<div class="main-tab" style="width: 1300px;">
-		<div class="middle-left" style="padding-top: 1px;float: left;margin-left: 26px;position: fixed;">
-			{% include 'ProjectFrontBundle:Helpers:logobotones.html.twig' with {'clase':'logobotones'} %}
-			{{ render(controller('ProjectFrontBundle:Helpers:menu', { 'idpage': idpage,'idmenu': 1,'mobile':'' })) }}
-		</div>
-		{%block contenido%}
-		{%endblock%}
+            <div class="middle-left" style="padding-top: 1px;float: left;margin-left: 0px;position: fixed;">
+                {% include 'ProjectFrontBundle:Helpers:logobotones.html.twig' with {'clase':'logobotones'} %}
+                {{ render(controller('ProjectFrontBundle:Helpers:menu', { 'idpage': idpage,'idmenu': 1,'mobile':'' })) }}
+            </div>
+            {%block contenido%}
+            {%endblock%}
 		
 	</div>
 </body>

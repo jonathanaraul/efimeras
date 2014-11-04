@@ -5,25 +5,35 @@ var images = ["{{ asset(''~ page.getBackground.getWebPath ~'') }}"];
 {%endblock%}
 
 {%block contenido%}
-<div class="middle-right-sub" style="float: left;padding-top: 1px;margin-left: 405px;">
+<div class="middle-right-sub" style="float: left;padding-top: 1px;margin-left: 402px;">
 	{% include 'ProjectFrontBundle:Helpers:controller-menuMobile.html.twig' %}
-	<div class="news-cont" style="margin-left: 25px;width: 800px;">
-		<div class="news-cell" style="padding: 14px;">
-			<h2 style="color: {{page.theme.color}};"> Resultados para {%if search==false%}Tag{%else%}el termino{%endif%}: {{tag}} </h2>
-			</br>
-			<div class="news-cell" style="margin-top: 31px;">
-				<table cellpadding="12" id="contenido-pagina" style="width: 100%;">
-					{%for element in objects%}
-					<tr width="100%">
-						<td  width="10%" valign="top" ><b> <a href="{{path('project_front_page',{'id': element.id, 'friendlyname' : element.friendlyName})}}"> {{element.name}} </a> </b></td>
-						<td  width="70%" valign="top" > {{element.descriptionMeta}} </td>
-						<td  width="20%" valign="top" > {{element.created.format('Y-m-d')}} </td>
-					</tr>
-					{%endfor%}
-				</table>
-			</div>
-		</div>
-	</div>
+	<div class="news-cont1" style="margin-left: 3px; margin-top:22px;">
+		<div class="news-cell1" style="padding: 4px;">
+                    <h4 style="color: {{page.theme.color}}; margin-left: 15px;"> Resultados para {%if search==false%}Tag{%else%}el termino{%endif%}: {{tag}} </h4>
+                </div>
+                {%for element in objects%}
+                    <div class="news-cell1" style="margin-top: 1px;">
+                        <table cellpadding="12" id="contenido-pagina" style="width: 100%;">
+                            <tr width="100%">
+                                <td  width="10%" valign="top" >
+                                    <a href="{{path('project_front_page',{'id': element.id, 'friendlyname' : element.friendlyName})}}"> {{element.name}} </a>
+                                </td>
+                                <td  width="90%" valign="top" >
+                                    <a href="{{path('project_front_page',{'id': element.id, 'friendlyname' : element.friendlyName})}}"><h2 style="color: {{page.theme.color}}; font-size:1.4em"> {{element.name}} </h2></a>
+                                    <h4> {{element.descriptionMeta}} </h4>
+                                    <p style="margin-top:10px;">{{element.created.format('Y-m-d')}}</p>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                {%endfor%}
+            </div>
 	{% include 'ProjectFrontBundle:Helpers:inferior.html.twig' %}
 </div>
+{%if page.template==1 and  page.templateMenu==0%}
+{% include 'ProjectFrontBundle:Helpers:nube.html.twig' %}
+{%endif%}
+{%if page.templateMenu==1 and page.menu is not null%}
+{% include 'ProjectFrontBundle:Helpers:menu-lateral.html.twig' %}
+{%endif%}
 {%endblock%}

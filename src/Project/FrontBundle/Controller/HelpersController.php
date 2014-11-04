@@ -21,10 +21,10 @@ class HelpersController extends Controller
     $em = $this->getDoctrine()->getManager();
 		
 		$query = $em -> createQuery('SELECT d
-    								 FROM ProjectUserBundle:MenuItem d
-   	 								 WHERE 
-   	 								       d.published = :published  and d.menu = :menu
-    								 ORDER BY d.rank ASC') 
+                    FROM ProjectUserBundle:MenuItem d
+                            WHERE 
+                                  d.published = :published  and d.menu = :menu
+                    ORDER BY d.rank ASC') 
 			   -> setParameter('published', 1)
          -> setParameter('menu', $idmenu);
 
