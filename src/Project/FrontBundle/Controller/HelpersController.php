@@ -42,12 +42,12 @@ class HelpersController extends Controller
 
         return $this->render('ProjectFrontBundle:Helpers:sociales.html.twig', $array);
     }
-    public function lugarAction()
+    public function lugarAction($colorOb)
     {
         $array['lugar'] = $this-> getDoctrine()-> getRepository('ProjectUserBundle:Setting')-> find(6);
         $array['email'] = $this-> getDoctrine()-> getRepository('ProjectUserBundle:Setting')-> find(8);
         $array['telefono'] = $this-> getDoctrine()-> getRepository('ProjectUserBundle:Setting')-> find(7);
-
+        $array['colorOb'] = $colorOb;
         return $this->render('ProjectFrontBundle:Helpers:lugar.html.twig', $array);
     }
 }

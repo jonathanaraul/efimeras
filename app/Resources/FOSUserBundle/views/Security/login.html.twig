@@ -9,14 +9,14 @@
 {% endif %}
 <div style="margin-top: 12px;font-weight: bold;">
 	<p>Usuario</p>
-	<input type="text"  name="_username" value="{{ last_username }}" placeholder="{{ last_username }}" required="required"  style="width: 95%;border: none;" class="form-reservacion" />
+	<input type="text"  name="_username" value="{{ last_username }}" placeholder="{{ last_username }}" required="required"  style="width: 90%;border: none;" class="form-reservacion" />
 </div>
 <div style="margin-top: 12px;font-weight: bold;">
 	<p>Contraseña</p>
-	<input type="password" id="password" name="_password" required="required" style="width: 95%;border: none;" class="form-reservacion"/>
+	<input type="password" id="password" name="_password" required="required" style="width: 90%;border: none;" class="form-reservacion"/>
 </div>
 <div style="margin-top: 12px;">
-	<input type="submit" value="Acceder" style="background: #000000;border: none;color: white;float: right;margin-right: 15px;font-weight: bolder;">
+	<input type="submit" value="Acceder" style="background: #000000;border: none;color: {{colorBl}};float: right;margin-right: 30px;font-weight: bolder; padding:4px 8px;">
 	<input type="hidden" name="_target_path" value="/dashboard"  />
 </div>
 {#<div style="margin-top: 35px;">

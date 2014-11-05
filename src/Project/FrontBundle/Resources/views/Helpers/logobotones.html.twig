@@ -36,56 +36,56 @@
 				{{ render(controller('ProjectFrontBundle:Helpers:sociales')) }}
 			</div>
 			<div id="contenidoBotonUsuario" style="margin-top:75px;">
-				{{ render(controller('ProjectUserBundle:Security:login', { 'reducido': true })) }}
+				{{ render(controller('ProjectUserBundle:Security:login', {'reducido': true, 'colorBl': page.theme.color})) }}
 		    </div>
 		    <div id="contenidoBotonMensaje" style="margin-top:75px;">
-		    	<div style="margin-top: 12px;font-weight: bold;" class="botonMensaje_elemento">
-		    		<p>Asunto</p>
-		    		<input type="text" id="botonMensaje_asunto"  style="width: 95%;border: none;" class="botonMensaje_campo form-reservacion">
-		    	</div>
-		    	<div style="margin-top: 12px;font-weight: bold;" class="botonMensaje_elemento">
-		    		<p>E-mail</p>
-		    		<input type="text" id="botonMensaje_email" style="width: 95%;border: none;" class="botonMensaje_campo form-reservacion">
-		    	</div>
-		    	<div style="margin-top: 12px;font-weight: bold;" class="botonMensaje_elemento">
-		    		<p>Mensaje</p>
-		    		<textarea  style="width: 95%;border: none;" id="botonMensaje_mensaje" class="botonMensaje_campo"></textarea>
-		    	</div>
-		    	<div style="margin-top: 12px;" class="botonMensaje_elemento">
-		    		<input type="button" value="Enviar" id="botonMensaje_submit" style="background: #000000;border: none;color: {{page.theme.color}};float: right;margin-right: 15px;font-weight: bolder;cursor:pointer">
-		    	</div>
-		    	<div id="botonMensaje_loader" style="display:none;margin-right: 54px;">
-                     <p style="text-align:center;"><img src="{{asset('front/images/loader.gif')}}"></p>
-		    	</div>
-		    </div>
+				<div style="margin-top: 2px;font-weight: bold;" class="botonMensaje_elemento">
+					<p>Asunto</p>
+					<input type="text" id="botonMensaje_asunto"  style="width: 90%;border: none;" class="botonMensaje_campo form-reservacion">
+				</div>
+				<div style="margin-top: 12px;font-weight: bold;" class="botonMensaje_elemento">
+					<p>E-mail</p>
+					<input type="text" id="botonMensaje_email" style="width: 90%;border: none;" class="botonMensaje_campo form-reservacion">
+				</div>
+				<div style="margin-top: 12px;font-weight: bold;" class="botonMensaje_elemento">
+					<p>Mensaje</p>
+					<textarea  style="width: 89%;border: none;" id="botonMensaje_mensaje" class="botonMensaje_campo"></textarea>
+				</div>
+				<div style="margin-top: 12px;" class="botonMensaje_elemento">
+					<input type="button" value="Enviar" id="botonMensaje_submit" style="background: #000000;border: none;color: {{page.theme.color}};float: right;margin-right: 30px;font-weight: bolder;cursor:pointer; padding:4px 8px;">
+				</div>
+				<div id="botonMensaje_loader" style="display:none;margin-right: 54px;">
+			         <p style="text-align:center;"><img src="{{asset('front/images/loader.gif')}}"></p>
+				</div>
+			</div>
 		    <div id="contenidoBotonNewsletter" style="margin-top:75px;">
-		    	<div style="margin-top: 12px;font-weight: bold;" class="botonNewsletter_elemento">
-		    		<p>Mantente al dia con nuestro newsletter</p>
-		    		<input type="text" id="botonNewsletter_email" style="width: 95%;border: none;" class="form-reservacion botonNewsletter_campo">
-		    	</div>
-		    	<div style="margin-top: 12px;" class="botonNewsletter_elemento">
-		    		<input type="button" value="Suscribete" id="botonNewsletter_submit" style="background: #000000;border: none;color: {{page.theme.color}};float: right;margin-right: 15px;font-weight: bolder;">
-		    	</div>
-		    	<div style="font-weight: bold;margin-top: 41px;" class="botonNewsletter_elemento">
-		    		<p>Suscribete y recibirás periódicamente </br>todas nuestras actualizaciones</p>
-		    	</div>
-		    	<div id="botonNewsletter_loader" style="display:none;margin-right: 54px;">
-                     <p style="text-align:center;"><img src="{{asset('front/images/loader.gif')}}"></p>
-		    	</div>
-		    </div>
+				<div style="margin-top: 12px;font-weight: bold;" class="botonNewsletter_elemento">
+					<p style="margin-bottom:10px;">Mantente al dia con nuestro newsletter</p>
+					<input type="text" id="botonNewsletter_email" style="width: 90%;border: none;" class="form-reservacion botonNewsletter_campo">
+				</div>
+				<div style="margin-top: 12px;" class="botonNewsletter_elemento">
+					<input type="button" value="Suscribete" id="botonNewsletter_submit" style="background: #000000;border: none;color: {{page.theme.color}};float: right;margin-right: 30px;font-weight: bolder; ; padding:4px 8px;">
+				</div>
+				<div style="font-weight: bold;margin-top: 41px;" class="botonNewsletter_elemento">
+					<p>Suscribete y recibirás periódicamente </br>todas nuestras actualizaciones</p>
+				</div>
+				<div id="botonNewsletter_loader" style="display:none;margin-right: 54px;">
+			         <p style="text-align:center;"><img src="{{asset('front/images/loader.gif')}}"></p>
+				</div>
+			</div>
 		    <div id="contenidoBotonBusqueda" style="margin-top:75px;">
-		    	<div style="margin-top: 40px;font-weight: bold;padding-top: 28px;" class="botonBusqueda_elemento">
-		    		<input type="text" id="botonBusqueda_termino" style="width: 95%;border: none;" class="form-reservacion botonBusqueda_campo">
-		    	</div>
-		    	<div style="margin-top: 12px;" class="botonBusqueda_elemento">
-		    		<input type="button"  id="botonBusqueda_submit"  value="Buscar" style="background: #000000;border: none;color: {{page.theme.color}};float: right;margin-right: 15px;font-weight: bolder;">
-		    	</div>
-		    	<div id="botonBusqueda_loader" style="display:none;margin-right: 54px;">
-                     <p style="text-align:center;"><img src="{{asset('front/images/loader.gif')}}"></p>
-		    	</div>
-		    </div>
+				<div style="margin-top: 40px;font-weight: bold;padding-top: 28px;" class="botonBusqueda_elemento">
+					<input type="text" id="botonBusqueda_termino" style="width: 90%;border: none;" class="form-reservacion botonBusqueda_campo">
+				</div>
+				<div style="margin-top: 18px;" class="botonBusqueda_elemento">
+					<input type="button"  id="botonBusqueda_submit"  value="Buscar" style="background: #000000;border: none;color: {{page.theme.color}};float: right;margin-right: 29px;font-weight: bolder; ;  padding:4px 8px;">
+				</div>
+				<div id="botonBusqueda_loader" style="display:none;margin-right: 54px;">
+			         <p style="text-align:center;"><img src="{{asset('front/images/loader.gif')}}"></p>
+				</div>
+			</div>
 			<div id="contenidoBotonLugar" style="margin-top:75px;">
-				{{ render(controller('ProjectFrontBundle:Helpers:lugar')) }}
+				{{ render(controller('ProjectFrontBundle:Helpers:lugar', {'colorOb': page.theme.color } )) }}
 		    </div>
 		</div>
 	</div>

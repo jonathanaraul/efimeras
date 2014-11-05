@@ -27,7 +27,7 @@ use Symfony\Component\Security\Core\SecurityContextInterface;
 
 class SecurityController extends ContainerAware
 {
-    public function loginAction(Request $request)
+    public function loginAction(Request $request, $colorBl)
     {
         /** @var $session \Symfony\Component\HttpFoundation\Session\Session */
         $session = $request->getSession();
@@ -57,7 +57,8 @@ class SecurityController extends ContainerAware
         return $this->renderLogin(array(
             'last_username' => $lastUsername,
             'error'         => $error,
-            'csrf_token' => $csrfToken
+            'csrf_token' => $csrfToken,
+            'colorBl' => $colorBl
             //'reducido' => $reducido
         ));
     }
