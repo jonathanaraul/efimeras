@@ -38,6 +38,9 @@ project_back_page_create:
 project_back_page_edit:
     pattern:  /page/edit/{id}
     defaults: { _controller: ProjectBackBundle:Page:edit, id: '1' }
+project_back_page_show:
+    pattern:  /page/show/{id}
+    defaults: { _controller: ProjectBackBundle:Page:show, id: '1' }
 
 project_back_category_list:
     pattern:  /category/list/

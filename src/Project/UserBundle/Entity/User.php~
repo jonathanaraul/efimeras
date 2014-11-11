@@ -121,6 +121,12 @@ class User extends BaseUser
     else if($rol == 2) {
       array_push($this->roles, 'ROLE_USER');
     }
+    else if($rol == 3) {
+      array_push($this->roles, 'ROLE_DIRECTOR');
+    }
+    else if($rol == 4) {
+      array_push($this->roles, 'ROLE_PROFESOR');
+    }
     }
 
 
@@ -147,76 +153,100 @@ class User extends BaseUser
         return $this->path;
     }
 
-    public function getAbsolutePath()
-    {
-        return null === $this->path
-            ? null
-            : $this->getUploadRootDir().'/'.$this->path;
-    }
 
-    public function getWebPath()
-    {
-        return null === $this->path
-            ? null
-            : $this->getUploadDir().'/'.$this->path;
-    }
-
-    protected function getUploadRootDir()
-    {
-        // the absolute directory path where uploaded
-        // documents should be saved
-        return __DIR__.'/../../../../web/'.$this->getUploadDir();
-    }
-
-    protected function getUploadDir()
-    {
-        // get rid of the __DIR__ so it doesn't screw up
-        // when displaying uploaded doc/image in the view.
-        return 'uploads/users';
-    }
-
+   
     /**
      * Sets file.
      *
      * @param UploadedFile $file
      */
-    public function setFile(UploadedFile $file = null)
-    {
-        $this->file = $file;
+    public function setFile(UploadedFile $file = null) {
+        $this -> file = $file;
+        // check if we have an old image path
+        if (isset($this -> path)) {
+            // store the old name to delete after the update
+            $this -> temp = $this -> path;
+            //$this -> path = null;
+        } else {
+            $this -> path = 'inicial';
+        }
+        if (null !== $this -> getFile()) {
+            // do whatever you want to generate a unique name
+            $filename = sha1(uniqid(mt_rand(), true));
+            $this -> path = $filename . '.' . $this -> getFile() -> guessExtension();
+        }
     }
 
     /**
+     * @ORM\PrePersist()
+     * @ORM\PreUpdate()
+     */
+    public function preUpload() {
+        if (null !== $this -> getFile()) {
+            // do whatever you want to generate a unique name
+            $filename = sha1(uniqid(mt_rand(), true));
+            $this -> path = $filename . '.' . $this -> getFile() -> guessExtension();
+        }
+    }
+
+    /**
+     * @ORM\PostPersist()
+     * @ORM\PostUpdate()
+     */
+    public function upload() {
+        if (null === $this -> getFile()) {
+            return;
+        }
+
+        // if there is an error when moving the file, an exception will
+        // be automatically thrown by move(). This will properly prevent
+        // the entity from being persisted to the database on error
+        $this -> getFile() -> move($this -> getUploadRootDir(), $this -> path);
+
+        // check if we have an old image
+        if (isset($this -> temp)) {
+            // delete the old image
+            //unlink($this -> getUploadRootDir() . '/' . $this -> temp);
+            // clear the temp image path
+            $this -> temp = null;
+        }
+        $this -> file = null;
+    }
+
+    /**
+     * @ORM\PostRemove()
+     */
+    public function removeUpload() {
+        if ($file = $this -> getAbsolutePath()) {
+            unlink($file);
+        }
+    }
+        /**
      * Get file.
      *
      * @return UploadedFile
      */
-    public function getFile()
-    {
-        return $this->file;
+    public function getFile() {
+        return $this -> file;
     }
 
-    public function upload()
-    {
-    // the file property can be empty if the field is not required
-        if (null === $this->getFile()) {
-            return;
-        }
+    public function getAbsolutePath() {
+        return null === $this -> path ? null : $this -> getUploadRootDir() . '/' . $this -> path;
+    }
 
-    // use the original file name here but you should
-    // sanitize it at least to avoid any security issues
+    public function getWebPath() {
+        return null === $this -> path ? null : $this -> getUploadDir() . '/' . $this -> path;
+    }
 
-    // move takes the target directory and then the
-    // target filename to move to
-        $this->getFile()->move(
-            $this->getUploadRootDir(),
-            $this->getFile()->getClientOriginalName()
-            );
+    protected function getUploadRootDir() {
+        // the absolute directory path where uploaded
+        // documents should be saved
+        return __DIR__ . '/../../../../web/' . $this -> getUploadDir();
+    }
 
-    // set the path property to the filename where you've saved the file
-        $this->path = $this->getFile()->getClientOriginalName();
-
-    // clean up the file property as you won't need it anymore
-        $this->file = null;
+    protected function getUploadDir() {
+        $directorio = 'users';
+        return 'uploads/' . $directorio;
     }
 
 

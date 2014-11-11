@@ -106,6 +106,13 @@ class Page
     /**
      * @var string
      *
+     * @ORM\Column(name="link", type="text", nullable=true)
+     */
+    private $link;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="content", type="text", nullable=false)
      */
     private $content;
@@ -798,5 +805,28 @@ class Page
     public function getMenu()
     {
         return $this->menu;
+    }
+
+    /**
+     * Set link
+     *
+     * @param string $link
+     * @return Page
+     */
+    public function setLink($link)
+    {
+        $this->link = $link;
+
+        return $this;
+    }
+
+    /**
+     * Get link
+     *
+     * @return string 
+     */
+    public function getLink()
+    {
+        return $this->link;
     }
 }

@@ -12,5 +12,5 @@
 	<td class="hidden-phone">{{element.created.format('d/m/Y H:i:s')}}</td>
 	<td class="hidden-phone">{{element.updated.format('d/m/Y H:i:s')}}</td>
 
-    {% include 'ProjectBackBundle:Helpers:listado-status-edit-delete.html.twig'  with {'tipo':'Page','rutaEditar':'project_back_page_edit'}  %}
+    {% include 'ProjectBackBundle:Helpers:listado-status-edit-delete.html.twig'  with {'tipo':'Page','rutaEditar':'project_back_page_edit', 'rutaMostrar':'project_back_page_show'}  %}
 </tr>

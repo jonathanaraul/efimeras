@@ -105,4 +105,23 @@ class PageController extends Controller {
 		return $class-> render('ProjectBackBundle:Page:new-edit.html.twig', $array);
 	}
 
+	/**
+     * Finds and displays a page entity.
+     *
+     */
+    public function showAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $entity = $em->getRepository('ProjectUserBundle:Page')->find($id);
+
+        if (!$entity) {
+            throw $this->createNotFoundException('Unable to find Page entity.');
+        }
+
+        return $this->render('ProjectBackBundle:Page:show.html.twig', array(
+            'element'      => $entity,
+        ));
+    }
+
 }

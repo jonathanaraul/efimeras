@@ -734,4 +734,27 @@ class Category
     {
         return $this->menu;
     }
+
+    /**
+     * Set templateMenu
+     *
+     * @param boolean $templateMenu
+     * @return Category
+     */
+    public function setTemplateMenu($templateMenu)
+    {
+        $this->templateMenu = $templateMenu;
+
+        return $this;
+    }
+
+    /**
+     * Get templateMenu
+     *
+     * @return boolean 
+     */
+    public function getTemplateMenu()
+    {
+        return $this->templateMenu;
+    }
 }

@@ -11,6 +11,11 @@
 		<button class="btn btn-mini btn-success cambiar-estatus-listado" tarea="{%if element.published%}0{%else%}1{%endif%}">
 			<i class="icon-exchange bigger-120"></i>
 		</button>
+		{% if rutaMostrar is defined%}
+		<button class="btn btn-mini btn-important" onclick="document.location.href = '{{path(rutaMostrar,{'id':element.id})}}'">
+            <i class="icon-eye-open bigger-120"></i>
+        </button>
+        {%endif%}
 		<button class="btn btn-mini btn-info" onclick="document.location.href = '{{path(rutaEditar,{'id':element.id})}}'">
 			<i class="icon-pencil bigger-120"></i>
 		</button>
@@ -31,6 +36,11 @@
 				<li onclick="document.location.href = '{{path(rutaEditar,{'id':element.id})}}'">
 					<a href="javascript:void(0)" class="tooltip-success editar" data-rel="tooltip" title="Edit" objeto="{{element.id}}"> <span class="green"> <i class="icon-pencil bigger-120"></i> </span> </a>
 				</li>
+				{% if rutaMostrar is defined%}
+				<li onclick="document.location.href = '{{path(rutaMostrar,{'id':element.id})}}'">
+                    <a href="javascript:void(0)" class="tooltip-success important" data-rel="tooltip" title="Show" objeto="{{element.id}}"> <span class="green"> <i class="icon-eye-open bigger-120"></i> </span> </a>
+                </li>
+                {%endif%}
 				<li class="borrar-listado">
 					<a href="javascript:void(0)" class="tooltip-error borrar" data-rel="tooltip" title="Delete" objeto="{{element.id}}"> <span class="red"> <i class="icon-remove bigger-120"></i> </span> </a>
 				</li>
