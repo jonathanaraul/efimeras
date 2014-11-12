@@ -27,7 +27,7 @@ class NewsletterType extends AbstractType
                     '/',
                     array(
                         'name'  => 'basicstyles',
-                        'items' => array('Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript', '-', 'RemoveFormat'),
+                        'items' => array('Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript', '-', 'RemoveFormat', '-',  '-',  '-',  '-', 'Link'),
                         ),
                     ),
                 'uiColor' => '#ffffff',
