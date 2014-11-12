@@ -106,13 +106,6 @@ class Page
     /**
      * @var string
      *
-     * @ORM\Column(name="link", type="text", nullable=true)
-     */
-    private $link;
-
-    /**
-     * @var string
-     *
      * @ORM\Column(name="content", type="text", nullable=false)
      */
     private $content;
