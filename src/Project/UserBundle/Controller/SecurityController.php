@@ -74,11 +74,11 @@ class SecurityController extends ContainerAware
     protected function renderLogin(array $data)
     {
         $variable ='';
-          $ruta = 'FOSUserBundle:Security:login.html.%s';
+          $ruta = 'FOSUserBundle:Security:login.html.twig';
         //$ruta = 'FOSUserBundle:Security:login2.html.%s';
 
 
-        $template = sprintf($ruta, $this->container->getParameter('fos_user.template.engine'));
+        $template = sprintf($ruta);
         //$template = sprintf($ruta);
 
         return $this->container->get('templating')->renderResponse($template, $data);
