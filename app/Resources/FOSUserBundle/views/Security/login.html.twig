@@ -4,7 +4,7 @@
 <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
 {% if error %}
 <div style="margin-top: 12px;font-weight: bold;">
-	<p>{{ error|trans }}</p>
+	<p>Usuario y/o contraseña incorrectos</p>
 </div>
 {% endif %}
 <div style="margin-top: 12px;font-weight: bold;">
@@ -19,8 +19,10 @@
 	<input type="submit" value="Acceder" style="background: #000000;border: none;color: {{colorBl}};float: right;margin-right: 30px;font-weight: bolder; padding:4px 8px;">
 	<input type="hidden" name="_target_path" value="/dashboard"  />
 </div>
-{#<div style="margin-top: 35px;">
+{#
+<div style="margin-top: 35px;">
 	<p style="font-size:0.8em;float:right;margin-right: 15px;">¿No tiene cuenta? Registrate ahora</p>
-</div>#}
+</div>
+#}
 </form>
 

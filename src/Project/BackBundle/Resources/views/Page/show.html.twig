@@ -95,23 +95,7 @@
             #}
             <tr>
                 <td colspan="2">
-                    {# Large modal #}
-                    <button class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg" id="servicios">Vista Preliminar</button>
-                    <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-                        <div class="modal-dialog modal-lg">
-                            <div class="modal-content">
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                                </div>
-                                <div class="contenedorgeneral hidden-xs">
-                                    {{ render(controller('ProjectFrontBundle:Default:page', {'max': 3, 'id': element.id, 'friendlyname': element.friendlyname })) }}
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <a class="btn btn-primary" target="_blank" href="{{path('project_front_page',{'id': element.id, 'friendlyname' : element.friendlyName})}}">Vista Preliminar</a>
                 </td>
             </tr>
         </tbody>
