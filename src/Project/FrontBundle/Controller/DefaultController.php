@@ -194,7 +194,7 @@ class DefaultController extends Controller
 		$secondArray = array();
 
 		$em = $this -> getDoctrine() -> getManager();
-		$dql = "SELECT n.id,n.name,n.created,n.friendlyName,n.descriptionMeta FROM ProjectUserBundle:Page n WHERE n.tags like :tags ORDER BY n.created ASC";
+		$dql = "SELECT n FROM ProjectUserBundle:Page n WHERE n.tags like :tags ORDER BY n.created ASC";
 		
 		$query = $em -> createQuery($dql);
 		$query -> setParameter('tags', '%'.$tag.'%');

@@ -16,7 +16,11 @@ var images = ["{{ asset(''~ page.getBackground.getWebPath ~'') }}"];
                         <table cellpadding="12" id="contenido-pagina" style="width: 100%;">
                             <tr width="100%">
                                 <td  width="10%" valign="top" >
-                                    <a href="{{path('project_front_page',{'id': element.id, 'friendlyname' : element.friendlyName})}}"> {{element.name}} </a>
+                                    {%if element.background is not null%} 
+                                        <a href="{{asset(''~ element.background.getWebPath ~'')}}"> 
+                                            <img src="{{ element.background.getWebPath | apply_filter('gestion') }}" width="150" height="150"> 
+                                        </a>
+                                    {%endif%}
                                 </td>
                                 <td  width="90%" valign="top" >
                                     <a href="{{path('project_front_page',{'id': element.id, 'friendlyname' : element.friendlyName})}}"><h2 style="color: {{page.theme.color}}; font-size:1.4em"> {{element.name}} </h2></a>

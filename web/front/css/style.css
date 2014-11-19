@@ -1183,7 +1183,7 @@ margin-bottom:20px;
 
 }
 .boton-reservaciones{
-    width: 95px;
+    width: 125px;
     float: right;
     margin-right: 16px;
 }
@@ -1221,60 +1221,60 @@ padding-bottom: 25px;
 #logoBotonMensaje{
 	height: 35px;
 width: 35px;
-background: url(../images/mensaje.png);
+background: url(../images/mensaje.png) no-repeat;
 border: none;
 margin-bottom:1%;
 }
 #logoBotonMensaje:hover{
 	
-background: url(../images/mensaje_negro.png);
+background: url(../images/mensaje_negro.png) no-repeat;
 
 }
 #logoBotonUsuario{
 	height: 35px;
 width: 35px;
-background: url(../images/usuario.png);
+background: url(../images/usuario.png) no-repeat;
 border: none;
 margin-bottom:1%;
 }
 #logoBotonUsuario:hover{
 	
-background: url(../images/usuario_negro.png);
+background: url(../images/usuario_negro.png) no-repeat;
 
 }
 #logoBotonBusqueda{
 	height: 35px;
 width: 35px;
-background: url(../images/buscar.png);
+background: url(../images/buscar.png) no-repeat;
 border: none;
 margin-bottom:1%;
 }
 #logoBotonBusqueda:hover{
 	
-background: url(../images/buscar_negro.png);
+background: url(../images/buscar_negro.png) no-repeat;
 
 }
 #logoBotonNewsletter{
 	height: 35px;
 width: 30px;
-background: url(../images/listado.png);
+background: url(../images/listado.png) no-repeat;
 border: none;
 margin-bottom:1%;
 }
 #logoBotonNewsletter:hover{
 
-background: url(../images/listado_negro.png);
+background: url(../images/listado_negro.png) no-repeat;
 
 }
 #logoBotonLugar{
 	height: 35px;
 width: 30px;
-background: url(../images/lugar.png);
+background: url(../images/lugar.png) no-repeat;
 border: none;
 }
 #logoBotonLugar:hover{
 
-background: url(../images/lugar_negro.png);
+background: url(../images/lugar_negro.png) no-repeat;
 
 }
 .botonlogo{
