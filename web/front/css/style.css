@@ -1218,6 +1218,69 @@ padding-bottom: 25px;
     padding-top: 1px;
     margin-left: 405px;
 }
+#logoBotonMensaje{
+	height: 35px;
+width: 35px;
+background: url(../images/mensaje.png);
+border: none;
+margin-bottom:1%;
+}
+#logoBotonMensaje:hover{
+	
+background: url(../images/mensaje_negro.png);
+
+}
+#logoBotonUsuario{
+	height: 35px;
+width: 35px;
+background: url(../images/usuario.png);
+border: none;
+margin-bottom:1%;
+}
+#logoBotonUsuario:hover{
+	
+background: url(../images/usuario_negro.png);
+
+}
+#logoBotonBusqueda{
+	height: 35px;
+width: 35px;
+background: url(../images/buscar.png);
+border: none;
+margin-bottom:1%;
+}
+#logoBotonBusqueda:hover{
+	
+background: url(../images/buscar_negro.png);
+
+}
+#logoBotonNewsletter{
+	height: 35px;
+width: 30px;
+background: url(../images/listado.png);
+border: none;
+margin-bottom:1%;
+}
+#logoBotonNewsletter:hover{
+
+background: url(../images/listado_negro.png);
+
+}
+#logoBotonLugar{
+	height: 35px;
+width: 30px;
+background: url(../images/lugar.png);
+border: none;
+}
+#logoBotonLugar:hover{
+
+background: url(../images/lugar_negro.png);
+
+}
+.botonlogo{
+margin-bottom: 8%;	
+}
+
 @media screen and (max-width:970px){
 .content-title{
    margin-left: 4%;
