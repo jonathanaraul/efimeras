@@ -23,7 +23,7 @@ var images = ["{{ asset(''~ page.getBackground.getWebPath ~'') }}"];
 			</br>
 			{%if page.reservacion %}
 			<div class="boton-listado boton-reservaciones" style="margin-top: 14px;margin-right: 0px; background-color:{{page.theme.color}}" >
-				<a href="{{path('project_front_reservation',{'id': page.id})}}" >{% trans %}Reservar{% endtrans %}</a>
+				<a href="{{path('project_front_reservation',{'id': page.id})}}" >Pre-Inscripción</a>
 			</div>
 			{%endif%}
 		</div>

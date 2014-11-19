@@ -20,7 +20,7 @@ class PageType extends AbstractType
         -> add('lowerText', 'text', array('label'=> 'Texto inferior','required' => true, 'attr' => array('class' => 'span6')))   
         -> add('file', 'file', array('label'=> 'Archivo opcional','required' => false))      
         -> add('tags', 'text', array('label' => 'Etiquetas','required' => true))
-        -> add('reservacion', 'checkbox', array('label' => 'Reservas', 'required' => false, 'attr' => array('class' => 'ace-switch') ))
+        -> add('reservacion', 'checkbox', array('label' => 'Pre-Inscripción', 'required' => false, 'attr' => array('class' => 'ace-switch') ))
         -> add('template', 'checkbox', array('label' => 'Plantilla Tags', 'required' => false, 'attr' => array('class' => 'ace-switch') )) 
         -> add('templateMenu', 'checkbox', array('label' => 'Plantilla Menus', 'required' => false, 'attr' => array('class' => 'ace-switch') )) 
         -> add('menu', 'entity', array(
@@ -42,7 +42,7 @@ class PageType extends AbstractType
                     '/',
                     array(
                         'name'  => 'basicstyles',
-                        'items' => array('Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript', '-', 'RemoveFormat', '-',  '-',  '-',  '-', 'Link'),
+                        'items' => array('Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript', '-', 'RemoveFormat', '-',  '-',  '-',  '-', 'Link', 'Image'),
                         ),
                     ),
                 'uiColor' => '#ffffff',
