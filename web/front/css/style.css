@@ -1414,3 +1414,9 @@ p{
 .contenedor img.top:hover {
   opacity: 0;
 }
+.menu-lateral1:hover{
+    color: #ffffff;
+    transition: all ease in out 0.4s;
+    -webkit-transition: all ease in out 0.4s;
+    -moz-transition: all ease in out 0.4s;
+}
