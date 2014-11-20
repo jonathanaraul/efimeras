@@ -1,22 +1,27 @@
 <div class="tags">
-
     {%for object in page.menu.menuItems%}
     {%if object.tipo != 2%}
+    {#
     <div class="menu-element">
-      {% if object.tipo == 0 %}
-         <b><a href="{{path('project_front_page',{'id': object.page.id, 'friendlyname' : object.page.friendlyName})}}" style="color:{{page.theme.color}}"> {{object.page.name|title}}
-         </a> </b>
-         {#{%if idpage == object.page.id%}
-         <hr class="men-sel" style="background-color: {{object.page.theme.color}};width: 304px;">
-         {%endif%}#}
-      {%else%} 
-         <a href="{{path('project_front_category',{'id': object.category.id, 'friendlyname' : object.category.friendlyName})}}" style="color:white"> {{object.category.name|title}}
-         </a> 
-         {#{%if idpage == object.category.id%}
-         <hr class="men-sel" style="background-color: {{object.category.theme.color}};width: 304px;"> 
-         {%endif%}#}
-      {%endif%}
     </div>
+    #}
+    <div>
+        <span>
+          {% if object.tipo == 0 %}
+             <b><a href="{{path('project_front_page',{'id': object.page.id, 'friendlyname' : object.page.friendlyName})}}" style="color:{{page.theme.color}}"> {{object.page.name|title}}
+             </a> </b>
+             {#{%if idpage == object.page.id%}
+             <hr class="men-sel" style="background-color: {{object.page.theme.color}};width: 304px;">
+             {%endif%}#}
+          {%else%} 
+             <a href="{{path('project_front_category',{'id': object.category.id, 'friendlyname' : object.category.friendlyName})}}" style="color:white"> {{object.category.name|title}}
+             </a> 
+             {#{%if idpage == object.category.id%}
+             <hr class="men-sel" style="background-color: {{object.category.theme.color}};width: 304px;"> 
+             {%endif%}#}
+          {%endif%}
+          </span>
+      </div>
     {%else%}
     <div class="menu-element spacer"></div>
     {%endif%}

@@ -78,7 +78,7 @@ class Page
     /**
      * @var string
      *
-     * @ORM\Column(name="lower_text", type="string", length=255, nullable=false)
+     * @ORM\Column(name="lower_text", type="string", length=255, nullable=true)
      */
     private $lowerText;
 
