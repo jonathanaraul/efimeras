@@ -1230,6 +1230,9 @@ margin-bottom:1%;
 background: url(../images/mensaje_negro.png);
 cursor:  pointer;
 }
+#logoBotonMensaje:focus{
+outline:none;
+}
 #logoBotonUsuario{
 	height: 35px;
 width: 35px;
@@ -1241,6 +1244,9 @@ margin-bottom:1%;
 	
 background: url(../images/usuario_negro.png);
 cursor:  pointer;
+}
+#logoBotonUsuario:focus{
+outline:none;
 }
 #logoBotonBusqueda{
 	height: 35px;
@@ -1254,6 +1260,9 @@ margin-bottom:1%;
 background: url(../images/buscar_negro.png);
 cursor:  pointer;
 }
+#logoBotonBusqueda:focus{	
+outline:none;
+}
 #logoBotonNewsletter{
 	height: 35px;
 width: 30px;
@@ -1266,6 +1275,9 @@ margin-bottom:1%;
 background: url(../images/listado_negro.png);
 cursor:  pointer;
 }
+#logoBotonNewsletter:focus{
+outline:none; 
+}
 #logoBotonLugar{
 	height: 35px;
 width: 30px;
@@ -1276,6 +1288,10 @@ border: none;
 
 background: url(../images/lugar_negro.png);
 cursor:  pointer;
+
+}
+#logoBotonLugar:focus{
+ outline:none; 
 
 }
 .botonlogo{
