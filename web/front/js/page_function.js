@@ -185,36 +185,35 @@ $(window).resize(function(){
     setBodyHeight();
 });
 
-
 $(document).ready(function() {
+
 	var x = $('.logobotones').css('background-color');
 	$('.menu-element').mouseenter(function(){
 		$('#page',this).css('color',x);
 	});
-});
-$(document).ready(function() {
+
+
 	$('.menu-element').mouseleave(function(){
 		$('#page',this).css('color','white');
 	});
-});
-$(document).ready(function() {
-	var x = $('.logobotones').css('background-color');
+
+
+
 	$('.menu-element1').mouseenter(function(){
 		$('#page',this).css('color',x);
 	});
-});
-$(document).ready(function() {
+
+
 	$('.menu-element1').mouseleave(function(){
 		$('#page',this).css('color','white');
 	});
-});
-$(document).ready(function() {
-	var x = $('.logobotones').css('background-color');
+
+
+
 	$('.menu-element').mouseenter(function(){
 		$('#category',this).css('color',x);
 	});
-});
-$(document).ready(function() {
+
 	$('.menu-element').mouseleave(function(){
 		$('#category',this).css('color','white');
 	});
