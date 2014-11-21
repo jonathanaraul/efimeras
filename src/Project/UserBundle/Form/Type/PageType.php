@@ -32,6 +32,7 @@ class PageType extends AbstractType
         -> add('published', 'checkbox', array('label' => 'Publicado', 'required' => false, 'attr' => array('class' => 'ace-switch') )) 
         -> add('content', 'ckeditor', array(
             'label' => 'Nombre',
+            'attr' => array('name' => 'editor1', 'id' => 'editor1'),
             'config' => array(
                 'toolbar' => array(
                     array(

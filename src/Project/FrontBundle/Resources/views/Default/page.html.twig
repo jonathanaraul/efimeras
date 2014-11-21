@@ -8,7 +8,12 @@ var images = ["{{ asset(''~ page.getBackground.getWebPath ~'') }}"];
 <div class="middle-right-sub" style="float: left;padding-top: 1px;margin-left: 402px;">
 	{% include 'ProjectFrontBundle:Helpers:controller-menuMobile.html.twig' %}
 	<div class="news-cont" style="margin-left: 20px;{%if page.template==0 and page.templateMenu==0 %}width: 800px;{%endif%}">
-		{{ render(controller('ProjectFrontBundle:Helpers:lasttime')) }}
+		{%if page.template==0 and page.templateMenu==0 %}
+			{% set limite = 3 %}
+		{%else%}
+			{% set limite = 2 %}
+		{%endif%}
+		{{ render(controller('ProjectFrontBundle:Helpers:lasttime', { 'limite': limite })) }}
 	</div>
 	<div class="news-cont" style="margin-left: 20px;{%if page.template==0 and page.templateMenu==0 %}width: 800px;{%endif%}">
 		<div class="news-cell" style="padding: 0px;">
