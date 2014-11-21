@@ -1294,6 +1294,26 @@ cursor:  pointer;
  outline:none; 
 
 }
+
+
+#logoRSS{
+	height: 35px;
+width: 35px;
+background: url(../images/rss.png);
+border: none;
+}
+#logoRSS:hover{
+
+background: url(../images/rss_negro.png);
+cursor:  pointer;
+
+}
+#logoRSS:focus{
+ outline:none; 
+
+}
+
+
 .botonlogo{
 margin-bottom: 8%;	
 }

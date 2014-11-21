@@ -1,5 +1,5 @@
 <div class="{{clase}}" style="background-color: {{page.theme.color}};">
-	<div class="minibotones" style="float:left;width:60px;background-color: {{page.theme.color}};opacity: 0.90;height: 231px;padding-top: 29px;padding-left:10px; padding-right:32px;" >
+	<div class="minibotones" style="float:left;width:60px;background-color: {{page.theme.color}};opacity: 0.90;height:250px; padding-top: 10px;padding-left:10px; padding-right:32px;" >
 		<div class="botonlogo">
 			<p style="text-align:center">
 				<button title="Home page" href="javascript:void(0)" id="logoBotonMensaje"> </button>
@@ -25,6 +25,11 @@
 				<button title="Home page" href="javascript:void(0)"  id="logoBotonLugar"> </button>
 			</p>
 		</div>
+		<div class="botonlogo">
+			<p style="text-align:center">
+				<button title="Home page" href="javascript:void(0)"  id="logoRSS"> </button>
+			</p>
+		</div>
 	</div>
 	<div class="logo-imagen" style="float:left;background-color: {{page.theme.color}};opacity: 0.90;width: 298px;height:260px;" >
 		<div id="logo-imagen">
@@ -32,13 +37,13 @@
 			</a>
 		</div>
 		<div id="contenidoBoton" style="display:none">
-			<div id="redesSociales" style="with:100%;margin-top: -66px;float: right;margin-right: 9px;">
+			<div id="redesSociales" style="with:100%;margin-top: -56px;float: right;margin-right: 9px;">
 				{{ render(controller('ProjectFrontBundle:Helpers:sociales')) }}
 			</div>
-			<div id="contenidoBotonUsuario" style="margin-top:75px;">
+			<div id="contenidoBotonUsuario" style="margin-top:55px;">
 				{{ render(controller('ProjectUserBundle:Security:login', {'reducido': true, 'colorBl': page.theme.color})) }}
 		    </div>
-		    <div id="contenidoBotonMensaje" style="margin-top:75px;">
+		    <div id="contenidoBotonMensaje" style="margin-top:55px;">
 				<div style="margin-top: 2px;font-weight: bold;" class="botonMensaje_elemento">
 					<p>Asunto</p>
 					<input type="text" id="botonMensaje_asunto"  style="width: 90%;border: none;" class="botonMensaje_campo form-reservacion">
@@ -58,7 +63,7 @@
 			         <p style="text-align:center;"><img src="{{asset('front/images/loader.gif')}}"></p>
 				</div>
 			</div>
-		    <div id="contenidoBotonNewsletter" style="margin-top:75px;">
+		    <div id="contenidoBotonNewsletter" style="margin-top:55px;">
 				<div style="margin-top: 12px;font-weight: bold;" class="botonNewsletter_elemento">
 					<p style="margin-bottom:10px;">Mantente al dia con nuestro newsletter</p>
 					<input type="text" id="botonNewsletter_email" style="width: 90%;border: none;" class="form-reservacion botonNewsletter_campo">
@@ -73,7 +78,7 @@
 			         <p style="text-align:center;"><img src="{{asset('front/images/loader.gif')}}"></p>
 				</div>
 			</div>
-		    <div id="contenidoBotonBusqueda" style="margin-top:75px;">
+		    <div id="contenidoBotonBusqueda" style="margin-top:55px;">
 				<div style="margin-top: 40px;font-weight: bold;padding-top: 28px;" class="botonBusqueda_elemento">
 					<input type="text" id="botonBusqueda_termino" style="width: 90%;border: none;" class="form-reservacion botonBusqueda_campo">
 				</div>
@@ -84,7 +89,7 @@
 			         <p style="text-align:center;"><img src="{{asset('front/images/loader.gif')}}"></p>
 				</div>
 			</div>
-			<div id="contenidoBotonLugar" style="margin-top:75px;">
+			<div id="contenidoBotonLugar" style="margin-top:55px;">
 				{{ render(controller('ProjectFrontBundle:Helpers:lugar', {'colorOb': page.theme.color } )) }}
 		    </div>
 		</div>
