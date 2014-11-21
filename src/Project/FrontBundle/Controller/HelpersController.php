@@ -50,4 +50,12 @@ class HelpersController extends Controller
         $array['colorOb'] = $colorOb;
         return $this->render('ProjectFrontBundle:Helpers:lugar.html.twig', $array);
     }
+    public function lasttimeAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $dql = "select p from ProjectUserBundle:Page p where p.path is not null order by p.id desc";
+        $query = $em->createQuery($dql)->setMaxResults(3);
+        $resultado = $query->getResult();
+        return $this->render('ProjectFrontBundle:Helpers:last-time.html.twig', array('elementp' => $resultado));
+    }
 }
