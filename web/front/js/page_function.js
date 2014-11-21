@@ -186,35 +186,11 @@ $(window).resize(function(){
 });
 
 $(document).ready(function() {
-
 	var x = $('.logobotones').css('background-color');
-	$('.menu-element').mouseenter(function(){
-		$('#page',this).css('color',x);
+	$('a',this).mouseenter(function(){
+		$(this).css('color',x);
 	});
-
-
-	$('.menu-element').mouseleave(function(){
-		$('#page',this).css('color','white');
-	});
-
-
-
-	$('.menu-element1').mouseenter(function(){
-		$('#page',this).css('color',x);
-	});
-
-
-	$('.menu-element1').mouseleave(function(){
-		$('#page',this).css('color','white');
-	});
-
-
-
-	$('.menu-element').mouseenter(function(){
-		$('#category',this).css('color',x);
-	});
-
-	$('.menu-element').mouseleave(function(){
-		$('#category',this).css('color','white');
+	$('a',this).mouseleave(function(){
+		$(this).css('color','white');
 	});
 });
