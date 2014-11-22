@@ -1325,6 +1325,42 @@ cursor:  pointer;
 margin-bottom: 8%;	
 }
 
+#contenedor-ultimas-noticias{
+
+	display:inline;	
+	}
+	
+#efimeras-etiqueta {
+    width: 80px;
+ 
+}
+.efimeras-etiqueta {
+   width: 80px;
+transform: rotate(333deg);
+position: absolute;
+margin-top: 17px;
+margin-left: -255px;
+overflow: hidden;
+z-index: 0;
+}
+.text-ultimas-noticias-img {
+    color: #FFF;
+    width: 70px;
+    position: absolute;
+    overflow: hidden;
+    margin-top: 30px;
+    margin-left: -90px;
+    font-weight: bold;
+    text-shadow: 2px 2px 2px #000;
+}
+.text-ultimas-noticias-img h1{
+		font-size: 12px;
+}
+.text-ultimas-noticias-img p{
+		font-size: 8px;
+}
+
+
 @media screen and (max-width:970px){
 .content-title{
    margin-left: 4%;
@@ -1475,8 +1511,8 @@ p{
 	margin-left: 240px !important;
 	}
 	.tags{
-	margin-left: 810px !important;
-	width: 190px !important;;	
+		margin-left: 857px !important;
+		width: 15% !important;
 	}
 	.news-cont{
 	width: 95% !important;
@@ -1487,26 +1523,38 @@ p{
 	height:130px;
 	display:inline;	
 	}
-	#ultimas-noticias-img{
-	width:225px !important;	
-	height:130px !important;
+	#ultimas-noticias-img {
+    width: 32% !important;
+    height: 130px !important;
+}
+	#efimeras-etiqueta {
+		width: 80px;
+	 
 	}
-	#efimeras-etiqueta{
-	width: 60px;
-transform: rotate(320deg);
-position: absolute;
-overflow: hidden;
-margin-left: -225px;
-margin-top: 35px;
+	.efimeras-etiqueta {
+	   width: 80px;
+	transform: rotate(333deg);
+	position: absolute;
+	margin-top: 17px;
+	margin-left: -235px;
+	overflow: hidden;
+	z-index: 0;
 	}
-	.text-ultimas-noticias-img{
-	font-size: 6px;
-color: #FFF;
-width: 60px;
-position: absolute;
-overflow: hidden;
-margin-top: 30px;
-margin-left: -90px;
+	.text-ultimas-noticias-img {
+    color: #FFF;
+    width: 70px;
+    position: absolute;
+    overflow: hidden;
+    margin-top: 30px;
+    margin-left: -90px;
+    font-weight: bold;
+    text-shadow: 2px 2px 2px #000;
+}
+	.text-ultimas-noticias-img h1{
+		font-size: 12px;
+	}
+	.text-ultimas-noticias-img p{
+		font-size: 8px;
 	}
 	
 }

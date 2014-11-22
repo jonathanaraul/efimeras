@@ -193,4 +193,8 @@ $(document).ready(function() {
 	$('a',this).mouseleave(function(){
 		$(this).css('color','white');
 	});
+	$('.active').css('color',x);
+	
 });
+
+
