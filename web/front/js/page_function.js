@@ -194,7 +194,7 @@ $(document).ready(function() {
 		$(this).css('color','white');
 	});
 	$('.active').css('color',x);
-	
+
 });
 
 

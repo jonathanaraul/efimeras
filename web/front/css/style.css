@@ -1186,14 +1186,17 @@ margin-bottom:20px;
 }
 
 .boton-listado a{
-	color:#000;
+	color:white;
+	text-shadow:1px 1px 1px #000;
 
 }
 .boton-reservaciones{
-    width: 95px;
+    width: 110px;
     float: right;
     margin-right: 16px;
+	
 }
+
 .fechas-articulo{
 width: 100%;
 margin-top: 20px;
@@ -1515,7 +1518,7 @@ p{
 		width: 15% !important;
 	}
 	.news-cont{
-	width: 95% !important;
+	width: 745px  !important;
 	}
 	
 	#contenedor-ultimas-noticias{
