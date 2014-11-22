@@ -1,6 +1,6 @@
 <div class="news-cell" style="padding: 0px;">
 	<h2>Última Hora</h2>
 		{%for elementop in elementp%}
-		<a id="page" href="{{path('project_front_page',{'id': elementop.id, 'friendlyname' : elementop.friendlyName})}}" title="{{elementop.name|title}}"> <img src="{{asset(elementop.getWebPath)}}" style="margin-top:15px;" width="245" height="150"></a>
+		<div id="contenedor-ultimas-noticias"><a id="page" href="{{path('project_front_page',{'id': elementop.id, 'friendlyname' : elementop.friendlyName})}}" title="{{elementop.name|title}}"> <img id="ultimas-noticias-img" src="{{asset(elementop.getWebPath)}}" style="margin-top:15px;" width="245" height="150"></a><img id="efimeras-etiqueta" src="../front/images/efimeras-etiqueta.png" /><span class="text-ultimas-noticias-img">Hola sabes donde quedamos?</span></div>
 		{%endfor%}
 </div>
