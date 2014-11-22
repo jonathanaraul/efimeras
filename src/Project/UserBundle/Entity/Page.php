@@ -186,6 +186,13 @@ class Page
      */
     private $reservacion;
 
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="lastHour", type="boolean", nullable=true)
+     */
+    private $lastHour = true;
+
 	private $file;
 	private $temp;
 	private $remove;
@@ -568,6 +575,29 @@ class Page
     public function getReservacion()
     {
         return $this->reservacion;
+    }
+
+    /**
+     * Set lastHour
+     *
+     * @param integer $lastHour
+     * @return Page
+     */
+    public function setLastHour($lastHour)
+    {
+        $this->lastHour = $lastHour;
+    
+        return $this;
+    }
+
+    /**
+     * Get lastHour
+     *
+     * @return integer 
+     */
+    public function getLastHour()
+    {
+        return $this->lastHour;
     }
 
     /**

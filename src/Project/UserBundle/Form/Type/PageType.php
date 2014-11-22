@@ -29,7 +29,8 @@ class PageType extends AbstractType
             'label' => 'Menu',
             'required' => false, 
             ))        
-        -> add('published', 'checkbox', array('label' => 'Publicado', 'required' => false, 'attr' => array('class' => 'ace-switch') )) 
+        -> add('published', 'checkbox', array('label' => 'Publicado', 'required' => false, 'attr' => array('class' => 'ace-switch') ))
+        -> add('lastHour', 'checkbox', array('label' => 'Ultima Hora', 'required' => false, 'attr' => array('class' => 'ace-switch') )) 
         -> add('content', 'ckeditor', array(
             'label' => 'Nombre',
             'attr' => array('name' => 'editor1', 'id' => 'editor1'),
