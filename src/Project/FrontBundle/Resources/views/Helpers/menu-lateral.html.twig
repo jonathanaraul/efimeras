@@ -8,7 +8,7 @@
     <div>
         <span>
           {% if object.tipo == 0 %}
-             <b><a href="{{path('project_front_page',{'id': object.page.id, 'friendlyname' : object.page.friendlyName})}}" style="color:{{page.theme.color}}"  class="menu-lateral1"> {{object.page.name|title}}
+             <b><a href="{{path('project_front_page',{'id': object.page.id, 'friendlyname' : object.page.friendlyName})}}"   class="menu-lateral1"> {{object.page.name|title}}
              </a> </b>
              {#{%if idpage == object.page.id%}
              <hr class="men-sel" style="background-color: {{object.page.theme.color}};width: 304px;">
