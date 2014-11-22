@@ -33,7 +33,7 @@ class PageType extends AbstractType
         -> add('lastHour', 'checkbox', array('label' => 'Ultima Hora', 'required' => false, 'attr' => array('class' => 'ace-switch') )) 
         -> add('content', 'ckeditor', array(
             'label' => 'Nombre',
-            'attr' => array('name' => 'editor1', 'id' => 'editor1'),
+            'attr' => array('name' => 'mitxt', 'id' => 'mitxt'),
             'config' => array(
                 'toolbar' => array(
                     array(

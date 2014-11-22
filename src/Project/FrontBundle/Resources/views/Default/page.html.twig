@@ -7,7 +7,7 @@ var images = ["{{ asset(''~ page.getBackground.getWebPath ~'') }}"];
 {%block contenido%}
 <div class="middle-right-sub" style="float: left;padding-top: 1px;margin-left: 402px;">
 	{% include 'ProjectFrontBundle:Helpers:controller-menuMobile.html.twig' %}
-	{%if page.lastHour==1%}
+	{# %if page.lastHour==1% #}
 	<div class="news-cont" style="margin-left: 20px;{%if page.template==0 and page.templateMenu==0 %}width: 800px;{%endif%}">
 		{%if page.template==0 and page.templateMenu==0 %}
 			{% set limite = 3 %}
@@ -16,7 +16,7 @@ var images = ["{{ asset(''~ page.getBackground.getWebPath ~'') }}"];
 		{%endif%}
 		{{ render(controller('ProjectFrontBundle:Helpers:lasttime', { 'limite': limite })) }}
 	</div>
-	{%endif%}
+	{# %endif% #}
 	<div class="news-cont" style="margin-left: 20px;{%if page.template==0 and page.templateMenu==0 %}width: 800px;{%endif%}">
 		<div class="news-cell" style="padding: 0px;">
 			<h2 style="color: {{page.theme.color}};"> {{page.name|title}} </h2>
