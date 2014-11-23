@@ -53,7 +53,7 @@ class HelpersController extends Controller
     public function lasttimeAction($limite)
     {
         $em = $this->getDoctrine()->getManager();
-        $dql = "select p from ProjectUserBundle:Page p order by p.id desc";
+        $dql = "select p from ProjectUserBundle:Page p where p.path is not null order by p.id desc";
         $query = $em->createQuery($dql)->setMaxResults($limite);
         $resultado = $query->getResult();
         return $this->render('ProjectFrontBundle:Helpers:last-time.html.twig', array('elementp' => $resultado));

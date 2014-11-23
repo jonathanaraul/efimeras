@@ -1,6 +1,6 @@
 <div class="news-cell" style="padding: 0px;">
 	<h2>Última Hora</h2>
 		{%for elementop in elementp%}
-		<div id="contenedor-ultimas-noticias"><a id="page" href="{{path('project_front_page',{'id': elementop.id, 'friendlyname' : elementop.friendlyName})}}" title="{{elementop.name|title}}"> <img id="ultimas-noticias-img" src="{{asset(elementop.getWebPath)}}" style="margin-top:15px;" width="245" height="150"></a><span class="efimeras-etiqueta"><img id="efimeras-etiqueta" src="{{asset('front/images/efimeras-etiqueta.png')}}" /></span><span class="text-ultimas-noticias-img"><h1>Hola sabes donde quedamos?</h1><p>Puedes consultar en la seccion de localizacion</p></span></div>  
+		<div id="contenedor-ultimas-noticias"><a id="page" href="{{path('project_front_page',{'id': elementop.id, 'friendlyname' : elementop.friendlyName})}}" title="{{elementop.name|title}}"> <img id="ultimas-noticias-img" src="{{asset(elementop.getWebPath)}}" style="margin-top:15px;" width="245" height="150"></a><span class="efimeras-etiqueta"><img id="efimeras-etiqueta" src="{{asset('front/images/efimeras-etiqueta.png')}}" /></span><span class="text-ultimas-noticias-img"><h1>{{elementop.name|title}}</h1><p>{{elementop.upperText}}</p></span></div>  
 		{%endfor%}
 </div>
