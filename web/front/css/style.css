@@ -1231,13 +1231,13 @@ padding-bottom: 25px;
 #logoBotonMensaje{
 	height: 35px;
 width: 35px;
-background: url(../images/mensaje.png);
+background: url(../images/mensaje.png) no-repeat;
 border: none;
 margin-bottom:1%;
 }
 #logoBotonMensaje:hover{
 	
-background: url(../images/mensaje_negro.png);
+background: url(../images/mensaje_negro.png) no-repeat;
 cursor:  pointer;
 }
 #logoBotonMensaje:focus{
@@ -1246,13 +1246,13 @@ outline:none;
 #logoBotonUsuario{
 	height: 35px;
 width: 35px;
-background: url(../images/usuario.png);
+background: url(../images/usuario.png) no-repeat;
 border: none;
 margin-bottom:1%;
 }
 #logoBotonUsuario:hover{
 	
-background: url(../images/usuario_negro.png);
+background: url(../images/usuario_negro.png) no-repeat;
 cursor:  pointer;
 }
 #logoBotonUsuario:focus{
@@ -1261,13 +1261,13 @@ outline:none;
 #logoBotonBusqueda{
 	height: 35px;
 width: 35px;
-background: url(../images/buscar.png);
+background: url(../images/buscar.png) no-repeat;
 border: none;
 margin-bottom:1%;
 }
 #logoBotonBusqueda:hover{
 	
-background: url(../images/buscar_negro.png);
+background: url(../images/buscar_negro.png) no-repeat;
 cursor:  pointer;
 }
 #logoBotonBusqueda:focus{	
@@ -1276,13 +1276,13 @@ outline:none;
 #logoBotonNewsletter{
 	height: 35px;
 width: 30px;
-background: url(../images/listado.png);
+background: url(../images/listado.png) no-repeat;
 border: none;
 margin-bottom:1%;
 }
 #logoBotonNewsletter:hover{
 
-background: url(../images/listado_negro.png);
+background: url(../images/listado_negro.png) no-repeat;
 cursor:  pointer;
 }
 #logoBotonNewsletter:focus{
@@ -1291,12 +1291,12 @@ outline:none;
 #logoBotonLugar{
 	height: 35px;
 width: 30px;
-background: url(../images/lugar.png);
+background: url(../images/lugar.png) no-repeat;
 border: none;
 }
 #logoBotonLugar:hover{
 
-background: url(../images/lugar_negro.png);
+background: url(../images/lugar_negro.png) no-repeat;
 cursor:  pointer;
 
 }
@@ -1309,12 +1309,12 @@ cursor:  pointer;
 #logoRSS{
 	height: 35px;
 width: 35px;
-background: url(../images/rss.png);
+background: url(../images/rss.png) no-repeat;
 border: none;
 }
 #logoRSS:hover{
 
-background: url(../images/rss_negro.png);
+background: url(../images/rss_negro.png) no-repeat;
 cursor:  pointer;
 
 }
