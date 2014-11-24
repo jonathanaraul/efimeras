@@ -1365,13 +1365,14 @@ z-index: 0;
 .logo-universidad{
 position: fixed;
 bottom: 20px;
-right: 0px;
+right: 2%;
 width:200px;
 }
 #logo-universidad{
-float:right;
-width:200px;
-height:100px;	
+float: right;
+width: 80px;
+height: 80px;
+margin: 0px 4%;
 }
 
 @media screen and (max-width:970px){
