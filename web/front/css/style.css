@@ -1362,7 +1362,17 @@ z-index: 0;
 .text-ultimas-noticias-img p{
 		font-size: 8px;
 }
-
+.logo-universidad{
+position: fixed;
+bottom: 20px;
+right: 0px;
+width:200px;
+}
+#logo-universidad{
+float:right;
+width:200px;
+height:100px;	
+}
 
 @media screen and (max-width:970px){
 .content-title{
@@ -1486,7 +1496,7 @@ p{
     -webkit-transition: all ease in out 0.4s;
     -moz-transition: all ease in out 0.4s;
 }
-@media screen and (max-width:1024px){
+/*@media screen and (max-width:1024px){
 
 	body{
 		max-width:1024px;
@@ -1560,4 +1570,4 @@ p{
 		font-size: 8px;
 	}
 	
-}
+}*/
