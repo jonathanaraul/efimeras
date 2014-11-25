@@ -194,7 +194,15 @@ $(document).ready(function() {
 		$(this).css('color','white');
 	});
 	$('.active').css('color',x);
-
+	
+	$('#logo-image').mouseenter(function() {
+		$('#logo-image').attr("src", "/efimeras/web/front/images/logo-movible.gif");
+	});
+	$('#logo-image').mouseleave(function() {
+		$('#logo-image').attr("src", "/efimeras/web/front/images/logo.gif");
+	});
+	
+	
 });
 
 
