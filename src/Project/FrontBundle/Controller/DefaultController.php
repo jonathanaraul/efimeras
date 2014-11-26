@@ -236,29 +236,37 @@ class DefaultController extends Controller
 			$em -> flush();
 			//echo'llego al post2';exit;
 
-			$secondArray['aux'] = array('name'=>$data -> getName(),'phone'=>$data -> getPhone(),'email'=>$data -> getEmail(),'rdate'=>$data -> getRdate(),'tickets'=>$data -> getTickets());
+			$secondArray['aux'] = array(
+				'firstName'=>$data -> getFirstName(),
+				'lastNname'=>$data -> getLastName(),
+				'phone'=>$data -> getPhone(),
+				'email'=>$data -> getEmail(),
+				'nationality'=>$data -> getNationality(),
+				'education'=>$data -> getEducation()
+				);
 			//ENVIAR CORREO ELECTRONICO
 			$destinatario = $this -> getDoctrine() -> getRepository('ProjectUserBundle:Setting') -> find(1);
 
 			$destinatario = $destinatario->getValue();
 			$sujeto = "NUEVA RESERVA";
 			$mensaje = 'Saludos Administrador(a), se ha realizado una nueva RESERVA : '."\n\n".
-					   'Usuario : ' . $data -> getName() . "\n".
+					   'Nombre : ' . $data -> getFirstName() . "\n".
+					   'Apellido : ' . $data -> getLastName() . "\n".
 					   'Telefono: ' . $data -> getPhone(). "\n". 
 					   'Email: ' . $data -> getEmail(). "\n". 
+					   'Nacionalidad: ' . $data -> getNationality(). "\n". 
+					   'Formacion: ' . $data -> getEducation(). "\n". 
 					   'Evento/Taller: ' . $secondArray['page']->getName(). "\n". 
-					   'Fecha: ' .$data -> getRdate(). "\n". 
-					   '#Tickets: ' .$data -> getTickets(). "\n\n".
-					   'Informacion generada por www.instalacionesefimeras.com'. "\n".
-					   'REALEGO.ES';
+					   'Informacion generada por www.master-arquitectura-efimera.com'. "\n".
+					   'Equipo Efimeras';
 			$headers = "De: ". $data -> getEmail() . "\n";
 			mail ($destinatario, $sujeto, $mensaje);
 		
 			///////////////////////////
-			$secondArray['message'] = 'Estimado(a) '.ucwords($data -> getName()).' su reserva ha sido guardada exitosamente...';
+			$secondArray['message'] = 'Estimado(a) '.ucwords($data -> getFirstName()).' '.ucwords($data -> getLastName()).' su reserva ha sido guardada exitosamente...';
 			
 			
-														}
+			}
 		
 		$secondArray['form'] = $form -> createView();
 		$secondArray['url'] =  $this -> generateUrl('project_front_reservation', array('id' => $id));

@@ -34,16 +34,16 @@ class Reservation
     /**
      * @var string
      *
-     * @ORM\Column(name="name", type="string", length=300, nullable=false)
+     * @ORM\Column(name="firstName", type="string", length=300, nullable=false)
      */
-    private $name;
-	
+    private $firstName;
+
     /**
      * @var string
      *
-     * @ORM\Column(name="phone", type="string", length=255, nullable=false)
+     * @ORM\Column(name="lastName", type="string", length=300, nullable=false)
      */
-    private $phone;
+    private $lastName;
 	
     /**
      * @var string
@@ -51,16 +51,38 @@ class Reservation
      * @ORM\Column(name="email", type="string", length=255, nullable=false)
      */
     private $email;
+
     /**
      * @var string
      *
-     * @ORM\Column(name="rdate", type="string", length=255, nullable=false)
+     * @ORM\Column(name="phone", type="string", length=255, nullable=false)
+     */
+    private $phone;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nationality", type="string", length=100, nullable=false)
+     */
+    private $nationality;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="education", type="string", length=300, nullable=false)
+     */
+    private $education;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="rdate", type="string", length=255, nullable=true)
      */
     private $rdate;
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="date", type="datetime", nullable=false)
+     * @ORM\Column(name="date", type="datetime", nullable=true)
      */
     private $date;
 	
@@ -77,13 +99,6 @@ class Reservation
      * @ORM\Column(name="lang", type="integer", nullable=false)
      */
     private $lang;
-
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="tickets", type="integer", nullable=false)
-     */
-    private $tickets;
 	
     /**
      * @var boolean
@@ -100,29 +115,6 @@ class Reservation
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * Set name
-     *
-     * @param string $name
-     * @return Reservation
-     */
-    public function setName($name)
-    {
-        $this->name = $name;
-
-        return $this;
-    }
-
-    /**
-     * Get name
-     *
-     * @return string 
-     */
-    public function getName()
-    {
-        return $this->name;
     }
 
     /**
@@ -264,29 +256,6 @@ class Reservation
     }
 
     /**
-     * Set tickets
-     *
-     * @param integer $tickets
-     * @return Reservation
-     */
-    public function setTickets($tickets)
-    {
-        $this->tickets = $tickets;
-
-        return $this;
-    }
-
-    /**
-     * Get tickets
-     *
-     * @return integer 
-     */
-    public function getTickets()
-    {
-        return $this->tickets;
-    }
-
-    /**
      * Set page
      *
      * @param \Project\UserBundle\Entity\Page $page
@@ -330,5 +299,97 @@ class Reservation
     public function getPublished()
     {
         return $this->published;
+    }
+
+    /**
+     * Set firstName
+     *
+     * @param string $firstName
+     * @return Reservation
+     */
+    public function setFirstName($firstName)
+    {
+        $this->firstName = $firstName;
+
+        return $this;
+    }
+
+    /**
+     * Get firstName
+     *
+     * @return string 
+     */
+    public function getFirstName()
+    {
+        return $this->firstName;
+    }
+
+    /**
+     * Set lastName
+     *
+     * @param string $lastName
+     * @return Reservation
+     */
+    public function setLastName($lastName)
+    {
+        $this->lastName = $lastName;
+
+        return $this;
+    }
+
+    /**
+     * Get lastName
+     *
+     * @return string 
+     */
+    public function getLastName()
+    {
+        return $this->lastName;
+    }
+
+    /**
+     * Set nationality
+     *
+     * @param string $nationality
+     * @return Reservation
+     */
+    public function setNationality($nationality)
+    {
+        $this->nationality = $nationality;
+
+        return $this;
+    }
+
+    /**
+     * Get nationality
+     *
+     * @return string 
+     */
+    public function getNationality()
+    {
+        return $this->nationality;
+    }
+
+    /**
+     * Set education
+     *
+     * @param string $education
+     * @return Reservation
+     */
+    public function setEducation($education)
+    {
+        $this->education = $education;
+
+        return $this;
+    }
+
+    /**
+     * Get education
+     *
+     * @return string 
+     */
+    public function getEducation()
+    {
+        return $this->education;
     }
 }

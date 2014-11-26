@@ -19,8 +19,12 @@ images[{{loop.index0}}] = "{{ asset(''~ element.getWebPath ~'') }}";
 				<table style ="width: 100%;" id="contenido-pagina" CELLSPACING ="10">
 
 					<tr >
-						<td> {% trans %}Nombre Completo{% endtrans %}: </td>
-						<td> {{ form_widget(form.name, { 'attr': {'style': 'width: 100%;border: none;','class':'form-reservacion'} }) }} </td>
+						<td> {% trans %}Nombre{% endtrans %}: </td>
+						<td> {{ form_widget(form.firstName, { 'attr': {'style': 'width: 100%;border: none;','class':'form-reservacion'} }) }} </td>
+					</tr>
+					<tr >
+						<td> {% trans %}Apellido{% endtrans %}: </td>
+						<td> {{ form_widget(form.lastName, { 'attr': {'style': 'width: 100%;border: none;','class':'form-reservacion'} }) }} </td>
 					</tr>
 					<tr  >
 						<td> {% trans %}Correo Electrónico{% endtrans %}: </td>
@@ -31,12 +35,12 @@ images[{{loop.index0}}] = "{{ asset(''~ element.getWebPath ~'') }}";
 						<td> {{ form_widget(form.phone, { 'attr': {'style': 'width: 100%;border: none;','class':'form-reservacion'} }) }} </td>
 					</tr>
 					<tr>
-						<td> {% trans %}Fecha de Interés{% endtrans %}: </td>
-						<td> {{ form_widget(form.rdate, { 'attr': {'style': 'width: 100%;border: none;','class':'form-reservacion'} }) }} </td>
+						<td> {% trans %}Nacionalidad{% endtrans %}: </td>
+						<td> {{ form_widget(form.nationality, { 'attr': {'style': 'width: 100%;border: none;'} }) }} </td>
 					</tr>
 					<tr>
-						<td> {% trans %}Número de Entradas{% endtrans %}: </td>
-						<td> {{ form_widget(form.tickets, { 'attr': {'style': 'width: 100%;border: none;','class':'form-reservacion'} }) }} </td>
+						<td> {% trans %}Formación{% endtrans %}: </td>
+						<td> {{ form_widget(form.education, { 'attr': {'style': 'width: 100%;border: none;','class':'form-reservacion'} }) }} </td>
 					</tr>
 					<tr>
 						<td colspan="2">
@@ -54,6 +58,5 @@ images[{{loop.index0}}] = "{{ asset(''~ element.getWebPath ~'') }}";
 			{%endif%}
 		</div>
 	</div>
-	{% include 'ProjectFrontBundle:Helpers:inferior.html.twig' %}
 </div>
 {%endblock%}

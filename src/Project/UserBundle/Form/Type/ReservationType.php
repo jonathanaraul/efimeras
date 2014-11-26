@@ -6,6 +6,10 @@ namespace Project\UserBundle\Form\Type;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\Validator\Constraints\RangeValidator;
+use Symfony\Component\Validator\Constraints\MinValidator;
+use Symfony\Component\Form\Extension\Validator\Type\FormTypeValidatorExtension;
+
 
 class ReservationType extends AbstractType
 {
@@ -13,11 +17,17 @@ class ReservationType extends AbstractType
     {
         $builder
 
-        ->add('name', 'text', array('required' => false))
-        ->add('phone', 'text', array('required' => false)) 
-        ->add('email', 'text', array('required' => false)) 
-        ->add('rdate', 'text', array('required' => false)) 
-        ->add('tickets', 'number', array('required' => false)) ;
+        ->add('firstName', 'text', array('required' => false))
+        ->add('lastName', 'text', array('required' => false))
+        ->add('email', 'text', array('required' => false))
+        ->add('phone', 'text', array('required' => false))
+        ->add('nationality', 'choice', array(
+            'choices'   => array(
+                'esp' => 'Española', 
+                'ext' => 'Extranjero'
+                ),
+            'required' => false))
+        ->add('education', 'text', array('required' => false));
     }
 
     public function setDefaultOptions(OptionsResolverInterface $resolver)

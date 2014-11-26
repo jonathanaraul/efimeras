@@ -34,16 +34,16 @@ class Reservation
     /**
      * @var string
      *
-     * @ORM\Column(name="name", type="string", length=300, nullable=false)
+     * @ORM\Column(name="firstName", type="string", length=300, nullable=false)
      */
-    private $name;
-	
+    private $firstName;
+
     /**
      * @var string
      *
-     * @ORM\Column(name="phone", type="string", length=255, nullable=false)
+     * @ORM\Column(name="lastName", type="string", length=300, nullable=false)
      */
-    private $phone;
+    private $lastName;
 	
     /**
      * @var string
@@ -51,16 +51,38 @@ class Reservation
      * @ORM\Column(name="email", type="string", length=255, nullable=false)
      */
     private $email;
+
     /**
      * @var string
      *
-     * @ORM\Column(name="rdate", type="string", length=255, nullable=false)
+     * @ORM\Column(name="phone", type="string", length=255, nullable=false)
+     */
+    private $phone;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nationality", type="string", length=100, nullable=false)
+     */
+    private $nationality;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="education", type="string", length=300, nullable=false)
+     */
+    private $education;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="rdate", type="string", length=255, nullable=true)
      */
     private $rdate;
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="date", type="datetime", nullable=false)
+     * @ORM\Column(name="date", type="datetime", nullable=true)
      */
     private $date;
 	
@@ -77,13 +99,6 @@ class Reservation
      * @ORM\Column(name="lang", type="integer", nullable=false)
      */
     private $lang;
-
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="tickets", type="integer", nullable=false)
-     */
-    private $tickets;
 	
     /**
      * @var boolean
@@ -261,29 +276,6 @@ class Reservation
     public function getLang()
     {
         return $this->lang;
-    }
-
-    /**
-     * Set tickets
-     *
-     * @param integer $tickets
-     * @return Reservation
-     */
-    public function setTickets($tickets)
-    {
-        $this->tickets = $tickets;
-
-        return $this;
-    }
-
-    /**
-     * Get tickets
-     *
-     * @return integer 
-     */
-    public function getTickets()
-    {
-        return $this->tickets;
     }
 
     /**

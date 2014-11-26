@@ -10,12 +10,12 @@
                 {%else%}
                     <div class="menu-element">
                 {%endif%}
-                        <a id="page" href="{{path('project_front_page',{'id': object.page.id, 'friendlyname' : object.page.friendlyName})}}"> {{object.name|title}}
+                        <a id="page" href="{{path('project_front_page',{'id': object.page.id, 'friendlyname' : object.page.friendlyName})}}"> {{object.name}}
                         </a>
             {%else%} 
                 {% set c = c + 1 %}
                     <div class="menu-element" {%if c==1%} style="margin-top:5px;" {%endif%}>
-                       <a id="category" href="{{path('project_front_category',{'id': object.category.id, 'friendlyname' : object.category.friendlyName})}}"> {{object.name|title}}
+                       <a id="category" href="{{path('project_front_category',{'id': object.category.id, 'friendlyname' : object.category.friendlyName})}}"> {{object.name}}
                         </a> 
             {%endif%} 
                     </div>
@@ -29,10 +29,6 @@
         <p> 
     </div>
 
-</div>
-
-<div class="creditos" style="padding-top: 544px;">
-    
 </div>
 
 {#
