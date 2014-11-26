@@ -185,24 +185,4 @@ $(window).resize(function(){
     setBodyHeight();
 });
 
-$(document).ready(function() {
-	var x = $('.logobotones').css('background-color');
-	$('a',this).mouseenter(function(){
-		$(this).css('color',x);
-	});
-	$('a',this).mouseleave(function(){
-		$(this).css('color','white');
-	});
-	$('.active').css('color',x);
-	
-	$('#logo-image').mouseenter(function() {
-		$('#logo-image').attr("src", "/front/images/logo.gif");
-	});
-	$('#logo-image').mouseleave(function() {
-		$('#logo-image').attr("src", "/front/images/logo-movible.gif");
-	});
-	
-	
-});
-
 
