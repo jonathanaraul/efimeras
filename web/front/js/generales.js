@@ -4,7 +4,22 @@
  */
 $(function(){
 	$('#menu').slicknav({
+				label: '',
 		prependTo:'#menuobligado'
+						});
+
+	});
+	$(function(){
+	$('#menu2').slicknav({
+		prependTo:'#menuobligado2'
+						});
+
+	});
+	$(function(){
+	$('#menu3').slicknav({
+		label: '<h1>C</h1>',
+		prependTo:'#menuobligado3'
+		
 						});
 
 	});
