@@ -1374,56 +1374,61 @@ width: 80px;
 height: 80px;
 margin: 0px 4%;
 }
+@media screen and (max-width:320px){
 
-@media screen and (max-width:970px){
-.content-title{
-   margin-left: 4%;
-}
-.barra-inferior{
-    margin-left: 0;
-}
-.main-tab .main-row .cell-left, .cell-middle .middle-left{
-	display: none;
-}
-.cell-middle .middle-left{
-	display: none;
-}
-.cell-middle .middle-right, .cell-middle .middle-right-sub{
-	width: 100%;
-}
-.main-tab .main-row .cell-middle{
-	width: 100%;
-}
-.main-tab .main-row .cell-right-sub, .black-top, .black-bottom, .black-middle-right, .black-top-left, .black-middle
-{
-	display: none;
-}
-.menu-hidden{
-	display: table-cell;
-    width: 10%;
-}
-/*
-#backstretch{
-	display: none;
-}*/
-.news-cont, .news-cont1 {
-		width: 94%;
-		margin: 7px 5px 0px 4px;
+	body{
+		max-width:320px;
 	}
-.theme-sel-1, .theme-sel-2, .theme-sel-3, .theme-sel-5, .theme-sel-6, .theme-sel-7, .theme-sel-8, .theme-sel-9, .theme-sel-10, .theme-sel-11, .theme-sel-12{
-	display: none;
+	.news-cont {
+    width: 90% !important;
+float: none !important;
+margin: auto !important;
+margin-top: 30px !important;
+	}
+	.main-tab {
+    width: 320px !important;
+	}
+	.middle-right-sub{
+	margin-left:0px !important;
+	margin-top:120px !important; 	
+	}
+	.menu {
+    display: none;
+	}
+	.menu-hidden {
+    display: block;
+    position: fixed;
+    top: 0px;
+	width:100%;
+	z-index: 10000;
 }
-.lower-box{
-	display: none;
+	.middle-left{
+		display:none;
+	}
+	.logo {
+    background: url('../images/site/2012_10_17_ciecie_19.png') no-repeat scroll center center transparent;
+    float: left;
 }
-p{
-	width: 100%;
+	.slicknav_btn {
+	background-color: none !important;
+		float: left !important;
+	}
+	.slicknav_menu {
+    background: none !important;
 }
-.news-cont hr, #program-list hr{
-	width: 100%;	
-}
-.lower-text{
-	display: none;
+	#logo-image{
+	width: 100px;
+padding: 10px;	
+	}
+	#menuobligado{
+	padding-top: 90px !important;	
+	}
+	#logo-universidad {
+    display: none;
+	}
+	.slicknav_nav {
+    background: #000;
+    width: 140px;
 }
 }
 
@@ -1497,7 +1502,7 @@ p{
     -webkit-transition: all ease in out 0.4s;
     -moz-transition: all ease in out 0.4s;
 }
-/*@media screen and (max-width:1024px){
+/* @media screen and (max-width:1024px){
 
 	body{
 		max-width:1024px;

@@ -185,4 +185,10 @@ $(window).resize(function(){
     setBodyHeight();
 });
 
+$(document).ready(function(){
+			var x = $('.logobotones').css('background-color');
+			$('.menu-hidden').css('background',x);
+			
+			
 
+});
