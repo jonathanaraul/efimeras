@@ -1430,6 +1430,12 @@ padding: 10px;
     background: #000;
     width: 140px;
 }
+	.slicknav_nav, .slicknav_nav ul {
+    overflow: hidden;
+    list-style: outside none none;
+    position: absolute;
+    margin-top: 50px !important;
+}
 }
 
 @media screen and (max-width:370px){
