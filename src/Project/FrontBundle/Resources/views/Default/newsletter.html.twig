@@ -1,0 +1,32 @@
+{% extends "ProjectFrontBundle:Helpers:body.html.twig" %}
+
+{%block contenido%}
+<div class="middle-right-sub">
+	{% include 'ProjectFrontBundle:Helpers:controller-menuMobile.html.twig' %}
+	<div class="news-cont"  style="margin-left: 20px;">
+
+		<div class="news-cell">
+
+			 <div id="contenidoBotonNewsletter" style="margin-top:55px;">
+				<div style="margin-top: 12px;font-weight: bold;" class="botonNewsletter_elemento">
+					<p style="margin-bottom:10px;">Mantente al dia con nuestro newsletter</p>
+					<input type="text" id="botonNewsletter_email" style="width: 90%;border: none;" class="form-reservacion botonNewsletter_campo">
+				</div>
+				<div style="margin-top: 12px;" class="botonNewsletter_elemento">
+					<input type="button" value="Suscribete" id="botonNewsletter_submit" style="background: #000000;border: none;color: {{page.theme.color}};float: right;margin-right: 30px;font-weight: bolder; ; padding:4px 8px;">
+				</div>
+				<div style="font-weight: bold;margin-top: 41px;" class="botonNewsletter_elemento">
+					<p>Suscribete y recibirás periódicamente </br>todas nuestras actualizaciones</p>
+				</div>
+				<div id="botonNewsletter_loader" style="display:none;margin-right: 54px;">
+			         <p style="text-align:center;"><img src="{{asset('front/images/loader.gif')}}"></p>
+				</div>
+			</div>
+		</div>
+		<div class="lower-text"></div>
+	</div>
+</div>
+{%endblock%}
+
+{%block celda%} <div class="cell-right-sub"></div>
+{%endblock%} 

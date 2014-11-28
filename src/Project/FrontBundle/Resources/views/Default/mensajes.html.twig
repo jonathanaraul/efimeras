@@ -1,0 +1,38 @@
+{% extends "ProjectFrontBundle:Helpers:body.html.twig" %}
+
+{%block contenido%}
+<div class="middle-right-sub">
+	{% include 'ProjectFrontBundle:Helpers:controller-menuMobile.html.twig' %}
+	<div class="news-cont"  style="margin-left: 20px;">
+
+		<div class="news-cell">
+
+			 <div id="contenidoBotonMensaje" style="margin-top:55px;">
+				<div style="margin-top: 2px;font-weight: bold;" class="botonMensaje_elemento">
+					<p>Asunto</p>
+					<input type="text" id="botonMensaje_asunto"  style="width: 90%;border: none;" class="botonMensaje_campo form-reservacion">
+				</div>
+				<div style="margin-top: 12px;font-weight: bold;" class="botonMensaje_elemento">
+					<p>E-mail</p>
+					<input type="text" id="botonMensaje_email" style="width: 90%;border: none;" class="botonMensaje_campo form-reservacion">
+				</div>
+				<div style="margin-top: 12px;font-weight: bold;" class="botonMensaje_elemento">
+					<p>Mensaje</p>
+					<textarea  style="width: 89%;border: none;" id="botonMensaje_mensaje" class="botonMensaje_campo"></textarea>
+				</div>
+				<div style="margin-top: 12px;" class="botonMensaje_elemento">
+					<input type="button" value="Enviar" id="botonMensaje_submit" style="background: #000000;border: none;color: {{page.theme.color}};float: right;margin-right: 30px;font-weight: bolder;cursor:pointer; padding:4px 8px;">
+				</div>
+				<div id="botonMensaje_loader" style="display:none;margin-right: 54px;">
+			         <p style="text-align:center;"><img src="{{asset('front/images/loader.gif')}}"></p>
+				</div>
+			</div>
+
+		</div>
+		<div class="lower-text"></div>
+	</div>
+</div>
+{%endblock%}
+
+{%block celda%} <div class="cell-right-sub"></div>
+{%endblock%} 

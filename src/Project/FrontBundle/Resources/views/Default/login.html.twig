@@ -1,0 +1,20 @@
+{% extends "ProjectFrontBundle:Helpers:body.html.twig" %}
+
+{%block contenido%}
+<div class="middle-right-sub">
+	{% include 'ProjectFrontBundle:Helpers:controller-menuMobile.html.twig' %}
+	<div class="news-cont"  style="margin-left: 20px;">
+
+		<div class="news-cell">
+
+			 <div id="contenidoBotonUsuario" style="margin-top:55px;">
+				{{ render(controller('ProjectUserBundle:Security:login', {'reducido': true, 'colorBl': page.theme.color})) }}
+		    </div>
+		</div>
+		<div class="lower-text"></div>
+	</div>
+</div>
+{%endblock%}
+
+{%block celda%} <div class="cell-right-sub"></div>
+{%endblock%} 
