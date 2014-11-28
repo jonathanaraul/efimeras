@@ -118,29 +118,6 @@ class Reservation
     }
 
     /**
-     * Set name
-     *
-     * @param string $name
-     * @return Reservation
-     */
-    public function setName($name)
-    {
-        $this->name = $name;
-
-        return $this;
-    }
-
-    /**
-     * Get name
-     *
-     * @return string 
-     */
-    public function getName()
-    {
-        return $this->name;
-    }
-
-    /**
      * Set phone
      *
      * @param string $phone
@@ -322,5 +299,97 @@ class Reservation
     public function getPublished()
     {
         return $this->published;
+    }
+
+    /**
+     * Set firstName
+     *
+     * @param string $firstName
+     * @return Reservation
+     */
+    public function setFirstName($firstName)
+    {
+        $this->firstName = $firstName;
+
+        return $this;
+    }
+
+    /**
+     * Get firstName
+     *
+     * @return string 
+     */
+    public function getFirstName()
+    {
+        return $this->firstName;
+    }
+
+    /**
+     * Set lastName
+     *
+     * @param string $lastName
+     * @return Reservation
+     */
+    public function setLastName($lastName)
+    {
+        $this->lastName = $lastName;
+
+        return $this;
+    }
+
+    /**
+     * Get lastName
+     *
+     * @return string 
+     */
+    public function getLastName()
+    {
+        return $this->lastName;
+    }
+
+    /**
+     * Set nationality
+     *
+     * @param string $nationality
+     * @return Reservation
+     */
+    public function setNationality($nationality)
+    {
+        $this->nationality = $nationality;
+
+        return $this;
+    }
+
+    /**
+     * Get nationality
+     *
+     * @return string 
+     */
+    public function getNationality()
+    {
+        return $this->nationality;
+    }
+
+    /**
+     * Set education
+     *
+     * @param string $education
+     * @return Reservation
+     */
+    public function setEducation($education)
+    {
+        $this->education = $education;
+
+        return $this;
+    }
+
+    /**
+     * Get education
+     *
+     * @return string 
+     */
+    public function getEducation()
+    {
+        return $this->education;
     }
 }

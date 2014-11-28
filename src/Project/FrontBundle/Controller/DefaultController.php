@@ -109,6 +109,7 @@ class DefaultController extends Controller
 		} 
 		
 		$secondArray['idpage'] = $secondArray['page']->getId();
+		//$secondArray['idmenu'] = $secondArray['page']->getMenu();
 		$secondArray['articles'] = null;
 		$secondArray['listado'] = null;//UtilitiesAPI::esListado($secondArray['idpage'],$this);
 		$secondArray['images'] = array();

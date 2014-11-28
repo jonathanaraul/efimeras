@@ -21,3 +21,18 @@ project_front_page:
     defaults: { _controller: ProjectFrontBundle:Default:page }
     requirements:
         _locale:  es|en
+project_front_modal_message:
+    pattern:  /modal/mensage
+    defaults: { _controller: ProjectFrontBundle:Modal:message }
+project_front_modal_login:
+    pattern:  /modal/login
+    defaults: { _controller: ProjectFrontBundle:Modal:login }
+project_front_modal_search:
+    pattern:  /modal/busqueda
+    defaults: { _controller: ProjectFrontBundle:Modal:search }
+project_front_modal_newsletter:
+    pattern:  /modal/newsletter
+    defaults: { _controller: ProjectFrontBundle:Modal:newsletter }
+project_front_modal_direction:
+    pattern:  /modal/direccion
+    defaults: { _controller: ProjectFrontBundle:Modal:direction }
