@@ -532,17 +532,6 @@
         <script src="{{ path('fos_js_routing_js', {"callback": "fos.Router.setData"}) }}"></script>
         <script src="{{asset('admin/js/project/listados.js')}}"></script>
 
-        <script type="text/javascript">
-			//<![CDATA[
-			CKEDITOR.replace( 'page_content',
-			{
-					 //es la ruta desde public_html hasta el index del plugin
-				 filebrowserBrowseUrl : '/ckeditor/filemanager/index.php'
-			 
-			});
-			//]]>
-		</script>
-
 		{% block pagesScriptsBottom %}
 		{%endblock%}
 
