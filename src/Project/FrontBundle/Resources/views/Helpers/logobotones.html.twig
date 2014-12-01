@@ -1,3 +1,9 @@
+{% if page.theme.color is defined %}
+	{% set colorindex = page.theme.color %}
+{%else%}
+	{% set colorindex = '#0000ff' %}
+{% endif %}
+
 <div class="{{clase}}" style="background-color:{% if page.theme.color is defined %}{{page.theme.color}}{%else%}#0000ff{% endif %};">
 	<div class="minibotones" style="float:left;width:60px;background-color: {% if page.theme.color is defined %}{{page.theme.color}}{%else%}#0000ff{% endif %};opacity: 0.90;height:250px; padding-top: 10px;padding-left:10px; padding-right:32px;" >
 		<div class="botonlogo">
@@ -41,7 +47,7 @@
 				{{ render(controller('ProjectFrontBundle:Helpers:sociales')) }}
 			</div>
 			<div id="contenidoBotonUsuario" style="margin-top:55px;">
-				{{ render(controller('ProjectUserBundle:Security:login', {'reducido': true, 'colorBl': page.theme.color})) }}
+				{{ render(controller('ProjectUserBundle:Security:login', {'reducido': true, 'colorBl': colorindex} )) }}
 		    </div>
 		    <div id="contenidoBotonMensaje" style="margin-top:55px;">
 				<div style="margin-top: 2px;font-weight: bold;" class="botonMensaje_elemento">
