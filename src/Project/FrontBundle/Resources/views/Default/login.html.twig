@@ -3,11 +3,11 @@
 {%block contenido%}
 <div class="middle-right-sub">
 	{% include 'ProjectFrontBundle:Helpers:controller-menuMobile.html.twig' %}
-	<div class="news-cont"  style="margin-left: 20px;">
+	<div class="news-cont"  style="margin-left: 20px; border-radius:6px;">
 
 		<div class="news-cell">
 
-			 <div id="contenidoBotonUsuario" style="margin-top:55px;">
+			 <div id="contenidoBotonUsuario" style="margin-top:20px; ">
 				{{ render(controller('ProjectUserBundle:Security:login', {'reducido': true, 'colorBl': 'blue'})) }}
 		    </div>
 		</div>
