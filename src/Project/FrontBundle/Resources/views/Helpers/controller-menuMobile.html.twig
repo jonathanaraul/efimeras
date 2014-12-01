@@ -1,1 +1,6 @@
-{{ render(controller('ProjectFrontBundle:Helpers:menu', { 'idpage': idpage,'idmenu': 1,'mobile':'-mobile' })) }}
+{% if idpage is defined %}
+    {% set idnewpage = idpage %}
+{%else%}
+    {% set idnewpage = '1' %}
+{% endif %}
+{{ render(controller('ProjectFrontBundle:Helpers:menu', { 'idpage': idnewpage,'idmenu': 1,'mobile':'-mobile' })) }}

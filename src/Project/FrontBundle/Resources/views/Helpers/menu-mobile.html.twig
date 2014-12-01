@@ -1,3 +1,9 @@
+{% if idpage is defined %}
+    {% set idnewpage = idpage %}
+{%else%}
+    {% set idnewpage = '1' %}
+{% endif %}
+
 <div class="menu-hidden">
     <div class="logo" style="margin-top: 0px;">
         <a title="Home page" href="{{path('project_front_homepage')}}"> <img id="logo-image" src="{{asset('front/images/logo-movible.gif')}}"> </a>
