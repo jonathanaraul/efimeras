@@ -1,5 +1,5 @@
-<div class="{{clase}}" style="background-color: {{page.theme.color}};">
-	<div class="minibotones" style="float:left;width:60px;background-color: {{page.theme.color}};opacity: 0.90;height:250px; padding-top: 10px;padding-left:10px; padding-right:32px;" >
+<div class="{{clase}}" style="background-color:{% if page.theme.color is defined %}{{page.theme.color}}{%else%}#0000ff{% endif %};">
+	<div class="minibotones" style="float:left;width:60px;background-color: {% if page.theme.color is defined %}{{page.theme.color}}{%else%}#0000ff{% endif %};opacity: 0.90;height:250px; padding-top: 10px;padding-left:10px; padding-right:32px;" >
 		<div class="botonlogo">
 			<p style="text-align:center">
 				<button title="Home page" href="javascript:void(0)" id="logoBotonMensaje"> </button>
@@ -31,7 +31,7 @@
 			</p>
 		</div>
 	</div>
-	<div class="logo-imagen" style="float:left;background-color: {{page.theme.color}};opacity: 0.90;width: 298px;height:260px;" >
+	<div class="logo-imagen" style="float:left;background-color: {% if page.theme.color is defined %}{{page.theme.color}}{%else%}#0000ff{% endif %};opacity: 0.90;width: 298px;height:260px;" >
 		<div id="logo-imagen">
 			<a title="Home page" href="{{path('project_front_homepage')}}"> <img id="logo-image" src="{{asset('front/images/logo-movible.gif')}}" style="padding: 15px;"> 
 			</a>
@@ -57,7 +57,7 @@
 					<textarea  style="width: 89%;border: none;" id="botonMensaje_mensaje" class="botonMensaje_campo"></textarea>
 				</div>
 				<div style="margin-top: 12px;" class="botonMensaje_elemento">
-					<input type="button" value="Enviar" id="botonMensaje_submit" style="background: #000000;border: none;color: {{page.theme.color}};float: right;margin-right: 30px;font-weight: bolder;cursor:pointer; padding:4px 8px;">
+					<input type="button" value="Enviar" id="botonMensaje_submit" style="background: #000000;border: none;color: {% if page.theme.color is defined %}{{page.theme.color}}{%else%}#0000ff{% endif %};float: right;margin-right: 30px;font-weight: bolder;cursor:pointer; padding:4px 8px;">
 				</div>
 				<div id="botonMensaje_loader" style="display:none;margin-right: 54px;">
 			         <p style="text-align:center;"><img src="{{asset('front/images/loader.gif')}}"></p>
@@ -69,7 +69,7 @@
 					<input type="text" id="botonNewsletter_email" style="width: 90%;border: none;" class="form-reservacion botonNewsletter_campo">
 				</div>
 				<div style="margin-top: 12px;" class="botonNewsletter_elemento">
-					<input type="button" value="Suscribete" id="botonNewsletter_submit" style="background: #000000;border: none;color: {{page.theme.color}};float: right;margin-right: 30px;font-weight: bolder; ; padding:4px 8px;">
+					<input type="button" value="Suscribete" id="botonNewsletter_submit" style="background: #000000;border: none;color: {% if page.theme.color is defined %}{{page.theme.color}}{%else%}#0000ff{% endif %};float: right;margin-right: 30px;font-weight: bolder; ; padding:4px 8px;">
 				</div>
 				<div style="font-weight: bold;margin-top: 41px;" class="botonNewsletter_elemento">
 					<p>Suscribete y recibirás periódicamente </br>todas nuestras actualizaciones</p>
@@ -83,7 +83,7 @@
 					<input type="text" id="botonBusqueda_termino" style="width: 90%;border: none;" class="form-reservacion botonBusqueda_campo">
 				</div>
 				<div style="margin-top: 18px;" class="botonBusqueda_elemento">
-					<input type="button"  id="botonBusqueda_submit"  value="Buscar" style="background: #000000;border: none;color: {{page.theme.color}};float: right;margin-right: 29px;font-weight: bolder; ;  padding:4px 8px;">
+					<input type="button"  id="botonBusqueda_submit"  value="Buscar" style="background: #000000;border: none;color: {% if page.theme.color is defined %}{{page.theme.color}}{%else%}#0000ff{% endif %};float: right;margin-right: 29px;font-weight: bolder; ;  padding:4px 8px;">
 				</div>
 				<div id="botonBusqueda_loader" style="display:none;margin-right: 54px;">
 			         <p style="text-align:center;"><img src="{{asset('front/images/loader.gif')}}"></p>
