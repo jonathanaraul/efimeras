@@ -1,5 +1,9 @@
 {% extends "ProjectFrontBundle:Helpers:body.html.twig" %}
 
+{%block imagenes%}
+var images = ["{{ asset('uploads/backgrounds/853795ce12735e8e29be52e69be73c9723ad337d.jpeg') }}"];
+{%endblock%}
+
 {%block contenido%}
 <div class="middle-right-sub">
 	{% include 'ProjectFrontBundle:Helpers:controller-menuMobile.html.twig' %}
