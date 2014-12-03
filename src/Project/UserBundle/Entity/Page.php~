@@ -193,6 +193,13 @@ class Page
      */
     private $lastHour = true;
 
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="principal", type="boolean", nullable=false)
+     */
+    private $principal = false;
+
 	private $file;
 	private $temp;
 	private $remove;
@@ -355,7 +362,6 @@ class Page
     public function setUpperText($upperText)
     {
         $this->upperText = $upperText;
-    
         return $this;
     }
 
@@ -828,5 +834,28 @@ class Page
     public function getMenu()
     {
         return $this->menu;
+    }
+
+    /**
+     * Set principal
+     *
+     * @param boolean $principal
+     * @return Page
+     */
+    public function setPrincipal($principal)
+    {
+        $this->principal = $principal;
+
+        return $this;
+    }
+
+    /**
+     * Get principal
+     *
+     * @return boolean 
+     */
+    public function getPrincipal()
+    {
+        return $this->principal;
     }
 }

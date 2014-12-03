@@ -1,106 +1,106 @@
 {% if page.theme.color is defined %}
-	{% set colorindex = page.theme.color %}
+    {% set colorindex = page.theme.color %}
 {%else%}
-	{% set colorindex = '#0000ff' %}
+    {% set colorindex = '#0000ff' %}
 {% endif %}
 
 <div class="{{clase}}" style="background-color:{% if page.theme.color is defined %}{{page.theme.color}}{%else%}#0000ff{% endif %};">
-	<div class="minibotones" style="float:left;width:60px;background-color: {% if page.theme.color is defined %}{{page.theme.color}}{%else%}#0000ff{% endif %};opacity: 0.90;height:250px; padding-top: 10px;padding-left:10px; padding-right:32px;" >
-		<div class="botonlogo">
-			<p style="text-align:center">
-				<button title="Home page" href="javascript:void(0)" id="logoBotonMensaje"> </button>
-			</p>
-		</div>
-		<div class="botonlogo">
-			<p style="text-align:center">
-				<button title="Home page" href="javascript:void(0)" id="logoBotonUsuario"> </button>
-			</p>
-		</div>
-		<div class="botonlogo">
-			<p style="text-align:center">
-				<button title="Home page" href="javascript:void(0)" id="logoBotonBusqueda"> </button>
-			</p>
-		</div>
-		<div class="botonlogo">
-			<p style="text-align:center">
-				<button title="Home page" href="javascript:void(0)"  id="logoBotonNewsletter"> </button>
-			</p>
-		</div>
-		<div class="botonlogo">
-			<p style="text-align:center">
-				<button title="Home page" href="javascript:void(0)"  id="logoBotonLugar"> </button>
-			</p>
-		</div>
-		<div class="botonlogo">
-			<p style="text-align:center">
-				<button title="Home page" href="javascript:void(0)"  id="logoRSS"> </button>
-			</p>
-		</div>
-	</div>
-	<div class="logo-imagen" style="float:left;background-color: {% if page.theme.color is defined %}{{page.theme.color}}{%else%}#0000ff{% endif %};opacity: 0.90;width: 298px;height:260px;" >
-		<div id="logo-imagen">
-			<a title="Home page" href="{{path('project_front_homepage')}}"> <img id="logo-image" src="{{asset('front/images/logo-movible.gif')}}" style="padding: 15px;"> 
-			</a>
-		</div>
-		<div id="contenidoBoton" style="display:none">
-			<div id="redesSociales" style="with:100%;margin-top: -56px;float: right;margin-right: 9px;">
-				{{ render(controller('ProjectFrontBundle:Helpers:sociales')) }}
-			</div>
-			<div id="contenidoBotonUsuario" style="margin-top:55px;">
-				{{ render(controller('ProjectUserBundle:Security:login', {'reducido': true, 'colorBl': colorindex} )) }}
-		    </div>
-		    <div id="contenidoBotonMensaje" style="margin-top:55px;">
-				<div style="margin-top: 2px;font-weight: bold;" class="botonMensaje_elemento">
-					<p>Asunto</p>
-					<input type="text" id="botonMensaje_asunto"  style="width: 90%;border: none;" class="botonMensaje_campo form-reservacion">
-				</div>
-				<div style="margin-top: 12px;font-weight: bold;" class="botonMensaje_elemento">
-					<p>E-mail</p>
-					<input type="text" id="botonMensaje_email" style="width: 90%;border: none;" class="botonMensaje_campo form-reservacion">
-				</div>
-				<div style="margin-top: 12px;font-weight: bold;" class="botonMensaje_elemento">
-					<p>Mensaje</p>
-					<textarea  style="width: 89%;border: none;" id="botonMensaje_mensaje" class="botonMensaje_campo"></textarea>
-				</div>
-				<div style="margin-top: 12px;" class="botonMensaje_elemento">
-					<input type="button" value="Enviar" id="botonMensaje_submit" style="background: #000000;border: none;color: {% if page.theme.color is defined %}{{page.theme.color}}{%else%}#0000ff{% endif %};float: right;margin-right: 30px;font-weight: bolder;cursor:pointer; padding:4px 8px;">
-				</div>
-				<div id="botonMensaje_loader" style="display:none;margin-right: 54px;">
-			         <p style="text-align:center;"><img src="{{asset('front/images/loader.gif')}}"></p>
-				</div>
-			</div>
-		    <div id="contenidoBotonNewsletter" style="margin-top:55px;">
-				<div style="margin-top: 12px;font-weight: bold;" class="botonNewsletter_elemento">
-					<p style="margin-bottom:10px;">Mantente al dia con nuestro newsletter</p>
-					<input type="text" id="botonNewsletter_email" style="width: 90%;border: none;" class="form-reservacion botonNewsletter_campo">
-				</div>
-				<div style="margin-top: 12px;" class="botonNewsletter_elemento">
-					<input type="button" value="Suscribete" id="botonNewsletter_submit" style="background: #000000;border: none;color: {% if page.theme.color is defined %}{{page.theme.color}}{%else%}#0000ff{% endif %};float: right;margin-right: 30px;font-weight: bolder; ; padding:4px 8px;">
-				</div>
-				<div style="font-weight: bold;margin-top: 41px;" class="botonNewsletter_elemento">
-					<p>Suscribete y recibirás periódicamente </br>todas nuestras actualizaciones</p>
-				</div>
-				<div id="botonNewsletter_loader" style="display:none;margin-right: 54px;">
-			         <p style="text-align:center;"><img src="{{asset('front/images/loader.gif')}}"></p>
-				</div>
-			</div>
-		    <div id="contenidoBotonBusqueda" style="margin-top:55px;">
-				<div style="margin-top: 40px;font-weight: bold;padding-top: 28px;" class="botonBusqueda_elemento">
-					<input type="text" id="botonBusqueda_termino" style="width: 90%;border: none;" class="form-reservacion botonBusqueda_campo">
-				</div>
-				<div style="margin-top: 18px;" class="botonBusqueda_elemento">
-					<input type="button"  id="botonBusqueda_submit"  value="Buscar" style="background: #000000;border: none;color: {% if page.theme.color is defined %}{{page.theme.color}}{%else%}#0000ff{% endif %};float: right;margin-right: 29px;font-weight: bolder; ;  padding:4px 8px;">
-				</div>
-				<div id="botonBusqueda_loader" style="display:none;margin-right: 54px;">
-			         <p style="text-align:center;"><img src="{{asset('front/images/loader.gif')}}"></p>
-				</div>
-			</div>
-			<div id="contenidoBotonLugar" style="margin-top:55px;">
-				{{ render(controller('ProjectFrontBundle:Helpers:lugar', {'colorOb': colorindex } )) }}
-		    </div>
-		    <div id="contenidoBotonRSS" style="margin-top:55px;">
-		    	<br>
-		    </div>
-		</div>
-	</div>
+    <div class="minibotones" style="float:left;width:60px;background-color: {% if page.theme.color is defined %}{{page.theme.color}}{%else%}#0000ff{% endif %};opacity: 0.90;height:250px; padding-top: 10px;padding-left:10px; padding-right:32px;" >
+        <div class="botonlogo">
+            <p style="text-align:center">
+                <button title="Home page" href="javascript:void(0)" id="logoBotonMensaje"> </button>
+            </p>
+        </div>
+        <div class="botonlogo">
+            <p style="text-align:center">
+                <button title="Home page" href="javascript:void(0)" id="logoBotonUsuario"> </button>
+            </p>
+        </div>
+        <div class="botonlogo">
+            <p style="text-align:center">
+                <button title="Home page" href="javascript:void(0)" id="logoBotonBusqueda"> </button>
+            </p>
+        </div>
+        <div class="botonlogo">
+            <p style="text-align:center">
+                <button title="Home page" href="javascript:void(0)"  id="logoBotonNewsletter"> </button>
+            </p>
+        </div>
+        <div class="botonlogo">
+            <p style="text-align:center">
+                <button title="Home page" href="javascript:void(0)"  id="logoBotonLugar"> </button>
+            </p>
+        </div>
+        <div class="botonlogo">
+            <p style="text-align:center">
+                <button title="Home page" href="javascript:void(0)"  id="logoRSS"> </button>
+            </p>
+        </div>
+    </div>
+    <div class="logo-imagen" style="float:left;background-color: {% if page.theme.color is defined %}{{page.theme.color}}{%else%}#0000ff{% endif %};opacity: 0.90;width: 298px;height:260px;" >
+        <div id="logo-imagen">
+                <a title="Home page" href="{{path('project_front_homepage')}}"> <img id="logo-image" src="{{asset('front/images/logo-movible.gif')}}" style="padding: 15px;"> 
+                </a>
+        </div>
+        <div id="contenidoBoton" style="display:none">
+            <div id="redesSociales" style="with:100%;margin-top: -56px;float: right;margin-right: 9px;">
+                {{ render(controller('ProjectFrontBundle:Helpers:sociales')) }}
+            </div>
+            <div id="contenidoBotonUsuario" style="margin-top:55px;">
+                {{ render(controller('ProjectUserBundle:Security:login', {'reducido': true, 'colorBl': colorindex} )) }}
+            </div>
+            <div id="contenidoBotonMensaje" style="margin-top:55px;">
+                <div style="margin-top: 2px;font-weight: bold;" class="botonMensaje_elemento">
+                    <p>Asunto</p>
+                    <input type="text" id="botonMensaje_asunto"  style="width: 90%;border: none;" class="botonMensaje_campo form-reservacion">
+                </div>
+                <div style="margin-top: 12px;font-weight: bold;" class="botonMensaje_elemento">
+                    <p>E-mail</p>
+                    <input type="text" id="botonMensaje_email" style="width: 90%;border: none;" class="botonMensaje_campo form-reservacion">
+                </div>
+                <div style="margin-top: 12px;font-weight: bold;" class="botonMensaje_elemento">
+                    <p>Mensaje</p>
+                    <textarea  style="width: 89%;border: none;" id="botonMensaje_mensaje" class="botonMensaje_campo"></textarea>
+                </div>
+                <div style="margin-top: 12px;" class="botonMensaje_elemento">
+                    <input type="button" value="Enviar" id="botonMensaje_submit" style="background: #000000;border: none;color: {% if page.theme.color is defined %}{{page.theme.color}}{%else%}#0000ff{% endif %};float: right;margin-right: 30px;font-weight: bolder;cursor:pointer; padding:4px 8px;">
+                </div>
+                <div id="botonMensaje_loader" style="display:none;margin-right: 54px;">
+                    <p style="text-align:center;"><img src="{{asset('front/images/loader.gif')}}"></p>
+                </div>
+            </div>
+            <div id="contenidoBotonNewsletter" style="margin-top:55px;">
+                <div style="margin-top: 12px;font-weight: bold;" class="botonNewsletter_elemento">
+                    <p style="margin-bottom:10px;">Mantente al dia con nuestro newsletter</p>
+                    <input type="text" id="botonNewsletter_email" style="width: 90%;border: none;" class="form-reservacion botonNewsletter_campo">
+                </div>
+                <div style="margin-top: 12px;" class="botonNewsletter_elemento">
+                    <input type="button" value="Suscribete" id="botonNewsletter_submit" style="background: #000000;border: none;color: {% if page.theme.color is defined %}{{page.theme.color}}{%else%}#0000ff{% endif %};float: right;margin-right: 30px;font-weight: bolder; ; padding:4px 8px;">
+                </div>
+                <div style="font-weight: bold;margin-top: 41px;" class="botonNewsletter_elemento">
+                    <p>Suscribete y recibirás periódicamente </br>todas nuestras actualizaciones</p>
+                </div>
+                <div id="botonNewsletter_loader" style="display:none;margin-right: 54px;">
+                    <p style="text-align:center;"><img src="{{asset('front/images/loader.gif')}}"></p>
+                </div>
+            </div>
+            <div id="contenidoBotonBusqueda" style="margin-top:55px;">
+                <div style="margin-top: 40px;font-weight: bold;padding-top: 28px;" class="botonBusqueda_elemento">
+                    <input type="text" id="botonBusqueda_termino" style="width: 90%;border: none;" class="form-reservacion botonBusqueda_campo">
+                </div>
+                <div style="margin-top: 18px;" class="botonBusqueda_elemento">
+                    <input type="button"  id="botonBusqueda_submit"  value="Buscar" style="background: #000000;border: none;color: {% if page.theme.color is defined %}{{page.theme.color}}{%else%}#0000ff{% endif %};float: right;margin-right: 29px;font-weight: bolder; ;  padding:4px 8px;">
+                </div>
+                <div id="botonBusqueda_loader" style="display:none;margin-right: 54px;">
+                    <p style="text-align:center;"><img src="{{asset('front/images/loader.gif')}}"></p>
+                </div>
+            </div>
+            <div id="contenidoBotonLugar" style="margin-top:55px;">
+                {{ render(controller('ProjectFrontBundle:Helpers:lugar', {'colorOb': colorindex } )) }}
+            </div>
+            <div id="contenidoRSS" style="margin-top:55px; overflow:scroll; overflow-y:visible; overflow-x:hidden;  width:280px; height:200px">
+                {{ render(controller('ProjectFrontBundle:Helpers:feed')) }}
+            </div>
+        </div>
+    </div>
 </div>

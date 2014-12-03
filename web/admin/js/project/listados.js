@@ -106,3 +106,24 @@ function ordenaRank(){
 		var respuesta = JSON.parse(respuesta);
 	});
 }
+
+jQuery('#page_principal').click(function() {  
+	var tipo = jQuery(this).val();
+	
+	if(tipo==0){
+		//$('#menuItem_page').val($("#menuItem_page option:first").val());
+		$('#page_name').prop('readOnly', false);
+		$('#page_upperText').prop('readOnly', false);
+		$('#page_name').val('');
+		$('#page_upperText').val('');
+	}
+
+	else if(tipo==1){
+		//$('#menuItem_category').val($("#menuItem_category option:first").val());
+		$('#page_name').prop('readOnly', true);
+		$('#page_upperText').prop('readOnly', true);
+		$('#page_name').val('Principal');
+		$('#page_upperText').val('Principal');
+	}
+	return false;
+});

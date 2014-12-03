@@ -56,3 +56,6 @@ project_front_modal_newsletter:
 project_front_modal_direction:
     pattern:  /modal/direccion
     defaults: { _controller: ProjectFrontBundle:Modal:direction }
+project_front_practice:
+    pattern:  /practica
+    defaults: { _controller: ProjectFrontBundle:Practice:index }

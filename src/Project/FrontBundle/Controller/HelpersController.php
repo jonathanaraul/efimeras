@@ -58,4 +58,20 @@ class HelpersController extends Controller
         $resultado = $query->getResult();
         return $this->render('ProjectFrontBundle:Helpers:last-time.html.twig', array('elementp' => $resultado));
     }
+
+    /**
+     * Renders latest news
+     *
+     * @return array
+     * @Route("/noticias", name="news_index")
+     * @Template()
+     */
+    public function feedAction()
+    {
+        $this->client = $this->get('rss_client');
+
+        return array(
+            'feeds'   => $this->client->fetch('channel_name1'),
+        );
+    }
 }

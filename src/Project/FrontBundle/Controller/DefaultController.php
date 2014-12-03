@@ -82,13 +82,16 @@ class DefaultController extends Controller
 		$secondArray = array();
 
 		$em = $this -> getDoctrine() -> getManager();
-		$dql = "SELECT n FROM ProjectUserBundle:MenuItem n 
+		$dql = "SELECT n, p FROM ProjectUserBundle:MenuItem n 
+				JOIN n.page p
 		        WHERE n.menu = :menu and
-		              n.tipo != :tipo
+		              n.tipo != :tipo and 
+		              p.principal = :principal
 		 ORDER BY n.rank ASC";
 		$query = $em -> createQuery($dql);
 		$query -> setParameter('menu', 1);
 		$query -> setParameter('tipo', 2);
+		$query -> setParameter('principal', 0);
 		$query ->setMaxResults(1);
 		$secondArray['item']  = $query -> getOneOrNullResult();
 		if($secondArray['item'] ==null){

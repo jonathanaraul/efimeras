@@ -35,6 +35,7 @@ class AppKernel extends Kernel
             new JMS\AopBundle\JMSAopBundle(),
             new JMS\SecurityExtraBundle\JMSSecurityExtraBundle(),
             new JMS\DiExtraBundle\JMSDiExtraBundle($this),
+            new Desarrolla2\Bundle\RSSClientBundle\RSSClientBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

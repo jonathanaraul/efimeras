@@ -123,3 +123,15 @@ fos_user:
     from_email:
         address:        noreply@efimeras.es
         sender_name:    Efimeras
+
+rss_client:
+   cache:
+      ttl:     3600 # This is the default
+   channels:     
+      channel_name1:
+         - 'http://www.osukaru.es/feed/'
+         - 'http://desarrolla2.com/feed/'
+
+      channel_name2:
+         - 'http://feeds.feedburner.com/symfony/blog'
+         - 'http://www.symfony.es/feed/'

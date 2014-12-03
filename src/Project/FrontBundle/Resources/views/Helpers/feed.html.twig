@@ -1,0 +1,9 @@
+{% for feed in feeds %}            
+        <header>
+            <a href="{{ feed.link }}" target="_blank" style="color:#000000">{{ feed.title }}</a>
+            <time>{{ feed.pubDate | date('d/m/Y H:i') }}</time>
+        </header>
+        <p>{# { feed | raw } #}</p>
+{% else %}
+    <p>Not news :(</p>
+{% endfor %}    

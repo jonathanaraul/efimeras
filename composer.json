@@ -36,7 +36,8 @@
         "ob/highcharts-bundle": "1.*",
         "friendsofsymfony/user-bundle": "~2.0@dev",
         "egeloen/ckeditor-bundle": "~2.0",
-        "jms/security-extra-bundle": "dev-master"
+        "jms/security-extra-bundle": "dev-master",
+        "desarrolla2/rss-client-bundle": "2.*"
     },
     "scripts": {
         "post-install-cmd": [

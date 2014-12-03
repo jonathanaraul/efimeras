@@ -13,6 +13,11 @@ class PageType extends AbstractType
     {
         $builder
 
+        -> add('principal', 'choice', array(
+            'choices'   => array(0 => 'No', 1 => 'Si'),
+            'required'  => true,
+            'label' => 'Principal'
+            ))
         -> add('name', 'text', array('label' => 'Nombre','required' => true, 'attr' => array('class' => 'span6')))
         -> add('descriptionMeta', 'textarea', array('label' => 'Descripcion meta','required' => true, 'attr' => array('class' => 'span6'))) 
         -> add('keywords', 'text', array('label' => 'Palabras claves','required' => true, 'attr' => array('class' => 'span6'))) 
