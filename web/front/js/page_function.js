@@ -189,6 +189,56 @@ $(document).ready(function(){
 			var x = $('.logobotones').css('background-color');
 			$('.menu-hidden').css('background',x);
 			
+			$('#menuobligado').mouseover(function() {
+				$('.slicknav_icon-bar', this).css('background-color', 'black');
+				$('.slicknav_nav a',this).css('color', 'black');
+				$('.logo-movil').attr('src',"../front/images/logo-negro.png");
+				$('.slicknav_nav',this).css('display','block');
+				$('#menuobligado2 .slicknav_nav').css('display','none');
+				$('#menuobligado3 .slicknav_nav').css('display','none');
+			});
+				
+
+			$('#menuobligado').mouseout(function() {
+				$('.slicknav_icon-bar', this).css('background-color', 'white');
+				$('.slicknav_nav a',this).css('color', 'white');
+				$('.logo-movil').attr('src',"../front/images/logo.gif");
+				$('.slicknav_nav',this).css('display','none');			
+			});
+			
+			$('#menuobligado2').mouseover(function() {
+				$('.slicknav_icon-bar', this).css('background-color', 'black');
+				$('.slicknav_nav a',this).css('color', 'black');
+				$('.slicknav_menutxt',this).css('color', 'black');
+				$('.slicknav_nav',this).css('display','block');
+				$('#menuobligado .slicknav_nav').css('display','none');
+				$('#menuobligado3 .slicknav_nav').css('display','none');
+				
+			});
+			$('#menuobligado2').mouseout(function() {
+					$('.slicknav_icon-bar', this).css('background-color', 'white');
+				$('.slicknav_nav a',this).css('color', 'white');
+				$('.slicknav_menutxt',this).css('color', 'white');
+				$('.slicknav_nav',this).css('display','none');		
+				
+			});
+			$('#menuobligado3').mouseover(function() {
+				$('.slicknav_icon-bar', this).css('background-color', 'black');
+				$('.slicknav_nav a',this).css('color', 'black');
+				$('h1',this).css('color', 'black');
+				$('.slicknav_nav',this).css('display','block');
+				$('#menuobligado .slicknav_nav').css('display','none');
+				$('#menuobligado2 .slicknav_nav').css('display','none');
+				
+				
+			});
+			$('#menuobligado3').mouseout(function() {
+				$('.slicknav_icon-bar', this).css('background-color', 'white');
+				$('.slicknav_nav a',this).css('color', 'white');
+				$('h1',this).css('color', 'white');
+				$('.slicknav_nav',this).css('display','none');		
+				
+			});
 			
 
 });
