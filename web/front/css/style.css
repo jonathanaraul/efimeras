@@ -1376,7 +1376,6 @@ margin: 0px 4%;
 }
 @media screen and (min-device-width : 320px) and (max-device-width : 320px)
 { 
-
 	body{
 		max-width:320px;
 	}
@@ -1429,11 +1428,13 @@ padding: 10px;
     padding-top: 80px !important;
     margin-left: -80px;
     float: left;
+	width:80px;
 }
 	#menuobligado2 {
     float: left;
     margin-left: 10%;
     padding-top: 80px !important;
+	width: 100px;
 }
 	#menuobligado3 {
     float: left;
@@ -1459,17 +1460,15 @@ padding: 10px;
 	#logo-universidad {
     display: none;
 	}
-	.slicknav_nav {
-    background: #000;
-    width: 140px;
-}
-	.slicknav_nav, .slicknav_nav ul {
-    overflow: hidden;
-    list-style: outside none none;
-    position: absolute;
-    margin-top: 55px !important;
-	margin-left: -20px !important;
-}
+	#menuobligado .slicknav_nav li {
+		width:80px;
+	}
+	#menuobligado2 .slicknav_nav li {
+		width:80px;
+	}
+	#menuobligado3 .slicknav_nav li {
+		width:80px;
+	}
 
 	.slicknav_nav a:hover {
 	background:none !important;	
@@ -1542,19 +1541,21 @@ margin-top: 150px !important;
 	width: 100px;
 padding: 10px;	
 	}
-	#menuobligado {
+		#menuobligado {
     padding-top: 80px !important;
     margin-left: -80px;
     float: left;
+	width:80px;
 }
 	#menuobligado2 {
     float: left;
-    margin-left: 10%;
+    margin-left: 15%;
     padding-top: 80px !important;
+	width: 140px;
 }
 	#menuobligado3 {
     float: left;
-    margin-left: 10%;
+    margin-left: -5%;
     padding-top: 80px !important;
 }
 	#menuobligado3 h1{
@@ -1565,17 +1566,19 @@ padding: 10px;
 	#logo-universidad {
     display: none;
 	}
-	.slicknav_nav {
-    background: #000;
-    width: 140px;
+	
+	#menuobligado .slicknav_nav li {
+		width:80px;
+	}
+	#menuobligado2 ul {
+   		margin-left: -30px;
 }
-	.slicknav_nav, .slicknav_nav ul {
-    overflow: hidden;
-    list-style: outside none none;
-    position: absolute;
-    margin-top: 55px !important;
-	margin-left: -20px !important;
-}
+	#menuobligado2 .slicknav_nav li {
+		width:140px;
+	}
+	#menuobligado3 .slicknav_nav li {
+		width:80px;
+	}
 
 	.slicknav_nav a:hover {
 	background:none !important;	
@@ -1648,19 +1651,21 @@ margin-top: 150px !important;
 	width: 100px;
 padding: 10px;	
 	}
-	#menuobligado {
+		#menuobligado {
     padding-top: 80px !important;
     margin-left: -80px;
     float: left;
+	width:80px;
 }
 	#menuobligado2 {
-    float: left;
-    margin-left: 22%;
-    padding-top: 80px !important;
+  	float: left;
+	margin-left: 25%;
+	padding-top: 80px !important;
+	width: 200px;
 }
 	#menuobligado3 {
     float: left;
-    margin-left: 20%;
+    margin-left: -5%;
     padding-top: 80px !important;
 }
 	#menuobligado3 h1{
@@ -1671,22 +1676,22 @@ padding: 10px;
 	#logo-universidad {
     display: none;
 	}
-	.slicknav_nav {
-    background: #000;
-    width: 140px;
-}
-	.slicknav_nav, .slicknav_nav ul {
-    overflow: hidden;
-    list-style: outside none none;
-    position: absolute;
-    margin-top: 55px !important;
-	margin-left: -20px !important;
-}
 
 	.slicknav_nav a:hover {
 	background:none !important;	
 	}
-	
+		#menuobligado .slicknav_nav li {
+		width:80px;
+	}
+	#menuobligado2 ul {
+   		margin-left: -60px;
+}
+	#menuobligado2 .slicknav_nav li {
+		width:200px;
+	}
+	#menuobligado3 .slicknav_nav li {
+		width:80px;
+	}
 	.news-cont-mobile{
     background: none repeat scroll 0% 0% #000;
 	margin-top: 200px;
@@ -1758,15 +1763,17 @@ padding: 10px;
     padding-top: 80px !important;
     margin-left: -80px;
     float: left;
+	width:80px;
 }
 	#menuobligado2 {
-    float: left;
-    margin-left: 30%;
-    padding-top: 80px !important;
+  	float: left;
+	margin-left: 28%;
+	padding-top: 80px !important;
+	width: 200px;
 }
 	#menuobligado3 {
     float: left;
-    margin-left: 25%;
+    margin-left: 5%;
     padding-top: 80px !important;
 }
 	#menuobligado3 h1{
@@ -1777,17 +1784,18 @@ padding: 10px;
 	#logo-universidad {
     display: none;
 	}
-	.slicknav_nav {
-    background: #000;
-    width: 140px;
+			#menuobligado .slicknav_nav li {
+		width:80px;
+	}
+	#menuobligado2 ul {
+   		margin-left: -60px;
 }
-	.slicknav_nav, .slicknav_nav ul {
-    overflow: hidden;
-    list-style: outside none none;
-    position: absolute;
-    margin-top: 55px !important;
-	margin-left: -20px !important;
-}
+	#menuobligado2 .slicknav_nav li {
+		width:200px;
+	}
+	#menuobligado3 .slicknav_nav li {
+		width:80px;
+	}
 
 	.slicknav_nav a:hover {
 	background:none !important;	
