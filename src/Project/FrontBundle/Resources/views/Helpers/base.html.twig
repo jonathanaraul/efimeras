@@ -62,7 +62,7 @@
 			$('#menuobligado').mouseover(function() {
 				$('.slicknav_icon-bar', this).css('background-color', 'black');
 				$('.slicknav_nav a',this).css('color', 'black');
-				$('.logo-movil').attr('src',"{{asset(front/images/logo-negro.png)}}");
+				$('.logo-movil').attr('src',"{{asset('front/images/logo-negro.png')}}");
 				$('.slicknav_nav',this).css('display','block');
 				$('#menuobligado2 .slicknav_nav').css('display','none');
 				$('#menuobligado3 .slicknav_nav').css('display','none');
@@ -72,7 +72,7 @@
 			$('#menuobligado').mouseout(function() {
 				$('.slicknav_icon-bar', this).css('background-color', 'white');
 				$('.slicknav_nav a',this).css('color', 'white');
-				$('.logo-movil').attr('src',"{{asset(front/images/logo.gif)}}");
+				$('.logo-movil').attr('src',"{{asset('front/images/logo.gif')}}");
 				$('.slicknav_nav',this).css('display','none');			
 			});
 			

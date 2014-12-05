@@ -36,21 +36,25 @@ class PageType extends AbstractType
             ))        
         -> add('published', 'checkbox', array('label' => 'Publicado', 'required' => false, 'attr' => array('class' => 'ace-switch') ))
         -> add('lastHour', 'checkbox', array('label' => 'Ultima Hora', 'required' => false, 'attr' => array('class' => 'ace-switch') )) 
-        -> add('content', 'ckeditor', array(
-            'label' => 'Nombre',
-            'config' => array(
-                'toolbar' => array(
-                    array(
-                        'name'  => 'document',
-                        'items' => array('Source', '-', 'Save', 'NewPage', 'DocProps', 'Preview', 'Print', '-', 'Templates'),
-                        ),
-                    '/',
-                    array(
-                        'name'  => 'basicstyles',
-                        'items' => array('Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript', '-', 'RemoveFormat', '-',  '-',  '-',  '-', 'Link', 'Image'),
-                        ),
+        ->add('content', 'ckeditor', array(
+                'transformers'                 => array('html_purifier'),
+                'toolbar'                      => array('document', 'clipboard', 'editing', '/', 'basicstyles', 'paragraph', 'links', '/', 'insert', 'styles', 'tools'),
+                'toolbar_groups'               => array(
+                    'document' => array('Source')
+                ),
+                'ui_color'                     => '#000000',
+                'startup_outline_blocks'       => false,
+                'width'                        => '100%',
+                'height'                       => '320',
+                'language'                     => 'es-es',
+                'filebrowser_image_browse_url' => array(
+                    'url' => 'relative-url.php?type=file',
+                ),
+                'filebrowser_image_browse_url' => array(
+                    'route'            => 'project_front_modal_message',
+                    'route_parameters' => array(
+                        'type' => 'image',
                     ),
-                'uiColor' => '#ffffff',
                 ),
             ))
         -> add('background', 'entity', array(
