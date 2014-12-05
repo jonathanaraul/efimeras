@@ -60,11 +60,7 @@ doctrine:
 
     orm:
         auto_generate_proxy_classes: "%kernel.debug%"
-        entity_managers:
-            default:
-                auto_mapping: true
-                mappings:
-                    SonataMediaBundle: ~
+        auto_mapping: true
 
 sonata_block:
     default_contexts: [sonata_page_bundle] #[cms]
