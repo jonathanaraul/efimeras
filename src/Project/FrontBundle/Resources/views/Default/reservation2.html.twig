@@ -12,9 +12,9 @@ images[{{loop.index0}}] = "{{ asset(''~ element.getWebPath ~'') }}";
 	{% include 'ProjectFrontBundle:Helpers:controller-menuMobile.html.twig' %}
 	<div class="news-cont" style="margin-left: 20px;{%if page.template==0%}width: 800px;{%endif%}">
 		<div class="news-cell" style="padding: 0px;">
-			<h2 style="color: {{page.theme.color}};"> Pre-Inscripciones </h2>
+			<h2 style="color: {{page.theme.color}};"> Pre-Inscripciones <br>({{page.name|title}})</h2>
 			{%if message == ''%}
-			<form action="{{ url }}" method="post" {{ form_enctype(form) }} id="form-reservaciones">
+			<form action="{{ url }}" method="post" {{ form_enctype(form) }} id="form-reservaciones" name="formulario">
 				
 				<table style ="width: 100%;" id="contenido-pagina" CELLSPACING ="10">
 
@@ -44,9 +44,11 @@ images[{{loop.index0}}] = "{{ asset(''~ element.getWebPath ~'') }}";
 					</tr>
 					<tr>
 						<td colspan="2">
-						<div class="boton-listado boton-reservaciones" style="margin-top: 14px;margin-right: 0px;" >
-							<!--<a href="javascript:void(0);" id="botonReservaciones">{% trans %}Pre-Inscripción{% endtrans %}</a>-->
-							<input type="submit" value="Pre-Inscripción">
+						<div class="boton-listado boton-reservaciones" style="margin-top: 14px;margin-right: 0px; background-color:{{page.theme.color}}" >
+							<!--<a href="javascript:void(0);" id="botonReservaciones">{% trans %}Pre-Inscripción{% endtrans %}</a>
+							<input type="submit" value="Pre-Inscripción" class="boton-listado boton-reservaciones" style="margin-top: 14px;margin-right: 0px; background-color:{{page.theme.color}}">-->
+
+							<a href="javascript:document.formulario.submit();">Pre-Inscribir</a>
 						</div></td>
 					</tr>
 				</table>

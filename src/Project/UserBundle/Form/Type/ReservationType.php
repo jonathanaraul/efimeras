@@ -23,8 +23,27 @@ class ReservationType extends AbstractType
         ->add('phone', 'text', array('required' => false))
         ->add('nationality', 'choice', array(
             'choices'   => array(
-                'esp' => 'Española', 
-                'ext' => 'Extranjero'
+                'esp' => 'Español', 
+                'ext' => 'Extranjero',
+                'arg' => 'Argentino',
+                'bol' => 'Boliviano',
+                'chi' => 'Chileno',
+                'col' => 'Colombiano',
+                'cos' => 'Costarricense',
+                'cub' => 'Cubano',
+                'ecu' => 'Ecuatoriano',
+                'sal' => 'Salvadoreño',
+                'gua' => 'Guatemalteco',
+                'hon' => 'Hondureño',
+                'mex' => 'Mexicano',
+                'nic' => 'Nicaragüense',
+                'pan' => 'Panameño',
+                'par' => 'Paraguayo',
+                'per' => 'Peruano',
+                'pue' => 'Puertorriqueño',
+                'dom' => 'Dominicano',
+                'uru' => 'Uruguayo',
+                'ven' => 'Venezolano'
                 ),
             'required' => false))
         ->add('education', 'text', array('required' => false));
