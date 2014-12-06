@@ -80,6 +80,8 @@ class DefaultController extends Controller
 
 		$firstArray = UtilitiesAPI::getDefaultContent('inicio', $this);
 		$secondArray = array();
+		$thirdArray = array();
+		$fourArray = array();
 
 		$em = $this -> getDoctrine() -> getManager();
 		$dql = "SELECT n, p FROM ProjectUserBundle:MenuItem n 
@@ -91,13 +93,10 @@ class DefaultController extends Controller
 		$query = $em -> createQuery($dql);
 		$query -> setParameter('menu', 1);
 		$query -> setParameter('tipo', 2);
-		$query -> setParameter('principal', 0);
+		$query -> setParameter('principal', 1);
 		$query ->setMaxResults(1);
 		$secondArray['item']  = $query -> getOneOrNullResult();
-		if($secondArray['item'] ==null){
-         throw $this->createNotFoundException('No se ha configurado correctamente el sitio');
-		}
-		else{
+		if ($secondArray['item'] !=null){
         $secondArray['page']= null;
 
         $twig = '';
@@ -122,6 +121,71 @@ class DefaultController extends Controller
 		$array = array_merge($firstArray, $secondArray);
 		return $this -> render('ProjectFrontBundle:Default:'.$twig.'.html.twig', $array);
 	    }
+
+	    else if($secondArray['item'] ==null){
+			$dqlpage = "SELECT p FROM ProjectUserBundle:Page p 
+			        WHERE p.principal = 1";
+			$querypage = $em -> createQuery($dqlpage);
+			$querypage ->setMaxResults(1);
+			$thirdArray['page']  = $querypage -> getOneOrNullResult();
+
+			if($thirdArray['page'] !=null)
+			{
+				//$thirdArray['page']= null;
+				//$thirdArray['page'] = $thirdArray['pagedos'] ->getId();
+				$thirdArray['idpage'] = $thirdArray['page'] ->getId();
+				$thirdArray['Background'] = $thirdArray['page'] ->getBackground();
+				$thirdArray['articles'] = null;
+				$thirdArray['listado'] = null;//UtilitiesAPI::esListado($thirdArray['idpage'],$this);
+				$thirdArray['images'] = array();
+				$thirdArray['tags'] = explode(',', $thirdArray['page']->getTags());
+				if(trim($thirdArray['tags'][0])=="")$thirdArray['tags'] = null;
+
+				$array = array_merge($firstArray, $thirdArray);
+				return $this -> render('ProjectFrontBundle:Default:page.html.twig', $array);
+			}
+			else 
+			{
+				$dqllast = "SELECT n FROM ProjectUserBundle:MenuItem n 
+		        WHERE n.menu = :menu and
+		              n.tipo != :tipo  
+				 ORDER BY n.rank ASC";
+				$querylast = $em -> createQuery($dqllast);
+				$querylast -> setParameter('menu', 1);
+				$querylast -> setParameter('tipo', 2);
+				$querylast ->setMaxResults(1);
+				$fourArray['item']  = $querylast -> getOneOrNullResult();
+				if ($fourArray['item'] !=null){
+			        $fourArray['page']= null;
+
+			        $twig = '';
+
+					if($fourArray['item']->getTipo()==0){
+						$fourArray['page'] = $fourArray['item'] ->getPage();
+						$twig = 'page';
+					} 
+					else{
+						$fourArray['page'] = $fourArray['item'] ->getCategory();
+						$twig = 'category';
+					} 
+				
+					$fourArray['idpage'] = $fourArray['page']->getId();
+					//$fourArray['idmenu'] = $fourArray['page']->getMenu();
+					$fourArray['articles'] = null;
+					$fourArray['listado'] = null;//UtilitiesAPI::esListado($fourArray['idpage'],$this);
+					$fourArray['images'] = array();
+					$fourArray['tags'] = explode(',', $fourArray['page']->getTags());
+					if(trim($fourArray['tags'][0])=="")$fourArray['tags'] = null;
+					
+					$array = array_merge($firstArray, $fourArray);
+					return $this -> render('ProjectFrontBundle:Default:'.$twig.'.html.twig', $array);
+				    }
+				    else 
+				    {
+			    		throw $this->createNotFoundException('No se ha configurado correctamente el sitio principal');
+				    }
+				}
+		}
 	}
 	/**
 	 * @Route("/search/{term}", name="project_front_search", defaults={"term" = ""})

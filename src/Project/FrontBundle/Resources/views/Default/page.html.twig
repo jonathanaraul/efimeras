@@ -19,8 +19,11 @@ var images = ["{{ asset(''~ page.getBackground.getWebPath ~'') }}"];
 	{%endif%}
 	<div class="news-cont" style="margin-left: 20px;{%if page.template==0 and page.templateMenu==0 %}width: 800px;{%endif%}">
 		<div class="news-cell" style="padding: 0px;">
+			{% if page.principal==0 %}
 			<h2 style="color: {{page.theme.color}};"> {{page.name|title}} </h2>
 			<h4> {{page.upperText}} </h4>
+			{% else %}
+			{% endif %}
 			{%if page.path is not null%}
 			<p>
 				<img src="{{asset(page.getWebPath)}}" style="width:100%;margin-top:20px;margin-bottom:10px;">
