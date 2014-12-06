@@ -44,12 +44,50 @@
 		$(document).ready(function() {
 			var x = $('.logobotones').css('background-color');
 			$('.menu-hidden').css('background',x);
-			$('a',this).mouseenter(function(){
-				$(this).css('color',x);
+			
+			
+			$('.menu-element1',this).mouseenter(function(){
+				$('a',this).css('color',x);
 			});
-			$('a',this).mouseleave(function(){
-				$(this).css('color','white');
+			
+			$('.menu-element1',this).mouseleave(function(){
+				$('a',this).css('color','white');
 			});
+			
+			$('.menu-element',this).mouseenter(function(){
+				$('a',this).css('color',x);
+			});
+			
+			$('.menu-element',this).mouseleave(function(){
+				$('a',this).css('color','white');
+			});
+			
+			$('.creditos',this).mouseenter(function(){
+				$('a',this).css('color',x);
+			});
+			
+			$('.creditos',this).mouseleave(function(){
+				$('a',this).css('color','white');
+			});
+			
+				$('b').mouseenter(function(){
+				$('.menu-lateral1',this).css('color',x);
+			});
+			
+			$('b').mouseleave(function(){
+				$('.menu-lateral1',this).css('color','white');
+				
+			});
+			
+			$('span').mouseenter(function(){
+				$('.menu-lateral2',this).css('color',x);
+			});
+			
+			$('span').mouseleave(function(){
+				$('.menu-lateral2',this).css('color','white');
+				
+			});
+			
 			$('.active').css('color',x);
 			
 			$('#logo-image').mouseenter(function() {
