@@ -8,13 +8,13 @@
     <div>
         <span>
           {% if object.tipo == 0 %}
-             <b><a href="{{path('project_front_page',{'id': object.page.id, 'friendlyname' : object.page.friendlyName})}}"   class="menu-lateral1"> {{object.page.name|title}}
+             <b><a href="{{path('project_front_page',{'id': object.page.id, 'friendlyname' : object.page.friendlyName})}}"   class="menu-lateral1"> {{object.page.name}}
              </a> </b>
              {#{%if idpage == object.page.id%}
              <hr class="men-sel" style="background-color: {{object.page.theme.color}};width: 304px;">
              {%endif%}#}
           {%else%} 
-             <a href="{{path('project_front_category',{'id': object.category.id, 'friendlyname' : object.category.friendlyName})}}" style="color:white" class="menu-lateral2"> {{object.category.name|title}}
+             <a href="{{path('project_front_category',{'id': object.category.id, 'friendlyname' : object.category.friendlyName})}}" style="color:white" class="menu-lateral2"> {{object.category.name}}
              </a> 
              {#{%if idpage == object.category.id%}
              <hr class="men-sel" style="background-color: {{object.category.theme.color}};width: 304px;"> 
