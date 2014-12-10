@@ -17,6 +17,7 @@ class NewsletterType extends AbstractType
         $builder
         -> add('asunto', 'text', array('label' => 'Asunto','required' => true))
         -> add('contenido', 'ckeditor', array(
+                'label' => 'Contenido',
                 'transformers'                 => array('html_purifier'),
                 'toolbar'                      => array('document', 'clipboard', 'editing', '/', 'basicstyles', 'paragraph', 'links', '/', 'insert', 'styles', 'tools'),
                 'toolbar_groups'               => array(

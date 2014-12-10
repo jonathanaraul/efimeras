@@ -30,6 +30,7 @@ class CategoryType extends AbstractType
             ))    
         -> add('published', 'checkbox', array('label' => 'Publicado', 'required' => false, 'attr' => array('class' => 'ace-switch') )) 
         -> add('content', 'ckeditor', array(
+                'label' => 'Contenido',
                 'transformers'                 => array('html_purifier'),
                 'toolbar'                      => array('document', 'clipboard', 'editing', '/', 'basicstyles', 'paragraph', 'links', '/', 'insert', 'styles', 'tools'),
                 'toolbar_groups'               => array(
