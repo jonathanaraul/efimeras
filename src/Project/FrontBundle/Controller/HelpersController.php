@@ -59,6 +59,15 @@ class HelpersController extends Controller
         return $this->render('ProjectFrontBundle:Helpers:last-time.html.twig', array('elementp' => $resultado));
     }
 
+    public function feednesAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $dql = "select p from ProjectUserBundle:Page p where p.category= 1 order by p.updated desc";
+        $query = $em->createQuery($dql)->setMaxResults(5);
+        $resultado= $query->getResult();
+        return $this->render('ProjectFrontBundle:Feeds:noticias.xml.twig', array('noticias' => $resultado));
+    }
+
     /**
      * Renders latest news
      *
@@ -68,10 +77,6 @@ class HelpersController extends Controller
      */
     public function feedAction()
     {
-        $this->client = $this->get('rss_client');
-
-        return array(
-            'feeds'   => $this->client->fetch('channel_name1'),
-        );
+        return $this->render('ProjectFrontBundle:Helpers:feed.html.twig');
     }
 }

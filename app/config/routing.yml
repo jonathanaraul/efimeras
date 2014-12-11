@@ -60,6 +60,10 @@ project_front_practice:
     pattern:  /practica
     defaults: { _controller: ProjectFrontBundle:Practice:index }
 
+project_front_ruta:
+    pattern:  /rutarss
+    defaults: { _controller: ProjectFrontBundle:Helpers:feednes }
+
 gallery:
     resource: '@SonataMediaBundle/Resources/config/routing/gallery.xml'
     prefix: /media/gallery

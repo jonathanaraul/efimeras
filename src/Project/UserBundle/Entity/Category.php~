@@ -7,13 +7,15 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Doctrine\Common\Collections\ArrayCollection;
+use Eko\FeedBundle\Item\Writer\ItemInterface;
+
 /**
  * @ORM\Table(name="category")
  * @ORM\Entity(repositoryClass="Project\UserBundle\Entity\CategoryRepository")
  * @ORM\HasLifecycleCallbacks
  */
 
-class Category
+class Category implements ItemInterface
 {
     /**
      * @var integer
@@ -756,5 +758,42 @@ class Category
     public function getTemplateMenu()
     {
         return $this->templateMenu;
+    }
+
+    /**
+     * Returns a fake title
+     *
+     * @return string
+     */
+    public function getFeedItemTitle()
+    {
+        return 'Fake title';
+    }
+    /**
+     * Returns a fake description or content
+     *
+     * @return string
+     */
+    public function getFeedItemDescription()
+    {
+        return 'Fake description or content';
+    }
+    /**
+     * Returns a fake item link
+     *
+     * @return string
+     */
+    public function getFeedItemLink()
+    {
+        return 'http://github.com/eko/FeedBundle/article/fake/url';
+    }
+    /**
+     * Returns a fake publication date
+     *
+     * @return \DateTime
+     */
+    public function getFeedItemPubDate()
+    {
+        return new \DateTime();
     }
 }

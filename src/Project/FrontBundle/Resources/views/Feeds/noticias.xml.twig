@@ -1,0 +1,15 @@
+<?xml version="1.0"?>  
+	<rss version="2.0">  
+		<channel>  
+			<title>Feed Efimeras</title>  
+	    	<link>http://master-arquitectura-efimera.com</link>  
+	    	<description>Noticias</description>
+	    	{%for noticia in noticias%}
+	    	<item>  
+		        <title>{{ noticia.name}}</title>  
+		        <link>http:/localhost/efimeras/web/app_dev.php/page/{{noticia.id}}/{{noticia.friendlyname}}</link>  
+		        <description>{{ noticia.descriptionMeta}}</description>  
+		    </item>
+		    {%endfor%}
+		</channel>
+	</rss>
