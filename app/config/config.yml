@@ -209,14 +209,3 @@ trsteel_ckeditor:
         route: null
         route_parameters:
             type: image
-
-eko_feed:
-    #hydrator: your_hydrator.custom.service # Optional, if you use entity hydrating with a custom hydrator
-    #translation_domain: test # Optional, if you want to use a custom translation domain
-    feeds:
-        article:
-            title:       'My articles/posts'
-            description: 'Latests articles'
-            link:        'http://www.google.co.ve'
-            encoding:    'utf-8'
-            author:      'Vincent Composieux' # Only required for Atom feeds

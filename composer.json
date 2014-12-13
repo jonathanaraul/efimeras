@@ -45,8 +45,7 @@
         "sonata-project/media-bundle": "~2.3",
         "sonata-project/intl-bundle": "~2.2",
         "jms/serializer-bundle": "~0.13",
-        "knplabs/knp-menu-bundle": "~2.0",
-        "eko/feedbundle": "dev-master"
+        "knplabs/knp-menu-bundle": "~2.0"
     },
     "scripts": {
         "post-install-cmd": [

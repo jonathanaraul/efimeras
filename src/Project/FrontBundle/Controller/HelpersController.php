@@ -67,16 +67,4 @@ class HelpersController extends Controller
         $resultado= $query->getResult();
         return $this->render('ProjectFrontBundle:Feeds:noticias.xml.twig', array('noticias' => $resultado));
     }
-
-    /**
-     * Renders latest news
-     *
-     * @return array
-     * @Route("/noticias", name="news_index")
-     * @Template()
-     */
-    public function feedAction()
-    {
-        return $this->render('ProjectFrontBundle:Helpers:feed.html.twig');
-    }
 }
