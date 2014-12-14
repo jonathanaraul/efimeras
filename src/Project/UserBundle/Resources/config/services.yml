@@ -40,6 +40,11 @@ services:
         tags:
             - { name: form.type, alias: image }
 
+    project_background.form.type.imagelink:
+        class: Project\UserBundle\Form\Type\ImagelinkType
+        tags:
+            - { name: form.type, alias: imagelink }
+
     project_background.form.type.reservation:
         class: Project\UserBundle\Form\Type\ReservationType
         tags:

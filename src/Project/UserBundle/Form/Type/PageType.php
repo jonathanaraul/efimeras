@@ -52,7 +52,7 @@ class PageType extends AbstractType
                     'url' => 'relative-url.php?type=file',
                 ),
                 'filebrowser_image_browse_url' => array(
-                    'route'            => 'sonata_media_gallery_index',
+                    'route'            => 'project_back_imagelink_list',
                     'route_parameters' => array(
                         'type' => 'image',
                     ),
