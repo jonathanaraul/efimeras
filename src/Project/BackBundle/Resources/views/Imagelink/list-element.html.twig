@@ -1,11 +1,8 @@
 <li>
-	<a href="{{asset(''~ element.getWebPath ~'')}}" data-rel="colorbox"> <img alt="150x150" src="{{ element.getWebPath | apply_filter('galeria') }}" width="150" height="150" />
+	<a href="#" data-rel="colorbox" id="textodeunaimagen"> <img alt="150x150" src="{{asset(''~ element.getWebPath ~'')}}" width="150" height="150" id="urldeunaimagen" name="{{element.name}}" />
 	<div class="text">
 		<div class="inner">
 			{{element.name}}
 		</div>
 	</div> </a>
-	<div class="tools tools-bottom" tipo="Background" objeto="{{element.id}}">
-
-	</div>
 </li>

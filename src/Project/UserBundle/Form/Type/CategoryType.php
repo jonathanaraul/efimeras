@@ -45,7 +45,7 @@ class CategoryType extends AbstractType
                     'url' => 'relative-url.php?type=file',
                 ),
                 'filebrowser_image_browse_url' => array(
-                    'route'            => 'project_front_modal_message',
+                    'route'            => 'project_back_imagelink_list',
                     'route_parameters' => array(
                         'type' => 'image',
                     ),
