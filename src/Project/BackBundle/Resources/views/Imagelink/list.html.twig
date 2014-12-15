@@ -4,14 +4,16 @@
 <script src="{{asset('admin/js/jquery.colorbox-min.js')}}"></script>
 <script src="{{asset('admin/js/project/galeria.js')}}"></script>
 <script type="text/javascript">
-
-	   $('#textodeunaimagen').on('click',function(){
-	      var img_src0001 = $('#urldeunaimagen').attr('src');
-	      var img_src0002 = $('#urldeunaimagen').attr('name');
+	
+	{%for element2 in pagination2 %}
+	   $('#textodeunaimagen'+{{element2.id}}+'').on('click',function(){
+	      var img_src0001 = $('#urldeunaimagen'+{{element2.id}}+'').attr('src');
+	      var img_src0002 = $('#urldeunaimagen'+{{element2.id}}+'').attr('name');
 	      $('#val1').val(''+img_src0001+'');
 	      $('#texto-seleccion-imagen').empty();
 	      $('#texto-seleccion-imagen').html('La imagen "'+img_src0002+'" ha sido seleccionada.');
 	   });
+	{%endfor%}
 
 	$('.ace-thumbnails [data-rel="colorbox"]').colorbox(colorbox_params);
 	$("#cboxLoadingGraphic").append("<i class='icon-spinner orange'></i>");

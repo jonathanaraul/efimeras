@@ -34,7 +34,7 @@ class ImagelinkController extends Controller {
 		$paginator = $this -> get('knp_paginator');
 		$pagination = $paginator -> paginate($query, $this -> getRequest() -> query -> get('page', 1), 10);
 
-		$array = array('pagination' => $pagination, 'filtros' => $filtros, 'url' => $url);
+		$array = array('pagination' => $pagination, 'pagination2' => $pagination, 'filtros' => $filtros, 'url' => $url);
 		//$array['form'] =  $form -> createView();
 		
 		return $this -> render('ProjectBackBundle:Imagelink:list.html.twig', $array);
