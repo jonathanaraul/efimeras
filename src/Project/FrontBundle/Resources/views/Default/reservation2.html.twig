@@ -10,23 +10,21 @@ images[{{loop.index0}}] = "{{ asset(''~ element.getWebPath ~'') }}";
 {%block contenido%}
 <div class="middle-right-sub" style="float: left;padding-top: 1px;margin-left: 402px;">
 	{% include 'ProjectFrontBundle:Helpers:controller-menuMobile.html.twig' %}
-	<div class="news-cont" style="margin-left: 20px;{%if page.template==0%}width: 800px;{%endif%}">
-		<div class="news-cell" style="padding: 0px;">
+	<div class="news-cont2" style="margin-left: 20px;{%if page.template==0%}width: 800px;{%endif%}">
+		<div class="news-cell2" style="padding: 0px;">
 			<h2 style="color: {{page.theme.color}};"> Pre-Inscripciones <br>({{page.name|title}})</h2>
 			{%if message == ''%}
 			<form action="{{ url }}" method="post" {{ form_enctype(form) }} id="form-reservaciones" name="formulario">
-				
-				<table style ="width: 100%;" id="contenido-pagina" CELLSPACING ="10">
-
-					<tr >
+				<table style ="width: 100%;" id="contenido-pagina" cellspacing="10" border="0">
+					<tr>
 						<td> {% trans %}Nombre{% endtrans %}: </td>
 						<td> {{ form_widget(form.firstName, { 'attr': {'style': 'width: 100%;border: none;','class':'form-reservacion'} }) }} </td>
 					</tr>
-					<tr >
+					<tr>
 						<td> {% trans %}Apellido{% endtrans %}: </td>
 						<td> {{ form_widget(form.lastName, { 'attr': {'style': 'width: 100%;border: none;','class':'form-reservacion'} }) }} </td>
 					</tr>
-					<tr  >
+					<tr>
 						<td> {% trans %}Correo Electrónico{% endtrans %}: </td>
 						<td> {{ form_widget(form.email, { 'attr': {'style': 'width: 100%;border: none;','class':'form-reservacion'} }) }} </td>
 					</tr>
@@ -44,19 +42,16 @@ images[{{loop.index0}}] = "{{ asset(''~ element.getWebPath ~'') }}";
 					</tr>
 					<tr>
 						<td colspan="2">
-						<div class="boton-listado boton-reservaciones" style="margin-top: 14px;margin-right: 0px; background-color:{{page.theme.color}}" >
-							<!--<a href="javascript:void(0);" id="botonReservaciones">{% trans %}Pre-Inscripción{% endtrans %}</a>
-							<input type="submit" value="Pre-Inscripción" class="boton-listado boton-reservaciones" style="margin-top: 14px;margin-right: 0px; background-color:{{page.theme.color}}">-->
+							<div class="boton-listado2 boton-reservaciones" style="margin-top: 14px;margin-right: 0px; background-color:{{page.theme.color}}" >
+								<!--<a href="javascript:void(0);" id="botonReservaciones">{% trans %}Pre-Inscripción{% endtrans %}</a>
+								<input type="submit" value="Pre-Inscripción" class="boton-listado boton-reservaciones" style="margin-top: 14px;margin-right: 0px; background-color:{{page.theme.color}}">-->
 
-							<a href="javascript:document.formulario.submit();">Pre-Inscribir</a>
-						</div></td>
+								<a href="javascript:document.formulario.submit();">Pre-Inscribir</a>
+							</div>
+						</td>
 					</tr>
 				</table>
 			</form>
-			{%else%}
-			<p>
-				{{message}}
-			</p>
 			{%endif%}
 		</div>
 	</div>

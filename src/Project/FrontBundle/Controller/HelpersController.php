@@ -65,6 +65,6 @@ class HelpersController extends Controller
         $dql = "select p from ProjectUserBundle:Page p where p.category= 1 order by p.updated desc";
         $query = $em->createQuery($dql)->setMaxResults(5);
         $resultado= $query->getResult();
-        return $this->render('ProjectFrontBundle:Feeds:noticias.xml.twig', array('noticias' => $resultado));
+        return $this->render('ProjectFrontBundle:Feeds:noticias.xml.twig', array('noticias' => $resultado, 'hosting' => $_SERVER['HTTP_HOST']));
     }
 }

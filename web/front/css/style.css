@@ -335,6 +335,14 @@ color: white;
 top: 9px;
 
 }
+
+.news-cont2{
+background: url(../../images/black.png) repeat; 
+padding: 17px;
+color: white;
+top: 9px;
+
+}
 .news-cont1{
    
 padding: 17px;
@@ -802,6 +810,11 @@ box-shadow: 1px 1px 2px #999;
 	 margin-bottom: 15px;
 }
 
+.news-cell2{
+    margin-left: 3%;
+    margin-right: 3%;
+}
+
 .news-left, .news-title, .news-title-more{
     font-family: FuturiCondensedExtraBold;
 }
@@ -1182,7 +1195,14 @@ text-align: center;
 font-family: "Droid";
 font-size:1.2em;
 margin-bottom:20px;
+}
 
+.boton-listado2{
+   
+padding: 5px 6px 8px 5px;
+text-align: center;
+font-family: "Droid";
+font-size:1.2em;
 }
 
 .boton-listado a{

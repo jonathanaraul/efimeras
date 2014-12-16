@@ -7,7 +7,7 @@
 	    	{%for noticia in noticias%}
 	    	<item>  
 		        <title>{{ noticia.name}}</title>  
-		        <link>http:master-arquitectura-efimera.com/page/{{noticia.id}}/{{noticia.friendlyname}}</link>  
+		        <link>http:{{ hosting }}/page/{{noticia.id}}/{{noticia.friendlyname}}</link>  
 		        <description>{{ noticia.descriptionMeta}}</description>  
 		    </item>
 		    {%endfor%}
