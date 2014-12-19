@@ -74,6 +74,38 @@ project_back_background_edit:
     pattern:  /background/edit/{id}
     defaults: { _controller: ProjectBackBundle:Background:edit, id: '1' }
 
+project_back_image_list:
+    pattern:  /image/list/
+    defaults: { _controller: ProjectBackBundle:Image:list }
+project_back_image_rank:
+    pattern:  /image/rank
+    defaults: { _controller: ProjectBackBundle:Image:rank }
+project_back_image_rank_post:
+    pattern:  /image/rank/post
+    defaults: { _controller: ProjectBackBundle:Image:rankPost }
+project_back_image_create:
+    pattern:  /image/create
+    defaults: { _controller: ProjectBackBundle:Image:create }
+project_back_image_edit:
+    pattern:  /image/edit/{id}
+    defaults: { _controller: ProjectBackBundle:Image:edit, id: '1' }
+
+project_back_imagelink_list:
+    pattern:  /imagelink/list/
+    defaults: { _controller: ProjectBackBundle:Imagelink:list }
+project_back_imagelink_rank:
+    pattern:  /imagelink/rank
+    defaults: { _controller: ProjectBackBundle:Imagelink:rank }
+project_back_imagelink_rank_post:
+    pattern:  /imagelink/rank/post
+    defaults: { _controller: ProjectBackBundle:Imagelink:rankPost }
+project_back_imagelink_create:
+    pattern:  /imagelink/create
+    defaults: { _controller: ProjectBackBundle:Imagelink:create }
+project_back_imagelink_edit:
+    pattern:  /imagelink/edit/{id}
+    defaults: { _controller: ProjectBackBundle:Imagelink:edit, id: '1' }
+
 project_back_theme_list:
     pattern:  /theme/list/
     defaults: { _controller: ProjectBackBundle:Theme:list }

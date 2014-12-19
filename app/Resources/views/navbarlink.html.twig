@@ -1,0 +1,30 @@
+<div class="navbar">
+	<div class="navbar-inner">
+		<div class="container-fluid">
+			<a href="{{path('project_back_homepage')}}" class="brand"> <small> {% include '::nombre.html.twig' %} </small> </a><!--/.brand-->
+            {% if is_granted("IS_AUTHENTICATED_REMEMBERED")%}
+			<ul class="nav ace-nav pull-right">
+
+				<li class="light-blue">
+					<a data-toggle="dropdown" href="#" class="dropdown-toggle"> 
+						<img class="nav-user-photo" src="{%if app.user.getPath is not null%}{{ app.user.getWebPath | apply_filter('navbar') }}{%endif%}" alt="{{app.user.username|title}} foto" />
+
+						
+
+					 <span class="user-info"> <small>Bienvenido,</small>
+
+					{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %} {{ app.user.username}} {% endif %}
+
+
+				</span> </a>
+
+				</li>
+				
+
+
+			</ul><!--/.ace-nav-->
+			{%endif%}
+
+		</div><!--/.container-fluid-->
+	</div><!--/.navbar-inner-->
+</div>

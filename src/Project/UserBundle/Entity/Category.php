@@ -7,6 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Doctrine\Common\Collections\ArrayCollection;
+
 /**
  * @ORM\Table(name="category")
  * @ORM\Entity(repositoryClass="Project\UserBundle\Entity\CategoryRepository")

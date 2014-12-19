@@ -99,7 +99,13 @@
                 {{ render(controller('ProjectFrontBundle:Helpers:lugar', {'colorOb': colorindex } )) }}
             </div>
             <div id="contenidoRSS" style="margin-top:55px; overflow:scroll; overflow-y:visible; overflow-x:hidden;  width:280px; height:200px">
-                {{ render(controller('ProjectFrontBundle:Helpers:feed')) }}
+                <div style="margin-top: 12px;font-weight: bold;" class="botonLugar_elemento">
+                    <h3>Titulares RSS de la Escuela Tecnica Superior de Arquitectura de Madrid</h3>
+                    <br>
+                </div>
+                <div style="margin-top: 12px;" class="botonLugar_elemento">
+                    <input type="button" value="Ver titulares" id="botonLugar_submit" style="background: #000000;border: none;color: {% if page.theme.color is defined %}{{page.theme.color}}{%else%}#0000ff{% endif %};float: right;margin-right: 30px;font-weight: bolder;cursor:pointer; padding:4px 8px;" onclick="window.open('{{path('project_front_ruta')}}','_blank') ">
+                </div>
             </div>
         </div>
     </div>

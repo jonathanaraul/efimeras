@@ -17,6 +17,7 @@ class NewsletterType extends AbstractType
         $builder
         -> add('asunto', 'text', array('label' => 'Asunto','required' => true))
         -> add('contenido', 'ckeditor', array(
+                'label' => 'Contenido',
                 'transformers'                 => array('html_purifier'),
                 'toolbar'                      => array('document', 'clipboard', 'editing', '/', 'basicstyles', 'paragraph', 'links', '/', 'insert', 'styles', 'tools'),
                 'toolbar_groups'               => array(
@@ -31,7 +32,7 @@ class NewsletterType extends AbstractType
                     'url' => 'relative-url.php?type=file',
                 ),
                 'filebrowser_image_browse_url' => array(
-                    'route'            => 'project_front_modal_message',
+                    'route'            => 'project_back_imagelink_list',
                     'route_parameters' => array(
                         'type' => 'image',
                     ),

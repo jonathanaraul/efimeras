@@ -1,0 +1,27 @@
+<li>
+	<a href="{{asset(''~ element.getWebPath ~'')}}" data-rel="colorbox"> <img alt="150x150" src="{{ element.getWebPath | apply_filter('galeria') }}" width="150" height="150" />
+	<div class="text">
+		<div class="inner">
+			{{element.name}}
+		</div>
+	</div> </a>
+	<div class="tags">
+
+		<span class="label label-info" {%if element.home==false%}style="display:none"{%endif%}>Inicio</span>
+
+		<span class="label label-success" {%if element.published==false%}style="display:none"{%endif%}>Publicado</span>
+
+		<span class="label label-important" {%if element.published%}style="display:none"{%endif%}>Despublicado</span>
+
+	</div>
+	<div class="tools tools-bottom" tipo="Background" objeto="{{element.id}}">
+
+		<a href="javascript:void(0)" class="home-galeria" tarea="{%if element.home%}0{%else%}1{%endif%}"> <i class="icon-home"></i> </a>
+
+		<a href="javascript:void(0)" class="cambiar-estatus-galeria" tarea="{%if element.published%}0{%else%}1{%endif%}"> <i class="icon-exchange"></i> </a>
+
+		<a href="{{path('project_back_image_edit',{'id':element.id})}}"> <i class="icon-pencil"></i> </a>
+
+		<a href="javascript:void(0)" class="borrar-galeria"> <i class="icon-remove red"></i> </a>
+	</div>
+</li>

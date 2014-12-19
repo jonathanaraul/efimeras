@@ -1,0 +1,73 @@
+{% extends '::baselink.html.twig' %}
+
+{% block pagesScriptsBottom %}
+<script src="{{asset('admin/js/jquery.colorbox-min.js')}}"></script>
+<script src="{{asset('admin/js/project/galeria.js')}}"></script>
+<script type="text/javascript">
+	
+	{%for element2 in pagination2 %}
+	   $('#textodeunaimagen'+{{element2.id}}+'').on('click',function(){
+	      var img_src0001 = $('#urldeunaimagen'+{{element2.id}}+'').attr('src');
+	      var img_src0002 = $('#urldeunaimagen'+{{element2.id}}+'').attr('name');
+	      $('#val1').val(''+img_src0001+'');
+	      $('#texto-seleccion-imagen').empty();
+	      $('#texto-seleccion-imagen').html('La imagen "'+img_src0002+'" ha sido seleccionada.');
+	   });
+	{%endfor%}
+
+	$('.ace-thumbnails [data-rel="colorbox"]').colorbox(colorbox_params);
+	$("#cboxLoadingGraphic").append("<i class='icon-spinner orange'></i>");
+	//let's add a custom loading icon
+
+	function cerrar() {
+ 		var data = window.document.getElementById('val1').value;
+ 		window.opener.document.getElementById('cke_82_textInput').value = data; 
+ 		this.window.close();
+ 	}
+
+</script>
+
+{%endblock%}
+
+{% block pageContent  %}
+<div class="main-container container-fluid" id="sinlogin">
+	<div class="main-content">
+		<div class="page-content">
+			{% include 'ProjectBackBundle:Imagelink:page-header.html.twig' with {'subtitulo':'listado'} %}
+
+			<div class="row-fluid">
+				<div class="span12">
+					<!--PAGE CONTENT BEGINS-->
+					{%if pagination.getTotalItemCount>0%}
+					<div class="row-fluid">
+						<ul class="ace-thumbnails">
+
+							{%for element in pagination %}
+							{% include 'ProjectBackBundle:Imagelink:list-element.html.twig'  with {'element':element}  %}
+							{%endfor%}
+						</ul>
+					</div><!--PAGE CONTENT ENDS-->
+					<div class="row-fluid">
+						<div class="span6">
+							<div class="dataTables_info" id="sample-table-2_info">
+								{{ pagination.getTotalItemCount }} Resultados
+							</div>
+						</div>
+						<div class="span6">
+							<div class="dataTables_paginate paging_bootstrap pagination" style="margin: 0px;font-size: 18px;">
+								{{ knp_pagination_render(pagination) }}
+							</div>
+						</div>
+					</div>
+					{%else%}
+					{% include 'ProjectBackBundle:Helpers:busqueda-fallida.html.twig' %}
+					{%endif%}
+					<br><br>
+					<input type="hidden" id="val1" /><p id="texto-seleccion-imagen">No ha seleccionado ninguna imágen</p> <button onclick="cerrar();">Aceptar</button>
+				</div><!--/.span-->
+			</div><!--/.row-fluid-->
+		</div><!--/.page-content-->
+	</div><!--/.main-content-->
+</div><!--/.main-container-->
+
+{%endblock%}

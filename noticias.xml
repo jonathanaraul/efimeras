@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>  
+	<rss version="2.0">  
+		<channel>  
+			<title>Feed de páginas estáticas de CLH</title>  
+	    	<link>http://www.comolohago.cl</link>  
+	    	<description>Si se puede, te lo enseñamos</description>
+	    	<item>  
+		        <title>Quiénes Somos</title>  
+		        <link>http://www.comolohago.cl/acerca/</link>  
+		        <description>Conoce al equipo de CLH</description>  
+		    </item>  
+		    <item>  
+		        <title>Licencia CLH</title>  
+		        <link>http://www.comolohago.cl/licencia-clh/</link>  
+		        <description>Lo que permitmos, y lo que no</description>  
+		    </item>  
+		    <item>  
+		        <title>Colabora</title>  
+		        <link>http://www.comolohago.cl/colabora/</link>  
+		        <description>Ayúdanos a enseñar</description>  
+		    </item>  
+		    <item>  
+		        <title>Peticiones</title>  
+		        <link>http://www.comolohago.cl/peticiones/</link>  
+		        <description>¿Algo que quieras ver?</description>  
+		    </item>
+		</channel>
+	</rss>

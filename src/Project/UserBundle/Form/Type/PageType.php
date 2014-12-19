@@ -37,6 +37,7 @@ class PageType extends AbstractType
         -> add('published', 'checkbox', array('label' => 'Publicado', 'required' => false, 'attr' => array('class' => 'ace-switch') ))
         -> add('lastHour', 'checkbox', array('label' => 'Ultima Hora', 'required' => false, 'attr' => array('class' => 'ace-switch') )) 
         ->add('content', 'ckeditor', array(
+                'label' => 'Contenido',
                 'transformers'                 => array('html_purifier'),
                 'toolbar'                      => array('document', 'clipboard', 'editing', '/', 'basicstyles', 'paragraph', 'links', '/', 'insert', 'styles', 'tools'),
                 'toolbar_groups'               => array(
@@ -51,7 +52,7 @@ class PageType extends AbstractType
                     'url' => 'relative-url.php?type=file',
                 ),
                 'filebrowser_image_browse_url' => array(
-                    'route'            => 'sonata_media_gallery_index',
+                    'route'            => 'project_back_imagelink_list',
                     'route_parameters' => array(
                         'type' => 'image',
                     ),
