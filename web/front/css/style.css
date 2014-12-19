@@ -1893,7 +1893,7 @@ padding: 10px;
 	}
 	.news-cont{
     margin-left: 20px;
-    width: 70% !important;	
+    width: 65% !important;	
 	}
 	.menu{
 	display: none;	
@@ -1905,6 +1905,9 @@ padding: 10px;
 	display: none;	
 	}
 	.middle-right-sub{
-	margin-left: 170px !important;	
+	margin-left: 160px !important;	
+	}
+	.tags{
+	margin-left: 760px;	
 	}
  }
