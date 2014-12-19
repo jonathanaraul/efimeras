@@ -43,6 +43,40 @@
 			<li><a class="scroll" href="#examples">Examples</a></li>
 			<li><a href="http://github.com">View on Github</a></li>
 		</ul>
+	</div>	
+</div>
+<div class="menu-hidden-tablet" style="display:none;">
+    <div class="logo" style="margin-top: 0px;">
+        <a title="Home page" href="{{path('project_front_homepage')}}"> <img class="logo-movil" id="logo-image" src="{{asset('front/images/logo.gif')}}"> </a>
+    </div>
+    <div style="text-align: center;padding-top: 105px;" id="menutablet">
+       	<ul id="sub-menu-tablet" style="display:none">
+			<li><a class="scroll" href="{{path('project_front_modal_message')}}">Mensaje</a></li>
+			<li><a class="scroll" href="{{path('project_front_modal_login')}}">Login</a></li>
+			<li><a class="scroll" href="{{path('project_front_modal_search')}}">Busqueda</a></li>
+			<li><a href="{{path('project_front_modal_newsletter')}}">Newsletter</a></li>
+			<li><a href="{{path('project_front_modal_direction')}}">Direccion</a></li>
+			<li><a href="http://github.com">RSS</a></li>
+		</ul>
+    </div>
+	<div style="text-align: center;padding-top: 105px;" id="menutablet2">
+		
+		<ul id="sub-menu-tablet2" style="display:none;">
+            {%for object in items%}
+                {%if object.tipo != 2%}
+                    <li>
+                        {% if object.tipo == 0 %}
+                           <a href="{{path('project_front_page',{'id': object.page.id, 'friendlyname' : object.page.friendlyName})}}"> {{object.page.name|title}}
+                           </a> 
+                        {%else%} 
+                           <a href="{{path('project_front_category',{'id': object.category.id, 'friendlyname' : object.category.friendlyName})}}"> {{object.category.name|title}}
+                           </a> 
+                        {%endif%}
+                    </li>
+                {%endif%}
+            {%endfor%}
+        </ul>
 	</div>
+
 	
 </div>

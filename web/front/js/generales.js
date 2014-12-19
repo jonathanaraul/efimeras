@@ -23,6 +23,21 @@ $(function(){
 						});
 
 	});
+	
+	$(function(){
+	$('#sub-menu-tablet').slicknav({
+				label: '',
+		prependTo:'#menutablet'
+						});
+
+	});
+	$(function(){
+	$('#sub-menu-tablet2').slicknav({
+		prependTo:'#menutablet2'
+						});
+
+	});
+	
 $( document ).ready(function() {
   // Handler for .ready() called.
   if ($('#paginacion-especial').length>0){
