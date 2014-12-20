@@ -42,7 +42,7 @@ fos_user_change_password:
     prefix: /profile
 
 project_front_modal_message:
-    pattern:  /modal/mensage
+    pattern:  /modal/mensaje
     defaults: { _controller: ProjectFrontBundle:Modal:message }
 project_front_modal_login:
     pattern:  /modal/login

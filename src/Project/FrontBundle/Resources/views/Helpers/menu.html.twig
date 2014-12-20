@@ -30,22 +30,3 @@
     </div>
 
 </div>
-
-{#
-    {%for object in items%}
-        {%if object.tipo != 2%}
-        <div class="menu-element">
-            {% if object.tipo == 0 %}
-               <a id="page" href="{{path('project_front_page',{'id': object.page.id, 'friendlyname' : object.page.friendlyName})}}"> {{object.page.name|title}}
-               </a> 
-            {%else%} 
-               <a id="category" href="{{path('project_front_category',{'id': object.category.id, 'friendlyname' : object.category.friendlyName})}}"> {{object.category.name|title}}
-               </a> 
-            {%endif%}
-        </div>
-        {%else%}
-        <div class="menu-element spacer"></div>
-        {%endif%}
-    {%endfor%}
-    <a title="Realego" href="http://www.master-arquitectura-efimera.com/page/19/equipo-efimeras"> <img src="{{asset('front/images/realego.png')}}" > </a>
-    #}
