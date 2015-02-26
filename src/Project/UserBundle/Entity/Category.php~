@@ -179,6 +179,20 @@ class Category
      */
     private $menu;
 
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="optionYoutube", type="boolean", nullable=true)
+     */
+    private $optionYoutube = true;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="linkYoutube", type="string", length=255, nullable=true)
+     */
+    private $linkYoutube;
+
     private $file;
     private $temp;
     private $remove;

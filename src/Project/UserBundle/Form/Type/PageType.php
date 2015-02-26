@@ -36,6 +36,8 @@ class PageType extends AbstractType
             ))        
         -> add('published', 'checkbox', array('label' => 'Publicado', 'required' => false, 'attr' => array('class' => 'ace-switch') ))
         -> add('lastHour', 'checkbox', array('label' => 'Ultima Hora', 'required' => false, 'attr' => array('class' => 'ace-switch') )) 
+        -> add('optionYoutube', 'checkbox', array('label' => 'Video Youtube', 'required' => false, 'attr' => array('class' => 'ace-switch') )) 
+        -> add('linkYoutube', 'url', array('label' => 'Link Youtube','required' => false, 'attr' => array('class' => 'span6')))
         ->add('content', 'ckeditor', array(
                 'label' => 'Contenido',
                 'transformers'                 => array('html_purifier'),

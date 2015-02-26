@@ -99,7 +99,7 @@ function ordenaRank(){
 	$.each(jQuery('.ordenar'), function(indice, valor) {
 		var id = $(valor).attr('id');
 		var atributo = $(valor).attr('atributo');
-		data += '&elemento_' + indice + '=' + atributo;
+		data += '&elemento_' + indice + '=' + atributo;º
 	});
 	console.log(data);
 	$.post(direccionRank, data, function(respuesta) {
@@ -126,4 +126,16 @@ jQuery('#page_principal').click(function() {
 		$('#page_upperText').val('Principal');
 	}
 	return false;
+});
+
+jQuery('#page_optionYoutube').click(function() {  
+	if($("#page_optionYoutube").is(':checked')) 
+	{  
+        $('#page_linkYoutube').prop('readOnly', false);
+    } 
+    else 
+    {  
+        $('#page_linkYoutube').prop('readOnly', true);
+        $('#page_linkYoutube').val(''); 
+    }
 });

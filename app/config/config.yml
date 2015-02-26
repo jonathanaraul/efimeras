@@ -195,7 +195,7 @@ trsteel_ckeditor:
         basicstyles: ['Bold','Italic','Underline','Strike','Subscript','Superscript','-','RemoveFormat']
         paragraph: ['NumberedList','BulletedList','-','Outdent','Indent','-','JustifyLeft', 'JustifyCenter','JustifyRight','JustifyBlock']
         links: ['Link','Unlink','Anchor']
-        insert: ['Image','Flash','Table','HorizontalRule']
+        insert: ['Image','Flash','Table','HorizontalRule', 'Smiley', 'SpecialChar', 'PageBreak', 'Iframe']
         styles: ['Styles','Format']
         tools: ['Maximize', 'ShowBlocks']
     ui_color: '#ccc'

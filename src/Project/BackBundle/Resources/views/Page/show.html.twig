@@ -87,6 +87,22 @@
                 <th>Tema</th>
                 <td>{{ element.theme.name }}</td>
             </tr>
+            <tr>
+                <th>Colocar video Youtube</th>
+                <td>
+                    {% if element.optionYoutube == 1%}
+                    Si
+                    {%else%}
+                    No
+                    {%endif%}
+                </td>
+            </tr>
+            {% if element.optionYoutube == 1%}
+            <tr>
+                <th>Link Youtube</th>
+                <td>{{ element.linkYoutube }}</td>
+            </tr>
+            {%endif%}
             {#
             <tr>
                 <th>Categoria</th>

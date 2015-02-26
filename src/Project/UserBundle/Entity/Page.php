@@ -200,6 +200,20 @@ class Page
      */
     private $principal = false;
 
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="optionYoutube", type="boolean", nullable=true)
+     */
+    private $optionYoutube = true;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="linkYoutube", type="string", length=255, nullable=true)
+     */
+    private $linkYoutube;
+
 	private $file;
 	private $temp;
 	private $remove;
@@ -857,5 +871,51 @@ class Page
     public function getPrincipal()
     {
         return $this->principal;
+    }
+
+    /**
+     * Set optionYoutube
+     *
+     * @param boolean $optionYoutube
+     * @return Page
+     */
+    public function setOptionYoutube($optionYoutube)
+    {
+        $this->optionYoutube = $optionYoutube;
+
+        return $this;
+    }
+
+    /**
+     * Get optionYoutube
+     *
+     * @return boolean 
+     */
+    public function getOptionYoutube()
+    {
+        return $this->optionYoutube;
+    }
+
+    /**
+     * Set linkYoutube
+     *
+     * @param string $linkYoutube
+     * @return Page
+     */
+    public function setLinkYoutube($linkYoutube)
+    {
+        $this->linkYoutube = $linkYoutube;
+
+        return $this;
+    }
+
+    /**
+     * Get linkYoutube
+     *
+     * @return string 
+     */
+    public function getLinkYoutube()
+    {
+        return $this->linkYoutube;
     }
 }

@@ -32,6 +32,17 @@ var images = ["{{ asset(''~ page.getBackground.getWebPath ~'') }}"];
 			</br>
 			{%endif%}
 
+			{%if page.optionYoutube == 1%}
+			<p>
+				<iframe width="420" height="345" 
+				src="{{page.linkYoutube |replace({'https://www.youtube.com/watch?v=': 'https://www.youtube.com/v/', 'http://www.youtube.com/watch?v=': 'http://www.youtube.com/v/'})}}"
+				style="width:100%;margin-top:20px;margin-bottom:10px;">
+				</iframe>
+			</p>
+			{%else%}
+			</br>
+			{%endif%}
+
 			{{page.content|raw}}
 
 			</br>
