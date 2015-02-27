@@ -29,8 +29,8 @@ class CategoryType extends AbstractType
             'required' => false, 
             ))    
         -> add('published', 'checkbox', array('label' => 'Publicado', 'required' => false, 'attr' => array('class' => 'ace-switch') )) 
-        -> add('optionYoutube', 'checkbox', array('label' => 'Video Youtube', 'required' => false, 'attr' => array('class' => 'ace-switch') )) 
-        -> add('linkYoutube', 'url', array('label' => 'Link Youtube','required' => false, 'attr' => array('class' => 'span6')))
+        -> add('optionYoutube', 'checkbox', array('label' => 'Video', 'required' => false, 'attr' => array('class' => 'ace-switch') )) 
+        -> add('linkYoutube', 'url', array('label' => 'Link Youtube /Vimeo','required' => false, 'attr' => array('class' => 'span6')))
         -> add('content', 'ckeditor', array(
                 'label' => 'Contenido',
                 'transformers'                 => array('html_purifier'),
