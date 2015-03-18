@@ -107,7 +107,7 @@
 		{% endif %}
 		{% if is_granted('ROLE_ADMIN') or is_granted('ROLE_DIRECTOR')%}
 		<li {% if app.request.attributes.get('_route') == 'project_back_reservation_list' %}class="active"{%endif%}>
-			<a href="{{ path('project_back_reservation_list') }}" > <i class="icon-heart-empty"></i> <span class="menu-text"> Pre-Inscripción </span> </a>
+			<a href="{{ path('project_back_reservation_list') }}" > <i class="icon-heart-empty"></i> <span class="menu-text"> Solicitud </span> </a>
 		</li>
 		{% endif %}
 		{% if is_granted('ROLE_ADMIN')%}
