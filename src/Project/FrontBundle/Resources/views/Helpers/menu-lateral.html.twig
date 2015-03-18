@@ -14,7 +14,7 @@
              <hr class="men-sel" style="background-color: {{object.page.theme.color}};width: 304px;">
              {%endif%}#}
           {%else%} 
-             <a href="{{path('project_front_category',{'id': object.category.id, 'friendlyname' : object.category.friendlyName})}}" style="color:white" class="menu-lateral2"> {{object.category.name}}
+             <a href="{{path('project_front_category',{'id': object.category.id, 'friendlyname' : object.category.friendlyName})}}" class="menu-lateral2"> {{object.category.name}}
              </a> 
              {#{%if idpage == object.category.id%}
              <hr class="men-sel" style="background-color: {{object.category.theme.color}};width: 304px;"> 

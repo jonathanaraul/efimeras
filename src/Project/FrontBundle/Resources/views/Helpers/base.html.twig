@@ -71,24 +71,26 @@
 			});
 			
 				$('b').mouseenter(function(){
-				$('.menu-lateral1',this).css('color',x);
+				$('.menu-lateral1',this).css('color','white');
 			});
 			
 			$('b').mouseleave(function(){
-				$('.menu-lateral1',this).css('color','white');
+				$('.menu-lateral1',this).css('color',x);
 				
 			});
 			
 			$('span').mouseenter(function(){
-				$('.menu-lateral2',this).css('color',x);
+				$('.menu-lateral2',this).css('color','white');
 			});
 			
 			$('span').mouseleave(function(){
-				$('.menu-lateral2',this).css('color','white');
+				$('.menu-lateral2',this).css('color',x);
 				
 			});
 			
 			$('.active').css('color',x);
+			$('.menu-lateral1',this).css('color',x);
+			$('.menu-lateral2',this).css('color',x);
 			
 			$('#logo-image').mouseenter(function() {
 				$('#logo-image').attr("src", "{{asset('front/images/logo.gif')}}" );
