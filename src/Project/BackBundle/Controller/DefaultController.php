@@ -18,9 +18,6 @@ class DefaultController extends Controller
 {
     public function indexAction(Request $request)
     {
-        //Tu haces tus cambios trabajas todos tus codigos guardas y luego vas al sourcetree	
-        //otro cambio mas
-        // Para traer cambios solo debes darle en pull
 
         $user = $this->getUser();
         if($user==null) return $this->redirect($this->generateUrl('fos_user_security_login'));
