@@ -18,7 +18,7 @@ var images = ["{{ asset(''~ page.getBackground.getWebPath ~'') }}"];
 			</br>
 			{%endif%}
 
-			%if page.optionYoutube == 1%}
+			{%if page.optionYoutube == 1%}
 			<p>
 				<iframe width="420" height="345" 
 				src="{{page.linkYoutube |replace({'https://www.youtube.com/watch?v=': 'https://www.youtube.com/v/', 'http://www.youtube.com/watch?v=': 'http://www.youtube.com/v/', 'http://vimeo.com/': 'http://player.vimeo.com/video/', 'https://vimeo.com/': 'https://player.vimeo.com/video/'})}}"
