@@ -122,8 +122,8 @@ jQuery('#page_principal').click(function() {
 		//$('#menuItem_category').val($("#menuItem_category option:first").val());
 		$('#page_name').prop('readOnly', true);
 		$('#page_upperText').prop('readOnly', true);
-		$('#page_name').val('Principal');
-		$('#page_upperText').val('Principal');
+		$('#page_name').val('MASTER');
+		$('#page_upperText').val('MASTER');
 	}
 	return false;
 });

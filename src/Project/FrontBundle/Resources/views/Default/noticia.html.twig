@@ -1,0 +1,29 @@
+{%for element in variables%}
+
+<div class="news-cont" style="margin-left: 25px;{%if template==0%}width: 800px;{%endif%}">
+	<div class="news-cell" style="padding: 14px;">
+		<table cellpadding="12" id="contenido-pagina" style="width: 100%;">
+			<tr width="100%">
+				<td  width="30%" valign="top" colspan="3">
+				<p>
+					<img src="{{asset(element.getWebPath)}}" style="width: 140px;">
+				</p></td>
+				<td  width="70%" valign="top" colspan="3"><h2 style="color: {{color}};"> {{element.name}} </h2>
+				<p>
+					
+					{#
+					{{element.content|raw}}
+					#}
+
+					{{ render(controller('ProjectFrontBundle:Default:imagenNoticia', { 'contenido': element.content|raw })) }}
+
+				</p>
+				<p style="color: {{color}};float:right">
+					<a href="{{path('project_front_page',{'id': element.id, 'friendlyname' : element.friendlyName})}}"> Leer más... </a>
+				</p></td>
+			</tr>
+		</table>
+	</div>
+</div>
+
+{%endfor%}

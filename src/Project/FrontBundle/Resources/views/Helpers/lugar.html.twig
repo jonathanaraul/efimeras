@@ -5,7 +5,7 @@
     <p>Email: {%if email is not null%}{{email.value}}{%endif%}</p>
 </div>
 <div style="margin-top: 12px;" class="botonLugar_elemento">
-    <input type="button" value="Como llegar" id="botonLugar_submit" style="background: #000000;border: none;color: {{colorOb}};float: right;margin-right: 30px;font-weight: bolder;cursor:pointer; padding:4px 8px;" {%if lugar is not null%}onclick="document.location.href = '{{lugar.value}}'"{%endif%}>
+    <input type="button" value="Como llegar" id="botonLugar_submit" formtarget="_blank" style="background: #000000;border: none;color: {{colorOb}};float: right;margin-right: 30px;font-weight: bolder;cursor:pointer; padding:4px 8px;" {%if lugar is not null%}onclick="window.open('{{lugar.value}}','_blank');"{%endif%}>
 </div>
 
 

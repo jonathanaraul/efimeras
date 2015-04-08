@@ -34,6 +34,7 @@ var images = ["{{ asset(''~ page.getBackground.getWebPath ~'') }}"];
 			</br>
 		</div>
 	</div>
+	{#
 	{%for element in page.pages%}
 	<div class="news-cont" style="margin-left: 25px;{%if page.template==0%}width: 800px;{%endif%}">
 		<div class="news-cell" style="padding: 14px;">
@@ -54,7 +55,10 @@ var images = ["{{ asset(''~ page.getBackground.getWebPath ~'') }}"];
 			</table>
 		</div>
 	</div>
-	{%endfor%}
+	{%endfor%}style="height:333px;width:500px;"
+	#}
+	{{ render(controller('ProjectFrontBundle:Default:noticias', { 'id': idpage, 'template': page.template , 'color': page.theme.color })) }}
+	{# % include 'ProjectFrontBundle:Default:noticia.html.twig' with  {'variable' : '12'} % #}
 	<div class="news-cont"  style="margin-left: 25px;height: 0px;padding: 0px;{%if page.template==0%}width: 800px;{%endif%}"></div>
 </div>
 {%if page.template==1 and page.templateMenu==0%}

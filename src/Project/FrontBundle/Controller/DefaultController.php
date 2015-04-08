@@ -196,7 +196,7 @@ class DefaultController extends Controller
 		$secondArray = array();
 
 		$em = $this -> getDoctrine() -> getManager();
-		$dql = "SELECT n.id,n.name,n.created,n.friendlyName,n.descriptionMeta FROM ProjectUserBundle:Page n WHERE n.tags like :term or n.content like :term or n.name like :term or n.descriptionMeta like :term ORDER BY n.created ASC";
+		$dql = "SELECT n.id,n.name,n.created,n.friendlyName,n.descriptionMeta FROM ProjectUserBundle:Page n WHERE n.tags like :term or n.content like :term or n.name like :term or n.descriptionMeta like :term ORDER BY n.created DESC";
 		
 		$query = $em -> createQuery($dql);
 		$query -> setParameter('term', '%'.$term.'%');
@@ -262,7 +262,7 @@ class DefaultController extends Controller
 		$secondArray = array();
 
 		$em = $this -> getDoctrine() -> getManager();
-		$dql = "SELECT n FROM ProjectUserBundle:Page n WHERE n.tags like :tags ORDER BY n.created ASC";
+		$dql = "SELECT n FROM ProjectUserBundle:Page n WHERE n.tags like :tags ORDER BY n.created DESC";
 		
 		$query = $em -> createQuery($dql);
 		$query -> setParameter('tags', '%'.$tag.'%');
@@ -312,6 +312,7 @@ class DefaultController extends Controller
 				'nationality'=>$data -> getNationality(),
 				'education'=>$data -> getEducation()
 				);
+
 			//ENVIAR CORREO ELECTRONICO
 			$destinatario = $this -> getDoctrine() -> getRepository('ProjectUserBundle:Setting') -> find(1);
 
@@ -331,7 +332,8 @@ class DefaultController extends Controller
 			mail ($destinatario, $sujeto, $mensaje);
 		
 			///////////////////////////
-			$secondArray['message'] = 'Estimado(a) '.ucwords($data -> getFirstName()).' '.ucwords($data -> getLastName()).' su reserva ha sido guardada exitosamente...';
+
+			$secondArray['message'] = 'Estimado(a) '.ucwords($data -> getFirstName()).' '.ucwords($data -> getLastName()).', su solicitud de informacion a quedado registrada.';
 			
 			
 			}
@@ -345,5 +347,48 @@ class DefaultController extends Controller
 		return $this -> render('ProjectFrontBundle:Default:reservation2.html.twig', $array);
 	}
 
+	public function noticiasAction($id, $template, $color) {
+		
+		$em = $this -> getDoctrine() -> getManager();
+		$dql = "SELECT n FROM ProjectUserBundle:Page n WHERE n.category = :category ORDER BY n.created DESC";
+		
+		$query = $em -> createQuery($dql);
+		$query -> setParameter('category', $id);
 
+		$variables = $query->getResult();
+
+		return $this -> render('ProjectFrontBundle:Default:noticia.html.twig', 
+			array('variables' => $variables, 'template' => $template, 'color' => $color));
+	}
+
+	public function imagenNoticiaAction($contenido) {
+		
+
+		$codigoHTML=$contenido;
+
+		$salida = false;
+		$codigofinal="";
+
+		while ($salida == false)
+		{
+
+			$eimageni= explode('<img alt="', $codigoHTML);
+			if(isset($eimageni[1]))
+			{
+				$inicioImagen='<img alt="';
+				$separarImagen=explode('px;" />',$eimageni[1]);
+				$finImagen=$separarImagen[0].'px;" />';
+				$codigoImagen=$inicioImagen.$finImagen;
+				$codigoHTML=str_replace($codigoImagen,"", $codigoHTML);
+				
+			}
+			else
+			{
+				$salida = true;
+			}
+
+		}
+
+		return new Response(''.$codigoHTML.'');
+	}
 }

@@ -12,9 +12,37 @@ images[{{loop.index0}}] = "{{ asset(''~ element.getWebPath ~'') }}";
 	{% include 'ProjectFrontBundle:Helpers:controller-menuMobile.html.twig' %}
 	<div class="news-cont2" style="margin-left: 20px;{%if page.template==0%}width: 800px;{%endif%}">
 		<div class="news-cell2" style="padding: 0px;">
-			<h2 style="color: {{page.theme.color}};"> Pre-Inscripciones <br>({{page.name|title}})</h2>
-			{%if message == ''%}
-			<form action="{{ url }}" method="post" {{ form_enctype(form) }} id="form-reservaciones" name="formulario">
+			<h2 style="color: {{page.theme.color}};"> Solicitud <br>({{page.name|title}})</h2>
+			{%if message != ''%}
+			<br>
+			<p>
+				{{message}}
+			</p>
+			<br>
+
+			<table style ="width: 100%;" id="contenido-pagina" cellspacing="10" border="0">
+				<tr>
+					<td> {% trans %}Nombre{% endtrans %}: {{ aux.firstName }}</td>
+				</tr>
+				<tr>
+					<td> {% trans %}Apellido{% endtrans %}: {{ aux.lastNname }}</td>
+				</tr>
+				<tr>
+					<td> {% trans %}Correo Electrónico{% endtrans %}: {{ aux.email }}</td>
+				</tr>
+				<tr>
+					<td> {% trans %}Teléfono{% endtrans %}: {{ aux.phone }}</td>
+				</tr>
+				<tr>
+					<td> {% trans %}Nacionalidad{% endtrans %}: {{ aux.nationality }}</td>
+				</tr>
+				<tr>
+					<td> {% trans %}Formación{% endtrans %}: {{ aux.education }}</td>
+				</tr>
+			</table>
+
+			{%else%}
+			<form action="{{ url }}" method="POST" {{ form_enctype(form) }} id="form-reservaciones" name="formulario">
 				<table style ="width: 100%;" id="contenido-pagina" cellspacing="10" border="0">
 					<tr>
 						<td> {% trans %}Nombre{% endtrans %}: </td>
@@ -42,12 +70,14 @@ images[{{loop.index0}}] = "{{ asset(''~ element.getWebPath ~'') }}";
 					</tr>
 					<tr>
 						<td colspan="2">
+							{#
 							<div class="boton-listado2 boton-reservaciones" style="margin-top: 14px;margin-right: 0px; background-color:{{page.theme.color}}" >
-								<!--<a href="javascript:void(0);" id="botonReservaciones">{% trans %}Solicitud{% endtrans %}</a>
-								<input type="submit" value="Solicitud" class="boton-listado boton-reservaciones" style="margin-top: 14px;margin-right: 0px; background-color:{{page.theme.color}}">-->
-
-								<a href="javascript:document.formulario.submit();">Pre-Inscribir</a>
+								<!--
+								<a href="javascript:document.formulario.submit();">SOLICITUD</a>
+								-->
 							</div>
+							#}
+							<input type="submit" value="SOLICITUD" class="boton-listado2 boton-reservaciones" style="margin-top: 14px;margin-right: 0px; background-color:{{page.theme.color}}">
 						</td>
 					</tr>
 				</table>

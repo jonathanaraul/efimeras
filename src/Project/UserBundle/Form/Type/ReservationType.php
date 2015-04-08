@@ -17,10 +17,10 @@ class ReservationType extends AbstractType
     {
         $builder
 
-        ->add('firstName', 'text', array('required' => false))
-        ->add('lastName', 'text', array('required' => false))
-        ->add('email', 'text', array('required' => false))
-        ->add('phone', 'text', array('required' => false))
+        ->add('firstName', 'text', array('required' => true))
+        ->add('lastName', 'text', array('required' => true))
+        ->add('email', 'email', array('required' => true))
+        ->add('phone', 'text', array('required' => true))
         ->add('nationality', 'choice', array(
             'choices'   => array(
                 'esp' => 'Español', 
@@ -45,8 +45,8 @@ class ReservationType extends AbstractType
                 'uru' => 'Uruguayo',
                 'ven' => 'Venezolano'
                 ),
-            'required' => false))
-        ->add('education', 'text', array('required' => false));
+            'required' => true))
+        ->add('education', 'text', array('required' => true));
     }
 
     public function setDefaultOptions(OptionsResolverInterface $resolver)
