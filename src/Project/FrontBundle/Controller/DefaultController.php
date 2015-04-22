@@ -61,7 +61,7 @@ class DefaultController extends Controller
         // Procesa accion en base de datos
         $object = new Mensaje();
         $object-> setAsunto($asunto);
-        $object-> setDestinatario('jonathan.araul@gmail.com');
+        $object-> setDestinatario('master@efimeras.com');
         $object-> setRedactor($email);
         $object-> setContenido($mensaje);
         $em -> persist($object);
@@ -389,6 +389,6 @@ class DefaultController extends Controller
 
 		}
 
-		return new Response(''.$codigoHTML.'');
+		return new Response(substr(''.$codigoHTML.'...', 0, 250));
 	}
 }

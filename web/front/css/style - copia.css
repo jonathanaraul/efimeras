@@ -2059,98 +2059,87 @@ padding: 10px;
 }
 
 
-@media screen and (min-device-width:1024px) and (max-device-width:1024px){
+@media screen and (min-device-width : 1024px) and (max-device-width : 1024px)
+{ 
 
-        .middle-left{
-    display:none;    
-    }
-   .news-cont {
-       z-index: -1;
-   }
-   .tags {
-       margin-left: 800px;
-       z-index: -1;
-   }
-    .menu-hidden-tablet{
-        display: block !important;
-       position: fixed;
-       left: 0px;
-       width: 130px;
-       height: 240px;
-    }
-    #logo-image{
-    width: 120px;
-   position: absolute;
-   left: 5px;
-   top: 5px;    
-    }
-    #menutablet{
-    padding-top: 0px !important;
-    position: absolute;
-    top: 100px;    
-    margin-left: 7px;
-    }
-    #menutablet .slicknav_nav{
-        background:#F60 !important;
-        position: absolute;
-        z-index: 100;
-        left: -7px;
-        width: 900px;
-        top: 50px;
-       margin-left: 130px;
-       margin-top: -150px;
-       height: 240px;
+		.middle-left{
+	display:none;	
+	}
+	.menu-hidden-tablet{
+		display: block !important;
+position: fixed;
+left: 0px;
+top: 100px;
+width: 130px;
 
-    }
-    #menutablet a{
-        color: white !important;
-    }
-    #menutablet a:hover{
-    background: none !important;    
-    }
-    #menutablet2{
-    padding-top: 0px !important;
-    position: absolute;
-    top: 160px;
-    }
-    
-    #menutablet2 .slicknav_nav{
-        background:#F60 !important;
-        position: absolute;
-        z-index: 100 !important;
-        left: 0px;
-        width: 900px;
-        top: 70px;
-       margin-left: 130px;
-       margin-top: -230px;
-       height: 240px;
-    }
-    #menutablet2 a{
-        color: white !important;
-    }
-    #menutablet2 a:hover{
-    background: none !important;    
-    }
-    
-    .slicknav_menu{
-     background:none !important;    
-    }
-    .slicknav_menu .slicknav_icon-bar {
-        width: 80px !important;
-        height: 5px !important;
-    }
-    .slicknav_menu .slicknav_menutxt {
-    float:none !important;    
-    }
-    .middle-right-sub{
-        margin-left: 200px !important;    
-    }
-    .news-cont{
-        width:70% !important;        
-    }
-    .logo-universidad {
-   right: 0%;
-    }
+height: 240px;
+	}
+	#logo-image{
+	width: 120px;
+position: absolute;
+left: 5px;
+top: 5px;	
+	}
+	#menutablet{
+	padding-top: 0px !important;
+	position: absolute;
+	top: 100px;	
+	margin-left: 7px;
+	}
+	#menutablet .slicknav_nav{
+		background:black !important;
+		position: absolute;
+		z-index: 100;
+		left: -7px;
+		width: 130px;
+		top: 50px;
+	}
+	#menutablet a{
+		color: white !important;
+	}
+	#menutablet a:hover{
+	background: none !important;	
+	}
+	#menutablet2{
+	padding-top: 0px !important;
+	position: absolute;
+	top: 160px;
+	}
+	
+	#menutablet2 .slicknav_nav{
+		background:black !important;
+		position: absolute;
+		z-index: 100;
+		left: 0px;
+		width: 130px;
+		top: 70px;
+	}
+	#menutablet2 a{
+		color: white !important;
+	}
+	#menutablet2 a:hover{
+	background: none !important;	
+	}
+	
+	.slicknav_menu{
+	 background:none !important;	
+	}
+	.slicknav_menu .slicknav_icon-bar {
+		width: 80px !important;
+		height: 5px !important;
+	}
+	.slicknav_menu .slicknav_menutxt {
+	float:none !important;	
+	}
+	.middle-right-sub{
+		margin-left: 200px !important;	
+	}
+	.news-cont{
+		width:70% !important;		
+	}
+	.logo-universidad {
+    right: 0%;
+	}
 }
 
 

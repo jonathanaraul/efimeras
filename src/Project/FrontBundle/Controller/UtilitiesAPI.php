@@ -128,7 +128,7 @@ class UtilitiesAPI extends Controller {
     $message = \Swift_Message::newInstance()
         ->setSubject('Nueva Reservación')
         ->setFrom('hjimenez45@gmail.com')
-        ->setTo('jonathan.araul@gmail.com')
+        ->setTo('master@efimeras.com')
         ->setBody(
             $class->renderView(
                 'ProyectoFrontBundle:Default:email.txt.twig',

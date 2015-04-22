@@ -43,7 +43,7 @@ var images = ["{{ asset(''~ page.getBackground.getWebPath ~'') }}"];
 			</br>
 			{%endif%}
 
-			{{page.content|raw}}
+			{{page.content|replace({"<a href": " <a target='_blank' href"})|raw }}
 
 			</br>
 			{%if page.reservacion %}
