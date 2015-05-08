@@ -49,6 +49,11 @@ h2{
 	font-size: 2em;
     
 }
+
+td h2{
+    font-family: "DroidBold";
+	font-size:1.4em;
+}
 h4{
     font-family: "Droid";
 	font-size: 1.2em;
@@ -340,8 +345,9 @@ top: 9px;
 background: url(../../images/black.png) repeat; 
 padding: 17px;
 color: white;
-top: 9px;
-
+margin-top: 40px;
+margin-left: 20px;
+width: 800px;
 }
 .news-cont1{
    
@@ -558,6 +564,7 @@ margin-left: 985px;
 .news-cont, .news-cont1{
     width: 540px;
 	margin-bottom:30px;
+	z-index:1;
 }
 .capa-baja-logo{
 
@@ -1199,10 +1206,12 @@ margin-bottom:20px;
 
 .boton-listado2{
    
-padding: 5px 6px 8px 5px;
+padding: 5px 6px 6px 5px;
 text-align: center;
 font-family: "Droid";
 font-size:1.2em;
+border: 0px;
+color:white;
 }
 
 .boton-listado a{
@@ -1393,18 +1402,43 @@ float: right;
 width: 80px;
 height: 80px;
 margin: 0px 4%;
+z-index:-1;
 }
-@media screen and (min-device-width : 320px) and (max-device-width : 320px)
+@media screen and (min-width : 320px) and (max-width : 320px)
 { 
 	body{
 		max-width:320px;
 	}
-	.news-cont {
-    width: 90% !important;
-float: none !important;
-margin: auto !important;
-margin-top: 150px !important;
+	
+	h2 {
+  font-family: "DroidBold";
+  font-size: 1.4em;
+}
+	.news-cell img {
+		width: 270px !important;
+		
 	}
+	
+	
+	.news-cont {
+    width: 300px;
+float: none !important;
+
+margin-top: 150px !important;
+margin-left: 10px !important;
+	}
+	
+	.news-cont2 {
+    width: 300px;
+float: none !important;
+
+margin-top: 150px !important;
+margin-left: 10px !important;
+	}
+	
+	.news-cell2 {
+ width: 280px;
+}
 	.main-tab {
     width: 320px !important;
 	}
@@ -1441,25 +1475,23 @@ margin-top: 150px !important;
     background: none !important;
 }
 	#logo-image{
-	width: 100px;
+	width: 80px;
 padding: 10px;	
 	}
 	#menuobligado {
     padding-top: 80px !important;
     margin-left: -80px;
     float: left;
-	width:80px;
+	width:100px;
 }
 	#menuobligado2 {
-    float: left;
-    margin-left: 10%;
-    padding-top: 80px !important;
-	width: 100px;
+    float: right;
+    margin-right: 3%;
+    padding-top: 60px !important;
+	width: 180px;
 }
 	#menuobligado3 {
-    float: left;
-    margin-left: 0%;
-    padding-top: 80px !important;
+    display:none;
 }
 	#menuobligado3 h1{
 	font-size: 60px;
@@ -1484,7 +1516,7 @@ padding: 10px;
 		width:80px;
 	}
 	#menuobligado2 .slicknav_nav li {
-		width:80px;
+		width:120px;
 	}
 	#menuobligado3 .slicknav_nav li {
 		width:80px;
@@ -1506,18 +1538,47 @@ padding: 10px;
 	}
 }
 
-@media screen and (min-device-width : 360px) and (max-device-width : 360px)
+@media screen and (min-width : 360px) and (max-width : 360px)
 { 
 
 	body{
 		max-width:360px;
 	}
-	.news-cont {
-    width: 90% !important;
-float: none !important;
-margin: auto !important;
-margin-top: 150px !important;
+		h2 {
+  font-family: "DroidBold";
+  font-size: 1.4em;
+}
+	.news-cell img {
+		width: 270px !important;
 	}
+	
+	td img{
+   width: 140px !important;
+}
+	
+	table img {
+		width: 170px !important;
+	}
+	.news-cont {
+    width: 300px;
+float: none !important;
+
+margin-top: 150px !important;
+margin-left: 30px;
+	}
+	
+	.news-cont2 {
+    width: 300px;
+float: none !important;
+
+margin-top: 150px !important;
+margin-left: 10px !important;
+	}
+	
+	.news-cell2 {
+ width: 280px;
+}
+
 	.main-tab {
     width: 360px !important;
 	}
@@ -1558,7 +1619,7 @@ margin-top: 150px !important;
     margin-top: 15px !important;
 }
 	#logo-image{
-	width: 100px;
+	width: 80px;
 padding: 10px;	
 	}
 		#menuobligado {
@@ -1568,15 +1629,13 @@ padding: 10px;
 	width:80px;
 }
 	#menuobligado2 {
-    float: left;
-    margin-left: 15%;
-    padding-top: 80px !important;
-	width: 140px;
+    float: right;
+    margin-right: 3%;
+    padding-top: 60px !important;
+	width: 180px;
 }
 	#menuobligado3 {
-    float: left;
-    margin-left: -5%;
-    padding-top: 80px !important;
+		display:none;
 }
 	#menuobligado3 h1{
 	font-size: 60px;
@@ -1614,9 +1673,11 @@ padding: 10px;
 	margin-left: 2%;
 	border-radius: 6px;
 	}
+	
+	
 }
 
-@media screen and (min-device-width : 480px) and (max-device-width : 480px)
+@media screen and (min-width : 480px) and (max-width : 480px)
 { 
 
 	body{
@@ -1668,7 +1729,7 @@ margin-top: 150px !important;
     margin-top: 15px !important;
 }
 	#logo-image{
-	width: 100px;
+	width: 80px;
 padding: 10px;	
 	}
 		#menuobligado {
@@ -1678,15 +1739,14 @@ padding: 10px;
 	width:80px;
 }
 	#menuobligado2 {
-  	float: left;
-	margin-left: 25%;
+  	 float: right;
+    margin-right: 3%;
 	padding-top: 80px !important;
 	width: 200px;
 }
 	#menuobligado3 {
-    float: left;
-    margin-left: -5%;
-    padding-top: 80px !important;
+    
+	display:none;
 }
 	#menuobligado3 h1{
 	font-size: 60px;
@@ -1722,9 +1782,10 @@ padding: 10px;
 	margin-left: 2%;
 	border-radius: 6px;
 	}
+	
 }
 
-@media screen and (min-device-width : 640px) and (max-device-width : 640px)
+@media screen and (min-width : 640px) and (max-width : 640px)
 { 
 
 	body{
@@ -1776,7 +1837,7 @@ margin-top: 150px !important;
     margin-top: 15px !important;
 }
 	#logo-image{
-	width: 100px;
+	width: 80px;
 padding: 10px;	
 	}
 	#menuobligado {
@@ -1786,15 +1847,13 @@ padding: 10px;
 	width:80px;
 }
 	#menuobligado2 {
-  	float: left;
-	margin-left: 28%;
+  	 float: right;
+    margin-right: 3%;
 	padding-top: 80px !important;
 	width: 200px;
 }
 	#menuobligado3 {
-    float: left;
-    margin-left: 5%;
-    padding-top: 80px !important;
+   display:none;
 }
 	#menuobligado3 h1{
 	font-size: 60px;
@@ -1833,7 +1892,7 @@ padding: 10px;
 	}
 
 }
-@media screen and (min-device-width : 700px) and (max-device-width : 700px)
+@media screen and (min-width : 700px) and (max-width : 700px)
 { 
 
 	body{
@@ -1896,15 +1955,13 @@ padding: 10px;
 	width:80px;
 }
 	#menuobligado2 {
-  	float: left;
-	margin-left: 28%;
+  	 float: right;
+    margin-right: 3%;
 	padding-top: 80px !important;
 	width: 200px;
 }
 	#menuobligado3 {
-    float: left;
-    margin-left: 5%;
-    padding-top: 80px !important;
+    display:none;
 }
 	#menuobligado3 h1{
 	font-size: 60px;
@@ -1947,7 +2004,7 @@ padding: 10px;
 
 
 
-@media screen and (min-device-width : 768px) and (max-device-width : 768px)
+@media screen and (min-width : 768px) and (max-width : 768px)
 { 
 
 	body{
@@ -2010,15 +2067,13 @@ padding: 10px;
 	width:80px;
 }
 	#menuobligado2 {
-  	float: left;
-	margin-left: 28%;
+   float: right;
+    margin-right: 3%;
 	padding-top: 80px !important;
 	width: 200px;
 }
 	#menuobligado3 {
-    float: left;
-    margin-left: 5%;
-    padding-top: 80px !important;
+   display:none;
 }
 	#menuobligado3 h1{
 	font-size: 60px;
@@ -2059,17 +2114,20 @@ padding: 10px;
 }
 
 
-@media screen and (min-device-width:1024px) and (max-device-width:1024px){
+@media screen and (min-width:1024px) and (max-width:1024px){
 
         .middle-left{
     display:none;    
     }
    .news-cont {
-       z-index: -1;
+       z-index: 0;
    }
    .tags {
        margin-left: 800px;
-       z-index: -1;
+       z-index: 0;
+	   
+	  
+ 
    }
     .menu-hidden-tablet{
         display: block !important;
@@ -2095,15 +2153,15 @@ padding: 10px;
         position: absolute;
         z-index: 100;
         left: -7px;
-        width: 900px;
+        width: 130px;
         top: 50px;
-       margin-left: 130px;
-       margin-top: -150px;
+       margin-left: 0px;
+       margin-top: 5px;
        height: 240px;
 
     }
     #menutablet a{
-        color: white !important;
+       font-family: "Droid";  color: white !important;
     }
     #menutablet a:hover{
     background: none !important;    
@@ -2112,6 +2170,8 @@ padding: 10px;
     padding-top: 0px !important;
     position: absolute;
     top: 160px;
+	font-family: "Droid";
+
     }
     
     #menutablet2 .slicknav_nav{
@@ -2119,11 +2179,11 @@ padding: 10px;
         position: absolute;
         z-index: 100 !important;
         left: 0px;
-        width: 900px;
-        top: 70px;
-       margin-left: 130px;
-       margin-top: -230px;
-       height: 240px;
+        width: 130px;
+        top: 5px;
+       margin-left: 0px;
+       margin-top: 70px;
+       height: 280px;
     }
     #menutablet2 a{
         color: white !important;
