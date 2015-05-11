@@ -12,9 +12,7 @@ var images = ["{{ asset('uploads/backgrounds/853795ce12735e8e29be52e69be73c9723a
 		<div class="news-cell">
 
 			 <div id="contenidoBotonLugar" style="margin-top:55px;">
-			 {#
-				{{ render(controller('ProjectFrontBundle:Helpers:lugar', {'colorOb': page.theme.color } )) }}
-			#}
+				{{ render(controller('ProjectFrontBundle:Helpers:lugar', {'reducido': true, 'colorOb': 'blue' } )) }}
 		    </div>
 		</div>
 		<div class="lower-text"></div>

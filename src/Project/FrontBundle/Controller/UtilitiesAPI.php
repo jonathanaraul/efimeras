@@ -117,6 +117,7 @@ class UtilitiesAPI extends Controller {
 		$friendlyName =  str_replace("   ", " ", $friendlyName);
 		$friendlyName =  str_replace("  ", " ", $friendlyName);
 		$friendlyName =  str_replace(" ", "-", $friendlyName);
+		$friendlyName =  str_replace("/", "", $friendlyName);
 		
 		return $friendlyName;
 	}

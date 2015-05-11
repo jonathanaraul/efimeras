@@ -14,8 +14,7 @@ var images = ["{{ asset(''~ page.getBackground.getWebPath ~'') }}"];
 			<p>
 				<img src="{{asset(page.getWebPath)}}" style="width:100%;margin-top:20px;margin-bottom:10px;">
 			</p>
-			{%else%}
-			</br>
+			
 			{%endif%}
 
 			{%if page.optionYoutube == 1%}
@@ -25,13 +24,15 @@ var images = ["{{ asset(''~ page.getBackground.getWebPath ~'') }}"];
 				style="width:100%;margin-top:20px;margin-bottom:10px;">
 				</iframe>
 			</p>
-			{%else%}
-			</br>
+			
 			{%endif%}
 
-			{{page.content|raw}}
+			{% if page.content != "" %}
+			{{ page.content|raw }}
+			
+			{%endif%}
 
-			</br>
+			<!--Inicio--><br><!--Final-->
 		</div>
 	</div>
 	{#
