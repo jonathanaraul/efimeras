@@ -32,12 +32,12 @@
 					</div>
 				</div>
 			</div>
-
+{#
 			<div class="space-6"></div>
 
 			<div class="profile-contact-info">
 				<div class="profile-contact-links align-left">
-{#
+
 					<span class="btn btn-app btn-small btn-pink no-hover" style="margin: 0px;"> <span class="bigger-175"> 4 </span>
 						<br />
 						<span class="smaller-90"> Proyectos </span> </span>
@@ -49,14 +49,14 @@
 					<span class="btn btn-app btn-small btn-primary no-hover" style="margin: 0px;"> <span class="bigger-175"> 55 </span>
 						<br />
 						<span class="smaller-90"> Contactos </span> </span>
-#}
+
 				</div>
 
 				<div class="space-6"></div>
 			</div>
 
 			<div class="hr hr12 dotted"></div>
-
+#}
 		</div>
 
 		<div class="span9">
@@ -70,7 +70,7 @@
 					</div>
 
 					<div class="profile-info-value">
-						<span>{{ user.username }}</span>
+						<span>{{ app.user.username }}</span>
 					</div>
 				</div>
 				<div class="profile-info-row">
@@ -79,7 +79,7 @@
 					</div>
 
 					<div class="profile-info-value">
-						<span >{{ user.email }}</span>
+						<span >{{ app.user.email }}</span>
 					</div>
 				</div>
 
@@ -113,17 +113,17 @@
 					</div>
 
 					<div class="profile-info-value">
-						<span >{{ user.lastLogin.format('d/m/Y')}}</span>
+						<span >{{ app.user.fechaRegistro.format('d/m/Y')}}</span>
 					</div>
 				</div>
 
 				<div class="profile-info-row">
 					<div class="profile-info-name">
-						Ultima vez
+						Ultima conexi&oacute;n
 					</div>
 
 					<div class="profile-info-value">
-						<span >{{ user.fechaRegistro.format('d/m/Y')}}</span>
+						<span >{{ app.user.lastLogin.format('d/m/Y')}}</span>
 					</div>
 				</div>
 
@@ -133,7 +133,7 @@
 					</div>
 
 					<div class="profile-info-value">
-						<span >{{ user.descripcion }}</span>
+						<span >{{ app.user.descripcion }}</span>
 					</div>
 				</div>
 			</div>

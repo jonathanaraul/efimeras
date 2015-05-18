@@ -24,8 +24,8 @@
 			<div id="user-profile-3" class="user-profile row-fluid">
 				<div class="offset1 span10"> <div class="space"></div>
 
-					<form action="{{ path('fos_user_profile_edit') }}" {{ form_enctype(form) }} method="POST" class="fos_user_registration_register form-horizontal">
-						{{ form_start(form) }}
+						{{ form_start(form, {'attr': {'class': 'form-horizontal fos_user_profile_edit', 'role': 'form'}}) }}
+    						{{ form_errors(form) }}
 
 						<div class="tabbable">
 
@@ -73,7 +73,7 @@
 												</div>
 											</div>
 											<div class="control-group">
-												<label class="control-label" for="form-field-username">Contraseña Actual:</label>
+												<label class="control-label" for="form-field-username">Contraseña nueva:</label>
 												<div class="controls">
 													{{ form_widget(form.current_password) }}
 												</div>
@@ -86,13 +86,15 @@
 							</div>
 
 						<div class="form-actions">
+							{#
 							<button class="btn btn-info" type="button" onclick="submit();">
 								<i class="icon-check bigger-110"></i>
 								Actualizar usuario
 							</button>
+							#}
+							 <button class="btn btn-info" type="submit">{{ 'profile.edit.submit'|trans({}, 'FOSUserBundle') }}</button>
 						</div>
 						{{ form_end(form) }}
-					</form>
 				</div><!--/span-->
 			</div><!--/user-profile-->
 

@@ -7,6 +7,7 @@ use FOS\UserBundle\Event\FormEvent;
 use FOS\UserBundle\Event\FilterUserResponseEvent;
 use FOS\UserBundle\Event\GetResponseUserEvent;
 use FOS\UserBundle\Model\UserInterface;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\DependencyInjection\ContainerAware;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -30,7 +31,8 @@ class ProfileController extends BaseController
             throw new AccessDeniedException('This user does not have access to this section.');
         }
 
-        return $this->container->get('templating')->renderResponse('FOSUserBundle:Profile:show.html.'.$this->container->getParameter('fos_user.template.engine'), array('user' => $user));
+        //return $this->container->get('templating')->renderResponse('FOSUserBundle:Profile:show.html.'.$this->container->getParameter('fos_user.template.engine'), array('user' => $user));
+        return $this->container->get('templating')->renderResponse('FOSUserBundle:Profile:show.html.twig');
     }
 
     /**
@@ -58,6 +60,7 @@ class ProfileController extends BaseController
 
         $form = $formFactory->createForm();
         $form->setData($user);
+        //$form->handleRequest($request);
 
         if ('POST' === $request->getMethod()) {
             $form->bind($request);
@@ -87,7 +90,8 @@ class ProfileController extends BaseController
         }
 
         return $this->container->get('templating')->renderResponse(
-            'FOSUserBundle:Profile:edit.html.'.$this->container->getParameter('fos_user.template.engine'),
+            //'FOSUserBundle:Profile:edit.html.'.$this->container->getParameter('fos_user.template.engine'),
+            'FOSUserBundle:Profile:edit.html.twig',
             array('form' => $form->createView())
         );
     }
