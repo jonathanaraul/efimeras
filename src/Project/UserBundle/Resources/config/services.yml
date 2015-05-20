@@ -93,3 +93,8 @@ services:
         tags:
             - { name: doctrine.event_listener, event: postPersist, method: postPersist   }
             - { name: doctrine.event_listener, event: postUpdate , method: postUpdate    }
+
+    project.change_password.form.type:
+        class: Project\UserBundle\Form\Type\ChangePasswordFormType
+        arguments: [%fos_user.model.user.class%]
+        tags: [{ name: "form.type", alias: "project_user_change_password" }]

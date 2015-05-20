@@ -60,10 +60,10 @@ class ProfileController extends BaseController
 
         $form = $formFactory->createForm();
         $form->setData($user);
-        //$form->handleRequest($request);
+        $form->handleRequest($request);
 
         if ('POST' === $request->getMethod()) {
-            $form->bind($request);
+            //$form->bind($request);
 
             if ($form->isValid()) {
                 /** @var $userManager \FOS\UserBundle\Model\UserManagerInterface */
@@ -85,7 +85,11 @@ class ProfileController extends BaseController
 
                 $dispatcher->dispatch(FOSUserEvents::PROFILE_EDIT_COMPLETED, new FilterUserResponseEvent($user, $request, $response));
 
-                return $response;
+                //return $response;
+                return $this->container->get('templating')->renderResponse(
+                            'FOSUserBundle:Profile:show.html.twig', array(
+            'cambio' => 'perfil'
+        )); 
             }
         }
 

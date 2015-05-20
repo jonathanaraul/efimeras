@@ -1,5 +1,30 @@
 {% trans_default_domain 'FOSUserBundle' %}
+{% if cambio is defined and cambio =='clave'%}
+    <div class="alert alert-block alert-success">
+	<button type="button" class="close" data-dismiss="alert">
+		<i class="icon-remove"></i>
+	</button>
 
+	<i class="icon-ok green"></i>
+
+	<strong class="green">
+		¡Contrase&ntilde;a cambiada satisfactoriamente!
+	</strong>
+	    
+</div>
+{% elseif cambio is defined and cambio =='perfil'%}
+	<div class="alert alert-block alert-success">
+		<button type="button" class="close" data-dismiss="alert">
+			<i class="icon-remove"></i>
+		</button>
+
+		<i class="icon-ok green"></i>
+
+		<strong class="green">
+			¡Perfil editado satisfactoriamente!
+		</strong>
+	</div>
+{% endif %}
 <div>
 	<div id="user-profile-1" class="user-profile row-fluid">
 		<div class="span3 center">
